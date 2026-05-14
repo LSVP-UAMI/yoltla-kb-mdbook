@@ -1,19 +1,22 @@
 # Descripción
 
-Las pruebas de regresión en ReFrame son clases simples de Python que especifican los parámetros básicos de la prueba.
+Las pruebas de regresión en ReFrame son clases simples de Python que especifican los 
+parámetros básicos de la prueba.
 
-ReFrame cargará las pruebas y las enviará por un pipeline bien definido que las ejecutará en paralelo. Las etapas de esta canalización se encargan de todos los detalles de interacción del sistema, como el cambio de entorno de programación, la compilación, el envío de trabajos, la consulta del estado del trabajo, la verificación del estado y la evaluación del rendimiento.
+ReFrame cargará las pruebas y las enviará por un pipeline bien definido que las ejecutará 
+en paralelo. Las etapas de esta canalización se encargan de todos los detalles de 
+interacción del sistema, como el cambio de entorno de programación, la compilación, 
+el envío de trabajos, la consulta del estado del trabajo, la verificación del estado y 
+la evaluación del rendimiento.
 
 # Estructura general
 
 A continuación se presenta la estructura general de una prueba de ReFrame:
 
-:::: formalpara
-::: title
-simple_test.py
-:::
 
-``` python
+<span style="color: red;">*simple_test.py*</span>
+
+```python
 # Lista de imports necesarios para la prueba
 import reframe as rfm
 import reframe.utility.sanity as sn
@@ -178,12 +181,12 @@ class Simple_Test(rfm.RegressionTest):
             .
         }
 ```
-::::
-
+¿
 :::: note
 ::: title
 :::
 
+```admonish
 Como podrá haber observado, todas las funciones de la clase `Simple_Test` están decoradas. El [decorador](https://docs.python.org/3/glossary.html#term-decorator) de cada función le indica a ReFrame en que punto de su [pipeline](reframe/anexos/referencia_api.xml#pipeline) debe ejecutarla. Por ejemplo, en este fragmento de código:
 
         @run_before('performance')
@@ -197,6 +200,7 @@ Como podrá haber observado, todas las funciones de la clase `Simple_Test` está
 el decorator `@run_before('performance')` indica a ReFrame que debe ejecutar la función `set_perf_vars` antes de la etapa de `performance`.
 
 Para obtener más información de los decoradores, consulte la sección [Test Decorators](/reframe/anexos/referencia_api.xml#test_decorators).
+```
 ::::
 
 # Estructura de directorios

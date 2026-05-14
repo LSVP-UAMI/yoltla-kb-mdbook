@@ -6,43 +6,43 @@ Para agregar un nuevo tutorial a Yoltla Knowledge Base
 
 Clone el repositorio en el que se encuentra la configuración de Antora:
 
-``` cli
+```bash
 $ git clone https://github.com/LSVP-UAMI/yoltla-kb.git
 ```
 
 Navegue al directorio raíz del repositorio:
 
-``` cli
+```bash
 $ cd yoltla-kb/
 ```
 
 y cambie a la rama `develop`:
 
-``` cli
+```bash
 $ git checkout develop
 ```
 
 Navegue al directorio de tutoriales
 
-``` cli
+``` bash
 $ cd docs/modules/tutoriales/pages
 ```
 
 Agregue un nuevo archivo adoc y suba los cambios.
 
-``` cli
+``` bash
 $ vim nuevo_tutorial.adoc
 ```
 
 modifique el archivo de navegtación para agregar el nuevo archivo
 
-``` cli
+``` bash
 $vim ../nav.adoc
 ```
 
 Suba los cambios
 
-``` cli
+``` bash
 $ git add nuevo_tutorial.adoc
 $ git add ../nav.adoc
 $ git commit -m "nuevo_tutorial"
@@ -51,15 +51,16 @@ $ git push
 
 # Actualizar el sitio web
 
-Para actualizar el sitio web es necesario conectarse al contenedor de Antora por medio de su ID. Para obtener el ID del contenedor, ejecute el comando:
+Para actualizar el sitio web es necesario conectarse al contenedor de Antora por 
+medio de su ID. Para obtener el ID del contenedor, ejecute el comando:
 
-``` cli
+```bash
 $ docker ps
 ```
 
 Debe obtener una salida similar a la siguiente:
 
-``` cli
+```bash
 CONTAINER ID   IMAGE           COMMAND                  CREATED              STATUS              PORTS                                   NAMES
 f40410989c1e   antora/server   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3034->80/tcp, :::3034->80/tcp   yoltla_docs
 382555c8ab71   antora/server   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3036->80/tcp, :::3036->80/tcp   yoltla_kb
@@ -67,18 +68,18 @@ f40410989c1e   antora/server   "docker-entrypoint.s…"   About a minute ago   U
 
 Para conectarse al contenedor ejecute el comando:
 
-``` cli
+```bash
 $ docker exec <CONTAINER ID>  ash -c "antora antora-playbook.yml"
 ```
 
 Debe obtener la siguiente salida:
 
-``` cli
+```bash
 [clone] git@github.com:LSVP-UAMI/yoltla-docs.git [#################################]
 ```
 
 Para salir del contenedor ejecute el comando:
 
-``` cli
+```bash
 /antora # exit
 ```

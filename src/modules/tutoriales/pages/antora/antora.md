@@ -10,62 +10,62 @@ Antes de comenzar, es indispensable instalar y configurar las siguientes aplicac
 
 Clone el repositorio en el que se encuentra la configuración de Antora:
 
-``` cli
+```bash 
 $ git clone git@github.com:LSVP-UAMI/yoltla-antora.git
 ```
 
 Navegue al directorio raíz del repositorio:
 
-``` cli
+```bash
 $ cd yoltla-antora/
 ```
 
 y cambie a la rama `develop`:
 
-``` cli
+```bash
 $ git checkout develop
 ```
 
 # Token y UI
 
-``` cli
+```bash
 yoltla-antora
 ├── docker-compose.yml
 ├── images
 │   ├── build_antora.sh
 │   └── Dockerfile.antora
 ├── README.md
-├── token 
+├── token (1)
 └── volumes
     ├── yoltla_docs
     │   ├── antora-playbook.yml
-    │   └── ui 
+    │   └── ui (2) 
     └── yoltla_kb
         ├── antora-playbook.yml
-        └── ui 
+        └── ui (2) 
 ```
 
-- En este directorio debe colocar el archivo *.git-credentials*. [Private Repository Authentication](https://docs.antora.org/antora/2.3/playbook/private-repository-auth/).
+- `(1)` En este directorio debe colocar el archivo *.git-credentials*. [Private Repository Authentication](https://docs.antora.org/antora/2.3/playbook/private-repository-auth/).
 
-- En cada directorio debe colocar el archivo *ui-bundle.zip* correspondiente. [Build a UI Project for Local Preview](https://docs.antora.org/antora-ui-default/build-preview-ui//).
+- `(2)` En cada directorio debe colocar el archivo *ui-bundle.zip* correspondiente. [Build a UI Project for Local Preview](https://docs.antora.org/antora-ui-default/build-preview-ui//).
 
 # Construir la imágen
 
 Desde el directorio raíz del repositorio, navegue al directorio *images*:
 
-``` cli
+```bash
 $ cd images/
 ```
 
 y ejecute el comando:
 
-``` cli
+```bash
 $ bash build_antora.sh
 ```
 
 Debe obtener una salida como la siguiente:
 
-``` cli
+```bash
 Sending build context to Docker daemon  3.072kB
 Step 1/3 : FROM antora/antora:2.3.4
 2.3.4: Pulling from antora/antora
@@ -104,13 +104,13 @@ Successfully tagged antora/server:latest
 
 Desde el directorio raíz, ejecute el comando:
 
-``` cli
+```bash
 $ docker-compose up -d
 ```
 
 Debe obtener una salida como la siguiente:
 
-``` cli
+```bash
 Creating network "yoltlaantora_default" with the default driver
 Creating yoltla_docs ... done
 Creating yoltla_kb   ... done
@@ -118,15 +118,16 @@ Creating yoltla_kb   ... done
 
 # Construir el sitio web
 
-Para construir el sitio web es necesario conectarse al contenedor de Antora por medio de su ID. Para obtener el ID del contenedor, ejecute el comando:
+Para construir el sitio web es necesario conectarse al contenedor de Antora por medio 
+de su ID. Para obtener el ID del contenedor, ejecute el comando:
 
-``` cli
+```bash
 $ docker ps | grep antora
 ```
 
 Debe obtener una salida similar a la siguiente:
 
-``` cli
+```bash
 CONTAINER ID   IMAGE           COMMAND                  CREATED              STATUS              PORTS                                   NAMES
 f40410989c1e   antora/server   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3034->80/tcp, :::3034->80/tcp   yoltla_docs
 382555c8ab71   antora/server   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3036->80/tcp, :::3036->80/tcp   yoltla_kb
@@ -134,25 +135,25 @@ f40410989c1e   antora/server   "docker-entrypoint.s…"   About a minute ago   U
 
 Para conectarse al contenedor ejecute el comando:
 
-``` cli
+```bash
 $ docker exec -it <CONTAINER ID> ash
 ```
 
 Una vez que se ha accedido al contenedor ejecute el comando:
 
-``` cli
+```bash
 /antora # antora antora-playbook.yml
 ```
 
 Debe obtener la siguiente salida:
 
-``` cli
+```bash
 [clone] git@github.com:LSVP-UAMI/yoltla-docs.git [#################################]
 ```
 
 Para salir del contenedor ejecute el comando:
 
-``` cli
+```bash
 /antora # exit
 ```
 
@@ -160,24 +161,30 @@ Para salir del contenedor ejecute el comando:
 
 Para acceder a Yoltla Documentación, ingrese a la URL:
 
-    http://localhost:3034/
+```bash
+http://localhost:3034/
+```
 
 Para acceder a Yoltla Knowledge Base, ingrese a la URL:
 
-    http://localhost:3036/
+```bash
+http://localhost:3036/
+```
 
 # Detener el servidor web
 
 Desde el directorio raíz, ejecute el comando:
 
-``` cli
+```bash
 $ docker-compose down
 ```
 
 Debe obtener la siguiente salida:
 
-    Stopping yoltla_docs ... done
-    Stopping yoltla_kb   ... done
-    Removing yoltla_docs ... done
-    Removing yoltla_kb   ... done
-    Removing network yoltlaantora_default
+```bash
+Stopping yoltla_docs ... done
+Stopping yoltla_kb   ... done
+Removing yoltla_docs ... done
+Removing yoltla_kb   ... done
+Removing network yoltlaantora_default
+```
