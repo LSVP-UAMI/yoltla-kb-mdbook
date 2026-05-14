@@ -1,0 +1,520 @@
+# Descripción
+
+Resuelve numéricamente una ecuación diferencial parcial en 3D utilizando la transformada rápida de Fourier. Esta es una prueba rigurosa del rendimiento de la comunicación a larga distancia.
+
+# Compilación
+
+1.  Descargue el [código fuente](https://www.nas.nasa.gov/assets/npb/NPB3.4.2.tar.gz) de los NPB:
+
+        [t.800@yoltla Descargas]$ wget https://www.nas.nasa.gov/assets/npb/NPB3.4.2.tar.gz
+        --2022-09-04 20:42:41--  https://www.nas.nasa.gov/assets/npb/NPB3.4.2.tar.gz
+        Resolving www.nas.nasa.gov... 198.9.3.30, 2001:4d0:6318:903:198:9:3:30
+        Connecting to www.nas.nasa.gov|198.9.3.30|:443... connected.
+        HTTP request sent, awaiting response... 301 Moved Permanently
+        Location: https://www.nas.nasa.gov/assets/nas/npb/NPB3.4.2.tar.gz [following]
+        --2022-09-04 20:42:41--  https://www.nas.nasa.gov/assets/nas/npb/NPB3.4.2.tar.gz
+        Reusing existing connection to www.nas.nasa.gov:443.
+        HTTP request sent, awaiting response... 200 OK
+        Length: 442456 (432K) [application/x-gzip]
+        Saving to: “NPB3.4.2.tar.gz”
+
+        100%[===================================================================================================>] 442,456     1.15M/s   in 0.4s
+
+        2022-09-04 20:42:42 (1.15 MB/s) - “NPB3.4.2.tar.gz” saved [442456/442456]
+
+2.  Descomprima el archivo descargado:
+
+        [t.800@yoltla Descargas]$ tar -xf NPB3.4.2.tar.gz
+
+3.  Cambie al directorio *NPB3.4.2*:
+
+        [t.800@yoltla Descargas]$ cd NPB3.4.2/
+        [t.800@yoltla NPB3.4.2]$ ls
+        NPB3.4-MPI  NPB3.4-OMP  Changes.log  NPB3.4-HPF.README  NPB3.4-JAV.README  NPB3.4-SER.README  README
+
+4.  Cambie al directorio *NPB3.4-OMP*:
+
+        [t.800@yoltla NPB3.4.2]$ cd NPB3.4-OMP/
+        [t.800@yoltla NPB3.4-OMP]$ ls
+        bin  BT  CG  common  config  DC  EP  FT  IS  LU  MG  SP  sys  test_scripts  UA  Makefile  README  README.install
+
+5.  Haga una copia del archivo *make.def.template*:
+
+        [t.800@yoltla NPB3.4-OMP]$ cp config/make.def.template config/make.def
+
+6.  Cargue el módulo de GCC:
+
+        [t.800@yoltlaNPB3.4-OMP]$ module load gcc/7.2.0
+
+7.  Compile el benchmark:
+
+        [t.800@yoltla NPB3.4-OMP]$ make FT CLASS=C
+           ============================================
+           =      NAS PARALLEL BENCHMARKS 3.4         =
+           =      OpenMP Versions                     =
+           =      Fortran/C                           =
+           ============================================
+
+        cd FT; make CLASS=C
+        make[1]: Entering directory `/LUSTRE/home/uam/.../t.800/Descargas/NPB3.4.2/NPB3.4-OMP/FT'
+        make[2]: Entering directory `/LUSTRE/home/uam/.../t.800/Descargas/NPB3.4.2/NPB3.4-OMP/sys'
+        gcc  -o setparams setparams.c
+        make[2]: Leaving directory `/LUSTRE/home/uam/.../t.800/Descargas/NPB3.4.2/NPB3.4-OMP/sys'
+        ../sys/setparams ft C
+        make[2]: Entering directory `/LUSTRE/home/uam/.../t.800/Descargas/NPB3.4.2/NPB3.4-OMP/FT'
+        sed -e 's/=0/=32/' blk_par0.h > blk_par.h_wk
+        gfortran -c  -O3 -fopenmp ft_data.f90
+        gfortran -c  -O3 -fopenmp ft.f90
+        cd ../common; gfortran -c  -O3 -fopenmp randi8.f90
+        cd ../common; gfortran -c  -O3 -fopenmp print_results.f90
+        cd ../common; gfortran -c  -O3 -fopenmp timers.f90
+        cd ../common; gcc -c  -O3 -fopenmp  -o wtime.o ../common/wtime.c
+        gfortran -O3 -fopenmp -o ../bin/ft.C.x ft.o ft_data.o ../common/randi8.o ../common/print_results.o ../common/timers.o ../common/wtime.o
+        make[2]: Leaving directory `/LUSTRE/home/uam/.../t.800/Descargas/NPB3.4.2/NPB3.4-OMP/FT'
+        make[1]: Leaving directory `/LUSTRE/home/uam/.../t.800/Descargas/NPB3.4.2/NPB3.4-OMP/FT'
+
+8.  Verifique la creación del ejecutable:
+
+        [t.800@yoltla NPB3.4-OMP]$ ls bin/
+        ft.C.x
+
+:::: note
+::: title
+:::
+
+En el archivo *README.install* puede encontrar más información acerca de la compilación de los NPB.
+::::
+
+# Ejecución
+
+1.  Cambie al directorio *bin*:
+
+        [c.553@yoltla NPB3.4-OMP]$ cd bin
+        [t.800@yoltla NPB3.4-OMP]$ ls bin/
+        ft.C.x
+
+2.  Modifique la variable de entorno `OMP_NUM_THREADS`:
+
+        [c.553@yoltla bin]$ export OMP_NUM_THREADS=16
+
+3.  Ejecute el benchmark:
+
+        [c.553@yoltla bin]$ ./bt.C.x
+
+:::: note
+::: title
+:::
+
+En el archivo *README.install* puede encontrar más información acerca de la ejecución de los NPB.
+::::
+
+# Salida
+
+A continuación se presenta la salida de una ejecución de este benchmark:
+
+     
+     NAS Parallel Benchmarks (NPB3.4-OMP) - FT Benchmark
+
+     
+     Size                :  512x 512x 512
+     Iterations                  :     20
+     Number of available threads :     16
+
+     
+     T =    1     Checksum =    5.195078707457D+02    5.149019699238D+02
+     T =    2     Checksum =    5.155422171134D+02    5.127578201997D+02
+     T =    3     Checksum =    5.144678022222D+02    5.122251847514D+02
+     T =    4     Checksum =    5.140150594328D+02    5.121090289018D+02
+     T =    5     Checksum =    5.137550426810D+02    5.121143685824D+02
+     T =    6     Checksum =    5.135811056728D+02    5.121496764568D+02
+     T =    7     Checksum =    5.134569343165D+02    5.121870921893D+02
+     T =    8     Checksum =    5.133651975661D+02    5.122193250322D+02
+     T =    9     Checksum =    5.132955192805D+02    5.122454735794D+02
+     T =   10     Checksum =    5.132410471738D+02    5.122663649603D+02
+     T =   11     Checksum =    5.131971141679D+02    5.122830879827D+02
+     T =   12     Checksum =    5.131605205716D+02    5.122965869718D+02
+     T =   13     Checksum =    5.131290734194D+02    5.123075927445D+02
+     T =   14     Checksum =    5.131012720314D+02    5.123166486553D+02
+     T =   15     Checksum =    5.130760908195D+02    5.123241541685D+02
+     T =   16     Checksum =    5.130528295923D+02    5.123304037599D+02
+     T =   17     Checksum =    5.130310107773D+02    5.123356167976D+02
+     T =   18     Checksum =    5.130103090133D+02    5.123399592211D+02
+     T =   19     Checksum =    5.129905029333D+02    5.123435588985D+02
+     T =   20     Checksum =    5.129714421109D+02    5.123465164008D+02
+     Result verification successful
+     class = C
+
+
+     
+     FT Benchmark Completed.
+     Class           =                        C
+     Size            =            512x 512x 512
+     Iterations      =                       20
+     Time in seconds =                    19.07
+     Total threads   =                       16
+     Avail threads   =                       16
+     Mop/s total     =                 20785.44
+     Mop/s/thread    =                  1299.09
+     Operation type  =           floating point
+     Verification    =               SUCCESSFUL
+     Version         =                    3.4.2
+     Compile date    =              04 Sep 2022
+
+     
+     Compile options:
+        FC           = gfortran
+        FLINK        = $(FC)
+        F_LIB        = (none)
+        F_INC        = (none)
+        FFLAGS       = -O3 -fopenmp
+        FLINKFLAGS   = $(FFLAGS)
+        RAND         = randi8
+
+
+     Please send all errors/feedbacks to:
+
+     NPB Development Team
+     npb@nas.nasa.gov
+
+- Versión y nombre del benchmark
+
+- Parámetros del benchmark:
+
+  1.  Tamaño de la rejilla
+
+  2.  Número de iteraciones
+
+  3.  Número de subprocesos disponibles
+
+- Resultados obtenidos en cada iteración
+
+- Información detallada del benchmark y de su ejecución
+
+- Opciones con las que se compiló el benchmark
+
+# Nodos de cómputo
+
+Unresolved directive in ft.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
+
+# Pruebas
+
+Existen diferentes [clases de problemas](https://www.nas.nasa.gov/software/npb_problem_sizes.html) para este benchmark, que varían en el tamaño de la rejilla y en el número de iteraciones, el criterio para determinar que clase elegir fue el de poder realizar pruebas rápidas y fiables. En todos los nodos se utilizó un problema de clase C. En las siguientas tablas se da un resumen de las pruebas realizadas:
+
++-----------+------------+--------------+--------------+--------------+---------------+
+| **Número\ | **Número   | **Tamaño de\                               | **Número de\  |
+| de        | de\        | la rejilla**                               | iteraciones** |
+| nodos**   | procesos** |                                            |               |
+|           |            +--------------+--------------+--------------+               |
+|           |            | **X**        | **Y**        | **Z**        |               |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 1          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 2          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 4          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 8          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 16         | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 20         | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+
+: Pruebas en los nodos NC
+
++-----------+------------+--------------+--------------+--------------+---------------+
+| **Número\ | **Número   | **Tamaño de\                               | **Número de\  |
+| de        | de\        | la rejilla**                               | iteraciones** |
+| nodos**   | procesos** |                                            |               |
+|           |            +--------------+--------------+--------------+               |
+|           |            | **X**        | **Y**        | **Z**        |               |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 1          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 2          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 4          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 8          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 16         | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 20         | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+
+: Pruebas en los nodos TTv1
+
++-----------+------------+--------------+--------------+--------------+---------------+
+| **Número\ | **Número   | **Tamaño de\                               | **Número de\  |
+| de        | de\        | la rejilla**                               | iteraciones** |
+| nodos**   | procesos** |                                            |               |
+|           |            +--------------+--------------+--------------+               |
+|           |            | **X**        | **Y**        | **Z**        |               |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 1          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 2          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 4          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 8          | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 16         | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 20         | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+| 1         | 32         | 512          | 512          | 512          | 20            |
++-----------+------------+--------------+--------------+--------------+---------------+
+
+: Pruebas en los nodos TTv2
+
+# Scripts
+
+## Estructura de directorios
+
+Dentro de la carpeta raíz *ft* existen tres subdirectorios principales, uno por cada tipo de nodo en el cluster Yoltla:
+
+    ft
+    ├── nc
+    |   .
+    |   .
+    |   .
+    ├── ttv1
+    |   .
+    |   .
+    |   .
+    └── ttv2
+        .
+        .
+        .
+
+Cada uno de estos directorios alberga las pruebas de ReFrame del tipo de nodo correspondiente:
+
+    ft
+    ├── nc
+    │   ├── procesos_01
+    │   │   ├── logs
+    │   │   ├── npb_ft_nc_01p.py
+    │   │   └── src
+    │   │       └── ft.C.x
+    │   ├── procesos_02
+    │   │   ├── logs
+    │   │   ├── npb_ft_nc_02p.py
+    │   │   └── src
+    │   │       └── ft.C.x
+    │   ├── procesos_04
+    │   │   ├── logs
+    │   │   ├── npb_ft_nc_04p.py
+    │   │   └── src
+    │   │       └── ft.C.x
+    │   ├── procesos_08
+    │   │   ├── logs
+    │   │   ├── npb_ft_nc_08p.py
+    │   │   └── src
+    │   │       └── ft.C.x
+    │   ├── procesos_16
+    │   │   ├── logs
+    │   │   ├── npb_ft_nc_16p.py
+    │   │   └── src
+    │   │       └── ft.C.x
+    │   └── procesos_20
+    │       ├── logs
+    │       ├── npb_ft_nc_20p.py
+    │       └── src
+    │           └── ft.C.x
+    ├── ttv1
+    │   ├── procesos_01
+    │   │   ├── logs
+    │   │   ├── npb_ft_ttv1_01p.py
+    │   │   └── src
+    │   │       └── ft.C.x
+    .   .
+    .   .
+    .   .
+    │   └── procesos_20
+    │       ├── logs
+    │       ├── npb_ft_ttv1_20p.py
+    │       └── src
+    │           └── ft.C.x
+    └── ttv2
+        ├── procesos_01
+        │   ├── logs
+        │   ├── npb_ft_ttv2_01p.py
+        │   └── src
+        │       └── ft.C.x
+        .
+        .
+        .
+        └── procesos_32
+            ├── logs
+            ├── npb_ft_ttv2_32p.py
+            └── src
+                └── ft.C.x
+
+Estas pruebas pueden ser lanzadas de manera individual o por etiquetas.
+
+:::: note
+::: title
+:::
+
+La versión de los NPB utilizada en estos scripts es la 3.4.2.
+::::
+
+## Lanzar pruebas
+
+### **Individualmente**
+
+Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
+
+``` shell
+reframe -c <nombre_script> -r
+```
+
+Por ejemplo, para lanzar la prueba de 20 procesos, en los nodos NC, ejecute el comando:
+
+``` shell
+[t.800@yoltla procesos_20]$ reframe -c npb_ft_nc_20p.py -r
+```
+
+### **Etiquetas**
+
+Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Por ejemplo, para lanzar todas las pruebas de los nodos NC, siga los siguientes pasos:
+
+1.  Ubíquese en el directorio raíz *ft*:
+
+    ``` shell
+    [t.800@yoltla ft]$
+    ```
+
+2.  Cree el directorio *logs*:
+
+    ``` shell
+    [t.800@yoltla ft]$ mkdir logs
+    ```
+
+3.  Ejecute el comando:
+
+    ``` shell
+    [t.800@yoltla ft]$ reframe -c . -R -t nc -r
+    ```
+
+Para lanzar todas las pruebas:
+
+1.  Ubíquese en el directorio raíz *ft*:
+
+    ``` shell
+    [t.800@yoltla ft]$
+    ```
+
+2.  Cree el directorio *logs*:
+
+    ``` shell
+    [t.800@yoltla ft]$ mkdir logs
+    ```
+
+3.  Ejecute el comando:
+
+    ``` shell
+    [t.800@yoltla ft]$ reframe -c . -R -t npb -t ft -r
+    ```
+
+:::: warning
+::: title
+:::
+
+Si no crea el directorio *logs* obtendrá el siguiente mensaje:
+
+    /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/uam/.../t.800/.../ft/logs/rfm.out'
+    /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: Log file(s) saved in '/tmp/rfm-v8hp4ky9.log'
+::::
+
+# Resultados
+
+## Nodos NC
+
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| **No. de\     | **Número   | **Tamaño de\                   | **Tiempo (s)**                                    |
+| ejecuciones** | de\        | la rejilla**                   |                                                   |
+|               | procesos** |                                |                                                   |
+|               |            +----------+----------+----------+--------------+------------+------------+----------+
+|               |            | **X**    | **Y**    | **Z**    | **Promedio** | **Mínimo** | **Máximo** | **σ**    |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 1          | 512      | 512      | 512      | 215.59       | 210.69     | 222.27     | 4.36     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 2          | 512      | 512      | 512      | 108.55       | 107.46     | 109.52     | 0.59     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 4          | 512      | 512      | 512      | 56.82        | 56.17      | 57.87      | 0.44     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 8          | 512      | 512      | 512      | 31.45        | 30.95      | 32.18      | 0.38     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 16         | 512      | 512      | 512      | 18.11        | 17.35      | 18.63      | 0.56     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 20         | 512      | 512      | 512      | 15.34        | 14.54      | 16.04      | 0.59     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+
+: Resultados del benchmark FT en los nodos NC
+
+## Nodos TTv1
+
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| **No. de\     | **Número   | **Tamaño de\                   | **Tiempo (s)**                                    |
+| ejecuciones** | de\        | la rejilla**                   |                                                   |
+|               | procesos** |                                |                                                   |
+|               |            +----------+----------+----------+--------------+------------+------------+----------+
+|               |            | **X**    | **Y**    | **Z**    | **Promedio** | **Mínimo** | **Máximo** | **σ**    |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 1          | 512      | 512      | 512      | 235.11       | 198.26     | 245.32     | 16.26    |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 2          | 512      | 512      | 512      | 121.02       | 105.35     | 124.56     | 5.81     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 4          | 512      | 512      | 512      | 62.67        | 57.81      | 66.89      | 2.09     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 8          | 512      | 512      | 512      | 31.49        | 30.59      | 31.89      | 0.43     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 16         | 512      | 512      | 512      | 17.06        | 16.80      | 17.75      | 0.28     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 20         | 512      | 512      | 512      | 14.27        | 14.03      | 15.13      | 0.30     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+
+: Resultados del benchmark FT en los nodos TTv1
+
+## Nodos TTv2
+
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| **No. de\     | **Número   | **Tamaño de\                   | **Tiempo (s)**                                    |
+| ejecuciones** | de\        | la rejilla**                   |                                                   |
+|               | procesos** |                                |                                                   |
+|               |            +----------+----------+----------+--------------+------------+------------+----------+
+|               |            | **X**    | **Y**    | **Z**    | **Promedio** | **Mínimo** | **Máximo** | **σ**    |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 1          | 512      | 512      | 512      | 428.25       | 220.20     | 584.73     | 167.99   |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 2          | 512      | 512      | 512      | 216.00       | 114.45     | 281.52     | 79.15    |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 4          | 512      | 512      | 512      | 108.55       | 58.34      | 142.87     | 40.59    |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 8          | 512      | 512      | 512      | 55.24        | 31.65      | 70.81      | 18.73    |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 16         | 512      | 512      | 512      | 28.36        | 17.00      | 35.92      | 9.00     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 20         | 512      | 512      | 512      | 24.04        | 15.38      | 30.27      | 6.64     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+| 10            | 32         | 512      | 512      | 512      | 17.27        | 10.89      | 24.86      | 5.33     |
++---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+
+: Resultados del benchmark FT en los nodos TTv2
+
+## Yoltla
+
+![Resultados del benchmark FT en el cluster Yoltla](Reframe/microBenchmarks/npb/ft/yoltla.png)
+
+:::: note
+::: title
+:::
+
+Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
+::::
+
+# Sitios de interés
+
+- [NAS Parallel Benchmarks](https://www.nas.nasa.gov/software/npb.html)

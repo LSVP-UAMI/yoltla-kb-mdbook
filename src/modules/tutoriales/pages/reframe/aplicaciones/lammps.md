@@ -1,0 +1,859 @@
+# Descripción
+
+[LAMMPS](https://www.lammps.org/#gsc.tab=0) es un código clásico de dinámica molecular y un acrónimo de Simulador masivo paralelo
+atómico/molecular a gran escala. Fue desarrollado en Sandia National Laboratories, una instalación del
+Departamento de Energía de EE.UU. Es un código de fuente abierta, distribuido libremente bajo los
+términos de la Licencia Pública GNU (GPL).
+
+LAMMPS tiene potencial para materiales blandos (biomoléculas, polímeros) y materiales en
+estado sólido (metales, semiconductores) y sistemas mesoscópicos o de grano grueso. Puede usarse
+para modelar átomos o, más genéricamente, como un simulador de partículas paralelas a escala
+atómica, meso o continua.
+
+LAMMPS se ejecuta en procesadores individuales o en paralelo usando técnicas de paso de
+mensajes y una descomposición espacial del dominio de simulación. El código está diseñado para que
+sea fácil de modificar o ampliar con nuevas funciones.
+
+- Este trabajo se realizo con LAMMPS 2021.
+
+- Benchmarks: LennardJones, Rhodopsin protein
+
+# Lammps Performance
+
+La salida de `LAMMPS` contiene la mayor parte de la información importante como la versión `LAMMPS`,
+la cantidad de procesadores utilizados para las ejecuciones, el diseño del procesador, los pasos
+termodinámicos y algunos tiempos. El encabezado de su archivo de salida debe ser algo similar a esto:
+
+    LAMMPS (27 Oct 2021)
+    OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/src/comm.cpp:98)
+      using 1 OpenMP thread(s) per MPI task
+
+Cuando concluye la ejecución, `LAMMPS` imprime el estado termodinámico final y el tiempo total de
+ejecución de la simulación. También agrega estadísticas sobre el tiempo de CPU y los requisitos de
+almacenamiento para la simulación. A continuación se muestra un conjunto de estadísticas de ejemplo:
+
+    Loop time of 8239.53 on 20 procs for 5000 steps with 32969632 atoms
+
+    Performance: 262.151 tau/day, 0.607 timesteps/s
+    99.6% CPU use with 20 MPI tasks x 1 OpenMP threads
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+     ---------------------------------------------------------------
+    Pair    | 6398.2     | 6545.5     | 6683.2     | 102.8 | 79.44
+    Neigh   | 668.8      | 677.36     | 685.02     |  18.5 |  8.22
+    Comm    | 207.73     | 354.11     | 505.47     | 466.9 |  4.30
+    Output  | 0.053933   | 0.058277   | 0.083162   |   2.5 |  0.00
+    Modify  | 586.63     | 599.92     | 605.73     |  22.8 |  7.28
+    Other   |            | 62.55      |            |       |  0.76
+
+    Nlocal:    1.64848e+06 ave   1.649e+06 max 1.64775e+06 min
+    Histogram: 1 0 1 2 3 2 6 1 2 2
+    Nghost:        255852.0 ave      256205 max      255576 min
+    Histogram: 1 1 0 5 7 4 1 0 0 1
+    Neighs:    6.18259e+07 ave 6.19671e+07 max 6.16968e+07 min
+    Histogram: 2 2 1 3 4 1 3 0 2 2
+
+    Total # of neighbors = 1.2365179e+09
+    Ave neighs/atom = 37.504753
+    Neighbor list builds = 250
+    Dangerous builds not checked
+    Total wall time: 2:17:24
+
+Las palabras clave útiles para buscar incluyen:
+
+- Loop time:Esto muestra el tiempo total en segundos para que se ejecute la simulación. Usamos
+  este valor para calcular la eficiencia paralela
+  (fuente: [manual LAMMPS](https://lammps.sandia.gov/doc/Manual.html) ).
+
+- Performance: Esto se proporciona por conveniencia para ayudar a predecir cuánto tiempo
+  llevará ejecutar una simulación física deseada. Para medir el performance de LAMMPS usaremos el valor en
+  unidades de timesteps/s (pasos de la simulación que puede hacer en un segundo).
+
+- CPU use: Esto proporciona la utilización de CPU por tarea MPI; debe estar cerca del 100%.
+  Los números más bajos corresponden a retrasos debido a E/S de archivos o utilización
+  insuficiente de procesos.
+
+- Desglose de tiempo: Tabla de desglose de tiempo para el tiempo de ejecución de la CPU.
+
+<!-- -->
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+     ---------------------------------------------------------------
+    Pair    | 6398.2     | 6545.5     | 6683.2     | 102.8 | 79.44
+    Neigh   | 668.8      | 677.36     | 685.02     |  18.5 |  8.22
+    Comm    | 207.73     | 354.11     | 505.47     | 466.9 |  4.30
+    Output  | 0.053933   | 0.058277   | 0.083162   |   2.5 |  0.00
+    Modify  | 586.63     | 599.92     | 605.73     |  22.8 |  7.28
+    Other   |            | 62.55      |            |       |  0.76
+
+La tabla anterior muestra los tiempos que tardan las principales categorías de una ejecución
+de LAMMPS. Se proporciona una breve descripción de estas categorías en el
+[manual LAMMPS](https://lammps.sandia.gov/doc/Run_output.html). Esto
+ayuda a identificar dónde pasa la mayor parte del tiempo de computo :
+
+- Pair = Tiempo necesario para calcular las interacciones por pares entre los átomos (cálculos de
+  fuerza no ligada).
+
+- Bond = Tiempo necesario para calcular interacciones enlazadas: enlaces, ángulos, etc.
+
+- Kspace = Tiempo necesario para calcular interacciones de largo alcance: Ewald, PPPM, MSM
+
+- Neigh = Tiempo necesario para calcular nuevas listas de vecinos para cada átomo
+
+- Comm = Tiempo dedicado a la comunicación entre procesadores de átomos y sus propiedades
+
+- Output = Tiempo necesario para generar los archivos de posición de reinicio, posición del
+  átomo, velocidad y fuerza
+
+- Modify= Tiempo necesario para calcular arreglos y cálculos invocados por arreglos
+
+- Other = todo el tiempo restante
+
+## Total Energy
+
+`LAMMPS` muestra un informe de datos termodinámicos en su salida y los archivos de registro.
+
+:::: formalpara
+::: title
+Ejemplo de salida de `LAMMPS`
+:::
+
+    Step Time Temp Press PotEng KinEng TotEng Density
+           0            0         1.44   -5.0196693   -6.7733681    2.1599999   -4.6133681       0.8442
+        2500         12.5    0.6978031    0.7483168    -5.666924    1.0467046   -4.6202194       0.8442
+        5000           25   0.69755252   0.74836107    -5.666874    1.0463287   -4.6205453       0.8442
+::::
+
+El formato de salida puede ser controlado con la variable `thermo` y `thermo_style` presentes en el
+archivo de entrada de `LAMMPS`.
+
+- `thermo N`
+
+  - N = salida termodinámica cada N `timesteps`
+
+  - N puede ser una variable
+
+- `thermo_style args`
+
+  - args = lista de argumentos para un estilo particular
+
+Para este trabajo, modificamos los archivos de entrada con el siguiente formato:
+
+:::: formalpara
+::: title
+Variables presentes en el archivo de entrada de `LAMMPS`
+:::
+
+    .
+    variable        t index 5000
+    .
+    .
+    variable        interval equal $t/2
+    .
+    .
+    thermo ${interval}
+    thermo_style custom step time  temp press pe ke etotal density
+::::
+
+El intervalo de salida es igual a la mitad de los `timesteps` totales para evitar un cuello de botella
+en las operaciones de entrada/salida de `LAMMPS`.
+
+Las variables usadas en `thermo_style` son las siguientes:
+
+- cutom: para indicar que se pasara una lista de palabras clave
+
+- step: muestra el `timestep` actual. Columna STEP
+
+- time: tiempo de simulación. Columna TIME
+
+- temp: temperatura. Columna TEMP
+
+- press: presión. Columna PRESS
+
+- pe: energía potencial total. Colimna PotEng
+
+- ke: energía cinética. Columna KinEng
+
+- etotal: total de energía (pe + ke). Columna TotEng
+
+- density: densidad de masa del sistema. Columna Density
+
+En este trabajo nos interesa evaluar que la variable `TotEng` llegue a ciertos valores
+esperados para el ultimo `timesteps` de cada simulación.
+
+# Eficiencia paralela
+
+La única forma confiable de ver si un trabajo escala de manera eficiente es compararlo. Comparar un
+trabajo significa ejecutar un trabajo de prueba breve y representativo varias veces en diferentes
+números de CPU para encontrar un punto óptimo.
+
+A partir de estos datos, se puede calcular la **eficiencia paralela**. Esto se define cómo:
+
+E = (1/P) \* (T~1~/T~P~)
+
+- P = Numero de procesadores
+
+- T~1~ = tiempo óptimo para el algoritmo en un procesador
+
+- T~P~ = tiempo para algoritmo paralelo en P procesadores
+
+Dado que la evaluación comparativa en un solo núcleo a menudo puede llevar mucho tiempo y
+la escala dentro de un nodo es generalmente muy buena, para los propósitos del Yoltla es suficiente
+hacer este cálculo por nodo, en lugar de por CPU. Para este trabajo, usaremos 1 proceso por core
+disponible.
+
+Como regla general, los trabajos que se ejecutan con una gran cantidad de núcleos deben tener
+una eficiencia paralela superior o igual a 0,7.
+
+# Uso de MPI
+
+`LAMMPS` divide el espacio 3d en una cuadricula de sub-volúmenes 3d de acuerdo a la cantidad de
+procesos, por ejemplo, para una cuadrícula AxBxC, el número total de procesos (p) = A \* B \* C.
+
+`LAMMPS` intenta que los sub-volúmenes sean lo más cúbicos posible, ya que el volumen de
+datos intercambiados es proporcional a la superficie del sub-volumen. Las rutinas `MPI_Recv` y
+`MPI_Send` son los principales medios para lograr la comunicación.
+
+![](Reframe/Apps/Lammps/lammps_space.png){alt="lammps space"}
+
+# Tamaño del sistema
+
+Podemos variar el tamaño del sistema (es decir, el número de átomos) asignando valores apropiados a las
+variables `x`, `y` y `z` al principio del archivo de entrada. La duración de la simulación puede ser
+decidida por la variable `t`.
+
+Ejemplo:
+
+Para un sistema pequeño ( `x = y = z = 10, t = 1000` ), se ejecutara una simulación para 4000 átomos en
+1000 pasos de dinámica molecular. Esto debido a la creación de una \"caja\" de simulación (`create_box`)
+de 1000 \"espacios\" (`x*y*z`) con un átomo cada uno y 3 vecinos por átomo (`neighbor`).
+
+Si tomamos esta entrada y la modificamos de modo que `x = y = z = 140` la simulación contendrá alrededor
+de 10 millones de átomos.
+
+## Efectos debido al tamaño del sistema sobre el recurso utilizado
+
+Los sistemas de diferentes tamaños pueden comportarse de manera diferente a medida que aumentamos
+nuestro uso de recursos, ya que tendrán diferentes distribuciones de trabajo entre nuestros recursos
+disponibles.
+
+Considere la siguiente tabla de desglose para un sistema de 10 millones de átomos con 40 procesos `MPI`.
+Puede ver que en este caso, el término `Pair` domina la tabla de tiempos. Estos es que LAMMPS toma la
+mayor parte del tiempo calculado interacciones en átomos.
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+     ---------------------------------------------------------------
+    Pair    | 989.3      | 1039.3     | 1056.7     |  55.6 | 79.56
+    Neigh   | 124.72     | 127.75     | 131.11     |  10.4 |  9.78
+    Comm    | 47.511     | 67.997     | 126.7      | 243.1 |  5.21
+    Output  | 0.0059468  | 0.015483   | 0.02799    |   6.9 |  0.00
+    Modify  | 52.619     | 59.173     | 61.577     |  25.0 |  4.53
+    Other   |            | 12.03      |            |       |  0.92
+
+# Load balancing
+
+Un problema importante con la paralelización basada en `MPI` es que puede tener un rendimiento pobre
+con una distribución no homogénea de partículas o sistemas que tienen mucho espacio vacío.
+Esto resulta en un *desequilibrio de carga* . Si bien a algunos de los procesadores se les asigna un
+número finito de partículas para tratar con tales sistemas, algunos procesadores podrían tener muchos
+menos átomos (o ninguno) para hacer cualquier cálculo y esto da como resultado una pérdida general en la
+eficiencia paralela. Es más probable que esta situación se exponga a medida que escala a una gran
+cantidad de procesadores.
+
+Para un sistema con `x = y = z = 1y t = 10,000`, obtenemos la siguiente tabla:
+
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+     ---------------------------------------------------------------
+    Pair    | 20.665     | 20.665     | 20.665     |   0.0 | 18.24
+    Bond    | 6.9126     | 6.9126     | 6.9126     |   0.0 |  6.10
+    Neigh   | 57.247     | 57.247     | 57.247     |   0.0 | 50.54
+    Comm    | 4.3267     | 4.3267     | 4.3267     |   0.0 |  3.82
+    Output  | 0.000103   | 0.000103   | 0.000103   |   0.0 |  0.00
+    Modify  | 22.278     | 22.278     | 22.278     |   0.0 | 19.67
+    Other   |            | 1.838      |            |       |  1.62
+
+En este caso, el tiempo dedicado a resolver `Pair` es bastante bajo en comparación con la `Neigh`.
+Este tipo de interrupción del tiempo generalmente indica que hay algún problema con la entrada o una
+geometría del sistema muy, muy inusual. Esto resulta en un mal performance de `LAMMPS` para una cantidad
+de recursos grande.
+
+# Lennard-Jones liquid benchmark (Junio 2022)
+
+Simulación de un fluido atómico con potencial de Lennard-Jones 1 (disponible
+[aquí](https://www.lammps.org/bench.html#lj)).
+
+El bencharmak fue modificado para ejecutarse con 32M de átomos para 5000 pasos de dinamica molecular.
+
+Características del benchmark:
+
+- 32,969,632 atoms para 5000 timesteps
+
+- reduced density = 0.8442 (liquid)
+
+- force cutoff = 2.5 sigma
+
+- neighbor skin = 0.3 sigma
+
+- neighbors/atom = 55 (within force cutoff)
+
+- NVE time integration
+
+La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercano a: `-4.6205442`
+
+![Performance Lennard-Jones Benchmark](Reframe/Apps/Lammps/Figure_Le.png){alt="Figure Le"}
+
+![Parallel Efficiency Lennard-Jones Benchmark](Reframe/Apps/Lammps/Figure_Le_parallel.png){alt="Figure Le parallel"}
+
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| **\#    | **CPU's Nodos nc\              | **CPU's Nodos ttv1\[1-58\]\    | **CPU's Nodos ttv2\[59-104\]\  |
+| Nodos** | 20 Cores x 2.50GHz Intel Xeón  | 20 Cores x 2.60GHz Intel Xeón  | 32 Cores x 2.10GHz Intel Xeon  |
+|         | E5-2670v2\                     | E5-2660v3\                     | E5-2683v4\                     |
+|         | 64GB RAM\                      | 128GB RAM\                     | 256GB RAM\                     |
+|         | Infiniband FDR10/FDR**         | Infiniband FDR10/FDR**         | Infiniband FDR10/FDR**         |
+|         +-----------------+--------------+-----------------+--------------+-----------------+--------------+
+|         | **timesteps/s** | **Eficiencia | **timesteps/s** | **Eficiencia | **timesteps/s** | **Eficiencia |
+|         |                 | Paralela %** |                 | Paralela %** |                 | Paralela %** |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 1       | 0.617           | 100.0 %      | 0.620           | 100.0 %      | 0.636           | 100.0 %      |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 2       | 1.181           | 97.3 %       | 1.217           | 98.2 %       | 1.233           | 92.6 %       |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 4       | 2.375           | 94.1 %       | 2.402           | 95.8 %       | 2.326           | 94.0 %       |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 5       |                 |              | 3.022           | 94.6 %       |                 |              |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 8       | 4.697           | 97.4 %       | 4.754           | 94.5 %       | 5.033           | 100.8 %      |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 16      | 9.832           | 98.1 %       | 10.048          | 101.1 %      | 10.023          | 100.9 %      |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+
+Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
+tres tipos de nodos para este sistema en particular.
+
+:::: formalpara
+::: title
+MPI task timing en 16 nodos nc.
+:::
+
+    MPI task timing breakdown:
+    Section | min time   | avg time   | max time   |%varavg| %total
+    ---------------------------------------------------------------
+    Pair    | 368.89     | 381.31     | 392.94     | 20.5  | 74.90
+    Neigh   | 40.19      | 40.702     | 41.468     | 3.3   | 7.99
+    Comm    | 37.054     | 54.754     | 73.174     | 113.8 | 10.75
+    Output  | 0.0049547  | 0.13132    | 0.17447    | 18.9  | 0.03
+    Modify  | 18.62      | 26.622     | 34.439     | 86.8  | 5.23
+    Other   |            | 5.606      |            |       | 1.10
+::::
+
+:::: formalpara
+::: title
+MPI task timing en 16 nodos ttv1.
+:::
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+    ---------------------------------------------------------------
+    Pair    | 374.84     | 385.13     | 393.23     |  17.8 | 77.54
+    Neigh   | 42.167     | 42.953     | 44.4       |   6.5 |  8.65
+    Comm    | 39.208     | 47.138     | 57.061     |  54.2 |  9.49
+    Output  | 0.002652   | 0.005992   | 0.010818   |   2.5 |  0.00
+    Modify  | 15.715     | 18.17      | 19.537     |  16.5 |  3.66
+    Other   |            | 3.278      |            |       |  0.66
+::::
+
+:::: formalpara
+::: title
+MPI task timing en 16 nodos ttv2.
+:::
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+    ---------------------------------------------------------------
+    Pair    | 333.44     | 346.37     | 369.89     |  48.0 | 71.06
+    Neigh   | 32.284     | 33.432     | 36.081     |  12.8 |  6.86
+    Comm    | 35.167     | 63.992     | 81.272     | 135.2 | 13.13
+    Output  | 0.0049313  | 0.015588   | 0.03608    |   7.3 |  0.00
+    Modify  | 30.24      | 39.947     | 43.842     |  30.3 |  8.20
+    Other   |            | 3.673      |            |       |  0.75
+::::
+
+Observamos que no se presenta ningún desbalance de carga es el sistema. Destacamos que en nodos
+`ttv2` el porcentaje de tiempo en la comunicación (`Comm`) es ligeramente mayor respecto a los otros tipo
+de nodos lo cual puede ser un factor en los tiempos finales reportados en este trabajo.
+
+## Performance Lennard-Jones Benchmark en nodos NC
+
+![Performance Lennard-Jones Benchmark en nodos NC](Reframe/Apps/Lammps/Figure_error_Le_nc.png){alt="Figure error Le nc"}
+
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| **\#    | **CPU's Nodos nc\                                                                             |
+| Nodos** | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                                      |
+|         | 64GB RAM\                                                                                     |
+|         | Infiniband FDR10/FDR**                                                                        |
+|         +---------------+---------------------------------------------------------------+---------------+
+|         | **No.         | **timesteps/s**                                               | **Wallclock   |
+|         | Ejecuciones** |                                                               | (s)           |
+|         |               |                                                               | Promedio**    |
+|         |               +---------------+---------------+---------------+---------------+               |
+|         |               | **Promedio**  | **Mínimo**    | **Máximo**    | **Desviación  |               |
+|         |               |               |               |               | Estándar**    |               |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 1       | 20            | 0.616         | 0.603         | 0.628         | 0.010         | 7981.68       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 2       | 20            | 1.181         | 1.176         | 1.196         | 0.0069        | 4102.31       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 4       | 20            | 2.375         | 2.367         | 2.383         | 0.0067        | 2120.28       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 8       | 20            | 4.696         | 4.674         | 4.752         | 0.0257        | 1024.0        |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 16      | 20            | 9.832         | 9.814         | 9.864         | 0.0217        | 508.66        |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+
+: Performance Lennard-Jones Benchmark en nodos nc
+
+## Performance Lennard-Jones Benchmark en nodos TTV1
+
+![Performance Lennard-Jones Benchmark en nodos TTV1](Reframe/Apps/Lammps/Figure_error_Le_ttv1.png){alt="Figure error Le ttv1"}
+
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| **\#    | **CPU's Nodos ttv1\                                                                           |
+| Nodos** | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                                      |
+|         | 128GB RAM\                                                                                    |
+|         | Infiniband FDR10/FDR**                                                                        |
+|         +---------------+---------------------------------------------------------------+---------------+
+|         | **No.         | **timesteps/s**                                               | **Wallclock   |
+|         | Ejecuciones** |                                                               | (s)           |
+|         |               |                                                               | Promedio**    |
+|         |               +---------------+---------------+---------------+---------------+               |
+|         |               | **Promedio**  | **Mínimo**    | **Máximo**    | **Desviación  |               |
+|         |               |               |               |               | Estándar**    |               |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 1       | 20            | 0.621         | 0.605         | 0.640         | 0.0143        | 7843.445      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 2       | 20            | 1.216         | 1.213         | 1.227         | 0.0059        | 3993.045      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 4       | 20            | 2.401         | 2.252         | 2.442         | 0.0614        | 2047.12       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 5       | 20            | 3.021         | 3.014         | 3.027         | 0.0040        | 1659.04       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 8       | 20            | 4.754         | 4.56          | 4.844         | 0.1014        | 1037.445      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 16      | 20            | 10.048        | 9.98          | 10.098        | 0.0499        | 485.0         |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+
+: Performance Lennard-Jones Benchmark en nodos ttv1
+
+## Performance Lennard-Jones Benchmark en nodos TTV2
+
+![Performance Lennard-Jones Benchmark en nodos TTV2](Reframe/Apps/Lammps/Figure_error_Le_ttv2.png){alt="Figure error Le ttv2"}
+
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| **\#    | **CPU's Nodos ttv2\                                                                           |
+| Nodos** | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                                      |
+|         | 256GB RAM\                                                                                    |
+|         | Infiniband FDR10/FDR**                                                                        |
+|         +---------------+---------------------------------------------------------------+---------------+
+|         | **No.         | **timesteps/s**                                               | **Wallclock   |
+|         | Ejecuciones** |                                                               | (s)           |
+|         |               |                                                               | Promedio**    |
+|         |               +---------------+---------------+---------------+---------------+               |
+|         |               | **Promedio**  | **Mínimo**    | **Máximo**    | **Desviación  |               |
+|         |               |               |               |               | Estándar**    |               |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 1       | 20            | 0.635         | 0.615         | 0.655         | 0.0163        | 7871.73       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 2       | 20            | 1.233         | 1.038         | 1.289         | 0.0929        | 4248.6        |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 4       | 20            | 2.326         | 1.757         | 2.553         | 0.3178        | 2092.96       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 8       | 20            | 5.033         | 3.622         | 5.228         | 0.4716        | 975.82        |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 16      | 20            | 10.022        | 7.449         | 10.817        | 1.2972        | 487.43        |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+
+: Performance Lennard_Jones Benchmark en nodos ttv2
+
+# Rhodopsin protein benchmark (Junio 2022)
+
+Proteína de rodopsina de todos los átomos en bicapa lipídica solvatada con campo de
+fuerza CHARMM, Coulombics de largo alcance a través de PPPM (malla de partículas
+partícula-partícula), restricciones SHAKE. Este modelo contiene contraiones y una
+cantidad reducida de agua para hacer un sistema de átomos.
+
+El bencharmak fue modificado para ejecutarse con 10M de átomos para 5000 pasos de dinamica molecular.
+
+Características del benchmark:
+
+- 10,976,000 átomos para 5000 timesteps
+
+- Corte de fuerza LJ de 10,0 Angstroms
+
+- neighbor skin de 1.0 sigma
+
+- Integración de tiempo NPT
+
+La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercano a: `-8654699.6`
+
+![Performance Rhodopsin Benchmark](Reframe/Apps/Lammps/Figure_Rhodopsin.png){alt="Figure Rhodopsin"}
+
+![Parallel Efficiency Rhodopsin Benchmark](Reframe/Apps/Lammps/Figure_Rhodopsin_Parallel.png){alt="Figure Rhodopsin Parallel"}
+
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| **\#    | **CPU's Nodos nc\              | **CPU's Nodos ttv1\[1-58\]\    | **CPU's Nodos ttv2\[59-104\]\  |
+| Nodos** | 20 Cores x 2.50GHz Intel Xeón  | 20 Cores x 2.60GHz Intel Xeón  | 32 Cores x 2.10GHz Intel Xeon  |
+|         | E5-2670v2\                     | E5-2660v3\                     | E5-2683v4\                     |
+|         | 64GB RAM\                      | 128GB RAM\                     | 256GB RAM\                     |
+|         | Infiniband FDR10/FDR**         | Infiniband FDR10/FDR**         | Infiniband FDR10/FDR**         |
+|         +-----------------+--------------+-----------------+--------------+-----------------+--------------+
+|         | **timesteps/s** | **Eficiencia | **timesteps/s** | **Eficiencia | **timesteps/s** | **Eficiencia |
+|         |                 | Paralela %** |                 | Paralela %** |                 | Paralela %** |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 1       | 0.139           | 100.0 %      | 0.139           | 100.0 %      | 0.158           | 100.0 %      |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 2       | 0.271           | 96.9 %       | 0.268           | 96.2 %       | 0.298           | 100.6 %      |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 4       | 0.529           | 96.0 %       | 0.397           | 95.1 %       | 0.581           | 96.9 %       |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 5       |                 |              | 0.656           | 95.0 %       |                 |              |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 8       | 1.038           | 95.4 %       | 1.018           | 94.2 %       | 1.173           | 100.1 %      |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+| 16      | 1.977           | 93.2 %       | 1.999           | 90.4 %       | 2.119           | 93.6 %       |
++---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+
+Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
+tres tipos de nodos para este sistema en particular.
+
+:::: formalpara
+::: title
+MPI task timing en 16 nodos nc.
+:::
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+    ---------------------------------------------------------------
+    Pair    | 1452.8     | 1518.1     | 1779.5     | 159.6 | 56.01
+    Bond    | 62.146     | 72.355     | 90.093     |  70.0 |  2.67
+    Kspace  | 304.94     | 581.74     | 643.05     | 265.0 | 21.46
+    Neigh   | 387.71     | 388.67     | 389.39     |   1.6 | 14.34
+    Comm    | 33.678     | 40.088     | 48.515     |  51.4 |  1.48
+    Output  | 0.0040011  | 0.0040545  | 0.0043267  |   0.0 |  0.00
+    Modify  | 95.168     | 102.33     | 109.08     |  25.5 |  3.78
+    Other   |            | 6.989      |            |       |  0.26
+::::
+
+:::: formalpara
+::: title
+MPI task timing en 16 nodos ttv1.
+:::
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+    ---------------------------------------------------------------
+    Pair    | 1487       | 1538.9     | 1604.4     |  56.1 | 62.61
+    Bond    | 66.177     | 76.577     | 88.318     |  69.1 |  3.12
+    Kspace  | 289.95     | 359.35     | 407.68     | 113.1 | 14.62
+    Neigh   | 345.32     | 346.38     | 347.08     |   2.5 | 14.09
+    Comm    | 32.107     | 38.412     | 47.003     |  61.2 |  1.56
+    Output  | 0.0047816  | 0.0048099  | 0.0050276  |   0.0 |  0.00
+    Modify  | 87.115     | 94.447     | 99.217     |  25.3 |  3.84
+    Other   |            | 3.626      |            |       |  0.15
+::::
+
+:::: formalpara
+::: title
+MPI task timing en 16 nodos ttv2.
+:::
+
+    MPI task timing breakdown:
+    Section |  min time  |  avg time  |  max time  |%varavg| %total
+    ---------------------------------------------------------------
+    Pair    | 890.9      | 1303.5     | 1415.5     | 313.2 | 58.83
+    Bond    | 34.6       | 58.08      | 71.233     |  96.0 |  2.62
+    Kspace  | 305.86     | 422.39     | 854.6      | 576.7 | 19.06
+    Neigh   | 281.66     | 282.94     | 285.79     |   5.2 | 12.77
+    Comm    | 41.556     | 46.304     | 51.123     |  31.3 |  2.09
+    Output  | 0.0059773  | 0.006059   | 0.0066678  |   0.1 |  0.00
+    Modify  | 85.948     | 97.193     | 101.88     |  29.0 |  4.39
+    Other   |            | 5.304      |            |       |  0.24
+::::
+
+Observamos que no se presenta ningún desbalance de carga es el sistema. Destacamos que en nodos
+`ttv2` el porcentaje de tiempo en la comunicación (`Comm`) es ligeramente mayor respecto a los otros tipo
+de nodos lo cual puede ser un factor en los tiempos finales reportados en este trabajo.
+
+## Performance Rhodopsin Benchmark en nodos NC
+
+![Performance Rhodopsin Benchmark en nodos NC](Reframe/Apps/Lammps/Figure_error_Rho_nc.png){alt="Rhodopsin Benchmark en nodos nc"}
+
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| **\#    | **CPU's Nodos nc\                                                                             |
+| Nodos** | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                                      |
+|         | 64GB RAM\                                                                                     |
+|         | Infiniband FDR10/FDR**                                                                        |
+|         +---------------+---------------------------------------------------------------+---------------+
+|         | **No.         | **timesteps/s**                                               | **Wallclock   |
+|         | Ejecuciones** |                                                               | (s)           |
+|         |               |                                                               | Promedio**    |
+|         |               +---------------+---------------+---------------+---------------+               |
+|         |               | **Promedio**  | **Mínimo**    | **Máximo**    | **Desviación  |               |
+|         |               |               |               |               | Estándar**    |               |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 1       | 20            | 0.138         | 0.137         | 0.140         | 0.0012        | 36047.95      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 2       | 20            | 0.270         | 0.269         | 0.275         | 0.0022        | 18593.4       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 4       | 20            | 0.529         | 0.514         | 0.534         | 0.0077        | 9384.665      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 8       | 20            | 1.037         | 0.940         | 1.064         | 0.0490        | 4725.51       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 16      | 20            | 1.976         | 1.841         | 2.067         | 0.1092        | 2418.5        |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+
+: Performance Rhodopsin Benchmark en nodos nc
+
+## Performance Rhodopsin Benchmark en nodos TTV1
+
+![Performance Rhodopsin Benchmark en nodos TTV1](Reframe/Apps/Lammps/Figure_error_Rho_ttv1.png){alt="Rhodopsin Benchmark en nodos ttv1"}
+
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| **\#    | **CPU's Nodos ttv1\                                                                           |
+| Nodos** | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                                      |
+|         | 128GB RAM\                                                                                    |
+|         | Infiniband FDR10/FDR**                                                                        |
+|         +---------------+---------------------------------------------------------------+---------------+
+|         | **No.         | **timesteps/s**                                               | **Wallclock   |
+|         | Ejecuciones** |                                                               | (s)           |
+|         |               |                                                               | Promedio**    |
+|         |               +---------------+---------------+---------------+---------------+               |
+|         |               | **Promedio**  | **Mínimo**    | **Máximo**    | **Desviación  |               |
+|         |               |               |               |               | Estándar**    |               |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 1       | 20            | 0.138         | 0.138         | 0.140         | 0.0006        | 35802.64      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 2       | 20            | 0.267         | 0.262         | 0.272         | 0.0034        | 18602.44      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 4       | 20            | 0.397         | 0.197         | 0.529         | 0.1591        | 9409.19       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 5       | 20            | 0.655         | 0.645         | 0.662         | 0.0065        | 7538.76       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 8       | 20            | 1.017         | 0.952         | 1.044         | 0.0379        | 4753.35       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 16      | 20            | 1.998         | 1.954         | 2.034         | 0.0333        | 2474.16       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+
+: Performance Rhodopsin Benchmark en nodos ttv1
+
+## Performance Rhodopsin Benchmark en nodos TTV2
+
+![Performance Rhodopsin Benchmark en nodos TTV2](Reframe/Apps/Lammps/Figure_error_Rho_ttv2.png){alt="Rhodopsin Benchmark en nodos ttv2"}
+
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| **\#    | **CPU's Nodos ttv2\                                                                           |
+| Nodos** | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                                      |
+|         | 256GB RAM\                                                                                    |
+|         | Infiniband FDR10/FDR**                                                                        |
+|         +---------------+---------------------------------------------------------------+---------------+
+|         | **No.         | **timesteps/s**                                               | **Wallclock   |
+|         | Ejecuciones** |                                                               | (s)           |
+|         |               |                                                               | Promedio**    |
+|         |               +---------------+---------------+---------------+---------------+               |
+|         |               | **Promedio**  | **Mínimo**    | **Máximo**    | **Desviación  |               |
+|         |               |               |               |               | Estándar**    |               |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 1       | 20            | 0.157         | 0.139         | 0.186         | 0.0178        | 34542.10      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 2       | 20            | 0.297         | 0.285         | 0.302         | 0.0064        | 17174.75      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 4       | 20            | 0.580         | 0.536         | 0.594         | 0.0201        | 8911.885      |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 8       | 20            | 1.172         | 1.164         | 1.185         | 0.0083        | 4312.17       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+| 16      | 20            | 2.118         | 1.825         | 2.282         | 0.1686        | 2307.61       |
++---------+---------------+---------------+---------------+---------------+---------------+---------------+
+
+: Performance Rhodopsin Benchmark en nodos ttv2
+
+# Lammps en GPU
+
+Usando paquetes de GPU en LAMMPS, se puede lograr una mejora en el rendimiento acoplando las GPU a una
+o varias CPU.
+
+Los cálculos que requieren acceso a datos atómicos como coordenadas, velocidades y fuerzas pueden sufrir
+cuellos de botella, ya que en cada paso estos datos se comunican entre las CPU y las GPU. Los cálculos
+se pueden realizar con precisión simple, doble o mixta.
+
+Los cálculos se comparten entre CPU y GPU. Por ejemplo, cálculos de fuerza asíncrona como `pair` vs
+`bond/angle/dihedral/improper` se puede hacer simultáneamente en GPU y CPU respectivamente.
+De manera similar, para los cálculos de PPPM, la asignación de carga y los cálculos de fuerza se
+realizan en GPU, mientras que los cálculos de FFT que requieren comunicaciones MPI se realizan en CPU.
+Las listas de vecinos se pueden crear en CPU o GPU. Puede controlar esto usando banderas específicas en
+la línea de comando.
+
+Por lo tanto, el paquete de GPU
+puede proporcionar una combinación equilibrada de uso de GPU y CPU para una simulación en particular
+para lograr una mejora en el rendimiento.
+
+## Ejecutando GPU Lammps
+
+Al usar el paquete de GPU, no puede asignar más de una GPU a una sola tarea de MPI. Sin embargo, varias
+tareas de MPI pueden compartir la misma GPU y, en muchos casos, será más eficiente ejecutarse de esta
+manera.
+
+La asignación de varias tareas de MPI a una GPU se realizará automáticamente si crea más
+tareas/nodo de MPI que GPU/nodo. Por ejemplo, con 8 tareas/nodo MPI y 2 GPU, cada GPU será
+compartida por 4 tareas MPI.
+
+Use la opción de línea de comando \"-sf gpu\" , que agregará automáticamente \"gpu\" a los estilos que
+lo admitan. Use la opción de línea de comando \"-pk gpu Ng\" para establecer Ng = \# de GPU/nodo a
+usar. Si Ng es 0, el número se selecciona automáticamente.
+
+![Palabras clave del paquete GPU](Reframe/Apps/Lammps/lammps_gpu_keys.png){alt="lammps gpu keys"}
+
+## Comprender la salida del paquete GPU
+
+Una vez que complete un trabajo con éxito, es hora de buscar aspectos de interés en el archivo de salida
+LAMMPS. El primero de ellos es verificar que LAMMPS está haciendo las cosas que usted solicitó y el
+resto es para informarle sobre el resultado del rendimiento.
+
+:::: formalpara
+::: title
+Ejemplo de Salida de Lammps
+:::
+
+    --------------------------------------------------------------------------
+    - Using acceleration for lj/cut:
+    -  with 9 proc(s) per device.
+    --------------------------------------------------------------------------
+    Device 0: Tesla V100-SXM2-16GB, 80 CUs, 13/16 GB, 1.5 GHZ (Mixed Precision)
+    Device 1: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
+    Device 2: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
+    Device 3: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
+    --------------------------------------------------------------------------
+
+    Initializing Device and compiling on process 0...Done.
+    Initializing Devices 0-3 on core 0...Done.
+    Initializing Devices 0-3 on core 1...Done.
+    Initializing Devices 0-3 on core 2...Done.
+    Initializing Devices 0-3 on core 3...Done.
+    Initializing Devices 0-3 on core 4...Done.
+    Initializing Devices 0-3 on core 5...Done.
+    Initializing Devices 0-3 on core 6...Done.
+    Initializing Devices 0-3 on core 7...Done.
+    Initializing Devices 0-3 on core 8...Done.
+::::
+
+Lo primero que debe notar aquí es que está usando una aceleración para el potencial `lj/cut` y para este
+propósito está usando cuatro dispositivos (`Device 0`, `Device 1`, `Device 2` y `Device 3`) y 9 procesos
+MPI por dispositivo. Eso es lo que pedimos usando 4 GPU ( -pk gpu 4) y en este caso había 36 núcleos en
+el nodo. El número de tareas se comparte por igual entre cada GPU.
+
+También se imprimen los detalles sobre la tarjeta gráfica, junto con la precisión numérica utilizada por
+el paquete GPU . En este caso, está usando precisión mixta. Posteriormente, muestra cuántos procesos MPI
+se generan por GPU.
+
+### Versión acelerada de par-potencial
+
+La salida le muestra que en realidad está usando la versión acelerada del par potencial `lj/cut`, aunque
+en el archivo de entrada se mencionó que se usara `pair_style lj/cut 2.5`.
+Esto es lo que sucede cuando usa la opción `-sf gpu` de la línea de comando. Esto garantiza
+automáticamente que se llame a la versión acelerada correcta para esta ejecución.
+
+:::: formalpara
+::: title
+Ejemplo de salida de LAMMPS
+:::
+
+    - Using acceleration for lj/cut:
+    .
+    .
+    .
+    (1) pair lj/cut/gpu, perpetual
+        attributes: full, newton off
+        pair build: full/bin/anomaly
+        stencil: full/bin/3d
+        bin: standard
+::::
+
+### Sección de rendimiento
+
+La siguiente salida de pantalla le informa sobre el rendimiento. Cuando usa el paquete GPU , se muestra
+un bloque adicional de información conocido como `Device Time Info (average)`. Esto le brinda un
+desglose de cómo se han utilizado los dispositivos (GPU) para realizar varias partes del trabajo.
+
+    ---------------------------------------------------------------------
+          Device Time Info (average):
+    ---------------------------------------------------------------------
+    Data Transfer:   46.7047 s.
+    Data Cast/Pack:  23.1174 s.
+    Neighbor copy:   0.0035 s.
+    Neighbor build:  5.3304 s.
+    Force calc:      16.0489 s.
+    Device Overhead: 19.6383 s.
+    Average split:   1.0000.
+    Threads / atom:  4.
+    Max Mem / Proc:  114.45 MB.
+    CPU Driver_Time: 19.0418 s.
+    CPU Idle_Time:   46.1577 s.
+    ---------------------------------------------------------------------
+
+## Aceleración esperada
+
+El rendimiento de una GPU en comparación con una CPU multinúcleo depende de su hardware, qué
+[`pair style`](https://docs.lammps.org/pair_style.html) se usa, la cantidad de átomos/GPU y la precisión
+utilizada en la GPU (doble, simple, mixta).
+
+También debe experimentar con cuántas tareas MPI por GPU usar para brindar el mejor rendimiento para su
+problema y máquina. Esto también es depende del tamaño del problema y el `pair style` que se
+está usando. Del mismo modo, debe experimentar con la configuración de precisión de la biblioteca GPU
+para ver si la precisión simple o mixta le dará resultados precisos, ya que normalmente serán más
+rápidos.
+
+### **Elección de parámetros**
+
+Como regla general, debe tener al menos la misma cantidad de procesos MPI que la cantidad de GPU
+disponibles. Pero a menudo, el uso de muchas tareas MPI por GPU le brinda un mejor rendimiento.
+Aunque pueda parecer, por ejemplo, que 4 GPU con 20 CPU proporcionarán la máxima aceleración,
+¡es posible que no sea así! Esto depende completamente del problema y también de otras configuraciones
+que, en general, pueden controlarse mediante las palabras clave mencionados anteriormente.
+
+Además, uno puede encontrar que para un problema particular, el uso de 2 GPU en lugar de 4 GPU puede
+brindar un mejor rendimiento, y es por eso que es recomendable averiguar el mejor conjunto posible de
+parámetros de ejecución.
+
+### **Precisión**
+
+Para muchos de los paquetes de aceleradores se tiene la opción de usar precisión `single`, `double` o `mixed`.
+La precisión significa la cantidad de bytes que se utilizan para almacenar un número en una computadora:
+cuantos más bytes use, más precisa será la representación de un número,
+`double` utiliza el doble de bytes que `single`.
+
+Solo debe usar la precisión que necesita, ya que una mayor precisión conlleva costos
+(más bytes para números significa más trabajo para la CPU, más almacenamiento y más ancho de banda para
+la comunicación).
+
+La precisón `mixed` es diferente en el sentido de que se implementa en un algoritmo. Por lo general,
+significa que usa `single` cuando puede (para ahorrar tiempo de CPU y ancho de banda de interconexión)
+y el `double` (o más) de precisión cuando es necesario (porque necesita números con cierta precisión).
+
+# Lennard-Jones liquid benchmark con GPU (Junio 2022)
+
+Pendiente
+
+# Referencias
+
+[LAMMPS](https://www.lammps.org/#gsc.tab=0)
+
+[LAMMPS Benchmarks](https://www.lammps.org/bench.html)
+
+[Running LAMMPS on HPC systems](http://www.hpc-carpentry.org/tuning_lammps/)
+
+[thermo_style command](https://docs.lammps.org/thermo_style.html)
+
+[thermo command](https://docs.lammps.org/thermo.html)
+
+[LAMMPS GPU package](https://docs.lammps.org/Speed_gpu.html)

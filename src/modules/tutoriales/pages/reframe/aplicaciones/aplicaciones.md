@@ -1,0 +1,522 @@
+# Descripción
+
+Los Benchmarks de computo de alto rendimiento (HPC) se utilizan ampliamente para evaluar y clasificar el
+rendimiento del sistema. Este trabajo presenta una evaluación de Benchmarks de un conjunto de
+aplicaciones científicas.
+
+Para este trabajo se uso las siguientes aplicaciones científicas:
+
+- [Namd](https://www.ks.uiuc.edu/Research/namd/)
+
+- [Gromacs](https://www.gromacs.org/)
+
+- [Lammps](https://www.lammps.org/)
+
+- [NWChem](https://nwchemgit.github.io/)
+
+- [QuantumEspresso](https://www.quantum-espresso.org/)
+
+- [Gaussian](https://gaussian.com/)
+
+# Elementos de los scripts de Reframe
+
+Elementos de los scripts de Reframe de prueba de aplicaciones para el cluster Yoltla.
+
+Clase base de prueba: [RunOnlyRegressionTest](/reframe/anexos/referencia_api.xml#run_only_regression)
+
+bench_name
+
+:   Nombre del Benchmark a ejecutar. Su respectiva carpeta debe encontrarse en la carpeta source (src).
+
+in_name
+
+:   Nombre del archivo a ejecutar. El archivo debe encontrarse dentro de la carpeta del benchmark en source.
+
+benchmark_info
+
+:   Paquete de parámetros que contiene la información del Benchmark.
+
+    El primer elemento hace referencia al nombre del benchmark, el segundo es el archivo de entrada.
+
+    Ejemplo:
+
+    ``` python
+     benchmark_info = parameter([
+            ('Stmv','stmv.namd'),
+            ('F1atpase','f1atpase.namd')
+          ])
+    ```
+
+    Estos paquetes de parámetros pueden contener más valores, como referencia energética o el umbral de
+    tolerancia.
+
+energy_reference
+
+:   El valor esperado de energía para el Bencharmk.
+
+energy_tolerance
+
+:   El valor de tolerancia de energía para el Benchmark.
+
+num_tasks_per_node
+
+:   Número de tareas por nodo.
+
+num_tasks
+
+:   Número de tareas MPI.
+
+num_tasks_per_core
+
+:   Número de tareas por cores, fijada en 1.
+
+<!-- -->
+
+num_nodes
+
+:   Parámetro de número de nodos para la prueba
+
+num_gpus_per_node
+
+:   Número de gpus por nodo.
+
+keep_files
+
+:   Lista de archivos a conservar después de una prueba.
+
+node_type
+
+:   Conjunto de [parámetros](/reframe/scripts/parametros.xml#parametros) asociado a una partición de
+    nodos de Slurm. Los valores que se manejan son:
+
+    `[nc,ttv1,ttv2,gpus,vgpus]`
+
+    Consulte cada prueba para revisar sus valores.
+
+tags
+
+:   Conjunto de etiquetas asociadas a la prueba.
+
+    Las etiquetas tiene la estructura:
+
+    `self.tags = {f’test-{self.node_type}-{self.num_nodes}-{self.bench_name}'}`
+
+    El cual permite ejecutar conjuntos de pruebas especificas, por ejemplo:
+
+    `reframe -c prueba.py -t test-ttv1-4 -r`
+
+    Esto ejecutara todas las pruebas que se encuentren para los nodos ttv1 con 4 nodos. Consulte la sección
+    de etiquetas para más detalles.
+
+<!-- -->
+
+arch
+
+:   Variable donde se guarda la arquitectura del procesador donde se ejecuta la prueba.
+    Consulte la sección [Topología](/reframe/anexos/topologia.xml#topología).
+
+allref
+
+:   Los valores de referencia de cada prueba, se especifican como un diccionario en el ámbito de las combinaciones:
+    \[[num_nodes](#num_nodes)\]\[[arch](#arch)\]\[[bench_name](#bench_name)\].
+
+    Consulte la sección de [pruebas rendimiento](/reframe/scripts/pruebas_rendimiento.xml#pruebas_rendimiento) para más información.
+
+# Estructura general.
+
+Estructura general de los scripts de prueba de aplicaciones con Reframe.
+
+``` python
+import reframe as rfm
+import reframe.utility.sanity as sn
+from reframe.core.backends import getlauncher
+
+
+@rfm.simple_test
+class APP_CPU/GPU_Benchmarks(rfm.RunOnlyRegressionTest):
+
+      # Lista de modulos a cargar
+      modules = ['']
+
+      maintainers = ['LSVP']
+
+      valid_prog_environs = ['defecto']
+
+      # Información de los Benchmarks
+      benchmark_info = parameter([
+        ('Benchmark Name','Input name',...),
+        .
+        .
+        .
+        .
+      ])
+
+      # Parametro para controlar el numero nodos con el cual lanzar la prueba
+      num_nodes = parameter([1, 2, 4, 5, 8, 16])
+
+      # Parametro para controlar la partición donde se lanza la prueba
+      node_type = parameter(['nc','ttv1','ttv2'])
+
+      # Comandos antes de ejecutar la prueba
+      prerun_cmds = [
+                    'echo ID del job: $SLURM_JOB_ID',
+                    'echo Nodos usados: $SLURM_JOB_NODELIST'
+                    .
+                    .
+                    .
+      ]
+
+      # Variables de ambiente
+      variables = {
+                    .
+                    .
+                    .
+      }
+
+      #ivybridge: nc
+      #haswell:   ttv1
+      #broadwell: ttv2
+      allref = {
+                1: {
+                    'ivybridge':        {
+                                         'Benchmark Name':    (5.471,-0.50,0.15,'unidad'),
+                                        }
+                   },
+                4: {
+                    'ivybridge':        {
+                                         'Benchmark Name':    (1.487,-0.50,0.15,'unidad')
+                                        },
+                    'haswell':          {
+                                         'Benchmark Name':    (1.487,-0.50,0.15,'unidad')
+                                        },
+                    'broadwell':        {
+                                         'Benchmark Name':    (1.487,-0.50,0.15,'unidad')
+                                        }
+                   },
+                   .
+                   .
+                   .
+               }
+
+
+      @run_after('init')
+      def setup_system(self):
+
+          # Variables donde se captura la información del benchmark
+          self.__bench, self.__name = self.benchmark_info
+
+          # Descripción del test
+          # Utilizamos la herramienta f-strings de python para modificar el formato de la cadena
+          self.descr = f'APP {self.__bench} Benchmark: {self.node_type} con {self.num_nodes} nodo(s)'
+
+          # Filtrado del sistema:partición que se usara
+          valid_systems = {
+                           'nc': {
+                                   1: ['yoltla:q1d-20p'],
+                                   4: ['yoltla:q12h-80p'],
+                                   .
+                                   .
+                           },
+                           'ttv1': {
+                                   4: ['yoltla:tt2d-80p'],
+                                   .
+                                   .
+                           },
+                           'ttv2': {
+                                   4: ['yoltla:tt1d-128p'],
+                                   .
+                                   .
+                           }
+                          }
+
+
+          # try / except, sí no se encuentra la configuración de una prueba, esto permite continuar con las demás pruebas si una falla
+          try:
+              self.valid_systems = valid_systems[self.node_type][self.num_nodes]
+          except KeyError:
+              self.valid_systems = []
+
+
+          #Setup tiempo limite por Benchmark
+          if self.bench_name == 'Benchmark Name':
+             self.time_limit = '2h'
+
+
+          #Se establece donde buscar la carpeta del Benchmark
+          self.sourcesdir= f'src/{self.bench_name}'
+
+          # Etiquetas de la prueba: test-cpu{nc,ttv1,ttv2}-{1,2,4}-{Benchmark Name}
+          self.tags = {f'test-{self.node_type}-{self.num_nodes}-{self.bench_name}'}
+
+
+      # Función getter para guardar el nombre del Benchmark
+      @property
+      def bench_name(self):
+          '''
+          The benchmark name.
+          '''
+
+          return self.__bench
+
+
+      # Función getter para guardar el nombre del archivo de entrada del Benchmark
+      @property
+      def in_name(self):
+          '''
+          The input file name.
+          '''
+
+          return self.__name
+
+
+      # Función de sanidad
+      @sanity_function
+      def assert_name(self):
+          .
+          .
+          .
+          # Con sn.all se puede definir varias pruebas de sanidad
+          return sn.all([
+              funcion()
+          ])
+
+
+      # Función de performance
+      @performance_function('days/ns')
+      def performance_name(self):
+          return funcion()
+
+
+      # Set up de ejecución
+      @run_before('run')
+      def setup_run(self):
+
+          # Se reemplaza lanzador del job
+          self.job.launcher = getlauncher('local')()
+
+          #Se cancela la ejecución si no hay información del proc en .reframe/topology/[valid_systems]
+          self.skip_if_no_procinfo()
+
+          #Se guarda información de los nodos en proc
+          proc = self.current_partition.processor
+
+          # Se obtiene la arquitectura en arch
+          arch = proc.arch
+
+          #try / except que busca si la configuracion esta disponible: [nodos][arquitectura][Nombre del Benchmark]
+          # esto permite continuar con las demas pruebas si una falla
+          try:
+              found = self.allref[self.num_nodes][arch][self.bench_name]
+          except KeyError:
+              self.skip(f'Configuración con {self.num_nodes} nodo(s) con Benchmark: {self.bench_name!r}, no es compatible con {arch!r}')
+
+          # Setup performance, donde busca valores de referencia de performance en el arreglo allref
+          self.reference = {
+                            '*': {
+                                  'performance_name': self.allref[self.num_nodes][arch][self.bench_name]
+                                 }
+          }
+
+
+          # Setup parallel run
+          self.num_tasks_per_node = proc.num_cores
+          self.num_tasks = self.num_nodes * self.num_tasks_per_node
+          self.num_tasks_per_core = 1
+
+          # Se redefine como ejecutar el job
+          # Utilizamos la herramienta f-strings de python para modificar el formato de la cadena
+          self.executable=f'mpiexec.hydra -bootstrap slurm -np {self.num_tasks} nombre_del_binario {self.in_name}'
+
+          # Opciones extra para el ejecutable
+          self.executable_opts += ['']
+```
+
+Para más detalles, consulte la sección [Scripts de Reframe](/reframe/scripts/scripts.xml#scripts).
+
+# Archivos
+
+Cada aplicación cuenta con 3 scripts de Reframe
+
+- aplicación.py: Script de Reframe para pruebas de aplicación en CPU, utiliza las particiones
+  convencionales de `Slurm` presentes en el cluster `Yoltla`.
+
+- aplicación-q1.py: Script de Reframe para pruebas de aplicación en CPU, utiliza la partición `q1` del
+  cluster `Yoltla`. Se utiliza para pruebas en 1 y 2 nodos de las particiones `ttv1` y `ttv2`.
+
+- aplicación-gpu.py: Script de Reframe para pruebas de aplicación en GPU, utiliza las particiones
+  convencionales de `Slurm` presentes en el cluster `Yoltla`. Archivo solo presente en las aplicaciones
+  que usan gpu's.
+
+Cada aplicación cuenta con su carpeta `src` donde se encuentra sub-carpetas con el nombre de cada
+Benchmark. Es importante mantener el nombre de la carpeta para que Reframe identifique donde se
+encuentra los archivos fuente que debe buscar. Los scripts de Reframe buscan la carpetas de la siguiente
+forma:
+
+    self.sourcesdir= f'src/{self.bench_name}'
+
+Revise la variable [`sourcesdir`](/reframe/anexos/referencia_api.xml#sourcesdir) de Reframe para
+más información.
+
+# Ejecución
+
+Dentro de la carpeta de una aplicación para ejecutar uno o todos los archivos presentes use la opción
+`-c` de Reframe.
+
+:::: warning
+::: title
+:::
+
+Para esta configuración de Reframe, si no se crea la carpeta *logs* al ejecutar una prueba,
+se presentara el siguiente error:
+
+    `/LUSTRE/home/../../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/ reframe-3.9.2/bin/reframe:
+    failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/../../../t.800/Pruebas/logs/rfm.out'`
+
+Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
+::::
+
+Ejemplos:
+
+Para ejecutar un archivo especifico
+
+    reframe -c aplicacion.py -r --performance-report
+
+Para ejecutar todos los archivos presentes
+
+    reframe -c . -r --performance-report
+
+Recomendamos el uso de la opción
+[`--performance-report`](/reframe/scripts/lanzar_pruebas.xml#performance-report).
+
+## Ejecución por etiqueta
+
+Los scripts de Reframe para aplicaciones científicas cuentan con una serie de etiquetas para filtrar
+las ejecuciones, las etiquetas tienen el siguiente formato:
+
+    self.tags = {f'test-{self.node_type}-{self.num_nodes}-{self.bench_name}'}
+
+Esto permite filtrar las pruebas para su ejecución de la siguientes formas.
+
+Ejemplos:
+
+Ejecución de todas las pruebas solo en nodos nc:
+
+    reframe -c aplicacion.py -t test-nc -r --performance-report
+
+Ejecución de todas las pruebas en todas las particiones con 4 nodos:
+
+    reframe -c aplicacion.py -t test-.*?-4 -r --performance-report
+
+Ejecución de ejecución de un bencharmk en especifico con todas las combinaciones de tipo de nodo/#nodos:
+
+    reframe -c aplicacion.py -t test-.*?-benchmark_name -r --performance-report
+
+En el caso de las pruebas de GPU's. La etiqueta es la siguiente:
+
+    self.tags = {f'test-{self.node_type}-{self.Ngpus}-{self.bench_name}'}
+
+Donde se escoge la cantidad de gpus a utilizar, ejemplo:
+
+Ejecución de todas las pruebas en la partición `gpus` con 4 gpu's:
+
+    reframe -c aplicacion-gpu.py -t test-gpus-4 -r --performance-report
+
+Revise la opción
+[`tags`](/reframe/scripts/lanzar_pruebas.xml#tags)
+de Reframe para más información.
+
+## Ejecución recursiva
+
+`Reframe` puede buscar archivos de prueba de forma recursiva en los directorios que se encuentran en la
+ruta de búsqueda. Puede usar esta opción para ejecutar varias o todas las pruebas de aplicaciones.
+Ejemplos:
+
+Ejecución de todas las pruebas de aplicaciones
+
+    reframe -c Apps/ -R --performance-report
+
+Ejecución de todas las pruebas de cpu de aplicaciones
+
+    reframe -c Apps/ -R --cpu-only --performance-report
+
+Ejecución de todas las pruebas de gpu de aplicaciones
+
+    reframe -c Apps/ -R --gpu-only --performance-report
+
+Consulte la sección
+[Lanzar pruebas](/reframe/scripts/lanzar_pruebas.xml)
+para más información.
+
+:::: note
+::: title
+:::
+
+Al ejecutar múltiples pruebas tome en cuenta que se creara un solo archivo `logs` y una sola
+carpeta `output` y `stage` para todas las pruebas que se encuentre.
+
+Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
+::::
+
+# Función sanity
+
+La función de sanidad de una prueba de aplicaciones consiste en la verificaciones de ciertos patrones
+y valores esperados en el resultado.
+
+Consulte la [Pruebas de sanidad](/reframe/scripts/pruebas_sanidad.xml) para más información.
+
+## Verificación de patrones
+
+Por ejemplo, una ejecución exitosa de Lammps contiene la expresión:
+
+    Total wall time: 2:17:24
+
+La prueba de sanidad verifica la presencia de la expresión `Total wall time:` para marcar la prueba
+como exitosa. Revise los scripts de Reframe de prueba de aplicaciones para verificar que patrón se busca
+en cada prueba.
+
+## Verificación de valores
+
+La simulaciones probadas deben llegar a ciertos valores de energía o temperatura dependiendo de cada
+aplicación. La prueba de sanidad extrae los valores de interés y los compara respecto a valores que
+se tienen de referencia, si los valores obtenidos entran dentro de cierto rango la prueba se toma como
+exitosa.
+
+:::: note
+::: title
+:::
+
+Los valores de referencia y el rango se obtuvieron de múltiples ejecuciones de cada simulación.
+::::
+
+Consulte la documentación de cada aplicación para más información.
+
+# Función performance
+
+Por cada aplicación se extrae y se evalúa una variable que determina el desempeño de la aplicación.
+La mayoría de las aplicaciones tiene un valor de performance, por ejemplo, Namd utiliza el valor
+"days/ns" que muestra la cantidad de días de cómputo requeridos para simular 1 nanosegundo de tiempo
+real.
+
+Este valor se compara y se evalúa respecto a un valor de referencia y un umbral de tolerancia.
+Ejemplo:
+
+    'Stmv':        (5.471,-0.50,0.15,'days/ns')
+
+El umbral de tolerancia que definimos para todas las pruebas es a un 15 % para un mal performance
+y 50 % para un buen performance. Esto con la finalidad de que Reframe nos avise de un valor inesperado
+para cada situación.
+
+:::: note
+::: title
+:::
+
+Los valores de referencia se obtuvieron del promedio múltiples ejecuciones de cada simulación.
+::::
+
+Reframe permite definir múltiples funciones de performance que no necesariamente deben ser evaluadas,
+esto permite solo extraer resultados de interés para la prueba y consultarlas en la carpeta
+[perflogs](/reframe/scripts/pruebas_rendimiento.xml#registros_rendimiento),
+revise cada script de Reframe de prueba de aplicaciones para consultar las funciones de performance presentes.
+
+Consulte la sección [Pruebas de rendimiento](/reframe/scripts/pruebas_rendimiento.xml)
+para más información.
