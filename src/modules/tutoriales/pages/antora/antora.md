@@ -35,19 +35,19 @@ yoltla-antora
 │   ├── build_antora.sh
 │   └── Dockerfile.antora
 ├── README.md
-├── token (1)
+├── token           (1)
 └── volumes
     ├── yoltla_docs
     │   ├── antora-playbook.yml
-    │   └── ui (2) 
+    │   └── ui      (2) 
     └── yoltla_kb
         ├── antora-playbook.yml
-        └── ui (2) 
+        └── ui      (2) 
 ```
 
-- `(1)` En este directorio debe colocar el archivo *.git-credentials*. [Private Repository Authentication](https://docs.antora.org/antora/2.3/playbook/private-repository-auth/).
+1. En este directorio debe colocar el archivo *.git-credentials*. [Private Repository Authentication](https://docs.antora.org/antora/2.3/playbook/private-repository-auth/).
 
-- `(2)` En cada directorio debe colocar el archivo *ui-bundle.zip* correspondiente. [Build a UI Project for Local Preview](https://docs.antora.org/antora-ui-default/build-preview-ui//).
+2. En cada directorio debe colocar el archivo *ui-bundle.zip* correspondiente. [Build a UI Project for Local Preview](https://docs.antora.org/antora-ui-default/build-preview-ui//).
 
 # Construir la imágen
 

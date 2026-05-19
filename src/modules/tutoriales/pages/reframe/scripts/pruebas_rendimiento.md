@@ -2,19 +2,30 @@
 
 Un aspecto importante de las pruebas de regresión es verificar el rendimiento.
 
-Lo que hace que una prueba ReFrame sea una prueba de rendimiento es la definición de al menos una función de rendimiento. De manera similar a una prueba de sanidad (`@sanity_function`), una función de rendimiento es una función decorada con el decorador `@performance_function`, que vincula la función decorada a una unidad determinada.
+Lo que hace que una prueba ReFrame sea una prueba de rendimiento es la definición de al 
+menos una función de rendimiento. De manera similar a una prueba de sanidad 
+(`@sanity_function`), una función de rendimiento es una función decorada con el decorador 
+`@performance_function`, que vincula la función decorada a una unidad determinada.
 
-Estas funciones pueden ser utilizadas por la prueba de regresión para extraer, medir o calcular una determinada cantidad de interés. Los valores devueltos por una función de rendimiento se denominan variables de rendimiento.
+Estas funciones pueden ser utilizadas por la prueba de regresión para extraer, medir o 
+calcular una determinada cantidad de interés. Los valores devueltos por una función de 
+rendimiento se denominan variables de rendimiento.
 
-Las funciones de rendimiento pueden pensarse como herramientas disponibles en las pruebas de regresión para la extracción de variables de rendimiento. De forma predeterminada, ReFrame intentará ejecutar todas las funciones de rendimiento disponibles durante la estapa de `performance` de la prueba, produciendo una sola variable de rendimiento por cada una de las funciones de rendimiento disponibles.
+Las funciones de rendimiento pueden pensarse como herramientas disponibles en las pruebas
+de regresión para la extracción de variables de rendimiento. De forma predeterminada, 
+ReFrame intentará ejecutar todas las funciones de rendimiento disponibles durante la 
+estapa de `performance` de la prueba, produciendo una sola variable de rendimiento por 
+cada una de las funciones de rendimiento disponibles.
 
-Para obtener más información, consulte la sección [Writing A Performance Test](https://reframe-hpc.readthedocs.io/en/stable/tutorial_basics.html#writing-a-performance-test) de la documentación oficial de ReFrame.
+Para obtener más información, consulte la sección [Writing A Performance Test](https://reframe-hpc.readthedocs.io/en/stable/tutorial_basics.html#writing-a-performance-test) 
+de la documentación oficial de ReFrame.
 
 # Ejemplos
 
-El siguiente script de reframe ejecuta una prueba del microbenchmark [STREAM](https://www.cs.virginia.edu/stream/ref.html):
+El siguiente script de reframe ejecuta una prueba del microbenchmark 
+[STREAM](https://www.cs.virginia.edu/stream/ref.html):
 
-``` python
+```python
 import reframe as rfm
 import reframe.utility.sanity as sn
 from reframe.core.backends import getlauncher
@@ -73,11 +84,16 @@ class StreamTest(rfm.RegressionTest):
           return sn.extractsingle(r'Triad:\s+(\S+)\s+.*', self.stdout, 1, float)
 ```
 
-En este ejemplo, extraemos cuatro variables de rendimiento, que son los valores de ancho de banda de la memoria para cada uno de los subpuntos de referencia: `Copy`, `Scale`, `Add` y `Tríad` de STREAM, donde cada una de las funciones de rendimiento utiliza la función de utilidad [`extractsingle()`](reframe/scripts/pruebas_sanidad.xml#extractsingle). Para cada uno de los subpuntos de referencia, se define una [expresión regular](https://docs.python.org/3/library/re.html) de Python para extraer la columna \"Best Rate MB/s\" de la salida (ver más abajo) y la convertimos en un valor flotante.
+En este ejemplo, extraemos cuatro variables de rendimiento, que son los valores de 
+ancho de banda de la memoria para cada uno de los subpuntos de referencia: `Copy`, 
+`Scale`, `Add` y `Tríad` de STREAM, donde cada una de las funciones de rendimiento 
+utiliza la función de utilidad [`extractsingle()`](reframe/scripts/pruebas_sanidad.xml#extractsingle). 
+Para cada uno de los subpuntos de referencia, se define una [expresión regular](https://docs.python.org/3/library/re.html) 
+de Python para extraer la columna \"Best Rate MB/s\" de la salida (ver más abajo) y la convertimos en un valor flotante.
 
 Ejemplo de salida de STREAM:
 
-``` bash
+```bash
 Function    Best Rate MB/s  Avg time     Min time     Max time
 Copy:           24939.4     0.021905     0.021527     0.022382
 Scale:          16956.3     0.031957     0.031662     0.032379
@@ -87,7 +103,7 @@ Triad:          19133.4     0.042935     0.042089     0.044283
 
 Antes de ejecutar, observe el árbol de directorios que debe tener:
 
-``` bash
+```bash
 stream/
 ├── logs
 ├── src
@@ -101,9 +117,10 @@ Hagamos la prueba ahora:
 ./bin/reframe -c stream.py -r --performance-report
 ```
 
-La opción `--performance-report` generará un breve informe al final para cada prueba de rendimiento que se haya ejecutado.
+La opción `--performance-report` generará un breve informe al final para cada prueba de 
+rendimiento que se haya ejecutado.
 
-``` bash
+```bash
 [ReFrame Setup]
   version:           3.9.2
   command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello.py -r'
@@ -145,16 +162,23 @@ Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/stream/logs/rfm.out',
 
 # Valores de referencia
 
-En su estado actual, la prueba de rendimiento STREAM anterior simplemente extraerá e informará las variables de rendimiento independientemente de los valores. Sin embargo, en algunas situaciones puede ser útil verificar que los valores de rendimiento extraídos estén dentro de un rango esperado e informar una falla cada vez que una prueba se desempeñe por debajo de las expectativas. Para ello, las pruebas ReFrame incluyen la variable [`reference`](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html#reframe.core.pipeline.RegressionTest.reference), que permite establecer referencias para cada una de las variables de rendimiento definidas en una prueba y también establecer diferentes referencias para diferentes sistemas o particiones. En el siguiente ejemplo establecemos los valores de referencia para todos los subpuntos de referencia de STREAM.
+En su estado actual, la prueba de rendimiento STREAM anterior simplemente extraerá e 
+informará las variables de rendimiento independientemente de los valores. Sin embargo, 
+en algunas situaciones puede ser útil verificar que los valores de rendimiento extraídos 
+estén dentro de un rango esperado e informar una falla cada vez que una prueba se 
+desempeñe por debajo de las expectativas. Para ello, las pruebas ReFrame incluyen la variable 
+[`reference`](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html#reframe.core.pipeline.RegressionTest.reference), 
+que permite establecer referencias para cada una de las variables de rendimiento 
+definidas en una prueba y también establecer diferentes referencias para diferentes 
+sistemas o particiones. En el siguiente ejemplo establecemos los valores de referencia 
+para todos los subpuntos de referencia de STREAM.
 
-:::: note
-::: title
-:::
+```admonish info title=" "
+La optimización del rendimiento de las pruebas comparativas de STREAM está fuera del 
+alcance de este tutorial.
+```
 
-La optimización del rendimiento de las pruebas comparativas de STREAM está fuera del alcance de este tutorial.
-::::
-
-``` python
+```python
 import reframe as rfm
 import reframe.utility.sanity as sn
 from reframe.core.backends import getlauncher
@@ -222,49 +246,48 @@ class StreamTest(rfm.RegressionTest):
           return sn.extractsingle(r'Triad:\s+(\S+)\s+.*', self.stdout, 1, float)
 ```
 
-Los valores de referencia se especifican como un diccionario basado en las variables de rendimiento definidas y en el ámbito de las combinaciones de sistema/partición. Los valores de referencia de rendimiento consta del valor deseado de referencia, los umbrales inferior y superior expresados como porcentajes en formato decimal relativos al valor de referencia y la unidad de medida.
+Los valores de referencia se especifican como un diccionario basado en las variables de 
+rendimiento definidas y en el ámbito de las combinaciones de sistema/partición. Los 
+valores de referencia de rendimiento consta del valor deseado de referencia, los umbrales 
+inferior y superior expresados como porcentajes en formato decimal relativos al valor de 
+referencia y la unidad de medida.
 
-:::: note
-::: title
-:::
-
+``` admonish info title=" "
 Si alguno de los umbrales no es relevante, `None` se puede utilizar en su lugar.
-::::
+```
 
-Para comprender mejor cómo configurar los valores de referencia de rendimiento, aquí hay algunos ejemplos con valores de referencia positivos y negativos:
+Para comprender mejor cómo configurar los valores de referencia de rendimiento, aquí hay 
+algunos ejemplos con valores de referencia positivos y negativos:
 
-+------------------------------+-----------------+-----------------+-----------------+
-| Valores de Rendimiento       | Esperado        | Más bajo        | Más alto        |
-+==============================+=================+=================+=================+
+| Valores de Rendimiento | Esperado | Más bajo | Más alto |
+|------------------------|----------|----------|----------|
 | `(100, -0.01, 0.02, 'MB/s')` | 100 MB/s        | 99 MB/s         | 102 MB/s        |
-+------------------------------+-----------------+-----------------+-----------------+
 | `(100, -0.01, None, 'MB/s')` | 100 MB/s        | 99 MB/s         | inf MB/s        |
-+------------------------------+-----------------+-----------------+-----------------+
 | `(100, None, 0.02, 'MB/s')`  | 100 MB/s        | -inf MB/s       | 102 MB/s        |
-+------------------------------+-----------------+-----------------+-----------------+
 | `(-100, -0.01, 0.02, 'C')`   | -100C           | -101C           | -98C            |
-+------------------------------+-----------------+-----------------+-----------------+
 | `(-100, -0.01, None, 'C')`   | -100C           | -101C           | Inf C           |
-+------------------------------+-----------------+-----------------+-----------------+
 | `(-100, None, 0.02, 'C')`    | -100C           | -inf C          | -98C            |
-+------------------------------+-----------------+-----------------+-----------------+
 
-Durante la etapa de rendimiento, los elementos de `reference`, excepto la unidad, se pasan a la función [`assert_reference()`](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html#reframe.utility.sanity.assert_reference) junto con el valor de rendimiento obtenido para evaluar realmente si la prueba pasa la verificación de rendimiento o no.
+Durante la etapa de rendimiento, los elementos de `reference`, excepto la unidad, se 
+pasan a la función [`assert_reference()`](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html#reframe.utility.sanity.assert_reference) 
+junto con el valor de rendimiento obtenido para evaluar realmente si la prueba pasa 
+la verificación de rendimiento o no.
 
-:::: note
-::: title
-:::
+```admonish info title=" "
+El nombre de los valores de referencia debe coincidir con el nombre de su función de 
+rendimiento asociada. Sin embargo, se puede personalizar el nombre de la variable de 
+rendimiento generada por `@performance_function` con el argumento `perf_key` como se 
+muestra en el ejemplo anterior en la última función de performance.
+```
 
-El nombre de los valores de referencia debe coincidir con el nombre de su función de rendimiento asociada. Sin embargo, se puede personalizar el nombre de la variable de rendimiento generada por `@performance_function` con el argumento `perf_key` como se muestra en el ejemplo anterior en la última función de performance.
-::::
+Si cualquier valor de rendimiento obtenido está más allá de sus respectivos umbrales, 
+la prueba fallará con un resumen como se muestra a continuación:
 
-Si cualquier valor de rendimiento obtenido está más allá de sus respectivos umbrales, la prueba fallará con un resumen como se muestra a continuación:
-
-``` bash
+```bash
 ./bin/reframe -c stream.py -r --performance-report
 ```
 
-``` bash
+```bash
 [ReFrame Setup]
   version:           3.9.2
   command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello.py -r'
@@ -323,7 +346,8 @@ Run report saved in 'logs/run-report.json'
 Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/stream/logs/rfm.out', '/LUSTRE/home/uam/../../Pruebas/stream/logs/rfm.log'
 ```
 
-En este ejemplo, la prueba falla porque se esperaba otro valor para la variable Triad. Los demas valores entraron en el marguen esperado.
+En este ejemplo, la prueba falla porque se esperaba otro valor para la variable Triad. 
+Los demas valores entraron en el marguen esperado.
 
 # Registros de rendimiento
 
