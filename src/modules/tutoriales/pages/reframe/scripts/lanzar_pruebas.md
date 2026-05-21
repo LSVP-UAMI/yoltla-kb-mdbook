@@ -90,14 +90,14 @@ de la documentación oficial de ReFrame.
     Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
     ```
 
-- `--ignore-check-conflicts`
+- ## --ignore-check-conflicts
 
     Ignora las pruebas con nombres en conflicto al cargar las pruebas.
 
     ReFrame requiere que los nombres de las pruebas sean únicos. Esta opción generalmente 
     debe evitarse a menos que haya una razón específica.
 
-- `-R, --recursive`
+- ## -R, --recursive
 
     Busca archivos de prueba recursivamente en los directorios que se encuentran en la ruta 
     de búsqueda `--checkpath=PATH`.
@@ -125,28 +125,28 @@ sus dependencias, independientemente de si coinciden o no con los criterios de f
 Esto sucede de forma recursiva, de modo que si la prueba T1 depende de T2 y T2 depende 
 de T3, la selección T1 también seleccionaría T2 y T3.
 
-- `--cpu-only`
+- ## --cpu-only
 
     Seleccione pruebas que no estén dirigidas a las GPU.
 
     Estas son todas las pruebas con `num_gpus_per_node` igual a cero. Esta opción y 
     `--gpu-only` son mutuamente excluyentes.
 
-- `--failed`
+- ## --failed
 
     Selecciona solo los casos de prueba fallidos para una ejecución anterior.
 
     Esta opción solo se puede utilizar en combinación con `--restore-session`. Para volver a 
     ejecutar los casos fallidos de la última ejecución, puede usar `reframe --restore-session --failed -r`.
 
-- `-n, --name=NAME`
+- ## -n, --name=NAME
 
     Filtra pruebas por nombre.
 
     NAME se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) 
     de Python; se seleccionará cualquier prueba cuyomnombre coincida con NAME.
 
-- `-T, --exclude-tag=TAG`
+- ## -T, --exclude-tag=TAG
 
     Excluir pruebas por etiquetas.
 
@@ -156,7 +156,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
     Para más detalles, consulte la sección [Tags](reframe/scripts/scripts.xml#tags).
 
-- `-t, --tag=TAG`
+- ## -t, --tag=TAG
 
     Filtrar pruebas por etiqueta.
 
@@ -165,7 +165,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
     Para más detalles, consulte la sección [Tags](reframe/scripts/scripts.xml#tags).
 
-- `-x, --exclude=NAME`
+- ## -x, --exclude=NAME
 
     Excluir pruebas por nombre. NAME se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) 
     de Python; se seleccionará cualquier prueba cuyo nombre coincida con NAME.
@@ -178,7 +178,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
 # Enlistar y ejecutar pruebas
 
-- `-L`
+- ## -L
 
     Lista las pruebas seleccionadas proporcionando más detalles de cada prueba.
 
@@ -239,7 +239,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
         .
     ```
 
-- `-l`
+- ## -l
 
     Lista las pruebas seleccionadas.
 
@@ -269,7 +269,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.out', '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.log'
     ```
 
-- `--list-tags`
+- ## --list-tags
 
     Enumera las etiquetas únicas de las pruebas seleccionadas.
 
@@ -301,7 +301,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
 
 
-- `-r, --run`
+- ## -r, --run
 
     Ejecutar las pruebas seleccionadas.
 
@@ -316,13 +316,13 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
 ## Salida
 
-- `--dont-restaging`
+- ### --dont-restaging
 
     No vuelve a preparar una prueba si su directorio [`stage`](#stage) existe. 
     Normalmente, si existe el directorio de `stage` de una prueba, ReFrame lo 
     eliminará y lo volverá a crear. Esta opción deshabilita este comportamiento.
 
-- `--keep-stage-files`
+- ### --keep-stage-files
 
     Mantiene los directorios [`stage`](#stage) de prueba incluso para las pruebas que 
     finalicen con éxito.
@@ -330,7 +330,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     Esta opción también se puede configurar con la variable de ambiente `RFM_KEEP_STAGE_FILES` 
     o el parámetro `keep_stage_files` del archivo de configuración.
 
-- `-o, --output=DIR`
+- ### -o, --output=DIR
 
     Directorio para archivos de salida de la prueba.
 
@@ -361,7 +361,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     Esta opción también se puede configurar con la variable de ambiente `RFM_OUTPUT_DIR` o 
     el parámetro `outputdir` del archivo de configuración.
 
-- `-s, --stage=DIR`
+- ### -s, --stage=DIR
 
    Prefijo del directorio para la preparación de recursos de la prueba.
 
@@ -382,7 +382,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
 ## Envío de trabajos
 
-- `-J, --job-option=OPTION`
+- ### -J, --job-option=OPTION
 
    Pasa `OPTION` directamente al backend del programador de trabajos (en este caso Slurm).
 
@@ -400,33 +400,33 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
 # Otras opciones
 
-- `-C --config-file=FILE`
+- ## -C --config-file=FILE
 
     Usa `FILE` cómo archivo de configuración para ReFrame.
 
     Esta opción también se puede configurar con la [variable de ambiente](/reframe/anexos/archivo_configuracion.xml#variables_ambiente)
     `RFM_CONFIG_FILE`.
 
-- `--detect-host-topology=[FILE]`
+- ## --detect-host-topology=[FILE]
 
    Detecta la topología del procesador del host local y la guarda en el archivo `FILE`.
 
     Si no se especifica `FILE`, se utilizará la salida estándar.
 
-- `-h, --help`
+- ## -h, --help 
 
     Imprime un breve mensaje de ayuda.
 
-- `--performance-report`
+- ## --performance-report
 
     Muestra un informe de rendimiento para todas las pruebas de rendimiento que se han 
     ejecutado.
 
-- `-v, --verbose`
+- ## -v, --verbose
 
     Aumenta el nivel de detalle de la salida. Esta opción se puede especificar varias veces.
 
-- `--show-config=[PARAM]`
+- ## --show-config=[PARAM]
 
     Muestra el valor del parámetro de configuración `PARAM` tal como está definido para 
     el sistema seleccionado actualmente y sale.

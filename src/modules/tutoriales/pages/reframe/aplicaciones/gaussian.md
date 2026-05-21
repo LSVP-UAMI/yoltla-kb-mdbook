@@ -26,7 +26,9 @@ utilizando el parámetro `%NProcShared` en el archivo de entrada de Gaussian. Po
 con nodos de 20 núcleos, agregue la siguiente línea en la parte superior de su archivo de entrada
 gaussiana:
 
-    %NProcShared=20
+```bash
+%NProcShared=20
+```
 
 Algunos trabajos, pueden consumir grandes recursos de memoria. Para trabajos muy grandes, podría
 considerar establecer el parámetro de Gaussian09, `%Mem` , que afecta la cantidad de memoria disponible
@@ -36,14 +38,11 @@ Al determinar un valor para la variable `%Mem`, permita al menos un valor de 500
 De lo contrario, el job tendrá problemas, posiblemente morirá y, en algunos casos, hará que el nodo se
 caiga.
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 La versión de Gaussian instalada en Yoltla sólo permite utilizar paralelización de memoria
 compartida, por lo que los trabajos que utilicen esta aplicación, deberán enviarse a particiones con un
 sólo nodo.
-::::
+```
 
 # Gaussian Performance
 
@@ -51,15 +50,13 @@ sólo nodo.
 utilizados como el tiempo de cpu o memoria utilizada. Para este trabajo, para medir el performance y la
 eficiencia paralela de `Gaussian`, usaremos el tiempo de cpu para calcular los tiempos de ejecución.
 
-:::: formalpara
-::: title
-Ejemplo de salida exitosa de Gaussian
-:::
+<span style="color: red;">*Ejemplo de salida exitosa de Gaussian*</span>
 
-     Job cpu time:       0 days  0 hours 48 minutes 26.9 seconds.
-     File lengths (MBytes):  RWF=    182 Int=      0 D2E=      0 Chk=     13 Scr=      1
-     Normal termination of Gaussian 09 at Mon Aug  1 19:00:15 2022.
-::::
+```bash
+Job cpu time:       0 days  0 hours 48 minutes 26.9 seconds.
+File lengths (MBytes):  RWF=    182 Int=      0 D2E=      0 Chk=     13 Scr=      1
+Normal termination of Gaussian 09 at Mon Aug  1 19:00:15 2022.
+```
 
 # Eficiencia Paralela
 
@@ -69,13 +66,13 @@ números de CPU para encontrar un punto óptimo.
 
 A partir de estos datos, se puede calcular la **eficiencia paralela**. Esto se define cómo:
 
-E = (1/P) \* (T~1~/T~P~)
+**E = (1/P) \* (T<sub>1</sub>/T<sub>P</sub>)**
 
-- P = Numero de procesadores
+- **P** = Numero de procesadores
 
-- T~1~ = tiempo óptimo para el algoritmo en un procesador
+- **T<sub>1</sub>** = tiempo óptimo para el algoritmo en un procesador
 
-- T~P~ = tiempo para algoritmo paralelo en P procesadores
+- **T<sub>P</sub>** = tiempo para algoritmo paralelo en P procesadores
 
 Como regla general, los trabajos que se ejecutan con una gran cantidad de núcleos deben tener
 una eficiencia paralela superior o igual a 0,7.
@@ -92,35 +89,25 @@ El archivo `g09root/g09/tests/tests.idx` enumera lo que hace cada trabajo de pru
 
 Test0979: NBO test with f functions
 
-![](Reframe/Apps/Gaussian/Figure_0979.png){alt="Figure 0979"}
+figure 0979
 
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
-| Cores** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
-|         | Xeón E5-2670v2\            | 20 Cores x 2.60GHz Intel   | 32 Cores x 2.10GHz Intel   |
-|         | 64GB RAM\                  | Xeón E5-2660v3\            | Xeon E5-2683v4\            |
-|         | Infiniband FDR10/FDR**     | 128GB RAM\                 | 256GB RAM\                 |
-|         |                            | Infiniband FDR10/FDR**     | Infiniband FDR10/FDR**     |
-|         +-------------+--------------+-------------+--------------+-------------+--------------+
-|         | **time      | **Eficiencia | **time      | **Eficiencia | **time      | **Eficiencia |
-|         | (seconds)** | Paralela %** | (seconds)** | Paralela %** | (seconds)** | Paralela %** |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 1       | 1895.314    | 100.0 %      | 2052.557    | 100.0 %      | 2480.583    | 100.0 %      |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 2       | 999.707     | 94.8 %       | 1041.206    | 98.6 %       | 1240.281    | 100.0 %      |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 4       | 533.439     | 88.8 %       | 546.997     | 93.8 %       | 651.619     | 95.2 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 8       | 310.036     | 76.4 %       | 294.713     | 87.1 %       | 361.331     | 85.8 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 16      | 173.288     | 68.4 %       | 228.473     | 56.1 %       | 202.973     | 76.4 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 20      | 152.121     | 62.3 %       | 152.093     | 67.5 %       |             |              |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 32      |             |              |             |              | 156.012     | 49.7 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
+![Figure 0979](../../../images/Reframe/Apps/Gaussian/Figure_0979.png)
 
-: Performance Test 0979
+<span style="color: red;">*Table 1. Performance Test 0979*</span>
+
+| <!--> <--> |<!--> <--> |<!--> <--> |<!--> <--> |
+|------------|-----------|-----------|-----------|
+| **# Cores** | **CPU's Nodos nc <br> 20 Cores x 2.50GHz Intel <br> Xeón E5-2670v2 <br> 64GB RAM <br> Infiniband FDR10/FDR** | **CPU's Nodos ttv1[1-58] <br> 20 Cores x 2.60GHz Intel <br> Xeón E5-2660v3 <br> 128GB RAM <br> Infiniband FDR10/FDR** | **CPU's Nodos ttv2[59-104] <br> 32 Cores x 2.10GHz Intel <br> Xeon E5-2683v4 <br> 256GB RAM <br> Infiniband FDR10/FDR** |
+
+|  | **time (seconds)** | **Eficiencia Paralela %** | **time (seconds)** | **Eficiencia Paralela%** | **time (seconds)** | **Eficiencia Paralela%** | 
+|--|--------------------|---------------------------|--------------------|--------------------------|--------------------|--------------------------|
+| 1  | 1895.314 | 100.0 % | 2052.557 | 100.0 % | 2480.583 | 100.0 % |
+| 2  | 999.707  | 94.8 %  | 1041.206 | 98.6 %  | 1240.281 | 100.0 % |
+| 4  | 533.439  | 88.8 %  | 546.997  | 93.8 %  | 651.619  | 95.2 %  |
+| 8  | 310.036  | 76.4 %  | 294.713  | 87.1 %  | 361.331  | 85.8 %  |
+| 16 | 173.288  | 68.4 %  | 228.473  | 56.1 %  | 202.973  | 76.4 %  |
+| 20 | 152.121  | 62.3 %  | 152.093  | 67.5 %  |          |         |
+| 32 |          |         |          |         | 156.012  | 49.7 %  |
 
 Para este Benchmarks, observamos un uso eficiente de los recursos entre 8 y 16 cores de cada partición.
 
@@ -128,7 +115,9 @@ Para este Benchmarks, observamos un uso eficiente de los recursos entre 8 y 16 c
 
 Test1044: TD 50-50 with PCM test
 
-![](Reframe/Apps/Gaussian/Figure_1044.png){alt="Figure 1044"}
+![Figure 1044](../../../images/Reframe/Apps/Gaussian/Figure_1044.png)
+
+<span style="color: red;">*Table 2. Performance Test 1044*</span>
 
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |

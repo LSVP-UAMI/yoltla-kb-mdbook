@@ -1,8 +1,8 @@
 # Descripción
 
-Los Benchmarks de computo de alto rendimiento (HPC) se utilizan ampliamente para evaluar y clasificar el
-rendimiento del sistema. Este trabajo presenta una evaluación de Benchmarks de un conjunto de
-aplicaciones científicas.
+Los Benchmarks de computo de alto rendimiento (HPC) se utilizan ampliamente para 
+evaluar y clasificar el rendimiento del sistema. Este trabajo presenta una evaluación 
+de Benchmarks de un conjunto de aplicaciones científicas.
 
 Para este trabajo se uso las siguientes aplicaciones científicas:
 
@@ -24,78 +24,79 @@ Elementos de los scripts de Reframe de prueba de aplicaciones para el cluster Yo
 
 Clase base de prueba: [RunOnlyRegressionTest](/reframe/anexos/referencia_api.xml#run_only_regression)
 
-bench_name
+- ## bench_name
 
-:   Nombre del Benchmark a ejecutar. Su respectiva carpeta debe encontrarse en la carpeta source (src).
+    Nombre del Benchmark a ejecutar. Su respectiva carpeta debe encontrarse en la 
+    carpeta source (src).
 
-in_name
+- ## in_name
 
-:   Nombre del archivo a ejecutar. El archivo debe encontrarse dentro de la carpeta del benchmark en source.
+    Nombre del archivo a ejecutar. El archivo debe encontrarse dentro de la carpeta 
+    del benchmark en source.
 
-benchmark_info
+- ## benchmark_info
 
-:   Paquete de parámetros que contiene la información del Benchmark.
+    Paquete de parámetros que contiene la información del Benchmark.
 
-    El primer elemento hace referencia al nombre del benchmark, el segundo es el archivo de entrada.
+    El primer elemento hace referencia al nombre del benchmark, el segundo es el 
+    archivo de entrada.
 
     Ejemplo:
 
-    ``` python
+    ```python
      benchmark_info = parameter([
             ('Stmv','stmv.namd'),
             ('F1atpase','f1atpase.namd')
           ])
     ```
 
-    Estos paquetes de parámetros pueden contener más valores, como referencia energética o el umbral de
-    tolerancia.
+    Estos paquetes de parámetros pueden contener más valores, como referencia energética 
+    o el umbral de tolerancia.
 
-energy_reference
+- ## energy_reference
 
-:   El valor esperado de energía para el Bencharmk.
+    El valor esperado de energía para el Bencharmk.
 
-energy_tolerance
+- ## energy_tolerance
 
-:   El valor de tolerancia de energía para el Benchmark.
+    El valor de tolerancia de energía para el Benchmark.
 
-num_tasks_per_node
+- ## num_tasks_per_node
 
-:   Número de tareas por nodo.
+    Número de tareas por nodo.
 
-num_tasks
+- ## num_tasks
 
-:   Número de tareas MPI.
+    Número de tareas MPI.
 
-num_tasks_per_core
+- ## num_tasks_per_core
 
-:   Número de tareas por cores, fijada en 1.
+    Número de tareas por cores, fijada en 1.
 
-<!-- -->
+- ## num_nodes
 
-num_nodes
+    Parámetro de número de nodos para la prueba
 
-:   Parámetro de número de nodos para la prueba
+- ## num_gpus_per_node
 
-num_gpus_per_node
+    Número de gpus por nodo.
 
-:   Número de gpus por nodo.
+- ## keep_files
 
-keep_files
+    Lista de archivos a conservar después de una prueba.
 
-:   Lista de archivos a conservar después de una prueba.
+- ## node_type
 
-node_type
-
-:   Conjunto de [parámetros](/reframe/scripts/parametros.xml#parametros) asociado a una partición de
-    nodos de Slurm. Los valores que se manejan son:
+    Conjunto de [parámetros](../scripts/parametros.md) asociado a una 
+    partición de nodos de Slurm. Los valores que se manejan son:
 
     `[nc,ttv1,ttv2,gpus,vgpus]`
 
     Consulte cada prueba para revisar sus valores.
 
-tags
+- ## tags
 
-:   Conjunto de etiquetas asociadas a la prueba.
+    Conjunto de etiquetas asociadas a la prueba.
 
     Las etiquetas tiene la estructura:
 
@@ -105,28 +106,28 @@ tags
 
     `reframe -c prueba.py -t test-ttv1-4 -r`
 
-    Esto ejecutara todas las pruebas que se encuentren para los nodos ttv1 con 4 nodos. Consulte la sección
-    de etiquetas para más detalles.
+    Esto ejecutara todas las pruebas que se encuentren para los nodos ttv1 con 4 nodos. 
+    Consulte la sección de etiquetas para más detalles.
 
-<!-- -->
+- ## arch
 
-arch
+    Variable donde se guarda la arquitectura del procesador donde se ejecuta la prueba.
+    Consulte la sección [Topología](../anexos/topologia.md).
 
-:   Variable donde se guarda la arquitectura del procesador donde se ejecuta la prueba.
-    Consulte la sección [Topología](/reframe/anexos/topologia.xml#topología).
+- ## allref
 
-allref
-
-:   Los valores de referencia de cada prueba, se especifican como un diccionario en el ámbito de las combinaciones:
+    Los valores de referencia de cada prueba, se especifican como un diccionario en el 
+    ámbito de las combinaciones:
     \[[num_nodes](#num_nodes)\]\[[arch](#arch)\]\[[bench_name](#bench_name)\].
 
-    Consulte la sección de [pruebas rendimiento](/reframe/scripts/pruebas_rendimiento.xml#pruebas_rendimiento) para más información.
+    Consulte la sección de [pruebas rendimiento](../scripts/pruebas_rendimiento.md) 
+    para más información.
 
 # Estructura general.
 
 Estructura general de los scripts de prueba de aplicaciones con Reframe.
 
-``` python
+```python
 import reframe as rfm
 import reframe.utility.sanity as sn
 from reframe.core.backends import getlauncher
@@ -331,41 +332,41 @@ class APP_CPU/GPU_Benchmarks(rfm.RunOnlyRegressionTest):
           self.executable_opts += ['']
 ```
 
-Para más detalles, consulte la sección [Scripts de Reframe](/reframe/scripts/scripts.xml#scripts).
+Para más detalles, consulte la sección [Scripts de Reframe](../scripts/scripts.md#).
 
 # Archivos
 
 Cada aplicación cuenta con 3 scripts de Reframe
 
-- aplicación.py: Script de Reframe para pruebas de aplicación en CPU, utiliza las particiones
-  convencionales de `Slurm` presentes en el cluster `Yoltla`.
+- aplicación.py: Script de Reframe para pruebas de aplicación en CPU, utiliza las 
+  particiones convencionales de `Slurm` presentes en el cluster `Yoltla`.
 
-- aplicación-q1.py: Script de Reframe para pruebas de aplicación en CPU, utiliza la partición `q1` del
-  cluster `Yoltla`. Se utiliza para pruebas en 1 y 2 nodos de las particiones `ttv1` y `ttv2`.
+- aplicación-q1.py: Script de Reframe para pruebas de aplicación en CPU, utiliza 
+  la partición `q1` del cluster `Yoltla`. Se utiliza para pruebas en 1 y 2 nodos 
+  de las particiones `ttv1` y `ttv2`.
 
-- aplicación-gpu.py: Script de Reframe para pruebas de aplicación en GPU, utiliza las particiones
-  convencionales de `Slurm` presentes en el cluster `Yoltla`. Archivo solo presente en las aplicaciones
-  que usan gpu's.
+- aplicación-gpu.py: Script de Reframe para pruebas de aplicación en GPU, utiliza 
+  las particiones convencionales de `Slurm` presentes en el cluster `Yoltla`. 
+  Archivo solo presente en las aplicaciones que usan gpu's.
 
-Cada aplicación cuenta con su carpeta `src` donde se encuentra sub-carpetas con el nombre de cada
-Benchmark. Es importante mantener el nombre de la carpeta para que Reframe identifique donde se
-encuentra los archivos fuente que debe buscar. Los scripts de Reframe buscan la carpetas de la siguiente
-forma:
+Cada aplicación cuenta con su carpeta `src` donde se encuentra sub-carpetas con el 
+nombre de cada Benchmark. Es importante mantener el nombre de la carpeta para que 
+Reframe identifique donde se encuentra los archivos fuente que debe buscar. Los 
+scripts de Reframe buscan la carpetas de la siguiente forma:
 
+```bash
     self.sourcesdir= f'src/{self.bench_name}'
+```
 
 Revise la variable [`sourcesdir`](/reframe/anexos/referencia_api.xml#sourcesdir) de Reframe para
 más información.
 
 # Ejecución
 
-Dentro de la carpeta de una aplicación para ejecutar uno o todos los archivos presentes use la opción
-`-c` de Reframe.
+Dentro de la carpeta de una aplicación para ejecutar uno o todos los archivos presentes
+use la opción `-c` de Reframe.
 
-:::: warning
-::: title
-:::
-
+```admonish warning title=" "
 Para esta configuración de Reframe, si no se crea la carpeta *logs* al ejecutar una prueba,
 se presentara el siguiente error:
 
@@ -373,53 +374,70 @@ se presentara el siguiente error:
     failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/../../../t.800/Pruebas/logs/rfm.out'`
 
 Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
-::::
+```
 
 Ejemplos:
 
 Para ejecutar un archivo especifico
 
-    reframe -c aplicacion.py -r --performance-report
+```bash
+reframe -c aplicacion.py -r --performance-report
+```
 
 Para ejecutar todos los archivos presentes
 
-    reframe -c . -r --performance-report
+```bash
+reframe -c . -r --performance-report
+```
 
 Recomendamos el uso de la opción
-[`--performance-report`](/reframe/scripts/lanzar_pruebas.xml#performance-report).
+[`--performance-report`](../scripts/lanzar_pruebas.md##performance-report).
+
+
 
 ## Ejecución por etiqueta
 
-Los scripts de Reframe para aplicaciones científicas cuentan con una serie de etiquetas para filtrar
-las ejecuciones, las etiquetas tienen el siguiente formato:
+Los scripts de Reframe para aplicaciones científicas cuentan con una serie de etiquetas 
+para filtrar las ejecuciones, las etiquetas tienen el siguiente formato:
 
-    self.tags = {f'test-{self.node_type}-{self.num_nodes}-{self.bench_name}'}
-
+```bash
+self.tags = {f'test-{self.node_type}-{self.num_nodes}-{self.bench_name}'}
+```
 Esto permite filtrar las pruebas para su ejecución de la siguientes formas.
 
 Ejemplos:
 
 Ejecución de todas las pruebas solo en nodos nc:
 
-    reframe -c aplicacion.py -t test-nc -r --performance-report
+```bash
+reframe -c aplicacion.py -t test-nc -r --performance-report
+```
 
 Ejecución de todas las pruebas en todas las particiones con 4 nodos:
 
-    reframe -c aplicacion.py -t test-.*?-4 -r --performance-report
+```bash
+reframe -c aplicacion.py -t test-.*?-4 -r --performance-report
+```
 
 Ejecución de ejecución de un bencharmk en especifico con todas las combinaciones de tipo de nodo/#nodos:
 
-    reframe -c aplicacion.py -t test-.*?-benchmark_name -r --performance-report
+```bash
+reframe -c aplicacion.py -t test-.*?-benchmark_name -r --performance-report
+```
 
 En el caso de las pruebas de GPU's. La etiqueta es la siguiente:
 
-    self.tags = {f'test-{self.node_type}-{self.Ngpus}-{self.bench_name}'}
+```bash
+self.tags = {f'test-{self.node_type}-{self.Ngpus}-{self.bench_name}'}
+```
 
 Donde se escoge la cantidad de gpus a utilizar, ejemplo:
 
 Ejecución de todas las pruebas en la partición `gpus` con 4 gpu's:
 
-    reframe -c aplicacion-gpu.py -t test-gpus-4 -r --performance-report
+```bash
+reframe -c aplicacion-gpu.py -t test-gpus-4 -r --performance-report
+```
 
 Revise la opción
 [`tags`](/reframe/scripts/lanzar_pruebas.xml#tags)
@@ -427,96 +445,98 @@ de Reframe para más información.
 
 ## Ejecución recursiva
 
-`Reframe` puede buscar archivos de prueba de forma recursiva en los directorios que se encuentran en la
-ruta de búsqueda. Puede usar esta opción para ejecutar varias o todas las pruebas de aplicaciones.
-Ejemplos:
+`Reframe` puede buscar archivos de prueba de forma recursiva en los directorios que se 
+encuentran en la ruta de búsqueda. Puede usar esta opción para ejecutar varias o todas 
+las pruebas de aplicaciones. Ejemplos:
 
 Ejecución de todas las pruebas de aplicaciones
 
-    reframe -c Apps/ -R --performance-report
+```bash
+reframe -c Apps/ -R --performance-report
+```
 
 Ejecución de todas las pruebas de cpu de aplicaciones
 
-    reframe -c Apps/ -R --cpu-only --performance-report
+```bash
+reframe -c Apps/ -R --cpu-only --performance-report
+```
 
 Ejecución de todas las pruebas de gpu de aplicaciones
 
-    reframe -c Apps/ -R --gpu-only --performance-report
+```bash
+reframe -c Apps/ -R --gpu-only --performance-report
+```
 
 Consulte la sección
-[Lanzar pruebas](/reframe/scripts/lanzar_pruebas.xml)
+[Lanzar pruebas](../scripts/lanzar_pruebas.md)
 para más información.
 
-:::: note
-::: title
-:::
-
-Al ejecutar múltiples pruebas tome en cuenta que se creara un solo archivo `logs` y una sola
-carpeta `output` y `stage` para todas las pruebas que se encuentre.
+```admonish info title=" "
+Al ejecutar múltiples pruebas tome en cuenta que se creara un solo archivo `logs` 
+y una sola carpeta `output` y `stage` para todas las pruebas que se encuentre.
 
 Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
-::::
+```
 
 # Función sanity
 
-La función de sanidad de una prueba de aplicaciones consiste en la verificaciones de ciertos patrones
-y valores esperados en el resultado.
+La función de sanidad de una prueba de aplicaciones consiste en la verificaciones de 
+ciertos patrones y valores esperados en el resultado.
 
-Consulte la [Pruebas de sanidad](/reframe/scripts/pruebas_sanidad.xml) para más información.
+Consulte la [Pruebas de sanidad](../scripts/pruebas_sanidad.md) para más información.
 
 ## Verificación de patrones
 
 Por ejemplo, una ejecución exitosa de Lammps contiene la expresión:
 
+```bash
     Total wall time: 2:17:24
+```
 
-La prueba de sanidad verifica la presencia de la expresión `Total wall time:` para marcar la prueba
-como exitosa. Revise los scripts de Reframe de prueba de aplicaciones para verificar que patrón se busca
-en cada prueba.
+La prueba de sanidad verifica la presencia de la expresión `Total wall time:` para 
+marcar la prueba como exitosa. Revise los scripts de Reframe de prueba de aplicaciones 
+para verificar que patrón se busca en cada prueba.
 
 ## Verificación de valores
 
-La simulaciones probadas deben llegar a ciertos valores de energía o temperatura dependiendo de cada
-aplicación. La prueba de sanidad extrae los valores de interés y los compara respecto a valores que
-se tienen de referencia, si los valores obtenidos entran dentro de cierto rango la prueba se toma como
-exitosa.
+La simulaciones probadas deben llegar a ciertos valores de energía o temperatura 
+dependiendo de cada aplicación. La prueba de sanidad extrae los valores de interés y 
+los compara respecto a valores que se tienen de referencia, si los valores obtenidos 
+entran dentro de cierto rango la prueba se toma como exitosa.
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 Los valores de referencia y el rango se obtuvieron de múltiples ejecuciones de cada simulación.
-::::
+```
 
 Consulte la documentación de cada aplicación para más información.
 
 # Función performance
 
-Por cada aplicación se extrae y se evalúa una variable que determina el desempeño de la aplicación.
-La mayoría de las aplicaciones tiene un valor de performance, por ejemplo, Namd utiliza el valor
-"days/ns" que muestra la cantidad de días de cómputo requeridos para simular 1 nanosegundo de tiempo
-real.
+Por cada aplicación se extrae y se evalúa una variable que determina el desempeño de la 
+aplicación.La mayoría de las aplicaciones tiene un valor de performance, por ejemplo, 
+Namd utiliza el valor "days/ns" que muestra la cantidad de días de cómputo requeridos 
+para simular 1 nanosegundo de tiempo real.
 
 Este valor se compara y se evalúa respecto a un valor de referencia y un umbral de tolerancia.
 Ejemplo:
 
+```bash
     'Stmv':        (5.471,-0.50,0.15,'days/ns')
+```
 
-El umbral de tolerancia que definimos para todas las pruebas es a un 15 % para un mal performance
-y 50 % para un buen performance. Esto con la finalidad de que Reframe nos avise de un valor inesperado
-para cada situación.
+El umbral de tolerancia que definimos para todas las pruebas es a un 15 % para un mal 
+performance y 50 % para un buen performance. Esto con la finalidad de que Reframe nos avise 
+de un valor inesperado para cada situación.
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 Los valores de referencia se obtuvieron del promedio múltiples ejecuciones de cada simulación.
-::::
+```
 
-Reframe permite definir múltiples funciones de performance que no necesariamente deben ser evaluadas,
-esto permite solo extraer resultados de interés para la prueba y consultarlas en la carpeta
-[perflogs](/reframe/scripts/pruebas_rendimiento.xml#registros_rendimiento),
-revise cada script de Reframe de prueba de aplicaciones para consultar las funciones de performance presentes.
+Reframe permite definir múltiples funciones de performance que no necesariamente deben 
+ser evaluadas, esto permite solo extraer resultados de interés para la prueba y consultarlas en la carpeta
+[perflogs](../scripts/pruebas_rendimiento.md#registros-de-rendimiento),
+revise cada script de Reframe de prueba de aplicaciones para consultar las funciones de 
+performance presentes.
 
-Consulte la sección [Pruebas de rendimiento](/reframe/scripts/pruebas_rendimiento.xml)
+Consulte la sección [Pruebas de rendimiento](../scripts/pruebas_rendimiento.md)
 para más información.
