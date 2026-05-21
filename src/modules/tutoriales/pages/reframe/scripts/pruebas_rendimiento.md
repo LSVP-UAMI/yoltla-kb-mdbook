@@ -351,21 +351,27 @@ Los demas valores entraron en el marguen esperado.
 
 # Registros de rendimiento
 
-ReFrame tiene un poderoso mecanismo para registrar sus actividades, así como los datos de rendimiento. Admite diferentes tipos de canales de registro y puede enviar datos simultáneamente en cualquier de ellos. Por ejemplo,
-los datos de rendimiento pueden registrarse en archivos y, al mismo tiempo, enviarse a un log o a un servidor de administración de registros.
+ReFrame tiene un poderoso mecanismo para registrar sus actividades, así como los datos
+de rendimiento. Admite diferentes tipos de canales de registro y puede enviar datos 
+simultáneamente en cualquier de ellos. Por ejemplo, los datos de rendimiento pueden 
+registrarse en archivos y, al mismo tiempo, enviarse a un log o a un servidor de 
+administración de registros.
 
-De forma predeterminada, es decir, a partir del archivo de configuración integrado, ReFrame envía datos de rendimiento a los archivos por prueba en el directorio `perflogs/`:
+De forma predeterminada, es decir, a partir del archivo de configuración integrado, 
+ReFrame envía datos de rendimiento a los archivos por prueba en el directorio `perflogs/`:
 
-``` bash
+```bash
 perflogs/
 └── yoltla
     └── q1h-20p
         └── StreamTest.log
 ```
 
-ReFrame crea un archivo de registro por prueba, por sistema y por partición y agrega los registros cada vez que se ejecuta la prueba en esa combinación de sistema/partición. Inspeccionemos el archivo de registro de nuestras últimas pruebas:
+ReFrame crea un archivo de registro por prueba, por sistema y por partición y agrega los
+registros cada vez que se ejecuta la prueba en esa combinación de sistema/partición. 
+Inspeccionemos el archivo de registro de nuestras últimas pruebas:
 
-``` bash
+```bash
 2022-06-23T20:18:19|reframe 3.9.2|StreamTest on yoltla:q1h-20p using builtin-gcc-7.2.0|jobid=926963|Copy=6606.1|ref=0 (l=null, u=null)|MB/s
 2022-06-23T20:18:19|reframe 3.9.2|StreamTest on yoltla:q1h-20p using builtin-gcc-7.2.0|jobid=926963|Scale=6447.7|ref=0 (l=null, u=null)|MB/s
 2022-06-23T20:18:19|reframe 3.9.2|StreamTest on yoltla:q1h-20p using builtin-gcc-7.2.0|jobid=926963|Add=9377.2|ref=0 (l=null, u=null)|MB/s
@@ -376,25 +382,33 @@ ReFrame crea un archivo de registro por prueba, por sistema y por partición y a
 2022-06-23T23:08:53|reframe 3.9.2|StreamTest on yoltla:q1h-20p using builtin-gcc-7.2.0|jobid=927000|Triad=8674.9|ref=10648.0 (l=-0.05, u=0.05)|MB/s
 ```
 
-Se imprime información diversa para cada ejecución, como las variables de rendimiento, su valor, sus referencias y umbrales, etc. El formato predeterminado está en una forma adecuada para un fácil análisis, pero puede controlar completamente no solo el formato, sino también lo que se está registrando desde el archivo de configuración.
+Se imprime información diversa para cada ejecución, como las variables de rendimiento, 
+su valor, sus referencias y umbrales, etc. El formato predeterminado está en una forma 
+adecuada para un fácil análisis, pero puede controlar completamente no solo el formato, 
+sino también lo que se está registrando desde el archivo de configuración.
 
 Para obtener más información, consulte la sección [Configuración de Logging](reframe/anexos/archivo_configuracion.xml#configuracion_logging).
 
 # Ejemplos avanzados
 
-ReFrame ofrece operaciones complejas para definir, evaluar y administrar las funciones y variables de rendimiento de una forma más eficiente. Algunos ejemplos son:
+ReFrame ofrece operaciones complejas para definir, evaluar y administrar las funciones 
+y variables de rendimiento de una forma más eficiente. Algunos ejemplos son:
 
-perf_variables = {} [¶](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=performance#reframe.core.pipeline.RegressionTest.perf_variables)
+## perf_variables = {} [¶](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=performance#reframe.core.pipeline.RegressionTest.perf_variables)
 
-:   Las variables de rendimiento asociadas a la prueba.
+- Las variables de rendimiento asociadas a la prueba.
 
-En este contexto, una variable de rendimiento es una dupla de clave-valor, donde la clave es el nombre de la variable deseada y el valor es la expresión de rendimiento diferido, es decir, el resultado de una función de rendimiento diferible, que calcula o extrae el valor de la variable de rendimiento.
+En este contexto, una variable de rendimiento es una dupla de clave-valor, donde la 
+clave es el nombre de la variable deseada y el valor es la expresión de rendimiento 
+diferido, es decir, el resultado de una función de rendimiento diferible, que calcula 
+o extrae el valor de la variable de rendimiento.
 
-De forma predeterminada, ReFrame completa este campo durante la instanciación de la prueba con todas las funciones decoradas con el decorador `@performance_function`.
+De forma predeterminada, ReFrame completa este campo durante la instanciación de la 
+prueba con todas las funciones decoradas con el decorador `@performance_function`.
 
 El siguiente ejemplo es una parcialidad de código donde se muestra el uso de `perf_variables`:
 
-``` python
+```python
     @performance_function('MB/s')
     def extract_bw(self, kind='Copy'):
         '''Funcion de extración de variables'''
@@ -416,17 +430,21 @@ El siguiente ejemplo es una parcialidad de código donde se muestra el uso de `p
         }
 ```
 
-El ejemplo anterior retoma las variables de performance de STREAM. Se destaca el uso de una sola función performance para extraer las variables en vez de usar múltiples funciones.
+El ejemplo anterior retoma las variables de performance de STREAM. Se destaca el uso de 
+una sola función performance para extraer las variables en vez de usar múltiples funciones.
 
-reference = {} [¶](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html#reframe.core.pipeline.RegressionTest.reference)
+## reference = {} [¶](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html#reframe.core.pipeline.RegressionTest.reference)
 
-:   Comó se explico anteriormente, `reference` es el conjunto de valores de referencia para la prueba.
+- Comó se explico anteriormente, `reference` es el conjunto de valores de referencia 
+para la prueba.
 
-Los valores de referencia se especifican como un diccionario de ámbito basado en las variables de rendimiento definidas y en el ámbito de las combinaciones de `sistema/partición`.
+Los valores de referencia se especifican como un diccionario de ámbito basado en las 
+variables de rendimiento definidas y en el ámbito de las combinaciones de `sistema/partición`.
 
-Un ejemplo de uso en un sistema con múltiples particiones y arquitecturas diferentes es el siguiente:
+Un ejemplo de uso en un sistema con múltiples particiones y arquitecturas diferentes 
+es el siguiente:
 
-``` python
+```python
 @rfm.simple_test
 class Namd_CPU_Benchmarks(rfm.RunOnlyRegressionTest):
 
@@ -475,6 +493,10 @@ class Namd_CPU_Benchmarks(rfm.RunOnlyRegressionTest):
           ......
 ```
 
-El ejemplo anterior es una parcialidad de código de una prueba de la aplicación NAMD. En donde para todo sistema-partición (\*), `reference` busca los valores de referencia a partir de tres parametros: \[Número de nodos\]\[Arquitectura del nodo(s)\]\[Nombre del Benchmark usado\] en una lista (allref) previamente definida.
+El ejemplo anterior es una parcialidad de código de una prueba de la aplicación NAMD. 
+En donde para todo sistema-partición (\*), `reference` busca los valores de referencia 
+a partir de tres parametros: \[Número de nodos\]\[Arquitectura del nodo(s)\]\[Nombre 
+del Benchmark usado\] en una lista (allref) previamente definida.
 
-Este ejemplo usa otros elementos de ReFrame, sugerimos consultar la sección [Parámetros](reframe/scripts/parametros.xml) y [Topología](reframe/anexos/topologia.xml).
+Este ejemplo usa otros elementos de ReFrame, sugerimos consultar la sección 
+[Parámetros](reframe/scripts/parametros.xml) y [Topología](reframe/anexos/topologia.xml).

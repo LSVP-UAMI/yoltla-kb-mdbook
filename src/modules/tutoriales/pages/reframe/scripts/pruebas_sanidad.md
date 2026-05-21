@@ -151,13 +151,13 @@ Para obtener más información, consulte la sección
 
 ### **Lista de funciones y utilidades**
 
-**reframe.utility.sanity.abs(x)** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.abs)
+#### reframe.utility.sanity.abs(x) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.abs)
 - Calcula el valor absoluto de x
 
-**reframe.utility.sanity.all(iterable)** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.all)
+#### reframe.utility.sanity.all(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.all)
 - Lista de múltiples pruebas de sanidad
 
-**reframe.utility.sanity.assert_eq(a, b, msg=None)** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_eq)
+#### reframe.utility.sanity.assert_eq(a, b, msg=None) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_eq)
 - Confirma que `a == b`.
 
     **Parámetros:**
@@ -175,7 +175,7 @@ Para obtener más información, consulte la sección
     `reframe.core.exceptions.SanityError` -- si falla.
 
 
-**reframe.utility.sanity.assert_found(patt, filename, msg=None, encoding=\'utf-8\')** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_found)
+#### reframe.utility.sanity.assert_found(patt, filename, msg=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_found)
 - Comprueba que el patrón de expresiones regulares `patt` se encuentra en el archivo `filename`.
 
     **Parámetros:**
@@ -199,7 +199,7 @@ Para obtener más información, consulte la sección
     `reframe.core.exceptions.SanityError` -- si falla.
 
 
-**reframe.utility.sanity.assert_lt(a, b, msg=None)\]** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_lt)
+####  reframe.utility.sanity.assert_lt(a, b, msg=None)\] [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_lt)
 - Confirma que `a < b`.
 
     **Parámetros:**
@@ -217,7 +217,7 @@ Para obtener más información, consulte la sección
     `reframe.core.exceptions.SanityError` -- si falla.
 
 
-**reframe.utility.sanity.assert_ne(a, b, msg=None)** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_ne)
+#### reframe.utility.sanity.assert_ne(a, b, msg=None) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_ne)
 - Confirma que `a != b`.
 
     **Parámetros:**
@@ -235,7 +235,7 @@ Para obtener más información, consulte la sección
     `reframe.core.exceptions.SanityError` -- si falla.
 
 
-**reframe.utility.sanity.assert_not_found(patt, filename, msg=None, encoding=\'utf-8\')** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_not_found)
+#### reframe.utility.sanity.assert_not_found(patt, filename, msg=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_not_found)
 - Comprueba que el patrón de expresiones regulares `patt` no se encuentra en el archivo `filename`.
 
     **Parámetros:**
@@ -259,14 +259,14 @@ Para obtener más información, consulte la sección
     `reframe.core.exceptions.SanityError` -- si falla.
 
 
-**reframe.utility.sanity.avg(iterable)** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.avg)
+#### reframe.utility.sanity.avg(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.avg)
 - Devuelve el promedio de todos los elementos de `iterable`.
 
-**reframe.utility.sanity.count(iterable)** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.count)
+#### reframe.utility.sanity.count(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.count)
 - Devuelve el recuento de elementos de `iterable`.
 
 
-**reframe.utility.sanity.extractall(patt, filename, tag=0, conv=None, encoding=\'utf-8\')** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractall)
+#### reframe.utility.sanity.extractall(patt, filename, tag=0, conv=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractall)
 - Extrae todos los valores del grupo de captura `tag` de una expresión regular coincidente `patt` en el archivo filename\`.
 
     **Parámetros:**
@@ -291,7 +291,7 @@ Para obtener más información, consulte la sección
     `reframe.core.exceptions.SanityError` -- si falla.
 
 
-**reframe.utility.sanity.extractsingle(patt, filename, tag=0, conv=None, item=0, encoding=\'utf-8\')** [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractsingle)
+#### reframe.utility.sanity.extractsingle(patt, filename, tag=0, conv=None, item=0, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractsingle)
 - Extrae un valor del grupo de captura `tag` de una expresión regular coincidente `patt` en el archivo `filename`.
 
     **Parámetros:**

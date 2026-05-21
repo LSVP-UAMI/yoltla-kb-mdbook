@@ -1,21 +1,25 @@
 # Descripción
 
-Cualquier prueba ReFrame se convierte en una parametrizada si el usuario define parámetros dentro del cuerpo de la clase de la prueba. Esto se hace usando la función [`parameter()`](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=parameter#reframe.core.builtins.parameter) integrada en ReFrame, que acepta una la lista de valores de parámetros.
+Cualquier prueba ReFrame se convierte en una parametrizada si el usuario define 
+parámetros dentro del cuerpo de la clase de la prueba. Esto se hace usando la 
+función [`parameter()`](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=parameter#reframe.core.builtins.parameter) 
+integrada en ReFrame, que acepta una la lista de valores de parámetros.
 
-Para cada valor de parámetro, ReFrame instanciará una prueba de regresión **diferente** al asignar el valor correspondiente a un atributo con el nombre del parámetro.
+Para cada valor de parámetro, ReFrame instanciará una prueba de regresión 
+**diferente** al asignar el valor correspondiente a un atributo con el 
+nombre del parámetro.
 
-Para obtener más información, consulte la sección [Parameterizing a Regression Test](https://reframe-hpc.readthedocs.io/en/stable/tutorial_advanced.html#parameterizing-a-regression-test) de la documentación oficial de ReFrame.
+Para obtener más información, consulte la sección 
+[Parameterizing a Regression Test](https://reframe-hpc.readthedocs.io/en/stable/tutorial_advanced.html#parameterizing-a-regression-test) 
+de la documentación oficial de ReFrame.
 
 # Ejemplos
 
 Vamos a ejecutar el siguiente codigo en C de MPI:
 
-:::: formalpara
-::: title
-hola_mpi.c
-:::
+<span style="color: red;">*hola_mpi.c*</span>
 
-``` c
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
@@ -43,16 +47,12 @@ int main(int argc,char *argv[]){
     return 0;
 }
 ```
-::::
 
 Utilizamos el siguiente script de ReFrame para lanzar las pruebas:
 
-:::: formalpara
-::: title
-hello_mpi.py
-:::
+<span style="color: red;">*hello_mpi.c*</span>
 
-``` python
+```python
 import reframe as rfm
 import reframe.utility.sanity as sn
 from reframe.core.backends import getlauncher
@@ -83,20 +83,26 @@ class HelloTest(rfm.RegressionTest):
     def assert_hello(self):
         return sn.assert_found(r'Hola Mundo, soy \d+ de \d+ en maq:\S+ ', self.stdout)
 ```
-::::
 
-En este ejemplo, ReFrame generará automáticamente 5 pruebas con diferentes valores para el atributo tareas, el cual se utiliza para inicializar las variables `num_tasks` y `num_tasks_per_node`. Esto permite adaptar la prueba en función de los valores del parámetro, como lo hacemos en este caso, donde ejecutamos un mismo codigo MPI con diferentes cantidad de procesos en un nodo.
+
+En este ejemplo, ReFrame generará automáticamente 5 pruebas con diferentes valores 
+para el atributo tareas, el cual se utiliza para inicializar las variables `num_tasks` 
+y `num_tasks_per_node`. Esto permite adaptar la prueba en función de los valores del 
+parámetro, como lo hacemos en este caso, donde ejecutamos un mismo codigo MPI con 
+diferentes cantidad de procesos en un nodo.
 
 Antes de ejecutar, enumeremos las pruebas generadas:
 
-    reframe -c hello_mpi.py -l
+```bash
+reframe -c hello_mpi.py -l
 
-    Opciones:
-      -l lista las pruebas presentes en un script
+Opciones:
+  -l lista las pruebas presentes en un script
+```
 
 Salida:
 
-``` bash
+```bash
 [ReFrame Setup]
   version:           3.9.2
   command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello_mpi.py -l'
@@ -118,25 +124,29 @@ Found 5 check(s)
 Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.out', '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.log'
 ```
 
-Confirmamos que ReFrame genera 5 pruebas a partir de una única prueba parametrizada. Al enumerar las pruebas parametrizadas, ReFrame agrega la lista de parámetros después del nombre de la prueba base, así cada prueba generada
-también recibe un nombre único.
+Confirmamos que ReFrame genera 5 pruebas a partir de una única prueba parametrizada. 
+Al enumerar las pruebas parametrizadas, ReFrame agrega la lista de parámetros después 
+del nombre de la prueba base, así cada prueba generada también recibe un nombre único.
 
-Para obtener más detalles sobre cómo se generan los nombres de las pruebas para varios tipos de pruebas, consulte la sección [Test Naming Scheme](https://reframe-hpc.readthedocs.io/en/stable/manpage.html#test-naming-scheme) de la la documentación oficial de ReFrame.
+Para obtener más detalles sobre cómo se generan los nombres de las pruebas para varios 
+tipos de pruebas, consulte la sección [Test Naming Scheme](https://reframe-hpc.readthedocs.io/en/stable/manpage.html#test-naming-scheme) 
+de la la documentación oficial de ReFrame.
 
-:::: note
-::: title
-:::
-
-El nombre único está formado por el nombre de la clase de prueba seguido de un `_` y el valor del parámetro. Por cada elemento en los parámetros de la prueba se obtendra un nombre único.
-::::
+```admonish info title=" "
+El nombre único está formado por el nombre de la clase de prueba seguido de un `_` 
+y el valor del parámetro. Por cada elemento en los parámetros de la prueba se obtendra 
+un nombre único.
+```
 
 Ejecutemos la prueba:
 
-    reframe -c hello_mpi.py -r
+```bash
+reframe -c hello_mpi.py -r
+```
 
 Salida:
 
-``` bash
+```bash
 [ReFrame Setup]
   version:           3.9.2
   command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello_mpi.py -l'
@@ -184,15 +194,20 @@ Run report saved in 'logs/run-report.json'
 Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.out', '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.log'
 ```
 
-Confirmamos que ReFrame ejecutó 5 pruebas distintas a partir de una única prueba. La parametrización de pruebas en ReFrame es muy poderosa ya que puede parametrizar sus pruebas en cualquier cosa y puede crear espacios de parametrización complejos.
+Confirmamos que ReFrame ejecutó 5 pruebas distintas a partir de una única prueba. 
+La parametrización de pruebas en ReFrame es muy poderosa ya que puede parametrizar 
+sus pruebas en cualquier cosa y puede crear espacios de parametrización complejos.
 
 ## Ejecución por parámetro
 
-ReFrame permite filtrar las pruebas por diferentes atributos y existen opciones de línea de comandos específicas para lograrlo. Como vimos, ReFrame asigna un nombre único por parámetro que identifica la prueba, de modo que podemos escoger que parámetro queremos ejecutar.
+ReFrame permite filtrar las pruebas por diferentes atributos y existen opciones de 
+línea de comandos específicas para lograrlo. Como vimos, ReFrame asigna un nombre 
+único por parámetro que identifica la prueba, de modo que podemos escoger que parámetro 
+queremos ejecutar.
 
 Para el ejemplo anterior, tenemos 5 pruebas posibles:
 
-``` bash
+```bash
 - HelloTest_20
 - HelloTest_16
 - HelloTest_2
@@ -202,31 +217,32 @@ Para el ejemplo anterior, tenemos 5 pruebas posibles:
 
 Suponiendo que queremos ejecutar solo 4 procesos MPI. Utilizamos la opción `-n, --name=NAME`:
 
-    reframe -c hello_mpi.py -n HelloTest_4 -r
-
+```bash
+reframe -c hello_mpi.py -n HelloTest_4 -r
+```
 Esto ejecutara solo una prueba especifica.
 
-:::: note
-::: title
-:::
+```admonish info title=" "
+La opción `-n, --name` filtra las pruebas por nombre. NAME se interpreta como una 
+expresión regular de Python; se seleccionará cualquier prueba cuyo nombre coincida 
+con NOMBRE.
+```
 
-La opción `-n, --name` filtra las pruebas por nombre. NAME se interpreta como una expresión regular de Python; se seleccionará cualquier prueba cuyo nombre coincida con NOMBRE.
-::::
+ReFrame al interpretar [expresiónes regulares](https://docs.python.org/3/library/re.html) 
+de Python nos permite escoger múltiples pruebas especificas. Por ejemplo, si queremos 
+ejecutar 2 y 20 procesos en el ejemplo anterior, ejecutamos:
 
-ReFrame al interpretar [expresiónes regulares](https://docs.python.org/3/library/re.html) de Python nos permite escoger múltiples pruebas especificas. Por ejemplo, si queremos ejecutar 2 y 20 procesos en el ejemplo anterior, ejecutamos:
-
-    reframe -c hello_mpi.py -n HelloTest_2.*? -r
-
+```bash
+reframe -c hello_mpi.py -n HelloTest_2.*? -r
+```
 ## Múltiples parámetros
 
-En el siguiente ejemplo, utilizamos una combinación de parámetros para definir el número de nodos y número de tareas por nodo para el ejemplo Hola Mundo MPI.
+En el siguiente ejemplo, utilizamos una combinación de parámetros para definir el 
+número de nodos y número de tareas por nodo para el ejemplo Hola Mundo MPI.
 
-:::: formalpara
-::: title
-hello_mpi.py
-:::
+<span style="color: red;">*hello_mpi.py*</span>
 
-``` python
+```python
 import reframe as rfm
 import reframe.utility.sanity as sn
 from reframe.core.backends import getlauncher
@@ -267,38 +283,28 @@ class HelloTest(rfm.RegressionTest):
     def assert_hello(self):
       return sn.assert_found(r'Hola Mundo, soy \d+ de \d+ en maq:\S+ ', self.stdout)
 ```
-::::
 
 Esto lanza una combinación de pruebas, que se ilustra en la siguiente tabla:
 
-+----------------------+----------------------+-----------------------+
-| Número de Nodos      | No. tareas total     | No. tareas por nodo   |
-+======================+======================+=======================+
-| 1                    | 8                    | 8                     |
-+----------------------+----------------------+-----------------------+
-| 1                    | 16                   | 16                    |
-+----------------------+----------------------+-----------------------+
-| 1                    | 20                   | 20                    |
-+----------------------+----------------------+-----------------------+
-| 2                    | 16                   | 8                     |
-+----------------------+----------------------+-----------------------+
-| 2                    | 32                   | 16                    |
-+----------------------+----------------------+-----------------------+
-| 2                    | 40                   | 20                    |
-+----------------------+----------------------+-----------------------+
+| Número de Nodos | No. tareas total | No. tareas por nodo |
+|:---------------:|:----------------:|:-------------------:|
+| 1 | 8 | 8 |
+| 1 | 16 | 16 |
+| 1 | 20 | 20 |
+| 2 | 16 | 8 |
+| 2 | 32 | 16 |
+| 2 | 40 | 20 |
 
 Así puede crear y administrar multiples pruebas.
 
 ## Etiquetas
 
-Es posible combinar parámetros y etiquetas en una misma prueba, como se puede ver en el siguiente ejemplo:
+Es posible combinar parámetros y etiquetas en una misma prueba, como se puede ver en 
+el siguiente ejemplo:
 
-:::: formalpara
-::: title
-hello_mpi.py
-:::
+<span style="color: red;">*hello_mpi.py*</span>
 
-``` python
+```python
 import reframe as rfm
 import reframe.utility.sanity as sn
 from reframe.core.backends import getlauncher
@@ -342,11 +348,10 @@ class HelloTest(rfm.RegressionTest):
     def assert_hello(self):
       return sn.assert_found(r'Hola Mundo, soy \d+ de \d+ en maq:\S+ ', self.stdout)
 ```
-::::
 
 Para enumerar la lista de etiquetas de la prueba, ejecute el comando:
 
-``` shell
+```bash
 reframe -c hello_mpi.py --list-tags
 
 Opciones:
@@ -355,7 +360,7 @@ Opciones:
 
 Salida:
 
-``` shell
+```bash
 [ReFrame Setup]
   version:           3.9.2
   command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello_mpi.py --list-tags'
