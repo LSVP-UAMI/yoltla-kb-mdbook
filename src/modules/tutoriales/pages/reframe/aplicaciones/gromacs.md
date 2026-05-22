@@ -31,17 +31,15 @@ mejorar aún más el rendimiento.
 
 ## ns/day
 
-:::: formalpara
-::: title
-Ejemplo de salida de GROMACS
-:::
+<span style="color: #990819;">*Ejemplo de salida de GROMACS*</span>
 
-                       Core t (s)   Wall t (s)        (%)
-               Time:   218690.066      427.139    51198.8
-                         (ns/day)    (hour/ns)
-        Performance:        4.046        5.932
-        Finished mdrun on rank 0 Wed Jun  1 09:15:49 2022
-::::
+```bash
+                    Core t (s)   Wall t (s)        (%)
+            Time:   218690.066      427.139    51198.8
+                        (ns/day)    (hour/ns)
+    Performance:        4.046        5.932
+    Finished mdrun on rank 0 Wed Jun  1 09:15:49 2022
+```
 
 El rendimiento de la simulación en `GROMACS` normalmente se cuantifica por el número de nanosegundos
 de trayectoria `MD` que se pueden simular en un día (`ns/day`).
@@ -50,11 +48,9 @@ de trayectoria `MD` que se pueden simular en un día (`ns/day`).
 
 Gromacs muestra un informe del promedio obtenido de los cálculos de la simulación.
 
-:::: formalpara
-::: title
-Ejemplo de salida de `GROMACS`
-:::
+<span style="color: #990819;">*Ejemplo de salida de `GROMACS`*</span>
 
+```bash
             <======  ###############  ==>
             <====  A V E R A G E S  ====>
             <==  ###############  ======>
@@ -70,7 +66,7 @@ Ejemplo de salida de `GROMACS`
        -2.53443e+05    4.93182e+04   -2.04125e+05   -2.03721e+05    3.00077e+02
      Pressure (bar)   Constr. rmsd
        -3.29630e+00    0.00000e+00
-::::
+```
 
 Los valores de energía están en kcal/mol. Para este trabajo, solo nos interesa evaluar que la variable
 `Total Energy` llegue a ciertos valores esperados para cada simulación.
@@ -80,15 +76,14 @@ Los valores de energía están en kcal/mol. Para este trabajo, solo nos interesa
 La eficiencia de un sistema paralelo describe la fracción del tiempo que utilizan los procesadores para
 un cálculo determinado. Se define como:
 
-:::: formalpara
-::: title
-Calculo de eficiencia paralela:
-:::
+<span style="color: #990819;">*Calculo de eficiencia paralela:*</span>
 
+```bash
                Tiempo de ejecución usando un procesador             ts
         E(n)= -----------------------------------------------   = ------
                N * Tiempo de ejecución usando N procesadores      N * tN
-::::
+```
+
 
 En general, los trabajos paralelos deberían escalar al menos un 70 % de eficiencia. Para Gromacs, la
 eficiencia de un trabajo paralelo se puede calcular con el parámetro de tiempo `Wall t (s)` (tiempo de
@@ -100,15 +95,13 @@ dentro de un nodo es generalmente muy buena, para los propósitos del Yoltla es 
 cálculo por nodo, en lugar de por CPU. La eficiencia paralela quedaría del siguiente manera :
 (donde N son el numero de cores, para este trabajo usaremos 1 proceso por core disponible).
 
-:::: formalpara
-::: title
-Calculo de eficiencia paralela por nodo
-:::
+<span style="color: #990819;">*Calculo de eficiencia paralela por nodo*</span>
 
+```bash
                 Wall time donde N = 1
         ------------------------------------- * 100 = Eficiencia
                 N * Wall time en N nodos
-::::
+```
 
 Idealmente, el rendimiento aumenta linealmente con el número de núcleos de CPU.
 
@@ -162,34 +155,34 @@ las posibles consecuencias.
 Hay varios parámetros de línea de comandos disponibles para modificar el comportamiento
 predeterminado, para este trabajo se usaron los siguientes :
 
-`-nb`
+- `-nb`
 
-:   Se utiliza para establecer dónde ejecutar las interacciones no vinculadas de corto alcance. Se puede
+    Se utiliza para establecer dónde ejecutar las interacciones no vinculadas de corto alcance. Se puede
     configurar en \"automático\", \"cpu\", \"gpu\". El valor predeterminado es \"automático\", que utiliza una
     GPU compatible si está disponible. La configuración de \"cpu\" requiere que no se utilice GPU. La
     configuración de \"gpu\" requiere que una GPU compatible esté disponible y se utilizará.
 
-`-ntomp`
+- `-ntomp`
 
-:   El número total de subprocesos de OpenMP por rango. El valor predeterminado, 0, iniciará un
+    El número total de subprocesos de OpenMP por rango. El valor predeterminado, 0, iniciará un
     subproceso en cada núcleo disponible. Alternativamente, mdrun respetará la variable de entorno del
     sistema adecuada (por ejemplo, *OMP_NUM_THREADS*) si está configurada. Tenga en cuenta que la
     cantidad máxima de subprocesos de OpenMP (por rango), por razones de eficiencia, está limitada a 64.
     Si bien rara vez es beneficioso usar una cantidad de subprocesos superior a esta. Para este trabajo se
     utilizo el valor predeterminado.
 
-`-dlb`
+- `-dlb`
 
-:   Se puede configurar en \"automatic\", \"no\" o \"yes\". El valor predeterminado es \"automatic\". Es
+    Se puede configurar en \"automatic\", \"no\" o \"yes\". El valor predeterminado es \"automatic\". Es
     necesario realizar un equilibrio de carga dinámico entre los procesos de MPI para maximizar el
     rendimiento. Esto es particularmente importante para sistemas moleculares con partículas heterogéneas
     o densidad de interacción. Cuando se supera un cierto umbral de pérdida de rendimiento, DLB se activa
     y cambia las partículas entre los procesos para mejorar el rendimiento. Para este trabajo se utilizo el
     valor "yes".
 
-`-npme`
+- `-npme`
 
-:   Numero de procesos MPI dedicados al calculo PME. El valor predeterminado, -1, dedicará procesos
+    Numero de procesos MPI dedicados al calculo PME. El valor predeterminado, -1, dedicará procesos
     solo si el número total de subprocesos es de al menos 12, y utilizará alrededor de una cuarta parte de
     los procesos. Para este trabajo se utilizo una cuarta parte de los procesos dedicados a PME
 
@@ -276,7 +269,11 @@ Los siguientes resultados, son el promedio de 20 ejecuciones por Benchmark.
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 
-![Performance 20K atom system: Crambin Benchmark](Reframe/Apps/Gromacs/Figure_crambin.png){alt="Figure crambin"}
+<span style="color: #990819;">*Figure 1. Performance 20K atom system: Crambin Benchmark*</span>
+
+![Figure crambin](../../../images/Reframe/Apps/Gromacs/Figure_crambin.png)
+
+<span style="color: #990819;">*Table 1. Performance 20K atom system: Crambin Benchmark*</span>
 
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
@@ -301,13 +298,19 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 | 16      | 432.181    | 19.33  | 49 %         | 435.212    | 18.92  | 50 %         | 356.081    | 24.44  | 24 %         |
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 
+
+
 : Performance 20K atom system: Crambin Benchmark
 
 ## 61K atom system - 1WDN Glutamine-Binding Protein
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-724598.0`
 
-![Performance 61K atom system: Glutamine-Binding Benchmark](Reframe/Apps/Gromacs/Figure_glutamine.png){alt="Figure glutamine"}
+<span style="color: #990819;">*Figure 2. Performance 61K atom system: Glutamine-Binding Benchmark*</span>
+
+![Figure glutamine](../../../images/Reframe/Apps/Gromacs/Figure_glutamine.png)
+
+<span style="color: #990819;">*Table 2. Performance 61K atom system: Glutamine-Binding Benchmark*</span>
 
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
@@ -338,7 +341,11 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-724598.0`
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-3.32892e+06`
 
-![Performance 465K atom system: hEGFR Dimer Benchmark](Reframe/Apps/Gromacs/Figure_dimer.png){alt="Figure dimer"}
+<span style="color: #990819;">*Figure 3. Performance 465K atom system: hEGFR Dimer Benchmark*</span>
+
+![Figure dimer](../../../images/Reframe/Apps/Gromacs/Figure_dimer.png)
+
+<span style="color: #990819;">*Table 3. Performance 465K atom system: hEGFR Dimer Benchmark*</span>
 
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
@@ -369,7 +376,11 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-3.32892e+06`
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-1.20733e+07`
 
-![Performance 1.4M atom system: A Pair of hEGFR Dimer Benchmark](Reframe/Apps/Gromacs/Figure_dimer_pair.png){alt="Figure dimer pair"}
+<span style="color: #990819;">*Figure 4. Performance 1.4M atom system: A Pair of hEGFR Dimer Benchmark*</span>
+
+![Figure dimer pair](../../../images/Reframe/Apps/Gromacs/Figure_dimer_pair.png)
+
+<span style="color: #990819;">*Table 4. Performance 1.4M atom system: A Pair of hEGFR Dimer Benchmark*</span>
 
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
 | **\#    | **CPU's Nodos nc\                   | **CPU's Nodos ttv1\[1-58\]\         | **CPU's Nodos ttv2\[59-104\]\       |
@@ -400,7 +411,11 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-1.20733e+07`
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
-![Performance 3M atom system: Tetramers Benchmark](Reframe/Apps/Gromacs/Figure_tetramers.png){alt="Figure tetramers"}
+<span style="color: #990819;">*Figure 5. Performance 3M atom system: Tetramers Benchmark*</span>
+
+![Figure tetramers](../../../images/Reframe/Apps/Gromacs/Figure_tetramers.png)
+
+<span style="color: #990819;">*Table 5. Performance 3M atom system: Tetramers Benchmark*</span>
 
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
 | **\#    | **CPU's Nodos nc\                   | **CPU's Nodos ttv1\[1-58\]\         | **CPU's Nodos ttv2\[59-104\]\       |
@@ -429,7 +444,11 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
 ### Performance Tetramers Benchmark en nodos NC
 
-![Performance Tetramers Benchmark en nodos NC](Reframe/Apps/Gromacs/Figure_error_nc_tetramers.png){alt="Figure error nc tetramers"}
+<span style="color: #990819;">*Figure 6. Performance Tetramers Benchmark en nodos NC*</span>
+
+![Figure error nc tetramers](../../../images/Reframe/Apps/Gromacs/Figure_error_nc_tetramers.png)
+
+<span style="color: #990819;">*Table 6. Performance Tetramers Benchmark en nodos NC*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
@@ -459,7 +478,11 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
 ### Performance Tetramers Benchmark en nodos TTV1
 
-![Performance Tetramers Benchmark en nodos TTV1](Reframe/Apps/Gromacs/Figure_error_ttv1_tetramers.png){alt="Figure error ttv1 tetramers"}
+<span style="color: #990819;">*Figure 7. Performance Tetramers Benchmark en nodos TTV1*</span>
+
+![Figure error ttv1 tetramers](../../../images/Reframe/Apps/Gromacs/Figure_error_ttv1_tetramers.png)
+
+<span style="color: #990819;">*table 7. Performance Tetramers Benchmark en nodos TTV1*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
@@ -491,7 +514,11 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
 ### Performance Tetramers Benchmark en nodos TTV2
 
-![Performance Tetramers Benchmark en nodos TTv2](Reframe/Apps/Gromacs/Figure_error_ttv2_tetramers.png){alt="Figure error ttv2 tetramers"}
+<span style="color: #990819;">*Figure 8. Performance Tetramers Benchmark en nodos TTv2*</span>
+
+![Figure error ttv2 tetramers](../../../images/Reframe/Apps/Gromacs/Figure_error_ttv2_tetramers.png)
+
+<span style="color: #990819;">*Table 8. Performance Tetramers Benchmark en nodos TTv2*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
@@ -537,7 +564,7 @@ subprocesos de GPU pueden acelerar significativamente la evaluación de tareas d
 Sin embargo, para aprovecharlo al máximo, el dominio debe contener miles o decenas de miles de
 partículas.
 
-![Uso de GPU además de rangos MPI y subprocesos OpenMP para explorar el paralelismo.](Reframe/Apps/Gromacs/MPIandOpenMPandGPU.png){alt="MPIandOpenMPandGPU"}
+![Uso de GPU además de rangos MPI y subprocesos OpenMP para explorar el paralelismo.](../../../images/Reframe/Apps/Gromacs/MPIandOpenMPandGPU.png)
 
 En entornos HPC es común tener más de una GPU en un solo nodo. Para usarlos, podemos
 aprovechar la maquinaria de descomposición de dominios. De hecho, GROMACS ya está configurado
@@ -546,12 +573,9 @@ respectivo proceso y realizarán todos los cálculos para un solo dominio.
 
 Para realizar este paralelismo utilizaremos el siguiente script:
 
-:::: formalpara
-::: title
-Ejemplo de script de slurm para utilizar Gromacs con gpu's en el cluster Yoltla.
-:::
+<span style="color: #990819;">*Ejemplo de script de slurm para utilizar Gromacs con gpu's en el cluster Yoltla.*</span>
 
-``` bash
+```bash
 #!/bin/bash
 #SBATCH --ntasks=4
 #SBATCH --ntasks-per-node=4
@@ -571,31 +595,30 @@ options+=”-pme gpu -bonded gpu -dlb yes -npme 1”
 
 mpiexec.hydra -bootstrap slurm gmx_mpi mdrun $options
 ```
-::::
 
 Opciones:
 
-`-pin`
+- `-pin`
 
-:   Se puede establecer en \"automático\", \"activado\" o \"desactivado\" para controlar si mdrun intentará
+    Se puede establecer en \"automático\", \"activado\" o \"desactivado\" para controlar si mdrun intentará
     establecer la afinidad de los subprocesos con los núcleos.
 
-`-pinstride`
+- `-pinstride`
 
-:   Establece cómo deben distribuirse entre los núcleos (1 significa consecutivos). especifica el número de
+    Establece cómo deben distribuirse entre los núcleos (1 significa consecutivos). especifica el número de
     núcleos a los que mdrun debe anclar sus subprocesos.
 
-`-pme`
+- `-pme`
 
-:   Se utiliza para establecer dónde ejecutar las interacciones no vinculadas de largo alcance. Se puede
+    Se utiliza para establecer dónde ejecutar las interacciones no vinculadas de largo alcance. Se puede
     configurar en \"automático\", \"cpu\", \"gpu\". El valor predeterminado es \"automático\", que utiliza una
     GPU compatible si está disponible. La configuración de \"gpu\" requiere que haya una GPU compatible
     disponible. No se admiten varios rangos de PME con PME en GPU, por lo que si se usa más de una
     GPU para el cálculo de PME, npme debe establecerse en 1.
 
-`-bonded`
+- `-bonded`
 
-:   Se utiliza para establecer dónde ejecutar las interacciones vinculadas que forman parte de la carga de
+    Se utiliza para establecer dónde ejecutar las interacciones vinculadas que forman parte de la carga de
     trabajo de PP para un dominio. Se puede configurar en \"automático\", \"cpu\", \"gpu\". El valor
     predeterminado es \"automático\", que usa una GPU CUDA compatible solo cuando hay una disponible,
     una GPU maneja interacciones de corto alcance y la CPU maneja el trabajo de interacción de largo
@@ -618,7 +641,11 @@ consecutivos).
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
-![Performance Tetramers Benchmark en GPUS](Reframe/Apps/Gromacs/Figure_tetramer-Gpu.png){alt="Figure tetramer Gpu"}
+<span style="color: #990819;">*Figure 10. Performance Tetramers Benchmark en GPUS*</span>
+
+![Figure tetramer Gpu](../../../images/Reframe/Apps/Gromacs/Figure_tetramer-Gpu.png)
+
+<span style="color: #990819;">*Table 10. Performance Tetramers Benchmark en GPUS*</span>
 
 +-------------+---------------+---------------+---------------+---------------+
 | **\# GPU    | **Nodos GPUS Tesla K20\       | **Nodos nc con GPUS V100\     |
@@ -662,3 +689,6 @@ posible.
 [GROMACS GPU performance](https://enccs.github.io/gromacs-gpu-performance/)
 
 [GPU accelerated calculation of PME](https://manual.gromacs.org/documentation/2018.1/user-guide/mdrun-performance.html#gpu-accelerated-calculation-of-pme)
+
+
+

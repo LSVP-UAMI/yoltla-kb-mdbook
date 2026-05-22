@@ -5,28 +5,34 @@
         - [Nuevos tutoriales](./modules/tutoriales/pages/antora/nuevos_tutoriales.md)
     - [ReFrame](./modules/tutoriales/pages/reframe/reframe.md)
         - [REVISAR ENLACE A "Configuring ReFrame for Your Site"]()
+
         - [Scripts](./modules/tutoriales/pages/reframe/scripts/scripts.md)
             - [REVISAR ENLACE A "pipeline"]()
             - [REVISAR ENLACE A "Test Decorators"]()
             - [REVISAR ENLACE A "Pruebas de sanidad"]()
             - [REVISAR ENLACE A "Pruebas de rendimiento"]()
+
             - [Pruebas de sanidad](./modules/tutoriales/pages/reframe/scripts/pruebas_sanidad.md)
                 - [REVISAR ENLACE A "#assert_found"]()
+
             - [Pruebas de rendimiento](./modules/tutoriales/pages/reframe/scripts/pruebas_rendimiento.md)
                 - [REVISAR ENLACE A "Writing A Performance Test"]()
                 - [REVISAR ENLACE A "extractsingle()"]()
                 - [REVISAR ENLACE A "Configuración de Logging"]()
                 - [REVISAR ENLACE A "Parámetros"]()
                 - [REVISAR ENLACE A "Topología"]()
+
             - [Parámetros](./modules/tutoriales/pages/reframe/scripts/parametros.md)
                 - [REVISAR ENLACE A "Parameterizing a Regression Test"]()
                 - [REVISAR ENLACE A "Tags"]()
+
             - [Lanzar pruebas](./modules/tutoriales/pages/reframe/scripts/lanzar_pruebas.md)
                 - [REVISAR ENLACE A " Configuración de Logging"]()
                 - [REVISAR ENLACE A " Archivo de configuración" (2)]()
                 - [REVISAR ENLACE A "Tags" (2)]()
                 - [REVISAR ENLACE A "keep_files"]()
                 - [REVISAR ENLACE A " variable de ambiente"]()
+
         - [Aplicaciones](./modules/tutoriales/pages/reframe/aplicaciones/aplicaciones.md)
             - [REVISAR ENLACE A "RunOnlyRegressionTest"]()
             - [REVISAR ENLACE A "Topología"]()
@@ -37,7 +43,14 @@
             - [REVISAR ENLACE A "Archivo de configuración"]()
 
             - [Gaussian](./modules/tutoriales/pages/reframe/aplicaciones/gaussian.md)
-            - [Gromacs]()
+                - [REVISAR AJUSTE DE TABLAS]()
+            
+            - [Gromacs](./modules/tutoriales/pages/reframe/aplicaciones/gromacs.md)
+                - [REVISAR ENLACE A "HECBioSim"]()
+                - [REVISAR ENLACE A "The HECBioSim Benchmarks"]()
+                - [REVISAR AJUSTE DE TABLAS]()
+                
+
             - [Lammps]()
             - [NWChem]()
             - [Namd]()

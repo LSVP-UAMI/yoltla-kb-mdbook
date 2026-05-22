@@ -89,8 +89,6 @@ El archivo `g09root/g09/tests/tests.idx` enumera lo que hace cada trabajo de pru
 
 Test0979: NBO test with f functions
 
-figure 0979
-
 ![Figure 0979](../../../images/Reframe/Apps/Gaussian/Figure_0979.png)
 
 <span style="color: red;">*Table 1. Performance Test 0979*</span>
