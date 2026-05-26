@@ -1,9 +1,9 @@
 # Descripción
 
-[LAMMPS](https://www.lammps.org/#gsc.tab=0) es un código clásico de dinámica molecular y un acrónimo de Simulador masivo paralelo
-atómico/molecular a gran escala. Fue desarrollado en Sandia National Laboratories, una instalación del
-Departamento de Energía de EE.UU. Es un código de fuente abierta, distribuido libremente bajo los
-términos de la Licencia Pública GNU (GPL).
+[LAMMPS](https://www.lammps.org/#gsc.tab=0) es un código clásico de dinámica molecular 
+y un acrónimo de Simulador masivo paralelo atómico/molecular a gran escala. Fue desarrollado 
+en Sandia National Laboratories, una instalación del Departamento de Energía de EE.UU. Es un 
+código de fuente abierta, distribuido libremente bajo los términos de la Licencia Pública GNU (GPL).
 
 LAMMPS tiene potencial para materiales blandos (biomoléculas, polímeros) y materiales en
 estado sólido (metales, semiconductores) y sistemas mesoscópicos o de grano grueso. Puede usarse
@@ -24,41 +24,45 @@ La salida de `LAMMPS` contiene la mayor parte de la información importante como
 la cantidad de procesadores utilizados para las ejecuciones, el diseño del procesador, los pasos
 termodinámicos y algunos tiempos. El encabezado de su archivo de salida debe ser algo similar a esto:
 
-    LAMMPS (27 Oct 2021)
-    OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/src/comm.cpp:98)
-      using 1 OpenMP thread(s) per MPI task
+```bash
+LAMMPS (27 Oct 2021)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/src/comm.cpp:98)
+    using 1 OpenMP thread(s) per MPI task
+```
 
 Cuando concluye la ejecución, `LAMMPS` imprime el estado termodinámico final y el tiempo total de
 ejecución de la simulación. También agrega estadísticas sobre el tiempo de CPU y los requisitos de
 almacenamiento para la simulación. A continuación se muestra un conjunto de estadísticas de ejemplo:
 
-    Loop time of 8239.53 on 20 procs for 5000 steps with 32969632 atoms
+```bash
+Loop time of 8239.53 on 20 procs for 5000 steps with 32969632 atoms
 
-    Performance: 262.151 tau/day, 0.607 timesteps/s
-    99.6% CPU use with 20 MPI tasks x 1 OpenMP threads
+Performance: 262.151 tau/day, 0.607 timesteps/s
+99.6% CPU use with 20 MPI tasks x 1 OpenMP threads
 
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-     ---------------------------------------------------------------
-    Pair    | 6398.2     | 6545.5     | 6683.2     | 102.8 | 79.44
-    Neigh   | 668.8      | 677.36     | 685.02     |  18.5 |  8.22
-    Comm    | 207.73     | 354.11     | 505.47     | 466.9 |  4.30
-    Output  | 0.053933   | 0.058277   | 0.083162   |   2.5 |  0.00
-    Modify  | 586.63     | 599.92     | 605.73     |  22.8 |  7.28
-    Other   |            | 62.55      |            |       |  0.76
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 6398.2     | 6545.5     | 6683.2     | 102.8 | 79.44
+Neigh   | 668.8      | 677.36     | 685.02     |  18.5 |  8.22
+Comm    | 207.73     | 354.11     | 505.47     | 466.9 |  4.30
+Output  | 0.053933   | 0.058277   | 0.083162   |   2.5 |  0.00
+Modify  | 586.63     | 599.92     | 605.73     |  22.8 |  7.28
+Other   |            | 62.55      |            |       |  0.76
 
-    Nlocal:    1.64848e+06 ave   1.649e+06 max 1.64775e+06 min
-    Histogram: 1 0 1 2 3 2 6 1 2 2
-    Nghost:        255852.0 ave      256205 max      255576 min
-    Histogram: 1 1 0 5 7 4 1 0 0 1
-    Neighs:    6.18259e+07 ave 6.19671e+07 max 6.16968e+07 min
-    Histogram: 2 2 1 3 4 1 3 0 2 2
+Nlocal:    1.64848e+06 ave   1.649e+06 max 1.64775e+06 min
+Histogram: 1 0 1 2 3 2 6 1 2 2
+Nghost:        255852.0 ave      256205 max      255576 min
+Histogram: 1 1 0 5 7 4 1 0 0 1
+Neighs:    6.18259e+07 ave 6.19671e+07 max 6.16968e+07 min
+Histogram: 2 2 1 3 4 1 3 0 2 2
 
-    Total # of neighbors = 1.2365179e+09
-    Ave neighs/atom = 37.504753
-    Neighbor list builds = 250
-    Dangerous builds not checked
-    Total wall time: 2:17:24
+Total # of neighbors = 1.2365179e+09
+Ave neighs/atom = 37.504753
+Neighbor list builds = 250
+Dangerous builds not checked
+Total wall time: 2:17:24
+```
 
 Las palabras clave útiles para buscar incluyen:
 
@@ -76,17 +80,17 @@ Las palabras clave útiles para buscar incluyen:
 
 - Desglose de tiempo: Tabla de desglose de tiempo para el tiempo de ejecución de la CPU.
 
-<!-- -->
-
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-     ---------------------------------------------------------------
-    Pair    | 6398.2     | 6545.5     | 6683.2     | 102.8 | 79.44
-    Neigh   | 668.8      | 677.36     | 685.02     |  18.5 |  8.22
-    Comm    | 207.73     | 354.11     | 505.47     | 466.9 |  4.30
-    Output  | 0.053933   | 0.058277   | 0.083162   |   2.5 |  0.00
-    Modify  | 586.63     | 599.92     | 605.73     |  22.8 |  7.28
-    Other   |            | 62.55      |            |       |  0.76
+```bash
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 6398.2     | 6545.5     | 6683.2     | 102.8 | 79.44
+Neigh   | 668.8      | 677.36     | 685.02     |  18.5 |  8.22
+Comm    | 207.73     | 354.11     | 505.47     | 466.9 |  4.30
+Output  | 0.053933   | 0.058277   | 0.083162   |   2.5 |  0.00
+Modify  | 586.63     | 599.92     | 605.73     |  22.8 |  7.28
+Other   |            | 62.55      |            |       |  0.76
+```
 
 La tabla anterior muestra los tiempos que tardan las principales categorías de una ejecución
 de LAMMPS. Se proporciona una breve descripción de estas categorías en el
@@ -115,16 +119,14 @@ ayuda a identificar dónde pasa la mayor parte del tiempo de computo :
 
 `LAMMPS` muestra un informe de datos termodinámicos en su salida y los archivos de registro.
 
-:::: formalpara
-::: title
-Ejemplo de salida de `LAMMPS`
-:::
+<span style="color: #990819;">*Ejemplo de salida de `LAMMPS`*</span>
 
-    Step Time Temp Press PotEng KinEng TotEng Density
-           0            0         1.44   -5.0196693   -6.7733681    2.1599999   -4.6133681       0.8442
-        2500         12.5    0.6978031    0.7483168    -5.666924    1.0467046   -4.6202194       0.8442
-        5000           25   0.69755252   0.74836107    -5.666874    1.0463287   -4.6205453       0.8442
-::::
+```bash
+Step Time Temp Press PotEng KinEng TotEng Density
+        0            0         1.44   -5.0196693   -6.7733681    2.1599999   -4.6133681       0.8442
+    2500         12.5    0.6978031    0.7483168    -5.666924    1.0467046   -4.6202194       0.8442
+    5000           25   0.69755252   0.74836107    -5.666874    1.0463287   -4.6205453       0.8442
+```
 
 El formato de salida puede ser controlado con la variable `thermo` y `thermo_style` presentes en el
 archivo de entrada de `LAMMPS`.
@@ -141,21 +143,19 @@ archivo de entrada de `LAMMPS`.
 
 Para este trabajo, modificamos los archivos de entrada con el siguiente formato:
 
-:::: formalpara
-::: title
-Variables presentes en el archivo de entrada de `LAMMPS`
-:::
+<span style="color: #990819;">*Variables presentes en el archivo de entrada de `LAMMPS`*</span>
 
-    .
-    variable        t index 5000
-    .
-    .
-    variable        interval equal $t/2
-    .
-    .
-    thermo ${interval}
-    thermo_style custom step time  temp press pe ke etotal density
-::::
+```
+.
+variable        t index 5000
+.
+.
+variable        interval equal $t/2
+.
+.
+thermo ${interval}
+thermo_style custom step time  temp press pe ke etotal density
+```
 
 El intervalo de salida es igual a la mitad de los `timesteps` totales para evitar un cuello de botella
 en las operaciones de entrada/salida de `LAMMPS`.
@@ -191,13 +191,13 @@ números de CPU para encontrar un punto óptimo.
 
 A partir de estos datos, se puede calcular la **eficiencia paralela**. Esto se define cómo:
 
-E = (1/P) \* (T~1~/T~P~)
+**E = (1/P) \* (T<sub>1</sub>/T<sub>P</sub>)**
 
 - P = Numero de procesadores
 
-- T~1~ = tiempo óptimo para el algoritmo en un procesador
+- T<sub>1</sub> = tiempo óptimo para el algoritmo en un procesador
 
-- T~P~ = tiempo para algoritmo paralelo en P procesadores
+- T<sub>P</sub> = tiempo para algoritmo paralelo en P procesadores
 
 Dado que la evaluación comparativa en un solo núcleo a menudo puede llevar mucho tiempo y
 la escala dentro de un nodo es generalmente muy buena, para los propósitos del Yoltla es suficiente
@@ -243,15 +243,17 @@ Considere la siguiente tabla de desglose para un sistema de 10 millones de átom
 Puede ver que en este caso, el término `Pair` domina la tabla de tiempos. Estos es que LAMMPS toma la
 mayor parte del tiempo calculado interacciones en átomos.
 
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-     ---------------------------------------------------------------
-    Pair    | 989.3      | 1039.3     | 1056.7     |  55.6 | 79.56
-    Neigh   | 124.72     | 127.75     | 131.11     |  10.4 |  9.78
-    Comm    | 47.511     | 67.997     | 126.7      | 243.1 |  5.21
-    Output  | 0.0059468  | 0.015483   | 0.02799    |   6.9 |  0.00
-    Modify  | 52.619     | 59.173     | 61.577     |  25.0 |  4.53
-    Other   |            | 12.03      |            |       |  0.92
+```bash
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 989.3      | 1039.3     | 1056.7     |  55.6 | 79.56
+Neigh   | 124.72     | 127.75     | 131.11     |  10.4 |  9.78
+Comm    | 47.511     | 67.997     | 126.7      | 243.1 |  5.21
+Output  | 0.0059468  | 0.015483   | 0.02799    |   6.9 |  0.00
+Modify  | 52.619     | 59.173     | 61.577     |  25.0 |  4.53
+Other   |            | 12.03      |            |       |  0.92
+```
 
 # Load balancing
 
@@ -265,15 +267,17 @@ cantidad de procesadores.
 
 Para un sistema con `x = y = z = 1y t = 10,000`, obtenemos la siguiente tabla:
 
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-     ---------------------------------------------------------------
-    Pair    | 20.665     | 20.665     | 20.665     |   0.0 | 18.24
-    Bond    | 6.9126     | 6.9126     | 6.9126     |   0.0 |  6.10
-    Neigh   | 57.247     | 57.247     | 57.247     |   0.0 | 50.54
-    Comm    | 4.3267     | 4.3267     | 4.3267     |   0.0 |  3.82
-    Output  | 0.000103   | 0.000103   | 0.000103   |   0.0 |  0.00
-    Modify  | 22.278     | 22.278     | 22.278     |   0.0 | 19.67
-    Other   |            | 1.838      |            |       |  1.62
+```bash
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 20.665     | 20.665     | 20.665     |   0.0 | 18.24
+Bond    | 6.9126     | 6.9126     | 6.9126     |   0.0 |  6.10
+Neigh   | 57.247     | 57.247     | 57.247     |   0.0 | 50.54
+Comm    | 4.3267     | 4.3267     | 4.3267     |   0.0 |  3.82
+Output  | 0.000103   | 0.000103   | 0.000103   |   0.0 |  0.00
+Modify  | 22.278     | 22.278     | 22.278     |   0.0 | 19.67
+Other   |            | 1.838      |            |       |  1.62
+```
 
 En este caso, el tiempo dedicado a resolver `Pair` es bastante bajo en comparación con la `Neigh`.
 Este tipo de interrupción del tiempo generalmente indica que hay algún problema con la entrada o una
@@ -303,9 +307,13 @@ Características del benchmark:
 
 La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercano a: `-4.6205442`
 
-![Performance Lennard-Jones Benchmark](Reframe/Apps/Lammps/Figure_Le.png){alt="Figure Le"}
+![Figure Le](../../../images/Reframe/Apps/Lammps/Figure_Le.png)
 
-![Parallel Efficiency Lennard-Jones Benchmark](Reframe/Apps/Lammps/Figure_Le_parallel.png){alt="Figure Le parallel"}
+<span style="color: #990819;">*Figure 1. Performance Lennard-Jones Benchmark*</span>
+
+![Figure Le parallel](../../../images/Reframe/Apps/Lammps/Figure_Le_parallel.png)
+
+<span style="color: #990819;">*Figure 2. Parallel Efficiency Lennard-Jones Benchmark*</span>
 
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 | **\#    | **CPU's Nodos nc\              | **CPU's Nodos ttv1\[1-58\]\    | **CPU's Nodos ttv2\[59-104\]\  |
@@ -333,53 +341,47 @@ La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercan
 Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
 tres tipos de nodos para este sistema en particular.
 
-:::: formalpara
-::: title
-MPI task timing en 16 nodos nc.
-:::
+<span style="color: #990819;">*MPI task timing en 16 nodos nc.*</span>
 
-    MPI task timing breakdown:
-    Section | min time   | avg time   | max time   |%varavg| %total
-    ---------------------------------------------------------------
-    Pair    | 368.89     | 381.31     | 392.94     | 20.5  | 74.90
-    Neigh   | 40.19      | 40.702     | 41.468     | 3.3   | 7.99
-    Comm    | 37.054     | 54.754     | 73.174     | 113.8 | 10.75
-    Output  | 0.0049547  | 0.13132    | 0.17447    | 18.9  | 0.03
-    Modify  | 18.62      | 26.622     | 34.439     | 86.8  | 5.23
-    Other   |            | 5.606      |            |       | 1.10
-::::
+```bash
+MPI task timing breakdown:
+Section | min time   | avg time   | max time   |%varavg| %total
+---------------------------------------------------------------
+Pair    | 368.89     | 381.31     | 392.94     | 20.5  | 74.90
+Neigh   | 40.19      | 40.702     | 41.468     | 3.3   | 7.99
+Comm    | 37.054     | 54.754     | 73.174     | 113.8 | 10.75
+Output  | 0.0049547  | 0.13132    | 0.17447    | 18.9  | 0.03
+Modify  | 18.62      | 26.622     | 34.439     | 86.8  | 5.23
+Other   |            | 5.606      |            |       | 1.10
+```
 
-:::: formalpara
-::: title
-MPI task timing en 16 nodos ttv1.
-:::
+<span style="color: #990819;">*MPI task timing en 16 nodos ttv1.*</span>
 
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-    ---------------------------------------------------------------
-    Pair    | 374.84     | 385.13     | 393.23     |  17.8 | 77.54
-    Neigh   | 42.167     | 42.953     | 44.4       |   6.5 |  8.65
-    Comm    | 39.208     | 47.138     | 57.061     |  54.2 |  9.49
-    Output  | 0.002652   | 0.005992   | 0.010818   |   2.5 |  0.00
-    Modify  | 15.715     | 18.17      | 19.537     |  16.5 |  3.66
-    Other   |            | 3.278      |            |       |  0.66
-::::
+```bash
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 374.84     | 385.13     | 393.23     |  17.8 | 77.54
+Neigh   | 42.167     | 42.953     | 44.4       |   6.5 |  8.65
+Comm    | 39.208     | 47.138     | 57.061     |  54.2 |  9.49
+Output  | 0.002652   | 0.005992   | 0.010818   |   2.5 |  0.00
+Modify  | 15.715     | 18.17      | 19.537     |  16.5 |  3.66
+Other   |            | 3.278      |            |       |  0.66
+```
 
-:::: formalpara
-::: title
-MPI task timing en 16 nodos ttv2.
-:::
+<span style="color: #990819;">*MPI task timing en 16 nodos ttv2.*</span>
 
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-    ---------------------------------------------------------------
-    Pair    | 333.44     | 346.37     | 369.89     |  48.0 | 71.06
-    Neigh   | 32.284     | 33.432     | 36.081     |  12.8 |  6.86
-    Comm    | 35.167     | 63.992     | 81.272     | 135.2 | 13.13
-    Output  | 0.0049313  | 0.015588   | 0.03608    |   7.3 |  0.00
-    Modify  | 30.24      | 39.947     | 43.842     |  30.3 |  8.20
-    Other   |            | 3.673      |            |       |  0.75
-::::
+```bash
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 333.44     | 346.37     | 369.89     |  48.0 | 71.06
+Neigh   | 32.284     | 33.432     | 36.081     |  12.8 |  6.86
+Comm    | 35.167     | 63.992     | 81.272     | 135.2 | 13.13
+Output  | 0.0049313  | 0.015588   | 0.03608    |   7.3 |  0.00
+Modify  | 30.24      | 39.947     | 43.842     |  30.3 |  8.20
+Other   |            | 3.673      |            |       |  0.75
+```
 
 Observamos que no se presenta ningún desbalance de carga es el sistema. Destacamos que en nodos
 `ttv2` el porcentaje de tiempo en la comunicación (`Comm`) es ligeramente mayor respecto a los otros tipo

@@ -50,8 +50,9 @@
                 - [REVISAR ENLACE A "The HECBioSim Benchmarks"]()
                 - [REVISAR AJUSTE DE TABLAS]()
                 
+            - [Lammps](./modules/tutoriales/pages/reframe/aplicaciones/lammps.md)
+                - [REVISAR AJUSTE DE TABLAS]()
 
-            - [Lammps]()
             - [NWChem]()
             - [Namd]()
             - [QuantumEspresso]()
