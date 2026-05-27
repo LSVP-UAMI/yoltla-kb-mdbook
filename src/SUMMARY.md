@@ -53,7 +53,9 @@
             - [Lammps](./modules/tutoriales/pages/reframe/aplicaciones/lammps.md)
                 - [REVISAR AJUSTE DE TABLAS]()
 
-            - [NWChem]()
+            - [NWChem](./modules/tutoriales/pages/reframe/aplicaciones/nwchem.md)
+            
+            
             - [Namd]()
             - [QuantumEspresso]()
 

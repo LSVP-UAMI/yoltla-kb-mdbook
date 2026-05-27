@@ -389,7 +389,11 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 
 ## Performance Lennard-Jones Benchmark en nodos NC
 
-![Performance Lennard-Jones Benchmark en nodos NC](Reframe/Apps/Lammps/Figure_error_Le_nc.png){alt="Figure error Le nc"}
+<span style="color: #990819;">*Figure 3. Performance Lennard-Jones Benchmark en nodos NC*</span>
+
+![Figure error Le nc](../../../images/Reframe/Apps/Lammps/Figure_error_Le_nc.png)
+
+<span style="color: #990819;">*Table 1. Performance Lennard-Jones Benchmark en nodos nc*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
@@ -419,7 +423,11 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 
 ## Performance Lennard-Jones Benchmark en nodos TTV1
 
-![Performance Lennard-Jones Benchmark en nodos TTV1](Reframe/Apps/Lammps/Figure_error_Le_ttv1.png){alt="Figure error Le ttv1"}
+<span style="color: #990819;">*Figure 4. Performance Lennard-Jones Benchmark en nodos TTV1*</span>
+
+![Figure error Le ttv1](../../../images/Reframe/Apps/Lammps/Figure_error_Le_ttv1.png)
+
+<span style="color: #990819;">*Table 2. Performance Lennard-Jones Benchmark en nodos ttv1*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
@@ -451,7 +459,11 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 
 ## Performance Lennard-Jones Benchmark en nodos TTV2
 
-![Performance Lennard-Jones Benchmark en nodos TTV2](Reframe/Apps/Lammps/Figure_error_Le_ttv2.png){alt="Figure error Le ttv2"}
+<span style="color: #990819;">*Figure 5. Performance Lennard-Jones Benchmark en nodos TTV2*</span>
+
+![Figure error Le ttv2](../../../images/Reframe/Apps/Lammps/Figure_error_Le_ttv2.png)
+
+<span style="color: #990819;">*Table 3. Performance Lennard_Jones Benchmark en nodos ttv2*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
@@ -500,9 +512,13 @@ Características del benchmark:
 
 La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercano a: `-8654699.6`
 
-![Performance Rhodopsin Benchmark](Reframe/Apps/Lammps/Figure_Rhodopsin.png){alt="Figure Rhodopsin"}
+<span style="color: #990819;">*Figure 6. Performance Rhodopsin Benchmark*</span>
 
-![Parallel Efficiency Rhodopsin Benchmark](Reframe/Apps/Lammps/Figure_Rhodopsin_Parallel.png){alt="Figure Rhodopsin Parallel"}
+![Performance Rhodopsin Benchmark](../../../images/Reframe/Apps/Lammps/Figure_Rhodopsin.png)
+
+<span style="color: #990819;">*Figure 7. Parallel Efficiency Rhodopsin Benchmark*</span>
+
+![Parallel Efficiency Rhodopsin Benchmark](../../../images/Reframe/Apps/Lammps/Figure_Rhodopsin_Parallel.png)
 
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 | **\#    | **CPU's Nodos nc\              | **CPU's Nodos ttv1\[1-58\]\    | **CPU's Nodos ttv2\[59-104\]\  |
@@ -530,67 +546,65 @@ La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercan
 Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
 tres tipos de nodos para este sistema en particular.
 
-:::: formalpara
-::: title
-MPI task timing en 16 nodos nc.
-:::
+<span style="color: #990819;">*MPI task timing en 16 nodos nc.*</span>
 
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-    ---------------------------------------------------------------
-    Pair    | 1452.8     | 1518.1     | 1779.5     | 159.6 | 56.01
-    Bond    | 62.146     | 72.355     | 90.093     |  70.0 |  2.67
-    Kspace  | 304.94     | 581.74     | 643.05     | 265.0 | 21.46
-    Neigh   | 387.71     | 388.67     | 389.39     |   1.6 | 14.34
-    Comm    | 33.678     | 40.088     | 48.515     |  51.4 |  1.48
-    Output  | 0.0040011  | 0.0040545  | 0.0043267  |   0.0 |  0.00
-    Modify  | 95.168     | 102.33     | 109.08     |  25.5 |  3.78
-    Other   |            | 6.989      |            |       |  0.26
-::::
+```bash
+  MPI task timing breakdown:
+  Section |  min time  |  avg time  |  max time  |%varavg| %total
+  ---------------------------------------------------------------
+  Pair    | 1452.8     | 1518.1     | 1779.5     | 159.6 | 56.01
+  Bond    | 62.146     | 72.355     | 90.093     |  70.0 |  2.67
+  Kspace  | 304.94     | 581.74     | 643.05     | 265.0 | 21.46
+  Neigh   | 387.71     | 388.67     | 389.39     |   1.6 | 14.34
+  Comm    | 33.678     | 40.088     | 48.515     |  51.4 |  1.48
+  Output  | 0.0040011  | 0.0040545  | 0.0043267  |   0.0 |  0.00
+  Modify  | 95.168     | 102.33     | 109.08     |  25.5 |  3.78
+  Other   |            | 6.989      |            |       |  0.26
+```
 
-:::: formalpara
-::: title
-MPI task timing en 16 nodos ttv1.
-:::
+<span style="color: #990819;">*MPI task timing en 16 nodos ttv1.*</span>
 
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-    ---------------------------------------------------------------
-    Pair    | 1487       | 1538.9     | 1604.4     |  56.1 | 62.61
-    Bond    | 66.177     | 76.577     | 88.318     |  69.1 |  3.12
-    Kspace  | 289.95     | 359.35     | 407.68     | 113.1 | 14.62
-    Neigh   | 345.32     | 346.38     | 347.08     |   2.5 | 14.09
-    Comm    | 32.107     | 38.412     | 47.003     |  61.2 |  1.56
-    Output  | 0.0047816  | 0.0048099  | 0.0050276  |   0.0 |  0.00
-    Modify  | 87.115     | 94.447     | 99.217     |  25.3 |  3.84
-    Other   |            | 3.626      |            |       |  0.15
-::::
+```bash
+  MPI task timing breakdown:
+  Section |  min time  |  avg time  |  max time  |%varavg| %total
+  ---------------------------------------------------------------
+  Pair    | 1487       | 1538.9     | 1604.4     |  56.1 | 62.61
+  Bond    | 66.177     | 76.577     | 88.318     |  69.1 |  3.12
+  Kspace  | 289.95     | 359.35     | 407.68     | 113.1 | 14.62
+  Neigh   | 345.32     | 346.38     | 347.08     |   2.5 | 14.09
+  Comm    | 32.107     | 38.412     | 47.003     |  61.2 |  1.56
+  Output  | 0.0047816  | 0.0048099  | 0.0050276  |   0.0 |  0.00
+  Modify  | 87.115     | 94.447     | 99.217     |  25.3 |  3.84
+  Other   |            | 3.626      |            |       |  0.15
+```  
 
-:::: formalpara
-::: title
-MPI task timing en 16 nodos ttv2.
-:::
+<span style="color: #990819;">*MPI task timing en 16 nodos ttv2.*</span>
 
-    MPI task timing breakdown:
-    Section |  min time  |  avg time  |  max time  |%varavg| %total
-    ---------------------------------------------------------------
-    Pair    | 890.9      | 1303.5     | 1415.5     | 313.2 | 58.83
-    Bond    | 34.6       | 58.08      | 71.233     |  96.0 |  2.62
-    Kspace  | 305.86     | 422.39     | 854.6      | 576.7 | 19.06
-    Neigh   | 281.66     | 282.94     | 285.79     |   5.2 | 12.77
-    Comm    | 41.556     | 46.304     | 51.123     |  31.3 |  2.09
-    Output  | 0.0059773  | 0.006059   | 0.0066678  |   0.1 |  0.00
-    Modify  | 85.948     | 97.193     | 101.88     |  29.0 |  4.39
-    Other   |            | 5.304      |            |       |  0.24
-::::
+```bash
+  MPI task timing breakdown:
+  Section |  min time  |  avg time  |  max time  |%varavg| %total
+  ---------------------------------------------------------------
+  Pair    | 890.9      | 1303.5     | 1415.5     | 313.2 | 58.83
+  Bond    | 34.6       | 58.08      | 71.233     |  96.0 |  2.62
+  Kspace  | 305.86     | 422.39     | 854.6      | 576.7 | 19.06
+  Neigh   | 281.66     | 282.94     | 285.79     |   5.2 | 12.77
+  Comm    | 41.556     | 46.304     | 51.123     |  31.3 |  2.09
+  Output  | 0.0059773  | 0.006059   | 0.0066678  |   0.1 |  0.00
+  Modify  | 85.948     | 97.193     | 101.88     |  29.0 |  4.39
+  Other   |            | 5.304      |            |       |  0.24
+```  
 
 Observamos que no se presenta ningún desbalance de carga es el sistema. Destacamos que en nodos
-`ttv2` el porcentaje de tiempo en la comunicación (`Comm`) es ligeramente mayor respecto a los otros tipo
-de nodos lo cual puede ser un factor en los tiempos finales reportados en este trabajo.
+`ttv2` el porcentaje de tiempo en la comunicación (`Comm`) es ligeramente mayor respecto a los 
+otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportados en este trabajo.
 
 ## Performance Rhodopsin Benchmark en nodos NC
 
-![Performance Rhodopsin Benchmark en nodos NC](Reframe/Apps/Lammps/Figure_error_Rho_nc.png){alt="Rhodopsin Benchmark en nodos nc"}
+<span style="color: #990819;">*Figure 8. Performance Rhodopsin Benchmark en nodos NC*</span>
+
+![Performance Rhodopsin Benchmark en nodos NC](../../../images/Reframe/Apps/Lammps/Figure_error_Rho_nc.png)
+
+<span style="color: #990819;">*Table 4. Performance Rhodopsin Benchmark en nodos nc*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
@@ -620,7 +634,11 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 
 ## Performance Rhodopsin Benchmark en nodos TTV1
 
-![Performance Rhodopsin Benchmark en nodos TTV1](Reframe/Apps/Lammps/Figure_error_Rho_ttv1.png){alt="Rhodopsin Benchmark en nodos ttv1"}
+<span style="color: #990819;">*Figure 9. Performance Rhodopsin Benchmark en nodos TTV1*</span>
+
+![Performance Rhodopsin Benchmark en nodos TTV1](../../../images/Reframe/Apps/Lammps/Figure_error_Rho_ttv1.png)
+
+<span style="color: #990819;">*Table 5. Performance Rhodopsin Benchmark en nodos ttv1*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
@@ -652,7 +670,11 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 
 ## Performance Rhodopsin Benchmark en nodos TTV2
 
-![Performance Rhodopsin Benchmark en nodos TTV2](Reframe/Apps/Lammps/Figure_error_Rho_ttv2.png){alt="Rhodopsin Benchmark en nodos ttv2"}
+<span style="color: #990819;">*Figure 10. Performance Rhodopsin Benchmark en nodos TTV2*</span>
+
+![Performance Rhodopsin Benchmark en nodos TTV2](../../../images/Reframe/Apps/Lammps/Figure_error_Rho_ttv2.png)
+
+<span style="color: #990819;">*Table 6. Performance Rhodopsin Benchmark en nodos ttv2*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
@@ -714,7 +736,9 @@ Use la opción de línea de comando \"-sf gpu\" , que agregará automáticamente
 lo admitan. Use la opción de línea de comando \"-pk gpu Ng\" para establecer Ng = \# de GPU/nodo a
 usar. Si Ng es 0, el número se selecciona automáticamente.
 
-![Palabras clave del paquete GPU](Reframe/Apps/Lammps/lammps_gpu_keys.png){alt="lammps gpu keys"}
+<span style="color: #990819;">*Figure 11. Palabras clave del paquete GPU*</span>
+
+![Palabras clave del paquete GPU](../../../images/Reframe/Apps/Lammps/lammps_gpu_keys.png)
 
 ## Comprender la salida del paquete GPU
 
@@ -722,32 +746,30 @@ Una vez que complete un trabajo con éxito, es hora de buscar aspectos de inter�
 LAMMPS. El primero de ellos es verificar que LAMMPS está haciendo las cosas que usted solicitó y el
 resto es para informarle sobre el resultado del rendimiento.
 
-:::: formalpara
-::: title
-Ejemplo de Salida de Lammps
-:::
+<span style="color: #990819;">*Ejemplo de Salida de Lammps*</span>
 
-    --------------------------------------------------------------------------
-    - Using acceleration for lj/cut:
-    -  with 9 proc(s) per device.
-    --------------------------------------------------------------------------
-    Device 0: Tesla V100-SXM2-16GB, 80 CUs, 13/16 GB, 1.5 GHZ (Mixed Precision)
-    Device 1: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
-    Device 2: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
-    Device 3: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
-    --------------------------------------------------------------------------
+```bash
+  --------------------------------------------------------------------------
+  - Using acceleration for lj/cut:
+  -  with 9 proc(s) per device.
+  --------------------------------------------------------------------------
+  Device 0: Tesla V100-SXM2-16GB, 80 CUs, 13/16 GB, 1.5 GHZ (Mixed Precision)
+  Device 1: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
+  Device 2: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
+  Device 3: Tesla V100-SXM2-16GB, 80 CUs, 1.5 GHZ (Mixed Precision)
+  --------------------------------------------------------------------------
 
-    Initializing Device and compiling on process 0...Done.
-    Initializing Devices 0-3 on core 0...Done.
-    Initializing Devices 0-3 on core 1...Done.
-    Initializing Devices 0-3 on core 2...Done.
-    Initializing Devices 0-3 on core 3...Done.
-    Initializing Devices 0-3 on core 4...Done.
-    Initializing Devices 0-3 on core 5...Done.
-    Initializing Devices 0-3 on core 6...Done.
-    Initializing Devices 0-3 on core 7...Done.
-    Initializing Devices 0-3 on core 8...Done.
-::::
+  Initializing Device and compiling on process 0...Done.
+  Initializing Devices 0-3 on core 0...Done.
+  Initializing Devices 0-3 on core 1...Done.
+  Initializing Devices 0-3 on core 2...Done.
+  Initializing Devices 0-3 on core 3...Done.
+  Initializing Devices 0-3 on core 4...Done.
+  Initializing Devices 0-3 on core 5...Done.
+  Initializing Devices 0-3 on core 6...Done.
+  Initializing Devices 0-3 on core 7...Done.
+  Initializing Devices 0-3 on core 8...Done.
+```
 
 Lo primero que debe notar aquí es que está usando una aceleración para el potencial `lj/cut` y para este
 propósito está usando cuatro dispositivos (`Device 0`, `Device 1`, `Device 2` y `Device 3`) y 9 procesos
@@ -765,21 +787,20 @@ en el archivo de entrada se mencionó que se usara `pair_style lj/cut 2.5`.
 Esto es lo que sucede cuando usa la opción `-sf gpu` de la línea de comando. Esto garantiza
 automáticamente que se llame a la versión acelerada correcta para esta ejecución.
 
-:::: formalpara
-::: title
-Ejemplo de salida de LAMMPS
-:::
+<span style="color: #990819;">*Ejemplo de salida de LAMMPS*</span>
 
-    - Using acceleration for lj/cut:
-    .
-    .
-    .
-    (1) pair lj/cut/gpu, perpetual
-        attributes: full, newton off
-        pair build: full/bin/anomaly
-        stencil: full/bin/3d
-        bin: standard
-::::
+```bash
+
+  - Using acceleration for lj/cut:
+  .
+  .
+  .
+  (1) pair lj/cut/gpu, perpetual
+      attributes: full, newton off
+      pair build: full/bin/anomaly
+      stencil: full/bin/3d
+      bin: standard
+```
 
 ### Sección de rendimiento
 
@@ -787,21 +808,23 @@ La siguiente salida de pantalla le informa sobre el rendimiento. Cuando usa el p
 un bloque adicional de información conocido como `Device Time Info (average)`. Esto le brinda un
 desglose de cómo se han utilizado los dispositivos (GPU) para realizar varias partes del trabajo.
 
-    ---------------------------------------------------------------------
-          Device Time Info (average):
-    ---------------------------------------------------------------------
-    Data Transfer:   46.7047 s.
-    Data Cast/Pack:  23.1174 s.
-    Neighbor copy:   0.0035 s.
-    Neighbor build:  5.3304 s.
-    Force calc:      16.0489 s.
-    Device Overhead: 19.6383 s.
-    Average split:   1.0000.
-    Threads / atom:  4.
-    Max Mem / Proc:  114.45 MB.
-    CPU Driver_Time: 19.0418 s.
-    CPU Idle_Time:   46.1577 s.
-    ---------------------------------------------------------------------
+```bash
+  ---------------------------------------------------------------------
+        Device Time Info (average):
+  ---------------------------------------------------------------------
+  Data Transfer:   46.7047 s.
+  Data Cast/Pack:  23.1174 s.
+  Neighbor copy:   0.0035 s.
+  Neighbor build:  5.3304 s.
+  Force calc:      16.0489 s.
+  Device Overhead: 19.6383 s.
+  Average split:   1.0000.
+  Threads / atom:  4.
+  Max Mem / Proc:  114.45 MB.
+  CPU Driver_Time: 19.0418 s.
+  CPU Idle_Time:   46.1577 s.
+  ---------------------------------------------------------------------
+```  
 
 ## Aceleración esperada
 

@@ -31,7 +31,9 @@ sistemas químicos que puede ser difícil de obtener por otros medios. Se requie
 computacionales considerables incluso para sistemas moleculares pequeños, que tienen decenas de miles de
 átomos y períodos de simulación cortos en el rango de nanosegundos.
 
-![Arquitectura de NWChem](Reframe/Apps/NWChem/nwchem-arch.png){alt="nwchem arch"}
+<span style="color: #990819;">*Figure 1. Arquitectura de NWChem*</span>
+
+![Arquitectura de NWChem](../../../images/Reframe/Apps/NWChem/nwchem-arch.png)
 
 `NWChem` tiene una arquitectura modular de cinco niveles (Imagen 1). La aplicación incorpora varios
 módulos y kits de herramientas existentes en varios niveles de la arquitectura debido a su adherencia a
@@ -79,7 +81,9 @@ remota utilizada por `GA`.
 
 La siguiente imagen (Imagen 2) contiene detalles de lo que sucede dentro de *Global Arrays*.
 
-![Asignación de ARMCI a MPI](Reframe/Apps/NWChem/armci.png){alt="armci"}
+<span style="color: #990819;">*Figure 2. Asignación de ARMCI a MPI*</span>
+
+![Asignación de ARMCI a MPI](../../../images/Reframe/Apps/NWChem/armci.png)
 
 - Hay dos implementaciones de la API ARMCI: la biblioteca ARMCI/ComEx distribuida con Global Arrays y
   la biblioteca ARMCI MPI distribuida por separado.
@@ -96,12 +100,16 @@ La siguiente imagen (Imagen 2) contiene detalles de lo que sucede dentro de *Glo
 Algunos valores de ARMCI_NETWORK dependen del valor `ARMCI_DEFAULT_SHMMAX` para grandes
 asignaciones de memoria global. Recomendamos un valor de, al menos, 2048, por ejemplo:
 
-    export ARMCI_DEFAULT_SHMMAX=2048
+```bash
+  export ARMCI_DEFAULT_SHMMAX=2048
+```  
 
 Para que `ARMCI_DEFAULT_SHMMAX=2048` funcione, es necesario que el parámetro `kernel.shmmax` del kernel
 sea mayor que 2147483648. Puede comprobar el valor actual de `kernel.shmmax` en su sistema escribiendo
 
-    sysctl kernel.shmmax
+```bash
+  sysctl kernel.shmmax
+```  
 
 ## Valor de Memory
 
@@ -125,9 +133,11 @@ en la máquina.
 En la mayoría de los casos, el usuario necesita especificar solo el límite de memoria `total` para ajustar
 la cantidad de memoria utilizada por NWChem.
 
-    memory total 8 mb
-    memory total 1048576
-    memory total 1 gb
+```bash
+  memory total 8 mb
+  memory total 1048576
+  memory total 1 gb
+```  
 
 En `NWChem` hay tres regiones distintas de memoria: `stack`, `heap`, and `global`. `stack` y `heap`
 son privados para el nodo, mientras que `global` se usa para proporcionar memoria compartida globalmente.
@@ -142,38 +152,36 @@ NWChem no tiene una variable de performance como tal, en cambio muestra estadís
 utilizados como el tiempo de cpu o memoria utilizada. Para este trabajo, para medir el performance y la eficiencia
 paralela de `NWChem`, usaremos el tiempo de pared (`Wall time (s)`).
 
-:::: formalpara
-::: title
-Ejemplo de salida de NWChem
-:::
+<span style="color: #990819;">*Ejemplo de salida de NWChem*</span>
 
-                             GA Statistics for process    0
-                             ------------------------------
+```bash
+                            GA Statistics for process    0
+                            ------------------------------
 
-           create   destroy   get      put      acc     scatter   gather  read&inc
-    calls:  225      225     6.69e+06 1.19e+05 4.14e+06    0        0     1.27e+05
-    number of processes/call 1.95e+01 1.14e+03 1.54e+01 0.00e+00 0.00e+00
-    bytes total:             7.37e+10 6.06e+09 2.23e+10 0.00e+00 0.00e+00 1.02e+06
-    bytes remote:            6.22e+10 1.87e+09 1.91e+10 0.00e+00 0.00e+00 0.00e+00
-    Max memory consumed for GA by this process: 798445600 bytes
+          create   destroy   get      put      acc     scatter   gather  read&inc
+  calls:  225      225     6.69e+06 1.19e+05 4.14e+06    0        0     1.27e+05
+  number of processes/call 1.95e+01 1.14e+03 1.54e+01 0.00e+00 0.00e+00
+  bytes total:             7.37e+10 6.06e+09 2.23e+10 0.00e+00 0.00e+00 1.02e+06
+  bytes remote:            6.22e+10 1.87e+09 1.91e+10 0.00e+00 0.00e+00 0.00e+00
+  Max memory consumed for GA by this process: 798445600 bytes
 
-    MA_summarize_allocated_blocks: starting scan ...
-    MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
-    MA usage statistics:
+  MA_summarize_allocated_blocks: starting scan ...
+  MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
+  MA usage statistics:
 
-            allocation statistics:
-                                                  heap           stack
-                                                  ----           -----
-            current number of blocks                 0               0
-            maximum number of blocks                27              54
-            current total bytes                      0               0
-            maximum total bytes              675211384       406780120
-            maximum total K-bytes               675212          406781
-            maximum total M-bytes                  676             407
+          allocation statistics:
+                                                heap           stack
+                                                ----           -----
+          current number of blocks                 0               0
+          maximum number of blocks                27              54
+          current total bytes                      0               0
+          maximum total bytes              675211384       406780120
+          maximum total K-bytes               675212          406781
+          maximum total M-bytes                  676             407
 
 
-     Total times  cpu:    18836.5s     wall:    18899.4s
-::::
+    Total times  cpu:    18836.5s     wall:    18899.4s
+```
 
 ## Total DFT energy
 
@@ -184,35 +192,35 @@ totales en el nivel teórico
 para muchos sistemas atómicos, diatómicos y triatómicos homonucleares en las filas 1-4 de la tabla
 periódica.
 
-:::: formalpara
-::: title
+<span style="color: #990819;">*Ejemplo de salida de NWChem*</span>
 Ejemplo de salida de NWChem
-:::
 
-    .
-    .
+```bash
+  .
+  .
 
-             Total DFT energy =    -9136.856741735493
-          One electron energy =  -155556.626666359807
-               Coulomb energy =    75980.853124940360
-        Exchange-Corr. energy =    -1292.397954070615
-     Nuclear repulsion energy =    71731.314753754574
+            Total DFT energy =    -9136.856741735493
+        One electron energy =  -155556.626666359807
+              Coulomb energy =    75980.853124940360
+      Exchange-Corr. energy =    -1292.397954070615
+    Nuclear repulsion energy =    71731.314753754574
 
-     Numeric. integr. density =     1439.999946966567
+    Numeric. integr. density =     1439.999946966567
 
-         Total iterative time =   2406.8s
+        Total iterative time =   2406.8s
 
 
-    .
-    .
-::::
+  .
+  .
+```
 
 Por default `NWChem` busca llegar a un nivel de convergencia. Pero esto no siempre es posible y se puede
 presentar el siguiente error:
 
-          Calculation failed to converge
-          ------------------------------
-
+```bash
+      Calculation failed to converge
+      ------------------------------
+```
 De forma predeterminada, el programa finaliza cuando una tarea no se completa correctamente. La palabra
 clave `ignore` se puede usar en el archivo de entrada para evitar esta terminación y es reconocida
 por la directiva
@@ -220,7 +228,9 @@ por la directiva
 Cuando una directiva `TASK` incluye la palabra clave `ignore`, se imprime un mensaje de
 advertencia si la tarea falla y la ejecución del código continúa con la siguiente tarea. Ejemplo:
 
-    task dft energy ignore
+```bash
+  task dft energy ignore
+```
 
 En este trabajo nos interesa evaluar que la variable `Total DFT energy` llegue a ciertos valores
 esperados para cada simulación.
@@ -233,13 +243,13 @@ números de CPU para encontrar un punto óptimo.
 
 A partir de estos datos, se puede calcular la **eficiencia paralela**. Esto se define cómo:
 
-E = (1/P) \* (T~1~/T~P~)
+**E = (1/P) \* (T<sub>1</sub>/T<sub>P</sub>)**
 
 - P = Numero de procesadores
 
-- T~1~ = tiempo óptimo para el algoritmo en un procesador
+- T<sub>1</sub> = tiempo óptimo para el algoritmo en un procesador
 
-- T~P~ = tiempo para algoritmo paralelo en P procesadores
+- T<sub>P</sub> = tiempo para algoritmo paralelo en P procesadores
 
 Dado que la evaluación comparativa en un solo núcleo a menudo puede llevar mucho tiempo y
 la escala dentro de un nodo es generalmente muy buena, para los propósitos del Yoltla es suficiente
@@ -248,6 +258,8 @@ disponible.
 
 Como regla general, los trabajos que se ejecutan con una gran cantidad de núcleos deben tener
 una eficiencia paralela superior o igual a 0,7.
+
+# ****
 
 # C240 Benchmark
 
