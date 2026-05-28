@@ -93,19 +93,130 @@ Test0979: NBO test with f functions
 
 <span style="color: red;">*Table 1. Performance Test 0979*</span>
 
-| <!--> <--> |<!--> <--> |<!--> <--> |<!--> <--> |
-|------------|-----------|-----------|-----------|
-| **# Cores** | **CPU's Nodos nc <br> 20 Cores x 2.50GHz Intel <br> Xeón E5-2670v2 <br> 64GB RAM <br> Infiniband FDR10/FDR** | **CPU's Nodos ttv1[1-58] <br> 20 Cores x 2.60GHz Intel <br> Xeón E5-2660v3 <br> 128GB RAM <br> Infiniband FDR10/FDR** | **CPU's Nodos ttv2[59-104] <br> 32 Cores x 2.10GHz Intel <br> Xeon E5-2683v4 <br> 256GB RAM <br> Infiniband FDR10/FDR** |
+<table>
+<tr>
+<th rowspan="2"># Cores</th>
 
-|  | **time (seconds)** | **Eficiencia Paralela %** | **time (seconds)** | **Eficiencia Paralela%** | **time (seconds)** | **Eficiencia Paralela%** | 
-|--|--------------------|---------------------------|--------------------|--------------------------|--------------------|--------------------------|
-| 1  | 1895.314 | 100.0 % | 2052.557 | 100.0 % | 2480.583 | 100.0 % |
-| 2  | 999.707  | 94.8 %  | 1041.206 | 98.6 %  | 1240.281 | 100.0 % |
-| 4  | 533.439  | 88.8 %  | 546.997  | 93.8 %  | 651.619  | 95.2 %  |
-| 8  | 310.036  | 76.4 %  | 294.713  | 87.1 %  | 361.331  | 85.8 %  |
-| 16 | 173.288  | 68.4 %  | 228.473  | 56.1 %  | 202.973  | 76.4 %  |
-| 20 | 152.121  | 62.3 %  | 152.093  | 67.5 %  |          |         |
-| 32 |          |         |          |         | 156.012  | 49.7 %  |
+<th colspan="2">
+CPU’s Nodos nc<br>
+20 Cores x 2.50GHz Intel<br>
+Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+
+<th colspan="2">
+CPU’s Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel<br>
+Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+
+<th colspan="2">
+CPU’s Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel<br>
+Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>time (seconds)</th>
+<th>Eficiencia Paralela %</th>
+
+<th>time (seconds)</th>
+<th>Eficiencia Paralela %</th>
+
+<th>time (seconds)</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>1895.314</td>
+<td>100.0 %</td>
+
+<td>2052.557</td>
+<td>100.0 %</td>
+
+<td>2480.583</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>999.707</td>
+<td>94.8 %</td>
+
+<td>1041.206</td>
+<td>98.6 %</td>
+
+<td>1240.281</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>533.439</td>
+<td>88.8 %</td>
+
+<td>546.997</td>
+<td>93.8 %</td>
+
+<td>651.619</td>
+<td>95.2 %</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>310.036</td>
+<td>76.4 %</td>
+
+<td>294.713</td>
+<td>87.1 %</td>
+
+<td>361.331</td>
+<td>85.8%</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>173.288</td>
+<td>68.4 %</td>
+
+<td>228.473</td>
+<td>56.1 %</td>
+
+<td>202.973</td>
+<td>76.4 %</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>152.121</td>
+<td>62.3 %</td>
+
+<td>152.093</td>
+<td>67.5 %</td>
+
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>32</td>
+<td></td>
+<td></td>
+
+<td></td>
+<td></td>
+
+<td>156.012</td>
+<td>49.7 %</td>
+</tr>
+</table>
 
 Para este Benchmarks, observamos un uso eficiente de los recursos entre 8 y 16 cores de cada partición.
 
