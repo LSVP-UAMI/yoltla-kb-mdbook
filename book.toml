@@ -14,6 +14,9 @@ assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
+# Opciones para mdbook-extended-markdown-table
+[preprocessor.extended-markdown-table]
+
 [output.html]
 additional-css = ["./mdbook-admonish.css", "theme/pagetoc.css"]
 additional-js = ["mermaid.min.js", "mermaid-init.js", "theme/pagetoc.js"]
