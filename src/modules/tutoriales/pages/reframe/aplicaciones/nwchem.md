@@ -259,7 +259,6 @@ disponible.
 Como regla general, los trabajos que se ejecutan con una gran cantidad de núcleos deben tener
 una eficiencia paralela superior o igual a 0,7.
 
-# ****
 
 # C240 Benchmark
 
@@ -270,7 +269,11 @@ básicas) sin simetría. Disponible
 
 La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.856741718977`
 
-![Performance C240 Benchmark](Reframe/Apps/NWChem/Figure_C240.png){alt="Figure C240"}
+<span style="color: #990819;">*Figure 3. Performance C240 Benchmark*</span>
+
+![Performance C240 Benchmark](../../../images/Reframe/Apps/NWChem/Figure_C240.png)
+
+<span style="color: #990819;">*Table 1. Performance C240 Benchmark*</span>
 
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 | **\#    | **CPU's Nodos nc\        | **CPU's Nodos            | **CPU's Nodos            |
@@ -299,11 +302,16 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 
 : Performance C240 Benchmark
 
+
 ## Performance C240 Benchmark en nodos NC
 
-![Performance C240 Benchmark en nodos nc.](Reframe/Apps/NWChem/Figure_error_nc_c240.png){alt="C240 Performance nc"}
+C240 Performance nc
 
-\
+<span style="color: #990819;">*Figure 4. Performance C240 Benchmark en nodos nc.*</span>
+
+![Performance C240 Benchmark en nodos nc.](../../../images/Reframe/Apps/NWChem/Figure_error_nc_c240.png)
+
+<span style="color: #990819;">*Table 2. Performance C240 Benchmark en nodos nc.*</span>
 
 +----------+---------------+---------------+---------------+---------------+---------------+
 | **\#     | **CPU's Nodos nc\                                                             |
@@ -330,11 +338,16 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 
 : Performance C240 Benchmark en nodos nc.
 
+
 ## Performance C240 Benchmark en nodos TTV1
 
-![Performance C240 Benchmark en nodos ttv1.](Reframe/Apps/NWChem/Figure_error_ttv1_c240.png){alt="C240 Performance ttv1"}
+C240 Performance ttv1
 
-\
+<span style="color: #990819;">*Figure 5. Performance C240 Benchmark en nodos ttv1.*</span>
+
+![Performance C240 Benchmark en nodos ttv1.](../../../images/Reframe/Apps/NWChem/Figure_error_ttv1_c240.png)
+
+<span style="color: #990819;">*Table 3. Performance C240 Benchmark en nodos ttv1.*</span>
 
 +----------+---------------+---------------+---------------+---------------+---------------+
 | **\#     | **CPU's Nodos ttv1\                                                           |
@@ -363,11 +376,16 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 
 : Performance C240 Benchmark en nodos ttv1.
 
+
 ## Performance C240 Benchmark en nodos TTV2
 
-![Performance C240 Benchmark en nodos ttv2.](Reframe/Apps/NWChem/Figure_error_ttv2_c240.png){alt="C240 Performance ttv2"}
+C240 Performance ttv2
 
-\
+<span style="color: #990819;">*Figure 6. Performance C240 Benchmark en nodos ttv2.*</span>
+
+![Performance C240 Benchmark en nodos ttv2.](../../../images/Reframe/Apps/NWChem/Figure_error_ttv2_c240.png)
+
+<span style="color: #990819;">*Table 4. Performance C240 Benchmark en nodos ttv2.*</span>
 
 +----------+---------------+---------------+---------------+---------------+---------------+
 | **\#     | **CPU's Nodos ttv2\                                                           |
@@ -398,14 +416,17 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 
 Cálculo del funcional de densidad de un fragmento de zeolita. Cálculos LDA (energy plus gradient) en un
 fragmento de zeolita siosi8 de 533 átomos.
-La entrada utiliza un conjunto de bases orbitales atómicas
-con 7108 funciones y una base de ajuste de densidad de carga con 16501 funciones. El archivo de entrada
-está disponible en este
+La entrada utiliza un conjunto de bases orbitales atómicas con 7108 funciones y una base de ajuste de 
+densidad de carga con 16501 funciones. El archivo de entrada está disponible en este
 [enlace](https://nwchemgit.github.io/Benchmarks.html#density-functional-calculation-of-a-zeolite-fragment).
 
 La simulación debe llegar a un valor `Total DFT energy` cercano a: `-65667.628352536878`
 
-![Performance Siosi8 Benchmark](Reframe/Apps/NWChem/Figure_Siosi8.png){alt="Figure Siosi8"}
+<span style="color: #990819;">*Figure 7. Performance Siosi8 Benchmark*</span>
+
+![Performance Siosi8 Benchmark](../../../images/Reframe/Apps/NWChem/Figure_Siosi8.png)
+
+<span style="color: #990819;">*Table 5. Performance Siosi8 Benchmark*</span>
 
 +-----------------+-----------------+-----------------+-----------------+
 | **\# Nodos**    | **CPU's Nodos   | **CPU's Nodos   | **CPU's Nodos   |
@@ -440,6 +461,8 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-65667.6283
 La simulación requiere altos recursos para un correcto performance. Calculamos la eficiencia paralela
 a partir de 8 nodos de computo para cada tipo de nodo para una mejor interpretación de lo datos.
 
+<span style="color: #990819;">*Table 6. Eficiencia Paralela Siosi8 Benchmark*</span>
+
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 | **\#    | **CPU's Nodos nc\        | **CPU's Nodos            | **CPU's Nodos            |
 | Nodos** | 20 Cores x 2.50GHz Intel | ttv1\[1-58\]\            | ttv2\[59-104\]\          |
@@ -457,7 +480,6 @@ a partir de 8 nodos de computo para cada tipo de nodo para una mejor interpretac
 | 16      | 520.48    | 121 %        | 484.16    | 92 %         | 513.51    | 74 %         |
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 
-: Eficiencia Paralela Siosi8 Benchmark
 
 # Referencias
 

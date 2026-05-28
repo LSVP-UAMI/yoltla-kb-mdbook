@@ -1,262 +1,290 @@
 # Descripción
 
-HPL es un paquete de software que resuelve un sistema lineal denso (aleatorio) en aritmética de doble precisión (64 bits) en computadoras con memoria distribuida. Por lo tanto, se puede considerar como una implementación portátil y de libre acceso de High Performance Computing Linpack Benchmark.
+HPL es un paquete de software que resuelve un sistema lineal denso (aleatorio)
+en aritmética de doble precisión (64 bits) en computadoras con memoria distribuida. 
+Por lo tanto, se puede considerar como una implementación portátil y de libre 
+acceso de High Performance Computing Linpack Benchmark.
 
-El paquete HPL proporciona un programa de prueba y cronometraje para cuantificar la precisión de la solución obtenida, así como el tiempo necesario para calcularla.
+El paquete HPL proporciona un programa de prueba y cronometraje para cuantificar 
+la precisión de la solución obtenida, así como el tiempo necesario para calcularla.
 
 Para obtener más información, visite el sitio oficial de [HPL](https://netlib.org/benchmark/hpl/).
 
+
 # Archivo de entrada
 
-HPL necesita un archivo de entrada para poder ejecutarse, por defecto HPL buscará este archivo con el nombre *HPL.dat*. A continuación se presenta un ejemplo de este archivo:
+HPL necesita un archivo de entrada para poder ejecutarse, por defecto HPL buscará
+este archivo con el nombre *HPL.dat*. A continuación se presenta un ejemplo de este archivo:
 
-:::: formalpara
-::: title
-HPL.dat
-:::
+<span style="color: #990819;">*HPL.dat*</span>
 
-    HPLinpack benchmark input file
-    Innovative Computing Laboratory, University of Tennessee
-    HPL.out     output file name (if any)
-    6           device out (6=stdout,7=stderr,file)
-    2           # of problems sizes (N)
+```bash
+
+HPLinpack benchmark input file
+Innovative Computing Laboratory, University of Tennessee
+HPL.out     output file name (if any)
+6           device out (6=stdout,7=stderr,file)
+2           # of problems sizes (N)
+3000 6000   Ns
+3           # of NBs
+80 100 120  NBs
+0           MAP process mapping (0=Row-,1=Column-major)
+2           # of process grids (P x Q)
+1 2         Ps
+6 8         Qs
+16.0        threshold
+1           # of panel fact<
+2           PFACTs (0=left, 1=Crout, 2=Right)
+1           # of recursive stopping criterium
+4           NBMINs (>= 1)
+1           # of panels in recursion
+2           NDIVs
+1           # of recursive panel fact.
+1           RFACTs (0=left, 1=Crout, 2=Right)
+1           # of broadcast
+1           BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
+1           # of lookahead depth
+1           DEPTHs (>=0)
+2           SWAP (0=bin-exch,1=long,2=mix)
+64          swapping threshold
+0           L1 in (0=transposed,1=no-transposed) form
+0           U in (0=transposed,1=no-transposed) form
+1           Equilibration (0=no,1=yes)
+8           memory alignment in double (> 0)
+```
+
+Este archivo consta de 31 líneas y contiene información sobre los tamaños de los 
+problemas, la configuración del sistema y las características del algoritmo que 
+utilizará el ejecutable. A continuación se explican algunos de los parámetros 
+más relevantes de este archivo:
+
+- **Línea 5:** Esta línea especifica el número de tamaños de problema a utilizar. 
+Este número debe ser menor o igual a 20. El primer entero es significativo, el 
+resto se ignora. Si la línea dice:
+    
+    ```bash
+    2        # of problems sizes (N)
+    ```
+  esto significa que se utilizarán 2 tamaños de problema que se especificarán en 
+  la siguiente línea.
+
+- **Línea 6:** Esta línea especifica los tamaños de problema a utilizar. Suponiendo 
+que la línea anterior comenzó con 2, los 2 primeros números enteros positivos son 
+significativos, el resto se ignora. Por ejemplo:
+    
+    ```bash
     3000 6000   Ns
-    3           # of NBs
+    ```
+
+  Para obtener más información de este parámetro, consulte el siguiente 
+  [enlace](https://ulhpc-tutorials.readthedocs.io/en/latest/parallel/mpi/HPL/#hpl-main-parameters).
+
+- **Línea 7:** Esta línea especifica el número de tamaños de bloque a utilizar. 
+Este número debe ser menor o igual a 20. El primer entero es significativo, el 
+resto se ignora. Si la línea dice:
+
+    ```bash
+    3        # of NBs
+    ```
+
+  esto significa que se utilizarán 3 tamaños de bloque que se especificarán en la 
+  siguiente línea.
+
+- **Línea 8:** Esta línea especifica los tamaños de bloque a utilizar. Suponiendo 
+que la línea anterior comenzó con 3, los 3 primeros números enteros positivos son 
+significativos, el resto se ignora. Por ejemplo:
+
+    ```
     80 100 120  NBs
-    0           MAP process mapping (0=Row-,1=Column-major)
-    2           # of process grids (P x Q)
-    1 2         Ps
-    6 8         Qs
-    16.0        threshold
-    1           # of panel fact<
-    2           PFACTs (0=left, 1=Crout, 2=Right)
-    1           # of recursive stopping criterium
-    4           NBMINs (>= 1)
-    1           # of panels in recursion
-    2           NDIVs
-    1           # of recursive panel fact.
-    1           RFACTs (0=left, 1=Crout, 2=Right)
-    1           # of broadcast
-    1           BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
-    1           # of lookahead depth
-    1           DEPTHs (>=0)
-    2           SWAP (0=bin-exch,1=long,2=mix)
-    64          swapping threshold
-    0           L1 in (0=transposed,1=no-transposed) form
-    0           U in (0=transposed,1=no-transposed) form
-    1           Equilibration (0=no,1=yes)
-    8           memory alignment in double (> 0)
-::::
+    ```
 
-Este archivo consta de 31 líneas y contiene información sobre los tamaños de los problemas, la configuración del sistema y las características del algoritmo que utilizará el ejecutable. A continuación se explican algunos de los parámetros más relevantes de este archivo:
+- **Línea 10:** Esta línea especifica el número de cuadrículas de procesos a utilizar. 
+Este número debe ser menor o igual a 20. El primer entero es significativo, el resto 
+se ignora. Si la línea dice:
+    ```bash
+    2        # of process grids (P x Q)
+    ```
+  Esto significa que se utilizarán 2 tamaños de cuadrícula de procesos que se especificarán 
+  en la siguiente línea.
 
-- **Línea 5:** Esta línea especifica el número de tamaños de problema a utilizar. Este número debe ser menor o igual a 20. El primer entero es significativo, el resto se ignora. Si la línea dice:
+- **Línea 11-12:** Estas dos líneas especifican la cantidad de procesos correspondientes 
+a cada fila y a cada columna de cada cuadrícula a utilizar. Suponiendo que la línea anterior 
+comenzó con 2, los 2 primeros números enteros positivos de esas dos líneas son significativos, 
+el resto se ignora. Por ejemplo:
 
-      2        # of problems sizes (N)
+    ```
+    2 4          Ps
+    5 8          Qs
+    ```
 
-  esto significa que se utilizarán 2 tamaños de problema que se especificarán en la siguiente línea.
-
-- **Línea 6:** Esta línea especifica los tamaños de problema a utilizar. Suponiendo que la línea anterior comenzó con 2, los 2 primeros números enteros positivos son significativos, el resto se ignora. Por ejemplo:
-
-      3000 6000   Ns
-
-  Para obtener más información de este parámetro, consulte el siguiente [enlace](https://ulhpc-tutorials.readthedocs.io/en/latest/parallel/mpi/HPL/#hpl-main-parameters).
-
-- **Línea 7:** Esta línea especifica el número de tamaños de bloque a utilizar. Este número debe ser menor o igual a 20. El primer entero es significativo, el resto se ignora. Si la línea dice:
-
-      3        # of NBs
-
-  esto significa que se utilizarán 3 tamaños de bloque que se especificarán en la siguiente línea.
-
-- **Línea 8:** Esta línea especifica los tamaños de bloque a utilizar. Suponiendo que la línea anterior comenzó con 3, los 3 primeros números enteros positivos son significativos, el resto se ignora. Por ejemplo:
-
-      80 100 120  NBs
-
-- **Línea 10:** Esta línea especifica el número de cuadrículas de procesos a utilizar. Este número debe ser menor o igual a 20. El primer entero es significativo, el resto se ignora. Si la línea dice:
-
-      2        # of process grids (P x Q)
-
-  esto significa que se utilizarán 2 tamaños de cuadrícula de procesos que se especificarán en la siguiente línea.
-
-- **Línea 11-12:** Estas dos líneas especifican la cantidad de procesos correspondientes a cada fila y a cada columna de cada cuadrícula a utilizar. Suponiendo que la línea anterior comenzó con 2, los 2 primeros números enteros positivos de esas dos líneas son significativos, el resto se ignora. Por ejemplo:
-
-      2 4          Ps
-      5 8          Qs
-
-:::: warning
-::: title
-:::
-
+```admonish warning title=""
 En este ejemplo, se requiere ejecutar HPL en un nodo con al menos 32 cores:
 
-Ps~1~ x Qs~1~ = 2 x 5 = 10 cores\
-Ps~2~ x Qs~2~ = 4 x 8 = 32 cores
-::::
+Ps<sub>1</sub> x Qs<sub>1</sub> = 2 x 5 = 10 cores\
+Ps<sub>2</sub> x Qs<sub>2</sub> = 4 x 8 = 32 cores
+```
 
-Para escribir el archivo de entrada de HPL debe considerar los recursos de su sistema: el número de nodos, el número de CPUs por nodo, y la cantidad de memoria por nodo. Puede utilizar el sitio web [How do I tune my HPL.dat file?](https://www.advancedclustering.com/act_kb/tune-hpl-dat-file/) para generar su archivo de entrada.
+Para escribir el archivo de entrada de HPL debe considerar los recursos de su sistema: 
+el número de nodos, el número de CPUs por nodo, y la cantidad de memoria por nodo. 
+Puede utilizar el sitio web [How do I tune my HPL.dat file?](https://www.advancedclustering.com/act_kb/tune-hpl-dat-file/) 
+para generar su archivo de entrada.
 
-Para obtener más información, consulte la sección [HPL Tuning](https://netlib.org/benchmark/hpl/tuning.html) del sitio oficial de HPL.
+Para obtener más información, consulte la sección 
+[HPL Tuning](https://netlib.org/benchmark/hpl/tuning.html) del sitio oficial de HPL.
+
 
 # Archivo de salida
 
 A continuación se presenta el archivo de entrada:
 
-:::: formalpara
-::: title
-HPL.dat
-:::
+<span style="color: #990819;">*HPL.dat*</span>
 
-    HPLinpack benchmark input file
-    Innovative Computing Laboratory, University of Tennessee
-    HPL.out     output file name (if any)
-    6           device out (6=stdout,7=stderr,file)
-    2           # of problems sizes (N)
-    82432 285600 Ns
-    1           # of NBs
-    224         # of problems sizes (N)
-    0           MAP process mapping (0=Row-,1=Column-major)
-    1           # of process grids (P x Q)
-    15          Ps
-    16          Qs
-    16.0        threshold
-    1           # of panel fact<
-    2           PFACTs (0=left, 1=Crout, 2=Right)
-    1           # of recursive stopping criterium
-    4           NBMINs (>= 1)
-    1           # of panels in recursion
-    2           NDIVs
-    1           # of recursive panel fact.
-    1           RFACTs (0=left, 1=Crout, 2=Right)
-    1           # of broadcast
-    1           BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
-    1           # of lookahead depth
-    1           DEPTHs (>=0)
-    2           SWAP (0=bin-exch,1=long,2=mix)
-    64          swapping threshold
-    0           L1 in (0=transposed,1=no-transposed) form
-    0           U in (0=transposed,1=no-transposed) form
-    1           Equilibration (0=no,1=yes)
-    8           memory alignment in double (> 0)
-::::
+```bash
+HPLinpack benchmark input file
+Innovative Computing Laboratory, University of Tennessee
+HPL.out     output file name (if any)
+6           device out (6=stdout,7=stderr,file)
+2           # of problems sizes (N)
+82432 285600 Ns
+1           # of NBs
+224         # of problems sizes (N)
+0           MAP process mapping (0=Row-,1=Column-major)
+1           # of process grids (P x Q)
+15          Ps
+16          Qs
+16.0        threshold
+1           # of panel fact<
+2           PFACTs (0=left, 1=Crout, 2=Right)
+1           # of recursive stopping criterium
+4           NBMINs (>= 1)
+1           # of panels in recursion
+2           NDIVs
+1           # of recursive panel fact.
+1           RFACTs (0=left, 1=Crout, 2=Right)
+1           # of broadcast
+1           BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
+1           # of lookahead depth
+1           DEPTHs (>=0)
+2           SWAP (0=bin-exch,1=long,2=mix)
+64          swapping threshold
+0           L1 in (0=transposed,1=no-transposed) form
+0           U in (0=transposed,1=no-transposed) form
+1           Equilibration (0=no,1=yes)
+8           memory alignment in double (> 0)
+```
 
 y la salida de una ejecución de HPL:
 
-:::: formalpara
-::: title
-HPL.out
-:::
+<span style="color: #990819;">*HPL.out*</span>
 
-    ================================================================================
-    HPLinpack 2.3  --  High-Performance Linpack benchmark  --   December 2, 2018
-    Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
-    Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
-    Modified by Julien Langou, University of Colorado Denver
-    ================================================================================
+```bash
 
+(1)
 
+================================================================================
+HPLinpack 2.3  --  High-Performance Linpack benchmark  --   December 2, 2018
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
 
-    An explanation of the input/output parameters follows:
-    T/V    : Wall time / encoded variant.
-    N      : The order of the coefficient matrix A.
-    NB     : The partitioning blocking factor.
-    P      : The number of process rows.
-    Q      : The number of process columns.
-    Time   : Time in seconds to solve the linear system.
-    Gflops : Rate of execution for solving the linear system.
+(2)
 
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
 
+(3)
 
-    The following parameter values will be used:
+The following parameter values will be used:
 
-    N      :   82432   329728
-    NB     :     224
-    PMAP   : Row-major process mapping
-    P      :      16
-    Q      :      20
-    PFACT  :   Right
-    NBMIN  :       4
-    NDIV   :       2
-    RFACT  :   Crout
-    BCAST  :  1ringM
-    DEPTH  :       1
-    SWAP   : Mix (threshold = 64)
-    L1     : transposed form
-    U      : transposed form
-    EQUIL  : yes
-    ALIGN  : 8 double precision words
+N      :   82432   329728
+NB     :     224
+PMAP   : Row-major process mapping
+P      :      16
+Q      :      20
+PFACT  :   Right
+NBMIN  :       4
+NDIV   :       2
+RFACT  :   Crout
+BCAST  :  1ringM
+DEPTH  :       1
+SWAP   : Mix (threshold = 64)
+L1     : transposed form
+U      : transposed form
+EQUIL  : yes
+ALIGN  : 8 double precision words
 
-    --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
+(4)
 
+- The following scaled residual check will be computed:
+        ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
 
-    - The following scaled residual check will be computed:
-          ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
-    - The relative machine precision (eps) is taken to be               1.110223e-16
-    - Computational tests pass if scaled residuals are less than                16.0
+(5)
 
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WR11C2R4       82432   224    16    20              73.92             5.0515e+03
+HPL_pdgesv() start time Mon Feb 14 08:41:17 2022
 
+HPL_pdgesv() end time   Mon Feb 14 08:42:31 2022
 
-    ================================================================================
-    T/V                N    NB     P     Q               Time                 Gflops
-    --------------------------------------------------------------------------------
-    WR11C2R4       82432   224    16    20              73.92             5.0515e+03
-    HPL_pdgesv() start time Mon Feb 14 08:41:17 2022
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   1.93387398e-03 ...... PASSED
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WR11C2R4      329728   224    16    20            3799.69             6.2897e+03
+HPL_pdgesv() start time Mon Feb 14 08:42:39 2022
 
-    HPL_pdgesv() end time   Mon Feb 14 08:42:31 2022
+HPL_pdgesv() end time   Mon Feb 14 09:45:59 2022
 
-    --------------------------------------------------------------------------------
-    ||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   1.93387398e-03 ...... PASSED
-    ================================================================================
-    T/V                N    NB     P     Q               Time                 Gflops
-    --------------------------------------------------------------------------------
-    WR11C2R4      329728   224    16    20            3799.69             6.2897e+03
-    HPL_pdgesv() start time Mon Feb 14 08:42:39 2022
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   1.40718329e-03 ...... PASSED
+================================================================================
 
-    HPL_pdgesv() end time   Mon Feb 14 09:45:59 2022
+(6)
 
-    --------------------------------------------------------------------------------
-    ||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   1.40718329e-03 ...... PASSED
-    ================================================================================
+Finished      2 tests with the following results:
+                2 tests completed and passed residual checks,
+                0 tests completed and failed residual checks,
+                0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
 
+End of Tests.
+================================================================================
+```
 
+1. Información general del benchmark
 
-    Finished      2 tests with the following results:
-                  2 tests completed and passed residual checks,
-                  0 tests completed and failed residual checks,
-                  0 tests skipped because of illegal input values.
-    --------------------------------------------------------------------------------
+2. Explicación de los parámetros de entrada/salida
 
-    End of Tests.
-    ================================================================================
-::::
+3. Parámetros utilizados
 
-- Información general del benchmark
+4. Criterio de aprobación
 
-- Explicación de los parámetros de entrada/salida
-
-- Parámetros utilizados
-
-- Criterio de aprobación
-
-- Información de la ejecución de las pruebas:
-
+5. Información de la ejecución de las pruebas:
   - Parámetros
-
   - Tiempo de ejecución
-
   - GFLOP/s
-
   - Éxito/fallo de la prueba
 
-- Resumen de la ejecución de las pruebas:
-
+6. Resumen de la ejecución de las pruebas:
   - Número de pruebas ejecutadas
-
   - Número de pruebas completadas exitosas
-
   - Número de pruebas completadas fallidas
-
   - Número de pruebas omitidas debido a valores de entrada ilegales
+
 
 # Nodos de cómputo
 
@@ -266,11 +294,15 @@ Unresolved directive in hpl.adoc - include::partial\$reframe/nodos_computo.adoc\
 
 Las pruebas realizadas con este benchmark se dividen en dos grupos:
 
-- **Rendimiento.** Su objetivo es obtener el mayor rendimiento posible. En cada prueba se utiliza un tamaño de problema acorde a los recursos disponibles.
+- **Rendimiento.** Su objetivo es obtener el mayor rendimiento posible. En cada prueba 
+se utiliza un tamaño de problema acorde a los recursos disponibles.
 
-- **Eficiencia Paralela.** Su objetivo es determinar la eficiencia paralela. El tamaño del problema se mantiene fijo en todas las pruebas.
+- **Eficiencia Paralela.** Su objetivo es determinar la eficiencia paralela. El tamaño 
+del problema se mantiene fijo en todas las pruebas.
 
 En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo de nodo:
+
+<span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC *</span>
 
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | **Número\ | **Número\ | **Tamaño del problema**         | **Tamaño | **Tamaño de\          |
@@ -295,6 +327,8 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 
 : Pruebas en los nodos NC
 
+<span style="color: #990819;">*Tabla 1. Pruebas en los nodos TTv1 *</span>
+
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | **Número\ | **Número\ | **Tamaño del problema**         | **Tamaño | **Tamaño de\          |
 | de        | de CPUs** |                                 | del\     | la cuadrícula**       |
@@ -317,6 +351,8 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 
 : Pruebas en los nodos TTv1
+
+<span style="color: #990819;">*Tabla 1. Pruebas en los nodos TTv2 *</span>
 
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | **Número\ | **Número\ | **Tamaño del problema**         | **Tamaño | **Tamaño de\          |
@@ -341,6 +377,7 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 
 : Pruebas en los nodos TTv2
 
+# ************************************
 # Scripts
 
 ## Estructura de directorios

@@ -12,6 +12,7 @@ núcleos para simulaciones típicas y más allá de 500 000 núcleos para las si
 
 - Benchmarks: F1-ATPase y STMV
 
+
 # NAMD Performance
 
 El rendimiento de simulación obtenido de NAMD depende de muchos factores. El protocolo de
@@ -21,6 +22,7 @@ código diferente que puede tener costos de rendimiento sustancialmente diferent
 un grado diferente de escalabilidad paralela, actividad de paso de mensajes, aceleración de hardware a
 través del uso de GPU o vectorización de CPU, y otros atributos que también contribuyen al
 rendimiento general de NAMD.
+
 
 ## Medición de desempeño
 
@@ -41,28 +43,25 @@ Para estimar el rendimiento de NAMD para una simulación larga, Namd muestra
 NAMD). Esta es una medida del rendimiento de NAMD después de que se hayan completado el inicio y el
 equilibrio de carga inicial.
 
-:::: formalpara
-::: title
-Ejemplo de salida Benchmark time
-:::
+<span style="color: #990819;">*Ejemplo de salida Benchmark time*</span>
 
-    Info: Benchmark time: 20 CPUs 0.471939 s/step 5.46225 days/ns 1015.32 MB memory
-::::
+```bash
+Info: Benchmark time: 20 CPUs 0.471939 s/step 5.46225 days/ns 1015.32 MB memory
+```
 
 Para este trabajo, obtenemos el rendimiento \"days/ns\" calculando el promedio de todas las salidas
 \"days/ns\" presentes en *Benchmark time*.
 
 Al final de una simulación, NAMD proporciona un resumen de los recursos utilizados.
 
-:::: formalpara
-::: title
-Ejemplo de salida
-:::
+<span style="color: #990819;">*Ejemplo de salida*</span>
 
-    WallClock: 4783.658691  CPUTime: 4783.658691  Memory: 1137.476562 MB
-::::
+```bash
+WallClock: 4783.658691  CPUTime: 4783.658691  Memory: 1137.476562 MB
+```
 
 En este trabajo, para calcular su eficiencia paralela, solo nos interesa el tiempo de pared (WallClock).
+
 
 ## ENERGY
 
@@ -70,44 +69,42 @@ Las energías, junto con las temperaturas y presiones, se imprimen cada ciclo `o
 el archivo de entrada) en una sola línea con un prefijo único
 para facilitar el procesamiento con utilidades como grep y awk. El formato es el siguiente:
 
-:::: formalpara
-::: title
-Formato de salida de NAMD
-:::
+<span style="color: #990819;">*Formato de salida de NAMD*</span>
 
-    ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP
-              ELECT            VDW       BOUNDARY           MISC        KINETIC
-              TOTAL           TEMP         TOTAL2         TOTAL3        TEMPAVG
-           PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
-::::
 
-:::: formalpara
-::: title
-Ejemplo de salida de NAMD
-:::
+```bash
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP
+            ELECT            VDW       BOUNDARY           MISC        KINETIC
+            TOTAL           TEMP         TOTAL2         TOTAL3        TEMPAVG
+        PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+```
 
-    .
-    .
-    ENERGY:    9997    108061.8062     81667.0452     16169.8824      1721.5431
-      -1335791.0959    112556.9911         0.0000         0.0000    290465.6266
-       -725148.2014       297.5422  -1015613.8280   -722543.2055       297.5422
-           304.1737       161.3509   3104392.8098       304.1737       161.3509
+<span style="color: #990819;">*Ejemplo de salida de NAMD*</span>
 
-    ENERGY:    9998    108373.7883     81798.0534     16165.9493      1718.4754
-      -1335967.4030    112577.6787         0.0000         0.0000    290204.5390
-       -725128.9190       297.2748  -1015333.4580   -722544.8914       297.2748
-           216.5664       160.7425   3104392.8098       216.5664       160.7425
+```bash
+.
+.
+ENERGY:    9997    108061.8062     81667.0452     16169.8824      1721.5431
+    -1335791.0959    112556.9911         0.0000         0.0000    290465.6266
+    -725148.2014       297.5422  -1015613.8280   -722543.2055       297.5422
+        304.1737       161.3509   3104392.8098       304.1737       161.3509
 
-    ENERGY:    9999    108790.3699     81866.1842     16165.2348      1713.4982
-      -1336153.5789    112590.8997         0.0000         0.0000    289924.9586
-       -725102.4334       296.9884  -1015027.3920   -722547.1299       296.9884
-           123.4770       159.9664   3104392.8098       123.4770       159.9664
-    .
-    .
-::::
+ENERGY:    9998    108373.7883     81798.0534     16165.9493      1718.4754
+    -1335967.4030    112577.6787         0.0000         0.0000    290204.5390
+    -725128.9190       297.2748  -1015333.4580   -722544.8914       297.2748
+        216.5664       160.7425   3104392.8098       216.5664       160.7425
+
+ENERGY:    9999    108790.3699     81866.1842     16165.2348      1713.4982
+    -1336153.5789    112590.8997         0.0000         0.0000    289924.9586
+    -725102.4334       296.9884  -1015027.3920   -722547.1299       296.9884
+        123.4770       159.9664   3104392.8098       123.4770       159.9664
+.
+.
+```
 
 Los valores de energía están en kcal/mol.Para este trabajo nos interesa el promedio del parametro
 `TOTAL` que es la suma de las diversas energías potenciales y la energía `KINETIC`.
+
 
 # Eficiencia paralela
 
@@ -117,13 +114,13 @@ números de CPU para encontrar un punto óptimo.
 
 A partir de estos datos, se puede calcular la **eficiencia paralela**. Esto se define cómo:
 
-E = (1/P) \* (T~1~/T~P~)
+**E = (1/P) \* (T<sub>1</sub>/T<sub>P</sub>)**
 
 - P = Numero de procesadores
 
-- T~1~ = tiempo óptimo para el algoritmo en un procesador
+- T<sub>1</sub> = tiempo óptimo para el algoritmo en un procesador
 
-- T~P~ = tiempo para algoritmo paralelo en P procesadores
+- T<sub>P</sub> = tiempo para algoritmo paralelo en P procesadores
 
 Dado que la evaluación comparativa en un solo núcleo a menudo puede llevar mucho tiempo y
 la escala dentro de un nodo es generalmente muy buena, para los propósitos del Yoltla es suficiente
@@ -132,6 +129,7 @@ disponible.
 
 Como regla general, los trabajos que se ejecutan con una gran cantidad de núcleos deben tener
 una eficiencia paralela superior o igual a 0,7.
+
 
 # STMV Benchmark (Junio 2022)
 
@@ -143,7 +141,9 @@ ejecutan en nodos completos por partición.
 
 La simulación debe llegar a un valor `ENERGY:TOTAL` cercano a: `-2457729.98`
 
-![Performance STMV Benchmark.](Reframe/Apps/Namd/Figure_STMV.png){alt="STMV Performance"}
+![Performance STMV Benchmark.](../../../images/Reframe/Apps/Namd/Figure_STMV.png)
+
+<span style="color: #990819;">*Figure 1. Performance STMV Benchmark.*</span>
 
 \
 Para este Benchmark vemos que después de 320 núcleos, los beneficios por solicitar más
@@ -151,6 +151,8 @@ recursos se vuelven muy marginales. Usar más recursos que esto resultará en un
 
 Los datos muestran que el uso de nodos *nc* proporciona una mejor aceleración y rendimiento
 que otro tipo de nodo.
+
+<span style="color: #990819;">*Table 1. Performance STMV Benchmark*</span>
 
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
@@ -178,11 +180,14 @@ que otro tipo de nodo.
 
 : Performance STMV Benchmark
 
+
 ## Performance STMV Benchmark en nodos NC
 
-![Performance STMV Benchmark en nodos NC.](Reframe/Apps/Namd/Figure_nc_error_stmv.png){alt="STMV Performance nc"}
+<span style="color: #990819;">*Figure 2. Performance STMV Benchmark en nodos NC.*</span>
 
-\
+![Performance STMV Benchmark en nodos NC.](../../../images/Reframe/Apps/Namd/Figure_nc_error_stmv.png)
+
+<span style="color: #990819;">*Table 2. Performance STMV Benchmark en nodos nc*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
@@ -210,11 +215,14 @@ que otro tipo de nodo.
 
 : Performance STMV Benchmark en nodos nc
 
+
 ## Performance STMV Benchmark en nodos TTV1
 
-![Performance STMV Benchmark en nodos TTV1.](Reframe/Apps/Namd/Figure_ttv1_error_stmv.png){alt="STMV Performance ttv1"}
+<span style="color: #990819;">*Figure 3. Performance STMV Benchmark en nodos TTV1.*</span>
 
-\
+![Performance STMV Benchmark en nodos TTV1.](../../../images/Reframe/Apps/Namd/Figure_ttv1_error_stmv.png)
+
+<span style="color: #990819;">*Table 3. Performance STMV Benchmark en nodos ttv1*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
@@ -244,11 +252,14 @@ que otro tipo de nodo.
 
 : Performance STMV Benchmark en nodos ttv1
 
+
 ## Performance STMV Benchmark en nodos TTV2
 
-![Performance STMV Benchmark en nodos TTV2.](Reframe/Apps/Namd/Figure_ttv2_error_stmv.png){alt="STMV Performance ttv2"}
+<span style="color: #990819;">*Figure 4. Performance STMV Benchmark en nodos TTV2.*</span>
 
-\
+![Performance STMV Benchmark en nodos TTV2.](../../../images/Reframe/Apps/Namd/Figure_ttv2_error_stmv.png)
+
+<span style="color: #990819;">*Table 4. Performance STMV Benchmark en nodos ttv2*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
@@ -276,12 +287,15 @@ que otro tipo de nodo.
 
 : Performance STMV Benchmark en nodos ttv2
 
+
 ## STMV: Múltiples dispositivos GPU en un solo nodo
 
 Evaluación comparativa de STMV Benchmark en un solo nodo con equipos Tesla K20 y V100, con NAMD 2.13.
 Las ejecuciones utilizaron todos los núcleos físicos y 2, 4 u 8 dispositivos GPU en el nodo.
 
-![Performance STMV Benchmark en GPUS.](Reframe/Apps/Namd/Grafica-STMV-GPU.png){alt="STMV en gpus"}
+<span style="color: #990819;">*Figure 5. Performance STMV Benchmark en GPUS.*</span>
+
+![Performance STMV Benchmark en GPUS.](../../../images/Reframe/Apps/Namd/Grafica-STMV-GPU.png)
 
 \
 La ejecución en un nodo de GPU K20 (1 GPU, 20 núcleos físicos) brinda aproximadamente el mismo
@@ -290,6 +304,8 @@ físicos) ofrece aproximadamente el mismo rendimiento que en 8 nodos nc (160 nú
 
 Los resultados muestran que el rendimiento de usar 1 GPU V100 es 6 veces mejor que 1 GPU
 K20. Utilizar más de una GPU V100 para este Benchmark es ineficiente.
+
+<span style="color: #990819;">*Table 5. Performance STMV Benchmark en GPUS.*</span>
 
 +-------------+---------------+---------------+---------------+---------------+
 | **\# GPU    | **Nodos GPUS Tesla K20\       | **Nodos GPUS V100\            |
@@ -311,6 +327,7 @@ K20. Utilizar más de una GPU V100 para este Benchmark es ineficiente.
 
 : Performance STMV Benchmark en GPUS.
 
+
 # F1-ATPase Benchmark (Junio 2022)
 
 F1ATPase benchmark, 327,506 atoms, periodic, PME (disponible
@@ -321,7 +338,9 @@ ejecutan en nodos completos por partición.
 
 La simulación debe llegar a un valor `ENERGY:TOTAL` cercano a: `-725159.11`
 
-![Performance F1ATPase Benchmark.](Reframe/Apps/Namd/Figure_F1atpase.png){alt="F1ATPase Performance"}
+<span style="color: #990819;">*Figure 6. Performance F1ATPase Benchmark.*</span>
+
+![Performance F1ATPase Benchmark.](../../../images/Reframe/Apps/Namd/Figure_F1atpase.png)
 
 \
 El gráfico de eficiencia muestra que para un sistema molecular pequeño como ATPase, la
@@ -330,6 +349,8 @@ su ejecución.
 
 Los datos muestran que el uso de nodos *nc* proporciona un mejor rendimiento en las distintas
 particiones de nodos presentes en Yoltla.
+
+<span style="color: #990819;">*Table 6. Performance F1ATPase Benchmark*</span>
 
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
@@ -357,11 +378,15 @@ particiones de nodos presentes en Yoltla.
 
 : Performance F1ATPase Benchmark
 
+
 ## Performance F1-ATPase Benchmark en nodos NC
 
-![Performance F1ATPase Benchmark en nodos NC.](Reframe/Apps/Namd/Figure_nc_error_f1atpase.png){alt="F1ATPase Performance nc"}
+<span style="color: #990819;">*Figure 7. Performance F1ATPase Benchmark en nodos NC.*</span>
+
+![Performance F1ATPase Benchmark en nodos NC.](../../../images/Reframe/Apps/Namd/Figure_nc_error_f1atpase.png)
 
 \
+<span style="color: #990819;">*Table 7. Performance F1ATPase Benchmark en nodos nc*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
@@ -391,9 +416,12 @@ particiones de nodos presentes en Yoltla.
 
 ## Performance F1-ATPase Benchmark en nodos TTV1
 
-![Performance F1ATPase Benchmark en nodos TTV1.](Reframe/Apps/Namd/Figure_ttv1_error_f1atpase.png){alt="F1ATPase Performance ttv1"}
+<span style="color: #990819;">*Figure 8. Performance F1ATPase Benchmark en nodos TTV1.*</span>
+
+![Performance F1ATPase Benchmark en nodos TTV1.](../../../images/Reframe/Apps/Namd/Figure_ttv1_error_f1atpase.png)
 
 \
+<span style="color: #990819;">*Table 8. Performance F1ATPase Benchmark en nodos ttv1*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
@@ -425,9 +453,12 @@ particiones de nodos presentes en Yoltla.
 
 ## Performance F1-ATPase Benchmark en nodos TTV2
 
-![Performance F1ATPase Benchmark en nodos TTV2.](Reframe/Apps/Namd/Figure_ttv2_error_f1atpase.png){alt="F1ATPase Performance ttv2"}
+<span style="color: #990819;">*Figure 9. Performance F1ATPase Benchmark en nodos TTV2.*</span>
+
+![Performance F1ATPase Benchmark en nodos TTV2.](../../../images/Reframe/Apps/Namd/Figure_ttv2_error_f1atpase.png)
 
 \
+<span style="color: #990819;">*Table 9. Performance F1ATPase Benchmark en nodos ttv2*</span>
 
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
@@ -455,12 +486,15 @@ particiones de nodos presentes en Yoltla.
 
 : Performance F1ATPase Benchmark en nodos ttv2
 
+
 ## F1-ATPase: Múltiples dispositivos GPU en un solo nodo
 
 Evaluación comparativa de F1-ATPase en un solo nodo con equipos Tesla K20 y V100, con NAMD
 2.13. Las ejecuciones utilizaron todos los núcleos físicos y 1, 2, 4 u 8 dispositivos GPU en el nodo.
 
-![Performance ATPase Benchmark en GPUS.](Reframe/Apps/Namd/Grafica-ATPASE-GPU.png){alt="ATPase en GPUS"}
+<span style="color: #990819;">*Figure 10. Performance ATPase Benchmark en GPUS.*</span>
+
+![Performance ATPase Benchmark en GPUS.](../../../images/Reframe/Apps/Namd/Grafica-ATPASE-GPU.png)
 
 \
 La ejecución con 1 dispositivos GPU V100 (+ 36 núcleos físicos) ofrece un rendimiento similar que 8
@@ -468,6 +502,8 @@ nodos en los tres tipos de nodo.
 
 Los resultados muestran que el rendimiento de usar 4 GPU V100 es superior a 512 procesos de
 nodos ttv2.
+
+<span style="color: #990819;">*Table 10. Performance ATPase Benchmark en GPUS.*</span>
 
 +-------------+---------------+---------------+---------------+---------------+
 | **\# GPU    | **Nodos GPUS Tesla K20\       | **Nodos GPUS V100\            |
