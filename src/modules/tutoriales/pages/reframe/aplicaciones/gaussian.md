@@ -99,24 +99,24 @@ Test0979: NBO test with f functions
 
 <th colspan="2">
 CPU’s Nodos nc<br>
-20 Cores x 2.50GHz Intel<br>
-Xeón E5-2670v2<br>
+20 Cores x 2.50GHz Intel Xeón<br>
+E5-2670v2<br>
 64GB RAM<br>
 Infiniband FDR10/FDR
 </th>
 
 <th colspan="2">
 CPU’s Nodos ttv1[1-58]<br>
-20 Cores x 2.60GHz Intel<br>
-Xeón E5-2660v3<br>
+20 Cores x 2.60GHz Intel Xeón<br>
+E5-2660v3<br>
 128GB RAM<br>
 Infiniband FDR10/FDR
 </th>
 
 <th colspan="2">
 CPU’s Nodos ttv2[59-104]<br>
-32 Cores x 2.10GHz Intel<br>
-Xeon E5-2683v4<br>
+32 Cores x 2.10GHz Intel Xeón<br>
+E5-2683v4<br>
 256GB RAM<br>
 Infiniband FDR10/FDR
 </th>
@@ -178,7 +178,7 @@ Infiniband FDR10/FDR
 <td>87.1 %</td>
 
 <td>361.331</td>
-<td>85.8%</td>
+<td>85.8 %</td>
 </tr>
 
 <tr>
@@ -228,33 +228,130 @@ Test1044: TD 50-50 with PCM test
 
 <span style="color: red;">*Table 2. Performance Test 1044*</span>
 
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
-| Cores** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
-|         | Xeón E5-2670v2\            | 20 Cores x 2.60GHz Intel   | 32 Cores x 2.10GHz Intel   |
-|         | 64GB RAM\                  | Xeón E5-2660v3\            | Xeon E5-2683v4\            |
-|         | Infiniband FDR10/FDR**     | 128GB RAM\                 | 256GB RAM\                 |
-|         |                            | Infiniband FDR10/FDR**     | Infiniband FDR10/FDR**     |
-|         +-------------+--------------+-------------+--------------+-------------+--------------+
-|         | **time      | **Eficiencia | **time      | **Eficiencia | **time      | **Eficiencia |
-|         | (seconds)** | Paralela %** | (seconds)** | Paralela %** | (seconds)** | Paralela %** |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 1       | 1868.443    | 100.0 %      | 2117.750    | 100.0 %      | 3104.160    | 100.0 %      |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 2       | 958.971     | 97.4 %       | 1068.356    | 99.1 %       | 1628.442    | 95.3 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 4       | 463.332     | 100.8 %      | 539.453     | 98.1 %       | 815.336     | 95.2 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 8       | 242.975     | 96.1 %       | 263.012     | 100.6 %      | 415.186     | 93.5 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 16      | 129.552     | 90.1 %       | 141.716     | 93.4 %       | 210.299     | 92.3 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 20      | 105.539     | 88.5 %       | 119.133     | 88.9 %       |             |              |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 32      |             |              |             |              | 116.476     | 83.3 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
+<table>
+<tr>
+<th rowspan="2"># Cores</th>
 
-: Performance Test 1044
+<th colspan="2">
+CPU’s Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón<br>
+E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+
+<th colspan="2">
+CPU’s Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón<br>
+E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+
+<th colspan="2">
+CPU’s Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeón<br>
+E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>time (seconds)</th>
+<th>Eficiencia Paralela %</th>
+
+<th>time (seconds)</th>
+<th>Eficiencia Paralela %</th>
+
+<th>time (seconds)</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>1868.443</td>
+<td>100.0 %</td>
+
+<td>2117.750</td>
+<td>100.0 %</td>
+
+<td>3104.160</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>958.971</td>
+<td>97.4 %</td>
+
+<td>1068.356</td>
+<td>99.1 %</td>
+
+<td>1628.442</td>
+<td>95.3 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>463.332</td>
+<td>100.8 %</td>
+
+<td>539.453</td>
+<td>98.1 %</td>
+
+<td>815.336</td>
+<td>95.2 %</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>242.975</td>
+<td>96.1 %</td>
+
+<td>263.012</td>
+<td>100.6 %</td>
+
+<td>415.186</td>
+<td>93.5 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>129.552</td>
+<td>90.1 %</td>
+
+<td>141.716</td>
+<td>93.4 %</td>
+
+<td>210.299</td>
+<td>92.3 %</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>105.539</td>
+<td>88.5 %</td>
+
+<td>119.133</td>
+<td>88.9 %</td>
+
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>32</td>
+<td></td>
+<td></td>
+
+<td></td>
+<td></td>
+
+<td>116.476</td>
+<td>83.3 %</td>
+</tr>
+</table>
 
 Para este Benchmarks, observamos que Gaussian hace un uso eficiente de los recursos disponibles
 escalando apropiadamente.

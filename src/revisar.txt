@@ -43,8 +43,7 @@
             - [REVISAR ENLACE A "Archivo de configuración"]()
 
             - [Gaussian](./modules/tutoriales/pages/reframe/aplicaciones/gaussian.md)
-                - [REVISAR AJUSTE DE TABLAS]()
-            
+                        
             - [Gromacs](./modules/tutoriales/pages/reframe/aplicaciones/gromacs.md)
                 - [REVISAR ENLACE A "HECBioSim"]()
                 - [REVISAR ENLACE A "The HECBioSim Benchmarks"]()
