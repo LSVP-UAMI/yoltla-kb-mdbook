@@ -64,7 +64,11 @@
         - [Benchmarks]()
             - [HPL](./modules/tutoriales/pages/reframe/benchmarks/hpl.md)
             	- REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
+                - REVISAR AJUSTE DE TABLAS
+                - REVISAR ENLACE "AMD \| HPL Benchmark"
+
             - [HPCG]()
+                - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[]) Unresolved directive in hpcg.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
         - [MicroBenchmarks]()
             

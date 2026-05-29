@@ -22,7 +22,7 @@
 
         - [Benchmarks]()
             - [HPL](./modules/tutoriales/pages/reframe/benchmarks/hpl.md)
-            - [HPCG]()
+            - [HPCG](./modules/tutoriales/pages/reframe/benchmarks/hpcg.md)
 
         - [MicroBenchmarks]()
             
