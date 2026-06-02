@@ -1,14 +1,16 @@
 # Descripción
 
-memtester es una utilidad para probar el subsistema de memoria en una computadora para determinar si está defectuoso.
+memtester es una utilidad para probar el subsistema de memoria en una 
+computadora para determinar si está defectuoso.
 
-Para obtener más información, visite el sitio oficial de [memtester](https://pyropus.ca./software/memtester/).
+Para obtener más información, visite el sitio oficial de 
+[memtester](https://pyropus.ca./software/memtester/).
 
 # Compilación
 
 1.  Descargue el [código fuente](https://pyropus.ca./software/memtester/old-versions/memtester-4.5.1.tar.gz) de memtester:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ wget --no-check-certificate https://pyropus.ca./software/memtester/old-versions/memtester-4.5.1.tar.gz
     --2022-08-09 10:48:21--  https://pyropus.ca./software/memtester/old-versions/memtester-4.5.1.tar.gz
     Resolving pyropus.ca.... 96.126.125.117
@@ -28,7 +30,7 @@ Para obtener más información, visite el sitio oficial de [memtester](https://p
 
 2.  Descomprima el archivo *memtester-4.5.1.tar.gz*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ tar -xvf memtester-4.5.1.tar.gz
     memtester-4.5.1/
     memtester-4.5.1/tests.h
@@ -57,20 +59,20 @@ Para obtener más información, visite el sitio oficial de [memtester](https://p
 
 3.  Cambie al directorio *memtester-4.5.1*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ cd memtester-4.5.1
     [t.800@yoltla memtester-4.5.1]$
     ```
 
 4.  Cargue el módulo de GCC:
 
-    ``` shell
+    ```bash
     [t.800@yoltla memtester-4.5.1]$ module load gcc/7.2.0
     ```
 
 5.  Ejecute el comando `make`:
 
-    ``` shell
+    ```bash
     [t.800@yoltla memtester-4.5.1]$ make
     ( cat warn-auto.sh; \
             echo CC=\'`head -1 conf-cc`\'; \
@@ -97,36 +99,27 @@ Para obtener más información, visite el sitio oficial de [memtester](https://p
 # Ejecución
 
 Para ejecutar memtester, siga el siguiente formato:
-
+```bash
     memtester <memoria> [iteraciones]
+```
 
-+-----------------------------------+-----------------------------------+
-| Opción                            | Descripción                       |
-+===================================+===================================+
-| \<memoria\>                       | Es la cantidad de memoria a       |
-|                                   | probar, en megabytes por          |
-|                                   | defecto.\                         |
-|                                   | Opcionalmente, puede incluir un   |
-|                                   | sufijo de B, K, M o G (para       |
-|                                   | bytes, kilobytes, megabytes y     |
-|                                   | gigabytes, respectivamente).      |
-+-----------------------------------+-----------------------------------+
-| \[iteraciones\]                   | Es un límite opcional para el     |
-|                                   | número de ejecuciones a través de |
-|                                   | todas las pruebas.                |
-+-----------------------------------+-----------------------------------+
+| **Opción**    | **Descripción** |
+|---------------|-----------------|
+| < memoria>    | Es la cantidad de memoria a probar, en megabytes por defecto. <br>Opcionalmente, puede incluir un sufijo de B, K, M o G (para bytes, kilobytes, megabytes y gigabytes, respectivamente). |
+| [iteraciones] | Es un límite opcional para el número de ejecuciones a través de todas las pruebas. |
 
 Para este ejemplo, utilice el comando:
 
-``` shell
+```bash
 [t.800@yoltla memtester-4.5.1]$ ./memtester 100M 1
 ```
+
 
 # Salida
 
 A continuación se presenta la salida de una ejecución de memtester:
 
-``` shell
+```bash
 memtester version 4.5.1 (64-bit)
 Copyright (C) 2001-2020 Charles Cazabon.
 Licensed under the GNU General Public License version 2 (only).
@@ -136,45 +129,55 @@ pagesizemask is 0xfffffffffffff000
 want 100MB (104857600 bytes)
 got  100MB (104857600 bytes), trying mlock ...locked.
 Loop 1/1:
-  Stuck Address       : ok  
-  Random Value        : ok  
-  Compare XOR         : ok  
-  Compare SUB         : ok  
-  Compare MUL         : ok  
-  Compare DIV         : ok  
-  Compare OR          : ok  
-  Compare AND         : ok  
-  Sequential Increment: ok  
-  Solid Bits          : ok  
-  Block Sequential    : ok  
-  Checkerboard        : ok  
-  Bit Spread          : ok  
-  Bit Flip            : ok  
-  Walking Ones        : ok  
-  Walking Zeroes      : ok  
+  Stuck Address       : ok   (1)
+  Random Value        : ok   (2)
+  Compare XOR         : ok   (2)
+  Compare SUB         : ok   (2)
+  Compare MUL         : ok   (2)
+  Compare DIV         : ok   (2)
+  Compare OR          : ok   (2)
+  Compare AND         : ok   (2)
+  Sequential Increment: ok   (3)
+  Solid Bits          : ok   (3)
+  Block Sequential    : ok   (3)
+  Checkerboard        : ok   (4)
+  Bit Spread          : ok   (4)
+  Bit Flip            : ok   (4)
+  Walking Ones        : ok   (4)
+  Walking Zeroes      : ok   (4)
   8-bit Writes        : ok
   16-bit Writes       : ok
 
 Done.
 ```
 
-- Determina si las ubicaciones de memoria a las que el programa intenta acceder están direccionadas correctamente o no. Si esta prueba informa errores, es casi seguro que hay un problema en alguna parte del subsistema de memoria. Los resultados del resto de las pruebas no se pueden considerar precisos si esta prueba falla.
+1. Determina si las ubicaciones de memoria a las que el programa intenta acceder 
+están direccionadas correctamente o no. Si esta prueba informa errores, es casi 
+seguro que hay un problema en alguna parte del subsistema de memoria. Los resultados 
+del resto de las pruebas no se pueden considerar precisos si esta prueba falla.
 
-- Estas pruebas detectan principalmente errores de memoria debido a bits defectuosos que están permanentemente atascados en un nivel alto o bajo.
+2. Estas pruebas detectan principalmente errores de memoria debido a bits defectuosos 
+que están permanentemente atascados en un nivel alto o bajo.
 
-- Estas pruebas capturan bits escamosos (flaky bits), que pueden o no tener un valor real.
+3. Estas pruebas capturan bits escamosos (flaky bits), que pueden o no tener un valor 
+real.
 
-- Estas pruebas detectan bits defectuosos que dependen de los valores actuales de los bits circundantes en la misma word32, o en las word32s anteriores y posteriores.
+4. Estas pruebas detectan bits defectuosos que dependen de los valores actuales de los 
+bits circundantes en la misma word32, o en las word32s anteriores y posteriores.
+
 
 # Nodos de cómputo
 
 Unresolved directive in memtester.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
+
 # Scripts
+
 
 ## Estructura de directorios
 
-Dentro de la carpeta raíz *memtester* existen tres subdirectorios, uno por cada tipo de nodo en el cluster Yoltla:
+Dentro de la carpeta raíz *memtester* existen tres subdirectorios, uno por cada tipo 
+de nodo en el cluster Yoltla:
 
     memtester
     ├── nc
@@ -192,60 +195,58 @@ Dentro de la carpeta raíz *memtester* existen tres subdirectorios, uno por cada
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 La versión de memtester utilizada en estos scripts es la 4.3.0.
-::::
+```
+
 
 ## Lanzar pruebas
 
+
 ### **Individualmente**
 
-Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
+Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba 
+de interés, y ejecute el comando:
 
-``` shell
+```bash
 reframe -c <nombre_script> -r
 ```
 
 Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 
-``` shell
+```bash
 [t.800@yoltla nc]$ reframe -c memtester_nc.py -r
 ```
 
 ### **Etiquetas**
 
-Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para lanzar todas las pruebas, siga los siguientes pasos:
+Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para lanzar 
+todas las pruebas, siga los siguientes pasos:
 
 1.  Ubíquese en el directorio raíz *memtester*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla memtester]$
     ```
 
 2.  Cree el directorio *logs*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla memtester]$ mkdir logs
     ```
 
 3.  Ejecute el comando:
 
-    ``` shell
+    ```bash
     [t.800@yoltla memtester]$ reframe -c . -R -t memtester -r
     ```
 
-:::: warning
-::: title
-:::
-
+```admonish warning title=" "
 Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/uam/.../t.800/.../memtester/logs/rfm.out'
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: Log file(s) saved in '/tmp/rfm-jxeonz2e.log'
-::::
+```
 
 # Sitios de interés
 

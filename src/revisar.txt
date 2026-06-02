@@ -69,16 +69,31 @@
 
             - [HPCG]()
                 - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[]) Unresolved directive in hpcg.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
+                - REVISAR AJUSTE DE TABLAS
+                - REVISAR ENLACE "AMD \| HPCG"
 
         - [MicroBenchmarks]()
             
             - [Disco]()
                 - [DiskWrite]()
+                    - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
+                    - REVISAR AJUSTE DE TABLAS
+                
                 - [DiskRead]()
+                    - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
+                    - REVISAR AJUSTE DE TABLAS
                 
             - [Memoria]()
                 - [memtester]()
+                    - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
+
                 - [STREAM]()
+                    - REVISAR ENLACE A "STREAM"
+                    - REVISAR ENLACE A "código fuente"
+                    - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
+                    - REVISA AJUSTE DE TABLAS
+                    - REVISAR ENLACE A "STREAM: Sustainable Memory Bandwidth in High Performance Computers"
+                    - REVISAR ENLACE A "AMD \| STREAM Benchmark"
 
             - [NPB]()
                 - [FT]()

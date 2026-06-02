@@ -27,15 +27,15 @@
         - [MicroBenchmarks]()
             
             - [Disco]()
-                - [DiskWrite]()
-                - [DiskRead]()
+                - [DiskWrite](./modules/tutoriales/pages/reframe/microbenchmarks/disco/diskwrite.md)
+                - [DiskRead](./modules/tutoriales/pages/reframe/microbenchmarks/disco/diskread.md)
                 
             - [Memoria]()
-                - [memtester]()
-                - [STREAM]()
+                - [memtester](./modules/tutoriales/pages/reframe/microbenchmarks/memoria/memtester.md)
+                - [STREAM](./modules/tutoriales/pages/reframe/microbenchmarks/memoria/stream.md)
 
             - [NPB]()
-                - [FT]()
+                - [FT](./modules/tutoriales/pages/reframe/microbenchmarks/npb/ft.md)
 
             - [OSU]()
                 - [Bandwidth]()

@@ -1,8 +1,12 @@
 # Descripción
 
-STREAM es un benchmark sintético simple que mide el ancho de banda de memoria sostenible (en MB/s) y la tasa de cálculo correspondiente para núcleos vectoriales simples.
+STREAM es un benchmark sintético simple que mide el ancho de banda de memoria sostenible 
+(en MB/s) y la tasa de cálculo correspondiente para núcleos vectoriales simples.
 
-STREAM está diseñado específicamente para trabajar con conjuntos de datos mucho más grandes que el caché disponible en cualquier sistema dado, por lo que los resultados son (presumiblemente) más indicativos del rendimiento de aplicaciones de estilo vectorial muy grandes.
+STREAM está diseñado específicamente para trabajar con conjuntos de datos mucho más 
+grandes que el caché disponible en cualquier sistema dado, por lo que los resultados 
+son (presumiblemente) más indicativos del rendimiento de aplicaciones de estilo vectorial 
+muy grandes.
 
 STREAM mide el rendimiento de cuatro operaciones de vectores largos. Estas operaciones son:
 
@@ -22,17 +26,19 @@ Cada una de estas operaciones agrega información independiente a los resultados
 
 - **`SCALE:`** Agrega una operación aritmética simple.
 
-- **`SUM:`** Agrega un tercer operando para permitir que se prueben múltiples puertos de carga/almacenamiento en máquinas vectoriales.
+- **`SUM:`** Agrega un tercer operando para permitir que se prueben múltiples puertos de 
+carga/almacenamiento en máquinas vectoriales.
 
 - **`TRIAD:`** Permite operaciones de multiplicación encadenada/superpuesta/fusionada y de suma.
 
 Para obtener más información, visite el sitio oficial de [STREAM](https://www.cs.virginia.edu/stream/).
 
+
 # Compilación
 
 1.  Descargue el [código fuente](https://www.cs.virginia.edu/stream/FTP/Code/) del benchmark STREAM:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
     --2022-08-07 20:15:23--  https://www.cs.virginia.edu/stream/FTP/Code/stream.c
     Resolving www.cs.virginia.edu... 128.143.67.11
@@ -48,92 +54,70 @@ Para obtener más información, visite el sitio oficial de [STREAM](https://www.
 
 2.  Cargue el módulo de GCC:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ module load gcc/7.2.0
     ```
 
 3.  Compile el archivo fuente:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ gcc -O -fopenmp -D_OPENMP stream.c -o ./stream
     <command-line>:0:0: warning: "_OPENMP" redefined
     <built-in>: note: this is the location of the previous definition
     ```
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 Para compilar STREAM, siga el siguiente formato:
-
-    gcc <opciones> stream.c -o stream
-
-+-----------------------------------+-----------------------------------+
-| Opción                            | Descripción                       |
-+===================================+===================================+
-| -O                                | Compila el código con             |
-|                                   | optimizaciones.\                  |
-|                                   | Se recomienta utilizar siempre    |
-|                                   | esta opción.                      |
-+-----------------------------------+-----------------------------------+
-| -fopenmp                          | Habilita el manejo de directivas  |
-|                                   | OpenMP.                           |
-+-----------------------------------+-----------------------------------+
-| -D_OPENMP                         | Activa una combinación de MPI y   |
-|                                   | OpenMP para la paralelización.    |
-+-----------------------------------+-----------------------------------+
-| -DSTREAM_ARRAY_SIZE=#             | Define el tamaño de la matriz.\   |
-|                                   | El valor por defecto es           |
-|                                   | 10,000,000.                       |
-+-----------------------------------+-----------------------------------+
-| -DNTIMES=#                        | Define el número de veces que se  |
-|                                   | ejecutará cada kernel.\           |
-|                                   | Se informa el mejor resultado.\   |
-|                                   | El valor por defecto es 10.       |
-+-----------------------------------+-----------------------------------+
-| -DOFFSET=#                        | Modifica el valor de la variable  |
-|                                   | `OFFSET`.\                        |
-|                                   | Cambia la alineación relativa de  |
-|                                   | las matrices.\                    |
-|                                   | El valor por defecto es 0.        |
-+-----------------------------------+-----------------------------------+
+    
+        gcc <opciones> stream.c -o stream
+    
+| **Opción** | **Descripción** |
+|------------|-----------------|
+| -O         | Compila el código con optimizaciones.<br> Se recomienta utilizar siempre esta opción. |
+| -fopenmp   | Habilita el manejo de directivas OpenMP. |
+| -D_OPENMP  | Activa una combinación de MPI y OpenMP para la paralelización. |
+| -DSTREAM_ARRAY_SIZE=# | Define el tamaño de la matriz.<br> El valor por defecto es 10,000,000. |
+| -DNTIMES=# | Define el número de veces que se ejecutará cada kernel.<br> Se informa el mejor resultado.<br> El valor por defecto es 10. |
+| -DOFFSET=# | Modifica el valor de la variable `OFFSET`.<br> Cambia la alineación relativa de las matrices.<br> El valor por defecto es 0.|
 
 En el archivo fuente *stream.c* puede encontrar más información acerca de estas opciones.
-::::
+```
+
 
 # Ejecución
 
 1.  Modifique la variable de entorno `OMP_NUM_THREADS`:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ export OMP_NUM_THREADS=2
     ```
 
 2.  Ejecute el benchmark:
 
-    ``` shell
+    ```bash
     [t.800@yoltla Descargas]$ ./stream
     ```
+
 
 # Salida
 
 A continuación se presenta la salida de una ejecución de STREAM:
 
-``` shell
+```bash
 -------------------------------------------------------------
-STREAM version $Revision: 5.10 $                                
+STREAM version $Revision: 5.10 $                                 (1)   
 -------------------------------------------------------------
 This system uses 8 bytes per array element.
 -------------------------------------------------------------
-Array size = 10000000 (elements), Offset = 0 (elements)         
-Memory per array = 76.3 MiB (= 0.1 GiB).                        
-Total memory required = 228.9 MiB (= 0.2 GiB).                  
-Each kernel will be executed 10 times.                          
+Array size = 10000000 (elements), Offset = 0 (elements)          (2)
+Memory per array = 76.3 MiB (= 0.1 GiB).                         (3)
+Total memory required = 228.9 MiB (= 0.2 GiB).                   (4) 
+Each kernel will be executed 10 times.                           (5) 
  The *best* time for each kernel (excluding the first iteration)
  will be used to compute the reported bandwidth.
 -------------------------------------------------------------
-Number of Threads requested = 2                                 
-Number of Threads counted = 2                                   
+Number of Threads requested = 2                                  (6)
+Number of Threads counted = 2                                    (7)
 -------------------------------------------------------------
 Your clock granularity/precision appears to be 1 microseconds.
 Each test below will take on the order of 10450 microseconds.
@@ -145,7 +129,7 @@ WARNING -- The above is only a rough guideline.
 For best results, please be sure you know the
 precision of your system timer.
 -------------------------------------------------------------
-Function    Best Rate MB/s  Avg time     Min time     Max time  
+Function    Best Rate MB/s  Avg time     Min time     Max time   (8)
 Copy:           11685.7     0.013965     0.013692     0.014497
 Scale:          11448.9     0.014272     0.013975     0.014857
 Add:            12223.7     0.020035     0.019634     0.020522
@@ -155,133 +139,99 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 -------------------------------------------------------------
 ```
 
-- Versión del benchmark
+1. Versión del benchmark
 
-- Tamaño de la matriz / Offset
+2. Tamaño de la matriz / Offset
 
-- Memoria utilizada por matriz
+3. Memoria utilizada por matriz
 
-- Memoria total utilizada
+4. Memoria total utilizada
 
-- Número de veces que se ejecutará cada kernel
+5. Número de veces que se ejecutará cada kernel
 
-- Número de subprocesos solicitados
+6. Número de subprocesos solicitados
 
-- Número de subprocesos contados
+7. Número de subprocesos contados
 
-- Resultados del benchmark
+8. Resultados del benchmark
 
-  - Función
+    - Función
+    - Mejor velocidad MB/s
+    - Tiempo promedio
+    - Tiempo mínimo
+    - Tiempo máximo
 
-  - Mejor velocidad MB/s
-
-  - Tiempo promedio
-
-  - Tiempo mínimo
-
-  - Tiempo máximo
 
 # Nodos de cómputo
 
 Unresolved directive in stream.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
+
 # Pruebas
 
-La regla general para STREAM es que cada matriz debe tener al menos 4 veces el tamaño de la suma de todos los cachés de último nivel utilizados en la ejecución, o 1 millón de elementos, lo que sea mayor.
+La regla general para STREAM es que cada matriz debe tener al menos 4 veces el tamaño 
+de la suma de todos los cachés de último nivel utilizados en la ejecución, o 1 millón 
+de elementos, lo que sea mayor.
 
-Para cada tipo de nodo se determinó un tamaño de matriz que cumpliera la condición antes mencionada. En las siguientas tablas se da un resumen de las pruebas realizadas:
+Para cada tipo de nodo se determinó un tamaño de matriz que cumpliera la condición antes 
+mencionada. En las siguientas tablas se da un resumen de las pruebas realizadas:
 
-+-----------------+-----------------+-----------------+-----------------+
-| Nodo            | Tamaño de\      | Número de\      | Número de\      |
-|                 | la matriz       | iteraciones     | subprocesos     |
-+=================+=================+=================+=================+
+<span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>
+
+| **Nodo** | **Tamaño de la matriz** | **Número de iteraciones** | **Número de subprocesos** |
+|:--------:|:-----------------------:|:-------------------------:|:-------------------------:|
 | nc1             | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc20            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc26            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc39            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc41            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc56            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc61            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc80            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc81            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc100           | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc102           | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc120           | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc121           | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc136           | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc141           | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | nc156           | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 
-: Pruebas en los nodos NC
+<span style="color: #990819;">*Tabla 2. Pruebas en los nodos TTv1*</span>
 
-+-----------------+-----------------+-----------------+-----------------+
-| Nodo            | Tamaño de\      | Número de\      | Número de\      |
-|                 | la matriz       | iteraciones     | subprocesos     |
-+=================+=================+=================+=================+
+| **Nodo** | **Tamaño de la matriz** | **Número de iteraciones** | **Número de subprocesos** |
+|:--------:|:-----------------------:|:-------------------------:|:-------------------------:|
 | tt1             | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt9             | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt17            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt25            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt33            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt41            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt49            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt58            | 40000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 
-: Pruebas en los nodos TTv1
+<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
 
-+-----------------+-----------------+-----------------+-----------------+
-| Nodo            | Tamaño de\      | Número de\      | Número de\      |
-|                 | la matriz       | iteraciones     | subprocesos     |
-+=================+=================+=================+=================+
+| **Nodo** | **Tamaño de la matriz** | **Número de iteraciones** | **Número de subprocesos** |
+|:--------:|:-----------------------:|:-------------------------:|:-------------------------:|
 | tt60            | 60000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt65            | 60000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt74            | 60000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt87            | 60000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 | tt92            | 60000000        | 20              | 20              |
-+-----------------+-----------------+-----------------+-----------------+
 
-: Pruebas en los nodos TTv2
-
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa de cada tipo de nodo.
-::::
+```
+
 
 # Scripts
 
+
 ## Estructura de directorios
 
-Dentro de la carpeta raíz *stream* existen tres subdirectorios, uno por cada tipo de nodo en el cluster Yoltla:
+Dentro de la carpeta raíz *stream* existen tres subdirectorios, uno por cada tipo de 
+nodo en el cluster Yoltla:
 
     stream/
     ├── nc
@@ -302,28 +252,29 @@ Dentro de la carpeta raíz *stream* existen tres subdirectorios, uno por cada ti
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 La versión de STREAM utilizada en estos scripts es la 5.10.
-::::
+```
+
 
 ## Lanzar pruebas
 
+
 ### **Individualmente**
 
-Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
+Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba 
+de interés, y ejecute el comando:
 
-``` shell
+```bash
 reframe -c <nombre_script> -r
 ```
 
 Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 
-``` shell
+```bash
 [t.800@yoltla nc]$ reframe -c stream_nc.py -r
 ```
+
 
 ### **Etiquetas**
 
@@ -331,36 +282,37 @@ Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para l
 
 1.  Ubíquese en el directorio raíz *stream*:
 
-    ``` shell
+    ```
     [t.800@yoltla stream]$
     ```
 
 2.  Cree el directorio *logs*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla stream]$ mkdir logs
     ```
 
 3.  Ejecute el comando:
 
-    ``` shell
+    ```bash
     [t.800@yoltla stream]$ reframe -c . -R -t stream -r
     ```
 
-:::: warning
-::: title
-:::
-
+```admonish warning title=" "
 Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/uam/.../t.800/.../stream/logs/rfm.out'
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: Log file(s) saved in '/tmp/rfm-0mlxw3yi.log'
-::::
+```
+
 
 # Resultados
 
+
 ## Nodos NC
 
+<span style="color: #990819;">*Tabla 4. Resultados de las pruebas de Copy y Scale en los nodos NC*</span>
+```
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | **No. de\     | **Nodo** | **Copy**                                         | **Scale**                                        |
 | ejecuciones** |          |                                                  |                                                  |
@@ -399,9 +351,11 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | 5             | nc156    | 60075.68     | 58969.60   | 60864.20   | 640.02  | 60264.42     | 59435.70   | 60992.80   | 498.72  |
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
+```
+\
+<span style="color: #990819;">*Tabla 5. Resultados de las pruebas de Add y Triad en los nodos NC*</span>
 
-: Resultados de las pruebas de Copy y Scale en los nodos NC
-
+```
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | **No. de\     | **Nodo** | **Add**                                          | **Triad**                                        |
 | ejecuciones** |          |                                                  |                                                  |
@@ -440,13 +394,19 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | 5             | nc156    | 68457.28     | 67738.80   | 69069.30   | 474.93  | 68931.18     | 68502.90   | 69777.90   | 477.55  |
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
+```
+\
+<span style="color: #1285E3;">Resultados del benchmark STREAM en los nodos NC</span>
 
-: Resultados de las pruebas de Add y Triad en los nodos NC
+![Resultados del benchmark STREAM en los nodos NC](../../../../images/Reframe/microBenchmarks/memoria/stream/nc.png)
 
-![Resultados del benchmark STREAM en los nodos NC](Reframe/microBenchmarks/memoria/stream/nc.png)
+<span style="color: #990819;">*Figura 1. Resultados del benchmark STREAM en los nodos NC*</span>
+
 
 ## Nodos TTv1
 
+<span style="color: #990819;">*Tabla 6. Resultados de las pruebas de Copy y Scale en los nodos TTv1*</span>
+```
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | **No. de\     | **Nodo** | **Copy**                                         | **Scale**                                        |
 | ejecuciones** |          |                                                  |                                                  |
@@ -469,9 +429,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | 5             | tt58     | 73879.80     | 71436.10   | 75011.30   | 1291.25 | 72499.12     | 70499.90   | 73479.50   | 1042.12 |
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
+```
 
-: Resultados de las pruebas de Copy y Scale en los nodos TTv1
-
+<span style="color: #990819;">*Tabla7. Resultados de las pruebas de Add y Triad en los nodos TTv1*</span>
+```
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | **No. de\     | **Nodo** | **Add**                                          | **Triad**                                        |
 | ejecuciones** |          |                                                  |                                                  |
@@ -494,13 +455,19 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | 5             | tt58     | 81380.86     | 79005.80   | 82283.30   | 1198.40 | 82226.24     | 79772.80   | 83696.00   | 1321.99 |
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
+```
+\
+<span style="color: #1285E3;">Resultados del benchmark STREAM en los nodos TTv1</span> 
 
-: Resultados de las pruebas de Add y Triad en los nodos TTv1
+![Resultados del benchmark STREAM en los nodos TTv1](../../../../images/Reframe/microBenchmarks/memoria/stream/ttv1.png)
 
-![Resultados del benchmark STREAM en los nodos TTv1](Reframe/microBenchmarks/memoria/stream/ttv1.png)
+<span style="color: #990819;">*Figura 2. Resultados del benchmark STREAM en los nodos TTv1*</span>
+
 
 ## Nodos TTv2
 
+<span style="color: #990819;">*Tabla 8. Resultados de las pruebas de Copy y Scale en los nodos TTv2*</span>
+```
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | **No. de\     | **Nodo** | **Copy**                                         | **Scale**                                        |
 | ejecuciones** |          |                                                  |                                                  |
@@ -517,9 +484,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | 5             | tt92     | 78924.80     | 77108.60   | 81933.30   | 1612.29 | 77552.16     | 74713.40   | 79542.70   | 1648.86 |
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
+```
 
-: Resultados de las pruebas de Copy y Scale en los nodos TTv2
-
+<span style="color: #990819;">*Tabla 9. Resultados de las pruebas de Add y Triad en los nodos TTv2*</span>
+```
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | **No. de\     | **Nodo** | **Add**                                          | **Triad**                                        |
 | ejecuciones** |          |                                                  |                                                  |
@@ -536,13 +504,19 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
 | 5             | tt92     | 89765.46     | 87378.80   | 93035.90   | 2010.72 | 90691.46     | 87485.10   | 94209.90   | 2632.60 |
 +---------------+----------+--------------+------------+------------+---------+--------------+------------+------------+---------+
+```
+\
+<span style="color: #1285E3;">Resultados del benchmark STREAM en los nodos TTv2</span>
 
-: Resultados de las pruebas de Add y Triad en los nodos TTv2
+![Resultados del benchmark STREAM en los nodos TTv2](../../../../images/Reframe/microBenchmarks/memoria/stream/ttv2.png)
 
-![Resultados del benchmark STREAM en los nodos TTv2](Reframe/microBenchmarks/memoria/stream/ttv2.png)
+<span style="color: #990819;">*Figura 3. Resultados del benchmark STREAM en los nodos TTv2*</span>
+
 
 ## Yoltla
 
+<span style="color: #990819;">*Tabla10. Resultados de las pruebas de Copy y Scale en el cluster Yoltla*</span>
+```
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+
 | **Nodo** | **Copy**                                          | **Scale**                                         |
 |          +--------------+------------+------------+----------+--------------+------------+------------+----------+
@@ -554,9 +528,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+
 | TTv2     | 55945.12     | 34471.70   | 82382.60   | 19410.79 | 55752.04     | 34698.30   | 80800.50   | 18572.01 |
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+
+```
 
-: Resultados de las pruebas de Copy y Scale en el cluster Yoltla
-
+<span style="color: #990819;">*Tabla 11. Resultados de las pruebas de Add y Triad en el cluster Yoltla*</span>
+```
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+
 | **Nodo** | **Add**                                           | **Triad**                                         |
 |          +--------------+------------+------------+----------+--------------+------------+------------+----------+
@@ -568,17 +543,17 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+
 | TTv2     | 63164.00     | 39073.10   | 93035.90   | 22202.90 | 63598.90     | 39180.30   | 94209.90   | 22715.10 |
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+
+```
+\
+<span style="color: #1285E3;">Resultados del benchmark STREAM en el cluster Yoltla</span>
 
-: Resultados de las pruebas de Add y Triad en el cluster Yoltla
+![Resultados del benchmark STREAM en el cluster Yoltla](../../../../images/Reframe/microBenchmarks/memoria/stream/yoltla.png)
 
-![Resultados del benchmark STREAM en el cluster Yoltla](Reframe/microBenchmarks/memoria/stream/yoltla.png)
+<span style="color: #990819;">*Figura 4. Resultados del benchmark STREAM en el cluster Yoltla*</span>
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
-::::
+```
 
 # Sitios de interés
 

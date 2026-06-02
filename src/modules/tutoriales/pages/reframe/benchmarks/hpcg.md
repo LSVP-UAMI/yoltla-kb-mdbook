@@ -720,11 +720,11 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 ```admonish info title=" "
 Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficiencia paralela del resto.
 ```
-# **************************************
+
 
 ## Nodos TTv2
 
-<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+<span style="color: #990819;">*Tabla 8. Rendimiento de los nodos TTv2*</span>
 ```
 +---------------+----------+--------+--------+--------+-------------+--------------+------------+------------+-----------+
 | **No. de\     | **Número | **Dimensiones del\       | **GFLOP/s**                                                      |
@@ -747,20 +747,19 @@ Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficienc
 +---------------+----------+--------+--------+--------+-------------+--------------+------------+------------+-----------+
 ```
 
-<span style="color: #1285E3;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+\
+<span style="color: #1285E3;">Rendimiento de los nodos TTv2</span>
 
-![Rendimiento de los nodos TTv2](Reframe/benchmarks/hpcg/ttv2/rendimiento.png)
+![Rendimiento de los nodos TTv2](../../../images/Reframe/benchmarks/hpcg/ttv2/rendimiento.png)
 
-<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+<span style="color: #990819;">*Figura 5. Rendimiento de los nodos TTv2*</span>
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento obtenido en 1 nodo.
-::::
+```
 
-<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+\
+<span style="color: #990819;">*Tabla 9. Eficiencia paralela de los nodos TTv2*</span>
 ```
 +---------------+----------+--------+--------+--------+-----------+--------------+------------+------------+-----------+
 | **No. de\     | **Número | **Dimensiones del\       | **Eficiencia Paralela**                                        |
@@ -782,32 +781,38 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 | 10            | 16       | 192    | 192    | 192    | 1.00      | 0.72         | 0.61       | 0.85       | 0.08      |
 +---------------+----------+--------+--------+--------+-----------+--------------+------------+------------+-----------+
 ```
-<span style="color: #1285E3;">*Tabla 3. Pruebas en los nodos TTv2*</span>
 
+\
+<span style="color: #1285E3;">Eficiencia Paralela de los nodos TTv2</span>
 
-![Eficiencia Paralela de los nodos TTv2](Reframe/benchmarks/hpcg/ttv2/eficiencia_paralela.png)
+![Eficiencia Paralela de los nodos TTv2](../../../images/Reframe/benchmarks/hpcg/ttv2/eficiencia_paralela.png)
 
-<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+<span style="color: #990819;">*Figura 6. Eficiencia Paralela de los nodos TTv2*</span>
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficiencia paralela del resto.
-::::
+```
+
 
 ## Yoltla
 
-![Rendimiento promedio de los nodos del cluster Yoltla](Reframe/benchmarks/hpcg/yoltla/rendimiento.png)
+<span style="color: #1285E3;">Rendimiento promedio de los nodos del cluster Yoltla</span>
 
-![Eficiencia Paralela promedio de los nodos del cluster Yoltla](Reframe/benchmarks/hpcg/yoltla/eficiencia_paralela.png){alt="Eficiencia Paralela de los nodos del cluster Yoltla"}
+![Rendimiento promedio de los nodos del cluster Yoltla](../../../images/Reframe/benchmarks/hpcg/yoltla/rendimiento.png)
 
-:::: note
-::: title
-:::
+<span style="color: #990819;">*Figura 7. Rendimiento promedio de los nodos del cluster Yoltla*</span>
 
+\
+<span style="color: #1285E3;">Eficiencia Paralela promedio de los nodos del cluster Yoltla</span>
+
+![Eficiencia Paralela promedio de los nodos del cluster Yoltla](../../../images/Reframe/benchmarks/hpcg/yoltla/eficiencia_paralela.png)
+
+<span style="color: #990819;">*Figura 8. Eficiencia Paralela promedio de los nodos del cluster Yoltla*</span>
+
+```admonish info title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el periodo de Febrero-Marzo del 2022.
-::::
+```
+
 
 # Sitios de interés
 
