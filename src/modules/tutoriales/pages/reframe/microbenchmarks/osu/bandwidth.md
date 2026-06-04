@@ -2,138 +2,124 @@
 
 Las prueba de ancho de banda se lleva a cabo de la siguiente manera:
 
-1.  El emisor envía un número fijo (igual al tamaño de la ventana) de mensajes consecutivos al receptor y luego queda en espera de su respuesta respuesta.
+1.  El emisor envía un número fijo (igual al tamaño de la ventana) de mensajes 
+consecutivos al receptor y luego queda en espera de su respuesta respuesta.
 
 2.  El receptor envía la respuesta solo después de recibir todos estos mensajes.
 
-Este proceso se repite durante varias iteraciones y el ancho de banda se calcula en función del tiempo transcurrido (desde el momento en que el emisor envía el primer mensaje hasta el momento en que recibe la respuesta del receptor) y la cantidad de bytes enviados por el emisor. El objetivo de esta prueba es determinar la \"tasa de datos sostenida máxima\" que se puede lograr a nivel de red.
+Este proceso se repite durante varias iteraciones y el ancho de banda se calcula en 
+función del tiempo transcurrido (desde el momento en que el emisor envía el primer 
+mensaje hasta el momento en que recibe la respuesta del receptor) y la cantidad de 
+bytes enviados por el emisor. El objetivo de esta prueba es determinar la \"tasa de 
+datos sostenida máxima\" que se puede lograr a nivel de red.
 
 # Salida
 
 A continuación se presenta la salida de una ejecución de esta prueba:
+```bash
+# OSU MPI_Get Bandwidth Test v5.9
+# Window creation: MPI_Win_allocate
+# Synchronization: MPI_Win_flush
+# Size      Bandwidth (MB/s)
+1                       1.88
+2                       3.76
+4                       7.67
+8                      15.69
+16                     29.97
+32                     59.40
+64                    118.04
+128                   227.68
+256                   490.82
+512                   934.32
+1024                 1630.65
+2048                 2582.71
+4096                 3618.24
+8192                 4310.20
+16384                4415.04
+32768                3766.10
+65536                4501.53
+131072               4514.98
+262144               4245.78
+524288               4471.87
+1048576              4594.08
+2097152              4659.69
+4194304              4695.76
+```
 
-    # OSU MPI_Get Bandwidth Test v5.9
-    # Window creation: MPI_Win_allocate
-    # Synchronization: MPI_Win_flush
-    # Size      Bandwidth (MB/s)
-    1                       1.88
-    2                       3.76
-    4                       7.67
-    8                      15.69
-    16                     29.97
-    32                     59.40
-    64                    118.04
-    128                   227.68
-    256                   490.82
-    512                   934.32
-    1024                 1630.65
-    2048                 2582.71
-    4096                 3618.24
-    8192                 4310.20
-    16384                4415.04
-    32768                3766.10
-    65536                4501.53
-    131072               4514.98
-    262144               4245.78
-    524288               4471.87
-    1048576              4594.08
-    2097152              4659.69
-    4194304              4695.76
 
 # Nodos de cómputo
 
 Unresolved directive in bandwidth.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
+
 # Pruebas
 
-Durante la prueba de ancho de banda el emisor envía al receptor diferentes cantidades de bytes, desde 1 hasta 4194304. Para determinar la \"tasa de datos sostenida máxima\" se tomó el valor obtenido al enviar la cantidad máxima de bytes, es decir, 4194304. En todos los nodos se utilizó el mismo criterio. En las siguientas tablas se da un resumen de las pruebas realizadas:
+Durante la prueba de ancho de banda el emisor envía al receptor diferentes cantidades 
+de bytes, desde 1 hasta 4194304. Para determinar la \"tasa de datos sostenida máxima\" 
+se tomó el valor obtenido al enviar la cantidad máxima de bytes, es decir, 4194304. 
+En todos los nodos se utilizó el mismo criterio. En las siguientas tablas se da un 
+resumen de las pruebas realizadas:
 
-+----------------------+----------------------+-----------------------+
-| Nodo A               | Nodo B               | Size                  |
-+======================+======================+=======================+
+<span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>
+
+| **Nodo A** | **Nodo B** | **Size** |
+|:----------:|:----------:|:--------:|
 | nc1                  | nc20                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc20                 | nc26                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc26                 | nc39                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc39                 | nc41                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc41                 | nc56                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc56                 | nc61                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc61                 | nc80                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc80                 | nc81                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc81                 | nc100                | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc100                | nc102                | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc102                | nc120                | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc120                | nc121                | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc121                | nc136                | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc136                | nc141                | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc141                | nc156                | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc156                | nc1                  | 4194304               |
-+----------------------+----------------------+-----------------------+
 
-: Pruebas en los nodos NC
 
-+----------------------+----------------------+-----------------------+
-| Nodo A               | Nodo B               | Size                  |
-+======================+======================+=======================+
+<span style="color: #990819;">*Tabla 2. Pruebas en los nodos TTv1*</span>
+
+| **Nodo A** | **Nodo B** | **Size** |
+|:----------:|:----------:|:--------:|
 | nc1                  | nc9                  | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc9                  | nc17                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc17                 | nc25                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc33                 | nc41                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc41                 | nc49                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc49                 | nc58                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 
-: Pruebas en los nodos TTv1
 
-+----------------------+----------------------+-----------------------+
-| Nodo A               | Nodo B               | Size                  |
-+======================+======================+=======================+
+<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+
+| **Nodo A** | **Nodo B** | **Size** |
+|:----------:|:----------:|:--------:|
 | nc60                 | nc65                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc65                 | nc74                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc74                 | nc82                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc82                 | nc87                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc87                 | nc92                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 | nc92                 | nc60                 | 4194304               |
-+----------------------+----------------------+-----------------------+
 
-: Pruebas en los nodos TTv2
 
-:::: note
-::: title
-:::
+```admonish info title=" "
+Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su 
+disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa 
+de cada tipo de nodo.
+```
 
-Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa de cada tipo de nodo.
-::::
 
 # Scripts
 
+
 ## Estructura de directorios
 
-Dentro de la carpeta raíz *bandwidth* existen tres subdirectorios, uno por cada tipo de nodo en el cluster Yoltla:
+Dentro de la carpeta raíz *bandwidth* existen tres subdirectorios, uno por cada tipo de 
+nodo en el cluster Yoltla:
 
     bandwidth
     ├── nc
@@ -154,26 +140,25 @@ Dentro de la carpeta raíz *bandwidth* existen tres subdirectorios, uno por cada
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 La versión de los OSU Micro-Benchmarks utilizada en estos scripts es la 5.9.
-::::
+```
+
 
 ## Lanzar pruebas
+
 
 ### **Individualmente**
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
 
-``` shell
+```bash
 reframe -c <nombre_script> -r
 ```
 
 Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 
-``` shell
+```bash
 [t.800@yoltla nc]$ reframe -c osu_bw_nc.py -r
 ```
 
@@ -183,36 +168,37 @@ Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para l
 
 1.  Ubíquese en el directorio raíz *bandwidth*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla bandwidth]$
     ```
 
 2.  Cree el directorio *logs*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla bandwidth]$ mkdir logs
     ```
 
 3.  Ejecute el comando:
 
-    ``` shell
+    ```bash
     [t.800@yoltla bandwidth]$ reframe -c . -R -t osu -t bw -r
     ```
 
-:::: warning
-::: title
-:::
-
+```admonish warning title=" "
 Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/uam/.../t.800/.../bandwidth/logs/rfm.out'
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: Log file(s) saved in '/tmp/rfm-5ng64m81.log'
-::::
+```
+
 
 # Resultados
 
+
 ## Nodos NC
 
+<span style="color: #990819;">*Tabla 4. Ancho de banda de los nodos NC*</span>
+```
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
 | **No. de\     | **Nodo  | **Nodo  | **MB/s**                                               |
 | ejecuciones** | A**     | B**     |                                                        |
@@ -251,11 +237,13 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
 | 5             | nc156   | nc1     | 4520.19      | 4509.16     | 4558.89     | 19.39       |
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
+```
 
-: Ancho de banda de los nodos NC
 
 ## Nodos TTv1
 
+<span style="color: #990819;">*Tabla 5. Ancho de banda de los nodos TTv1*</span>
+```
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
 | **No. de\     | **Nodo  | **Nodo  | **MB/s**                                               |
 | ejecuciones** | A**     | B**     |                                                        |
@@ -274,11 +262,13 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
 | 5             | nc49    | nc58    | 4701.03      | 4700.80     | 4701.39     | 0.20        |
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
+```
 
-: Ancho de banda de los nodos TTv1
 
 ## Nodos TTv2
 
+<span style="color: #990819;">*Tabla 6. Ancho de banda de los nodos TTv2*</span>
+```
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
 | **No. de\     | **Nodo  | **Nodo  | **MB/s**                                               |
 | ejecuciones** | A**     | B**     |                                                        |
@@ -297,11 +287,14 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
 | 5             | nc92    | nc60    | 4363.30      | 4355.94     | 4367.53     | 4.03        |
 +---------------+---------+---------+--------------+-------------+-------------+-------------+
+```
 
-: Ancho de banda de los nodos TTv2
+
 
 ## Yoltla
 
+<span style="color: #990819;">*Tabla 7. Ancho de banda del cluster Yoltla*</span>
+```
 +-------------+-----------------+-----------------+-----------------+-----------------+
 | **Nodos**   | **MB/s**                                                              |
 |             +-----------------+-----------------+-----------------+-----------------+
@@ -313,17 +306,20 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +-------------+-----------------+-----------------+-----------------+-----------------+
 | TTv2        | 4555.32         | 4355.94         | 4695.50         | 119.87          |
 +-------------+-----------------+-----------------+-----------------+-----------------+
+```
+\
+<span style="color: #1285E3;">Ancho de banda del cluster Yoltla</span>
 
-: Ancho de banda del cluster Yoltla
 
-![Ancho de banda del cluster Yoltla](Reframe/microBenchmarks/osu/bandwidth/yoltla.png)
+![Ancho de banda del cluster Yoltla](../../../../images/Reframe/microBenchmarks/osu/bandwidth/yoltla.png)
 
-:::: note
-::: title
-:::
 
+<span style="color: #990819;">*Figura 1. Ancho de banda del cluster Yoltla*</span>
+
+```admonish info title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
-::::
+```
+
 
 # Sitios de interés
 

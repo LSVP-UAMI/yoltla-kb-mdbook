@@ -1,6 +1,9 @@
 # Descripción
 
-Resuelve numéricamente una ecuación diferencial parcial en 3D utilizando la transformada rápida de Fourier. Esta es una prueba rigurosa del rendimiento de la comunicación a larga distancia.
+Resuelve numéricamente una ecuación diferencial parcial en 3D utilizando la 
+transformada rápida de Fourier. Esta es una prueba rigurosa del rendimiento 
+de la comunicación a larga distancia.
+
 
 # Compilación
 
@@ -78,12 +81,10 @@ Resuelve numéricamente una ecuación diferencial parcial en 3D utilizando la tr
         [t.800@yoltla NPB3.4-OMP]$ ls bin/
         ft.C.x
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 En el archivo *README.install* puede encontrar más información acerca de la compilación de los NPB.
-::::
+```
+
 
 # Ejecución
 
@@ -101,67 +102,66 @@ En el archivo *README.install* puede encontrar más información acerca de la co
 
         [c.553@yoltla bin]$ ./bt.C.x
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 En el archivo *README.install* puede encontrar más información acerca de la ejecución de los NPB.
-::::
+```
+
 
 # Salida
 
 A continuación se presenta la salida de una ejecución de este benchmark:
 
-     
-     NAS Parallel Benchmarks (NPB3.4-OMP) - FT Benchmark
+```bash
+(1)
+NAS Parallel Benchmarks (NPB3.4-OMP) - FT Benchmark
 
-     
-     Size                :  512x 512x 512
-     Iterations                  :     20
-     Number of available threads :     16
+(2)
+Size                :  512x 512x 512
+Iterations                  :     20
+Number of available threads :     16
 
-     
-     T =    1     Checksum =    5.195078707457D+02    5.149019699238D+02
-     T =    2     Checksum =    5.155422171134D+02    5.127578201997D+02
-     T =    3     Checksum =    5.144678022222D+02    5.122251847514D+02
-     T =    4     Checksum =    5.140150594328D+02    5.121090289018D+02
-     T =    5     Checksum =    5.137550426810D+02    5.121143685824D+02
-     T =    6     Checksum =    5.135811056728D+02    5.121496764568D+02
-     T =    7     Checksum =    5.134569343165D+02    5.121870921893D+02
-     T =    8     Checksum =    5.133651975661D+02    5.122193250322D+02
-     T =    9     Checksum =    5.132955192805D+02    5.122454735794D+02
-     T =   10     Checksum =    5.132410471738D+02    5.122663649603D+02
-     T =   11     Checksum =    5.131971141679D+02    5.122830879827D+02
-     T =   12     Checksum =    5.131605205716D+02    5.122965869718D+02
-     T =   13     Checksum =    5.131290734194D+02    5.123075927445D+02
-     T =   14     Checksum =    5.131012720314D+02    5.123166486553D+02
-     T =   15     Checksum =    5.130760908195D+02    5.123241541685D+02
-     T =   16     Checksum =    5.130528295923D+02    5.123304037599D+02
-     T =   17     Checksum =    5.130310107773D+02    5.123356167976D+02
-     T =   18     Checksum =    5.130103090133D+02    5.123399592211D+02
-     T =   19     Checksum =    5.129905029333D+02    5.123435588985D+02
-     T =   20     Checksum =    5.129714421109D+02    5.123465164008D+02
-     Result verification successful
-     class = C
+(3)
+T =    1     Checksum =    5.195078707457D+02    5.149019699238D+02
+T =    2     Checksum =    5.155422171134D+02    5.127578201997D+02
+T =    3     Checksum =    5.144678022222D+02    5.122251847514D+02
+T =    4     Checksum =    5.140150594328D+02    5.121090289018D+02
+T =    5     Checksum =    5.137550426810D+02    5.121143685824D+02
+T =    6     Checksum =    5.135811056728D+02    5.121496764568D+02
+T =    7     Checksum =    5.134569343165D+02    5.121870921893D+02
+T =    8     Checksum =    5.133651975661D+02    5.122193250322D+02
+T =    9     Checksum =    5.132955192805D+02    5.122454735794D+02
+T =   10     Checksum =    5.132410471738D+02    5.122663649603D+02
+T =   11     Checksum =    5.131971141679D+02    5.122830879827D+02
+T =   12     Checksum =    5.131605205716D+02    5.122965869718D+02
+T =   13     Checksum =    5.131290734194D+02    5.123075927445D+02
+T =   14     Checksum =    5.131012720314D+02    5.123166486553D+02
+T =   15     Checksum =    5.130760908195D+02    5.123241541685D+02
+T =   16     Checksum =    5.130528295923D+02    5.123304037599D+02
+T =   17     Checksum =    5.130310107773D+02    5.123356167976D+02
+T =   18     Checksum =    5.130103090133D+02    5.123399592211D+02
+T =   19     Checksum =    5.129905029333D+02    5.123435588985D+02
+T =   20     Checksum =    5.129714421109D+02    5.123465164008D+02
+Result verification successful
+class = C
 
 
-     
-     FT Benchmark Completed.
-     Class           =                        C
-     Size            =            512x 512x 512
-     Iterations      =                       20
-     Time in seconds =                    19.07
-     Total threads   =                       16
-     Avail threads   =                       16
-     Mop/s total     =                 20785.44
-     Mop/s/thread    =                  1299.09
-     Operation type  =           floating point
-     Verification    =               SUCCESSFUL
-     Version         =                    3.4.2
-     Compile date    =              04 Sep 2022
+(4)
+FT Benchmark Completed.
+Class           =                        C
+Size            =            512x 512x 512
+Iterations      =                       20
+Time in seconds =                    19.07
+Total threads   =                       16
+Avail threads   =                       16
+Mop/s total     =                 20785.44
+Mop/s/thread    =                  1299.09
+Operation type  =           floating point
+Verification    =               SUCCESSFUL
+Version         =                    3.4.2
+Compile date    =              04 Sep 2022
 
-     
-     Compile options:
+(5)
+Compile options:
         FC           = gfortran
         FLINK        = $(FC)
         F_LIB        = (none)
@@ -171,35 +171,42 @@ A continuación se presenta la salida de una ejecución de este benchmark:
         RAND         = randi8
 
 
-     Please send all errors/feedbacks to:
+Please send all errors/feedbacks to:
 
-     NPB Development Team
-     npb@nas.nasa.gov
+NPB Development Team
+npb@nas.nasa.gov
+```
 
-- Versión y nombre del benchmark
+1. Versión y nombre del benchmark
 
-- Parámetros del benchmark:
+2. Parámetros del benchmark:
 
-  1.  Tamaño de la rejilla
+  - 1.  Tamaño de la rejilla
+  - 2.  Número de iteraciones
+  - 3.  Número de subprocesos disponibles
 
-  2.  Número de iteraciones
+3. Resultados obtenidos en cada iteración
 
-  3.  Número de subprocesos disponibles
+4. Información detallada del benchmark y de su ejecución
 
-- Resultados obtenidos en cada iteración
+5. Opciones con las que se compiló el benchmark
 
-- Información detallada del benchmark y de su ejecución
-
-- Opciones con las que se compiló el benchmark
 
 # Nodos de cómputo
 
 Unresolved directive in ft.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
+
 # Pruebas
 
-Existen diferentes [clases de problemas](https://www.nas.nasa.gov/software/npb_problem_sizes.html) para este benchmark, que varían en el tamaño de la rejilla y en el número de iteraciones, el criterio para determinar que clase elegir fue el de poder realizar pruebas rápidas y fiables. En todos los nodos se utilizó un problema de clase C. En las siguientas tablas se da un resumen de las pruebas realizadas:
+Existen diferentes [clases de problemas](https://www.nas.nasa.gov/software/npb_problem_sizes.html) 
+para este benchmark, que varían en el tamaño de la rejilla y en el número de iteraciones, 
+el criterio para determinar que clase elegir fue el de poder realizar pruebas rápidas 
+y fiables. En todos los nodos se utilizó un problema de clase C. En las siguientas 
+tablas se da un resumen de las pruebas realizadas:
 
+<span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>
+```
 +-----------+------------+--------------+--------------+--------------+---------------+
 | **Número\ | **Número   | **Tamaño de\                               | **Número de\  |
 | de        | de\        | la rejilla**                               | iteraciones** |
@@ -219,9 +226,10 @@ Existen diferentes [clases de problemas](https://www.nas.nasa.gov/software/npb_p
 +-----------+------------+--------------+--------------+--------------+---------------+
 | 1         | 20         | 512          | 512          | 512          | 20            |
 +-----------+------------+--------------+--------------+--------------+---------------+
-
-: Pruebas en los nodos NC
-
+```
+\
+<span style="color: #990819;">*Tabla 2. Pruebas en los nodos TTv1*</span>
+```
 +-----------+------------+--------------+--------------+--------------+---------------+
 | **Número\ | **Número   | **Tamaño de\                               | **Número de\  |
 | de        | de\        | la rejilla**                               | iteraciones** |
@@ -241,9 +249,10 @@ Existen diferentes [clases de problemas](https://www.nas.nasa.gov/software/npb_p
 +-----------+------------+--------------+--------------+--------------+---------------+
 | 1         | 20         | 512          | 512          | 512          | 20            |
 +-----------+------------+--------------+--------------+--------------+---------------+
-
-: Pruebas en los nodos TTv1
-
+```
+\
+<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+```
 +-----------+------------+--------------+--------------+--------------+---------------+
 | **Número\ | **Número   | **Tamaño de\                               | **Número de\  |
 | de        | de\        | la rejilla**                               | iteraciones** |
@@ -265,14 +274,16 @@ Existen diferentes [clases de problemas](https://www.nas.nasa.gov/software/npb_p
 +-----------+------------+--------------+--------------+--------------+---------------+
 | 1         | 32         | 512          | 512          | 512          | 20            |
 +-----------+------------+--------------+--------------+--------------+---------------+
+```
 
-: Pruebas en los nodos TTv2
 
 # Scripts
 
+
 ## Estructura de directorios
 
-Dentro de la carpeta raíz *ft* existen tres subdirectorios principales, uno por cada tipo de nodo en el cluster Yoltla:
+Dentro de la carpeta raíz *ft* existen tres subdirectorios principales, uno por cada 
+tipo de nodo en el cluster Yoltla:
 
     ft
     ├── nc
@@ -288,7 +299,8 @@ Dentro de la carpeta raíz *ft* existen tres subdirectorios principales, uno por
         .
         .
 
-Cada uno de estos directorios alberga las pruebas de ReFrame del tipo de nodo correspondiente:
+Cada uno de estos directorios alberga las pruebas de ReFrame del tipo de nodo 
+correspondiente:
 
     ft
     ├── nc
@@ -353,26 +365,25 @@ Cada uno de estos directorios alberga las pruebas de ReFrame del tipo de nodo co
 
 Estas pruebas pueden ser lanzadas de manera individual o por etiquetas.
 
-:::: note
-::: title
-:::
-
+```admonish info title=" "
 La versión de los NPB utilizada en estos scripts es la 3.4.2.
-::::
+```
+
 
 ## Lanzar pruebas
+
 
 ### **Individualmente**
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
 
-``` shell
+```bash
 reframe -c <nombre_script> -r
 ```
 
 Por ejemplo, para lanzar la prueba de 20 procesos, en los nodos NC, ejecute el comando:
 
-``` shell
+```bash
 [t.800@yoltla procesos_20]$ reframe -c npb_ft_nc_20p.py -r
 ```
 
@@ -382,19 +393,19 @@ Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Por ej
 
 1.  Ubíquese en el directorio raíz *ft*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla ft]$
     ```
 
 2.  Cree el directorio *logs*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla ft]$ mkdir logs
     ```
 
 3.  Ejecute el comando:
 
-    ``` shell
+    ```bash
     [t.800@yoltla ft]$ reframe -c . -R -t nc -r
     ```
 
@@ -402,36 +413,37 @@ Para lanzar todas las pruebas:
 
 1.  Ubíquese en el directorio raíz *ft*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla ft]$
     ```
 
 2.  Cree el directorio *logs*:
 
-    ``` shell
+    ```bash
     [t.800@yoltla ft]$ mkdir logs
     ```
 
 3.  Ejecute el comando:
 
-    ``` shell
+    ```bash
     [t.800@yoltla ft]$ reframe -c . -R -t npb -t ft -r
     ```
 
-:::: warning
-::: title
-:::
-
+```admonish warning title=" "
 Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/uam/.../t.800/.../ft/logs/rfm.out'
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: Log file(s) saved in '/tmp/rfm-v8hp4ky9.log'
-::::
+```
+
 
 # Resultados
 
+
 ## Nodos NC
 
+<span style="color: #990819;">*Tabla 4. Resultados del benchmark FT en los nodos NC*</span>
+```
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
 | **No. de\     | **Número   | **Tamaño de\                   | **Tiempo (s)**                                    |
 | ejecuciones** | de\        | la rejilla**                   |                                                   |
@@ -451,11 +463,13 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
 | 10            | 20         | 512      | 512      | 512      | 15.34        | 14.54      | 16.04      | 0.59     |
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+``` 
 
-: Resultados del benchmark FT en los nodos NC
 
 ## Nodos TTv1
 
+<span style="color: #990819;">*Tabla 5. Resultados del benchmark FT en los nodos TTv1*</span>
+```
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
 | **No. de\     | **Número   | **Tamaño de\                   | **Tiempo (s)**                                    |
 | ejecuciones** | de\        | la rejilla**                   |                                                   |
@@ -475,11 +489,12 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
 | 10            | 20         | 512      | 512      | 512      | 14.27        | 14.03      | 15.13      | 0.30     |
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
-
-: Resultados del benchmark FT en los nodos TTv1
+```
 
 ## Nodos TTv2
 
+<span style="color: #990819;">*Tabla 6. Resultados del benchmark FT en los nodos TTv2*</span>
+```
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
 | **No. de\     | **Número   | **Tamaño de\                   | **Tiempo (s)**                                    |
 | ejecuciones** | de\        | la rejilla**                   |                                                   |
@@ -501,19 +516,20 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
 | 10            | 32         | 512      | 512      | 512      | 17.27        | 10.89      | 24.86      | 5.33     |
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
+```
 
-: Resultados del benchmark FT en los nodos TTv2
 
 ## Yoltla
 
-![Resultados del benchmark FT en el cluster Yoltla](Reframe/microBenchmarks/npb/ft/yoltla.png)
+<span style="color: #1285E3;">Resultados del benchmark FT en el cluster Yoltla</span>
 
-:::: note
-::: title
-:::
+![Resultados del benchmark FT en el cluster Yoltla](../../../../images/Reframe/microBenchmarks/npb/ft/yoltla.png)
 
+<span style="color: #990819;">*Resultados del benchmark FT en el cluster Yoltla*</span>
+
+```admonish info title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
-::::
+```
 
 # Sitios de interés
 

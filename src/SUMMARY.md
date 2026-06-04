@@ -38,11 +38,11 @@
                 - [FT](./modules/tutoriales/pages/reframe/microbenchmarks/npb/ft.md)
 
             - [OSU]()
-                - [Bandwidth]()
-                - [Latency]() 
+                - [Bandwidth](./modules/tutoriales/pages/reframe/microbenchmarks/osu/bandwidth.md)
+                - [Latency](./modules/tutoriales/pages/reframe/microbenchmarks/osu/latency.md) 
 
         - [Anexos]()
-            - [Archivo de configuración]()
+            - [Archivo de configuración](./modules/tutoriales/pages/reframe/anexos/archivo_configuracion.md)
             - [Topología]()
             - [Referencias del API]()
 
