@@ -110,8 +110,15 @@
                     
         - [Anexos]()
             - [Archivo de configuración]()
+                - REVISAR ENLACE A "extra_resources" ((/reframe/anexos/referencia_api.xml#extra_resources).)
+
             - [Topología]()
+                - REVISAR ENLACE A "Auto-detecting processor information"
+
+
             - [Referencias del API]()
+                - REVISAR ENLACE A "extra_resources"
+                - REVISAR ENLACE A "Pruebas de rendimiento"
 
     - [Spack]()
         - [Aplicaciones]()

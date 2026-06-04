@@ -43,8 +43,8 @@
 
         - [Anexos]()
             - [Archivo de configuración](./modules/tutoriales/pages/reframe/anexos/archivo_configuracion.md)
-            - [Topología]()
-            - [Referencias del API]()
+            - [Topología](./modules/tutoriales/pages/reframe/anexos/topologia.md)
+            - [Referencias del API](./modules/tutoriales/pages/reframe/anexos/referencia_api.md)
 
     - [Spack]()
         - [Aplicaciones]()

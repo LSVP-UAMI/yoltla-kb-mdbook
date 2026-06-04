@@ -1,131 +1,150 @@
 # Descripción
 
-Esta sección proporciona una guía de referencia de la API ReFrame para escribir pruebas de regresión que
-cubre detalles relevantes usados en los scripts para el cluster Yoltla. Se cubre solo en la medida en que esto pueda ser útil para el usuario final del cluster.
+Esta sección proporciona una guía de referencia de la API ReFrame para escribir pruebas 
+de regresión que cubre detalles relevantes usados en los scripts para el cluster Yoltla. 
+Se cubre solo en la medida en que esto pueda ser útil para el usuario final del cluster.
 
-Para obtener más información, consulte la sección [Test API Reference](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html#test-api-reference) de la documentación oficial de ReFrame.
+Para obtener más información, consulte la sección [Test API Reference](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html#test-api-reference) 
+de la documentación oficial de ReFrame.
 
 # Pipeline
 
 Cada caso de prueba de ReFrame pasa por un Pipeline de etapas. Las pruebas de ReFrame pueden
-personalizar su funcionamiento a medida que se ejecutan adjuntando [enlaces](#enlaces_pipeline) a las
+personalizar su funcionamiento a medida que se ejecutan adjuntando [enlaces](./referencia_api.md#enlaces-pipeline) a las
 etapas del Pipeline. La siguiente figura muestra las diferentes etapas del Pipeline.
 
-+----------+----------+----------+----------+-------------+-----------+
+<span style="color: #990819;">*Tabla 1. Pipeline de una prueba de regresión*</span>
+
 | Setup    | Compile  | Run      | Sanity   | Performance | Cleanup   |
-+----------+----------+----------+----------+-------------+-----------+
+|----------|----------|----------|----------|-------------|-----------|
 
-: Pipeline de una prueba de regresión
+Todas las pruebas pasarán por cada etapa una tras otra. Sin embargo, algunos tipos de 
+pruebas implementan algunas etapas como no operativas, mientras que las fases de verificación 
+de sanidad o rendimiento pueden omitirse a pedido (ver las opciones `--skip-sanity-check` y 
+`--skip-performance-check`).
 
-Todas las pruebas pasarán por cada etapa una tras otra. Sin embargo, algunos tipos de pruebas implementan algunas etapas como no operativas, mientras que las fases de verificación de sanidad o rendimiento pueden omitirse a pedido (ver las opciones `--skip-sanity-check` y `--skip-performance-check`).
+Para obtener más información, consulte la sección 
+[The Regression Test Pipeline](https://reframe-hpc.readthedocs.io/en/stable/pipeline.html#the-regression-test-pipeline) 
+de la documentación oficial de ReFrame.
 
-Para obtener más información, consulte la sección [The Regression Test Pipeline](https://reframe-hpc.readthedocs.io/en/stable/pipeline.html#the-regression-test-pipeline) de la documentación oficial de ReFrame.
 
 # Clases base de prueba
 
-reframe.CompileOnlyRegressionTest
+## reframe.CompileOnlyRegressionTest
 
-:   Base: [RegressionTest](#run_regression)
+  Base: [RegressionTest](./referencia_api.md#reframeregressiontest)
 
-    Clase base para pruebas de regresión de solo compilación.
+  Clase base para pruebas de regresión de solo compilación.
 
-    Estas pruebas son locales de forma predeterminada y omitirán la fase de ejecución del pipeline
-    de prueba de regresión.
+  Estas pruebas son locales de forma predeterminada y omitirán la fase de ejecución del 
+  pipeline de prueba de regresión.
 
-<!-- -->
 
-reframe.RegressionTest
+## reframe.RegressionTest
 
-:   Clase base para pruebas de regresión.
+  Clase base para pruebas de regresión.
 
-    Todas las pruebas de regresión eventualmente deben heredar de esta clase. Esta clase proporciona la implementación de las fases del pipeline por las que pasa la prueba de regresión durante su vida útil.
+  Todas las pruebas de regresión eventualmente deben heredar de esta clase. Esta clase 
+  proporciona la implementación de las fases del pipeline por las que pasa la prueba de 
+  regresión durante su vida útil.
 
-    **Propiedades**
+  **Propiedades**
 
-    - `build_locally = True`
+  - `build_locally = True`
 
-      Esta opción compila el codigo localmente. Si se establece en False, ReFrame generará un trabajo de compilación en la partición donde se ejecutará la prueba. Establecer esto en False es útil cuando la compilación no es compatible con el sistema donde se ejecuta ReFrame.
+    Esta opción compila el codigo localmente. Si se establece en False, ReFrame generará 
+    un trabajo de compilación en la partición donde se ejecutará la prueba. Establecer 
+    esto en False es útil cuando la compilación no es compatible con el sistema donde 
+    se ejecuta ReFrame.
 
-      - **Type**: booleano
+    - **Type**: booleano
 
-      - **Default**: True
+    - **Default**: True
 
-    - `build_system = None`
+  - `build_system = None`
 
-      El sistema de compilación que se usará para esta pruebai, ejemplo: `Make` para detectar Makefile's. Si no se especifica, Reframe intentará resolverlo automáticamente en función del valor de sourcepath.
+    El sistema de compilación que se usará para esta pruebai, ejemplo: `Make` para 
+    detectar Makefile's. Si no se especifica, Reframe intentará resolverlo automáticamente 
+    en función del valor de sourcepath.
 
-      - **Type**: str o [reframe.core.buildsystems.BuildSystem](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=api%20#reframe.core.buildsystems.BuildSystem)
+    - **Type**: str o [reframe.core.buildsystems.BuildSystem](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=api%20#reframe.core.buildsystems.BuildSystem)
 
-      - **Default**: `None`
+    - **Default**: `None`
 
-    - `build_time_limit = None`
+  - `build_time_limit = None`
 
-      El límite de tiempo para el trabajo de compilación de la prueba de regresión. Se especifica de forma similar al atributo `time_limit`.
+    El límite de tiempo para el trabajo de compilación de la prueba de regresión. 
+    Se especifica de forma similar al atributo `time_limit`.
 
-      - **Type**: str, float o int
+    - **Type**: str, float o int
 
-      - **Default**: `None`
+    - **Default**: `None`
 
-    - `property current_environ`
+  - `property current_environ`
 
-      Variable de consulta donde se guarda el entorno de programación con el que se está ejecutando actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
+    Variable de consulta donde se guarda el entorno de programación con el que se está 
+    ejecutando actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
 
-    - `property current_partition`
+  - `property current_partition`
 
-      Variable de consulta donde se guarda la partición del sistema en la que se está ejecutando actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
+    Variable de consulta donde se guarda la partición del sistema en la que se está ejecutando 
+    actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
 
-      Ejemplo de consulta:
+    Ejemplo de consulta:
 
-      ``` python
-          @run_before('run')
-          def define_tasks(self):
-              # Se definen opciones para cada partición
-              if self.current_partition.fullname in ['yoltla:q1h-20p']:
-                  self.num_tasks = 20
-                  self.num_tasks_per_node=20
-              elif self.current_partition.fullname in ['yoltla:q1h-40p']:
-                  self.num_tasks = 20
-                  self.num_tasks_per_node=10
-      ```
+    ```python
+      @run_before('run')
+      def define_tasks(self):
+          # Se definen opciones para cada partición
+          if self.current_partition.fullname in ['yoltla:q1h-20p']:
+              self.num_tasks = 20
+              self.num_tasks_per_node=20
+          elif self.current_partition.fullname in ['yoltla:q1h-40p']:
+              self.num_tasks = 20
+              self.num_tasks_per_node=10
+    ```
 
-    - `property current_system`
+  - `property current_system`
 
-      Variable de consulta donde se guarda sistema en el que se está ejecutando actualmente la prueba de regresión.
-      Esto se establece durante la fase de inicialización.
+    Variable de consulta donde se guarda sistema en el que se está ejecutando 
+    actualmente la prueba de regresión.Esto se establece durante la fase de 
+    inicialización.
 
-    - `descr`
+  - `descr`
 
-      Una descripción detallada de la prueba.
+    Una descripción detallada de la prueba.
 
-    - `exclusive_access = False`
+  - `exclusive_access = False`
 
-      Especifica si esta prueba necesita acceso exclusivo a los nodos.
+    Especifica si esta prueba necesita acceso exclusivo a los nodos.
 
-      - **Type**: booleano
+    - **Type**: booleano
 
-      - **Default**: False
+    - **Default**: False
 
-    - `executable`
+  - `executable`
 
-      El nombre del ejecutable que se lanzará durante la fase de ejecución.
+    El nombre del ejecutable que se lanzará durante la fase de ejecución.
 
-      - **Type**: str
+    - **Type**: str
 
-      - **Default**: Requerido
+    - **Default**: Requerido
 
-    - `executable_opts = []`
+  - `executable_opts = []`
 
-      Lista de opciones a pasar al executable.
+    Lista de opciones a pasar al executable.
 
-      - **Type**: List\[str\]
+    - **Type**: List\[str\]
 
-      - **Default**: \[\]
+    - **Default**: \[\]
 
 - `extra_resources = {}`
 
-  Este campo es para especificar los recursos personalizados que necesita esta prueba. Estos recursos se definen en el archivo de configuración de una partición del sistema. Por ejemplo:
+  Este campo es para especificar los recursos personalizados que necesita esta prueba. 
+  Estos recursos se definen en el archivo de configuración de una partición del sistema. 
+  Por ejemplo:
 
-  ``` python
+  ```python
   'resources': [
       {
           'name': 'gpu',
@@ -134,9 +153,10 @@ reframe.RegressionTest
   ]
   ```
 
-  Una prueba de regresión puede instanciar los recursos al establecer el atributo `extra_resources` de la siguiente manera:
+  Una prueba de regresión puede instanciar los recursos al establecer el atributo 
+  `extra_resources` de la siguiente manera:
 
-  ``` python
+  ```python
   self.extra_resources = {
       'gpu': {'num_gpus_per_node': 2}
   }
@@ -144,17 +164,16 @@ reframe.RegressionTest
 
   El script generado (para SLURM) contendrá las siguiente línea:
 
-  ``` bash
+  ```bash
   #SBATCH --gres=gpu:2
   ```
-
-<!-- -->
 
 - `keep_files = []`
 
   Lista de archivos que se guardarán después de que finalice la prueba.
 
-  De forma predeterminada, Reframe guarda la salida estándar, el error estándar y el script generado que se usó para ejecutar esta prueba.
+  De forma predeterminada, Reframe guarda la salida estándar, el error estándar y el 
+  script generado que se usó para ejecutar esta prueba.
 
   Estos archivos se copiarán en el directorio de salida de la prueba durante la fase cleanup().
 
@@ -168,7 +187,8 @@ reframe.RegressionTest
 
 - `maintainers = []`
 
-  Lista de personas responsables de esta prueba. Cuando la prueba falla, se imprimirá esta lista de contactos.
+  Lista de personas responsables de esta prueba. Cuando la prueba falla, se imprimirá 
+  esta lista de contactos.
 
   - **Type**: str
 
@@ -247,7 +267,8 @@ reframe.RegressionTest
 
   Lista de comandos de shell que se ejecutarán después de una compilación exitosa.
 
-  Estos comandos se emiten en el script después de los comandos de compilación generados por el sistema de compilación seleccionado.
+  Estos comandos se emiten en el script después de los comandos de compilación generados 
+  por el sistema de compilación seleccionado.
 
   - **Type**: List\[str\]
 
@@ -265,7 +286,8 @@ reframe.RegressionTest
 
   Lista de comandos de shell que se ejecutarán antes de compilar.
 
-  Estos comandos se emiten en el script antes de los comandos de compilación generados por el sistema de compilación seleccionado.
+  Estos comandos se emiten en el script antes de los comandos de compilación generados 
+  por el sistema de compilación seleccionado.
 
   - **Type**: List\[str\].
 
@@ -313,29 +335,35 @@ reframe.RegressionTest
 
   - **Parámetros**:
 
-    - **msg** - un mensaje que explica por qué se omitió la prueba. Si no se especifica, se utilizará un mensaje predeterminado.
+    - **msg** - un mensaje que explica por qué se omitió la prueba. Si no se especifica, 
+    se utilizará un mensaje predeterminado.
 
 - `sourcepath = ' '`
 
   La ruta al archivo de origen o al directorio de origen de la prueba.
 
-  Debe ser una ruta relativa al `sourcesdir`, apuntando a una subcarpeta o un archivo contenido en `sourcesdir`. Esto se aplica también en el caso de que `sourcesdir` sea un repositorio de Git.
+  Debe ser una ruta relativa al `sourcesdir`, apuntando a una subcarpeta o un archivo 
+  contenido en `sourcesdir`. Esto se aplica también en el caso de que `sourcesdir` sea 
+  un repositorio de Git.
 
-  Si se refiere a un archivo normal, este archivo se compilará utilizando el sistema de compilación elegido.
+  Si se refiere a un archivo normal, este archivo se compilará utilizando el sistema 
+  de compilación elegido.
 
   - **Type**: str.
 
   - **Default**: \' \'
 
-<!-- -->
 
 - `sourcesdir = 'src'`
 
   El directorio que contiene los recursos de la prueba.
 
-  Este directorio se puede especificar con una ruta absoluta o con una ruta relativa a la ubicación de la prueba. Su contenido siempre se copiará en el directorio de etapas de la prueba.
+  Este directorio se puede especificar con una ruta absoluta o con una ruta relativa a 
+  la ubicación de la prueba. Su contenido siempre se copiará en el directorio de etapas 
+  de la prueba.
 
-  Este atributo también puede aceptar una URL, en cuyo caso ReFrame lo tratará como un repositorio de Git e intentará clonar su contenido en el directorio de etapa de la prueba.
+  Este atributo también puede aceptar una URL, en cuyo caso ReFrame lo tratará como un 
+  repositorio de Git e intentará clonar su contenido en el directorio de etapa de la prueba.
 
   Si se establece en `None`, la prueba no tiene recursos y no se realiza ninguna acción.
 
@@ -357,7 +385,8 @@ reframe.RegressionTest
 
   Límite de tiempo para esta prueba.
 
-  El límite de tiempo se especifica como una cadena en el formulario `<days>d<hours>h<minutes>m<seconds>s` o como número de segundos. Si se establece en `None`, se utilizará el `time_limit` de la partición.
+  El límite de tiempo se especifica como una cadena en el formulario `<days>d<hours>h<minutes>m<seconds>s` 
+  o como número de segundos. Si se establece en `None`, se utilizará el `time_limit` de la partición.
 
 - `use_multithreading = None`
 
@@ -391,7 +420,7 @@ reframe.RegressionTest
 
     Ejemplo:
 
-    ``` python
+    ```python
     variables = {
                 'OMP_NUM_THREADS': '$SLURM_CPUS_PER_TASK'
                 }
@@ -399,97 +428,123 @@ reframe.RegressionTest
 
     El script generado (para SLURM) contendrá las siguiente línea:
 
-    ``` bash
+    ```bash
     export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASKS
     ```
 
-reframe.RunOnlyRegressionTest
+## reframe.RunOnlyRegressionTest
 
-:   Base: [RegressionTest](#run_regression)
+  Base: [RegressionTest](./referencia_api.md#reframeregressiontest)
 
-    Clase base para pruebas de regresión de solo ejecución.
+  Clase base para pruebas de regresión de solo ejecución.
 
-    **Propiedades**
+  **Propiedades**
 
-    - `run()`
+  - `run()`
 
-      La fase de ejecución del pipeline de prueba de regresión.
+    La fase de ejecución del pipeline de prueba de regresión.
 
-      Los recursos de la prueba se copian en el directorio de stage y el resto de la ejecución se delega al `RegressionTest.run()`.
+    Los recursos de la prueba se copian en el directorio de stage y el resto de la 
+    ejecución se delega al `RegressionTest.run()`.
+
 
 # Test Decorators
 
-\@reframe.simple_test
+**@reframe.simple_test**
+  
+- Decorador de clases para registrar pruebas con ReFrame.
 
-:   Decorador de clases para registrar pruebas con ReFrame.
+**@reframe.deferrable**
 
-\@reframe.deferrable
+- Convierte la función decorada en una expresión diferida.
 
-:   Convierte la función decorada en una expresión diferida.
+  Para obtener más información, consulte la sección de 
+  [Funciones Diferibles](../scripts/pruebas_sanidad.md#funciones-diferibles).
 
-    Para obtener más información, consulte la sección de [Funciones Diferibles](reframe/scripts/pruebas_sanidad.xml#funciones_diferibles).
+**@reframe.performance_function(unit, \*, perf_key=None)**
 
-\@reframe.performance_function(unit, \*, perf_key=None)
+- Decora una función para marcarla como una función de rendimiento.
 
-:   Decora una función para marcarla como una función de rendimiento.
+  Para obtener más información, consulte la sección de 
+  [Pruebas de rendimiento](../scripts/pruebas_rendimiento.md#funciones_diferibles).
 
-    Para obtener más información, consulte la sección de [Pruebas de rendimiento](reframe/scripts/pruebas_rendimiento.xml#funciones_diferibles).
+  - **Parámetros:**
 
-    - **Parámetros:**
+    - **unit**: Una cadena que representa la unidad de medida de esta métrica.
 
-      - **unit**: Una cadena que representa la unidad de medida de esta métrica.
+    - **pef_key**: Clave para identificar la variable de performance.
 
-      - **pef_key**: Clave para identificar la variable de performance.
+**@reframe.run_after(stage)**
 
-\@reframe.run_after(stage)
+-  Adjunta la función decorada después de una determinada etapa del pipeline.
 
-:   Adjunta la función decorada después de una determinada etapa del pipeline.
+   La función decorada se ejecutará justo después de la etapa (stage) a la que se adjuntó. Este decorador también
+   admite \'init\' como argumento válido, en este caso, la función se ejecutará justo después de que se
+   inicialice la prueba (es decir, después de que se llame el método *init*()) y antes de ingresar al
+   pipeline de la prueba.
 
-    La función decorada se ejecutará justo después de la etapa (stage) a la que se adjuntó. Este decorador también
-    admite \'init\' como argumento válido, en este caso, la función se ejecutará justo después de que se
-    inicialice la prueba (es decir, después de que se llame el método *init*()) y antes de ingresar al
-    pipeline de la prueba.
+  - **Parámetros:**
 
-    - **Parámetros:**
+    - **stage**: La etapa del pipeline a la que se adjuntará esta función.
 
-      - **stage**: La etapa del pipeline a la que se adjuntará esta función.
+      Consulte la sección [Enlaces Pipeline](#enlaces-pipeline).
 
-        Consulte la sección [Enlaces Pipeline](#enlaces_pipeline).
+**@reframe.run_before(stage)**
 
-\@reframe.run_before(stage)
+- Adjunta la función decorada antes de una determinada etapa del pipeline.
 
-:   Adjunta la función decorada antes de una determinada etapa del pipeline.
+  La función decorada se ejecutará justo antes de la etapa (stage) a la que se adjuntó.
 
-    La función decorada se ejecutará justo antes de la etapa (stage) a la que se adjuntó.
+  - **Parámetros:**
 
-    - **Parámetros:**
+    - **stage** : La etapa del pipeline a la que se adjuntará esta función.
 
-      - **stage** : La etapa del pipeline a la que se adjuntará esta función.
+      Consulte la sección [Enlaces Pipeline](#enlaces-pipeline).
 
-        Consulte la sección [Enlaces Pipeline](#enlaces_pipeline).
+**@reframe.sanity_function**
 
-\@reframe.sanity_function
+- Decora una función para marcarla como una verificación de sanidad.
 
-:   Decora una función para marcarla como una verificación de sanidad.
+  Este decorador convertirá la función dada en una función `deferrable()` y la marcará 
+  para que se ejecute durante la etapa de sanidad de la prueba.
 
-    Este decorador convertirá la función dada en una función `deferrable()` y la marcará para que se ejecute durante la etapa de sanidad de la prueba.
+  Para obtener más información, consulte la sección de [Pruebas de sanidad](../scripts/pruebas_sanidad.md).
 
-    Para obtener más información, consulte la sección de [Pruebas de sanidad](reframe/scripts/pruebas_sanidad.xml).
 
 # Enlaces Pipeline
 
-ReFrame proporciona un mecanismo que permite adjuntar funciones para que se ejecuten antes o después de una etapa determinada del pipeline de ejecución. Esto se logra a través de las funciones integradas `@run_before` y `@run_after`. Una vez adjuntadas a una etapa determinada, estas funciones se conocen como **enlaces de Pipeline**. Se puede unir un enlace a múltiples etapas del pipeline y también se pueden unir múltiples enlaces a la misma etapa del pipeline.
+ReFrame proporciona un mecanismo que permite adjuntar funciones para que se ejecuten 
+antes o después de una etapa determinada del pipeline de ejecución. Esto se logra a 
+través de las funciones integradas `@run_before` y `@run_after`. Una vez adjuntadas 
+a una etapa determinada, estas funciones se conocen como **enlaces de Pipeline**. 
+Se puede unir un enlace a múltiples etapas del pipeline y también se pueden unir 
+múltiples enlaces a la misma etapa del pipeline.
 
-Los enlaces pipeline adjuntos a varias etapas se ejecutarán en cada etapa del pipeline a la que se adjuntó el enlace. Las etapas del pipeline con varios enlaces adjuntos ejecutarán estos enlaces en el orden en que se adjuntaron a la etapa del pipeline determinada.
+Los enlaces pipeline adjuntos a varias etapas se ejecutarán en cada etapa del pipeline 
+a la que se adjuntó el enlace. Las etapas del pipeline con varios enlaces adjuntos 
+ejecutarán estos enlaces en el orden en que se adjuntaron a la etapa del pipeline determinada.
 
-Una función puede adjuntarse a cualquiera de las siguientes etapas (enumeradas en orden de ejecución): `init`, `setup`, `compile`, `run`, `sanity`, `performance` y `cleanup`.
+Una función puede adjuntarse a cualquiera de las siguientes etapas (enumeradas en 
+orden de ejecución): `init`, `setup`, `compile`, `run`, `sanity`, `performance` y `cleanup`.
 
-La etapa `init` se refiere a la creación de instancias de la prueba y se ejecuta antes de ingresar al pipeline de ejecución. Por lo tanto, no se puede adjuntar una función para que se ejecute antes de esta etapa. Los enlaces adjuntos a cualquier otra etapa se ejecutarán exactamente antes o después de que se ejecute esta etapa. Por lo tanto, aunque se ejecutarán un enlace \"post-init\" y uno \"pre-setup\" después de que se haya inicializado una prueba y antes de que la prueba pase por la primera etapa del pipeline, se ejecutarán en momentos diferentes: el enlace \"post-init\" se ejecutará justo después de que la prueba se inicializa. Luego, el framework continuará con otras actividades y ejecutará el enlace \"pre-setup\" justo antes de ejecutar su etapa de setup.
+La etapa `init` se refiere a la creación de instancias de la prueba y se ejecuta antes 
+de ingresar al pipeline de ejecución. Por lo tanto, no se puede adjuntar una función para 
+que se ejecute antes de esta etapa. Los enlaces adjuntos a cualquier otra etapa se 
+ejecutarán exactamente antes o después de que se ejecute esta etapa. Por lo tanto, aunque 
+se ejecutarán un enlace \"post-init\" y uno \"pre-setup\" después de que se haya inicializado 
+una prueba y antes de que la prueba pase por la primera etapa del pipeline, se ejecutarán 
+en momentos diferentes: el enlace \"post-init\" se ejecutará justo después de que la prueba 
+se inicializa. Luego, el framework continuará con otras actividades y ejecutará el enlace 
+\"pre-setup\" justo antes de ejecutar su etapa de setup.
 
-Los *Enlaces Pipeline* son muy útiles ya que existen variables que solo se pueden consultar, definir o modificar
-después o antes de que Reframe haya pasado por ciertas etapas del [`Pipeline`](#pipeline). Algunas de estas variables son:
+Los *Enlaces Pipeline* son muy útiles ya que existen variables que solo se pueden consultar, 
+definir o modificar después o antes de que Reframe haya pasado por ciertas etapas del 
+[`Pipeline`](#pipeline). Algunas de estas variables son:
+
+# **************************************************************
 
 ## init
+
 
 ### **Parámetros**
 
