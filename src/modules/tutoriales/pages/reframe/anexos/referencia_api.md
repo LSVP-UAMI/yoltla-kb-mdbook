@@ -541,7 +541,6 @@ Los *Enlaces Pipeline* son muy útiles ya que existen variables que solo se pued
 definir o modificar después o antes de que Reframe haya pasado por ciertas etapas del 
 [`Pipeline`](#pipeline). Algunas de estas variables son:
 
-# **************************************************************
 
 ## init
 
@@ -549,21 +548,20 @@ definir o modificar después o antes de que Reframe haya pasado por ciertas etap
 ### **Parámetros**
 
 Los parámetros nos ayudan a instanciar múltiples pruebas diferentes en una misma prueba. Consulte la
-sección [Parámetros](reframe/scripts/parametros.xml) para más información. Estos se definen
+sección [Parámetros](../scripts/parametros.md) para más información. Estos se definen
 dentro del cuerpo de la clase de la prueba sin embargo si queremos consultar o modificar el comportamiento
 de una prueba usando los parámetros desde la clase de prueba, se nos presentara el siguiente error:
 
-    reframe syntax error: accessing a test parameter from the class body is disallowed
+```bash
+  reframe syntax error: accessing a test parameter from the class body is disallowed
+```
 
 Para solucionar esto utilizamos el decorador `@run_after('init')` para utilizar los parámetros **después**
 de que se hayan instanciado. Ejemplo:
 
-:::: formalpara
-::: title
-Ejemplo \@run_after(\'init\')
-:::
+<span style="color: #990819;">*Ejemplo \@run_after(\'init\')*</span>
 
-``` python
+```python
 @rfm.simple_test
 class Namd_CPU_Benchmarks(rfm.RunOnlyRegressionTest):
 
@@ -620,10 +618,10 @@ class Namd_CPU_Benchmarks(rfm.RunOnlyRegressionTest):
 .
 .
 ```
-::::
 
-En el ejemplo anterior , utilizamos los parámetros para definir las variables `descr`,`sourcedir` y `valid_systems`
-en la función `setup_system` con del decorador `@run_after('init')`
+En el ejemplo anterior , utilizamos los parámetros para definir las variables `descr`,
+`sourcedir` y `valid_systems` en la función `setup_system` con del decorador `@run_after('init')`
+
 
 ## compile
 
@@ -636,10 +634,7 @@ del caso de prueba. ReFrame luego cambia temporalmente a ese directorio y crea l
 Puede usar la opción \@run_before(\'compile\') para definir variables de ambiente antes de la compilación.
 Ejemplo
 
-:::: formalpara
-::: title
-Ejemplo \@run_before(\'compile\')
-:::
+<span style="color: #990819;">*Ejemplo \@run_before(\'compile\')*</span>
 
 ``` python
     @run_before('compile')
@@ -649,14 +644,15 @@ Ejemplo \@run_before(\'compile\')
         if environ in {'clang', 'gnu'}:
             self.build_system.cxxflags += ['-pthread']
 ```
-::::
 
 En el ejemplo anterior definimos cxxflags del entorno de compilación.
+
 
 ## run
 
 Durante esta fase, se creará un script de trabajo asociado con el caso de prueba y se enviará para su
 ejecución.
+
 
 ### **getlauncher**
 
@@ -669,26 +665,23 @@ Al reemplazar el launcher, debemos hacerlo antes de la fase `run` , por lo tanto
 
 Ejemplo:
 
-:::: formalpara
-::: title
-Ejemplo \@run_before(\'run\')
-:::
+<span style="color: #990819;">*Ejemplo \@run_before(\'run\')*</span>
 
 ``` python
-      @run_before('run')
-      def setup_run(self):
+    @run_before('run')
+    def setup_run(self):
 
-          # Se reemplaza lanzador del job
-          self.job.launcher = getlauncher('local')()
+        # Se reemplaza lanzador del job
+        self.job.launcher = getlauncher('local')()
 
-          self.num_tasks_per_node = 20
-          self.num_tasks = self.num_nodes * self.num_tasks_per_node
-          self.num_tasks_per_core = 1
+        self.num_tasks_per_node = 20
+        self.num_tasks = self.num_nodes * self.num_tasks_per_node
+        self.num_tasks_per_core = 1
 
-          # Se define como ejecutar el job
-          self.executable=f'mpiexec.hydra -bootstrap slurm -np {self.num_tasks} namd2 stmv.namd'
+        # Se define como ejecutar el job
+        self.executable=f'mpiexec.hydra -bootstrap slurm -np {self.num_tasks} namd2 stmv.namd'
 ```
-::::
+
 
 ### **current_partition**
 
@@ -696,10 +689,7 @@ Ejemplo \@run_before(\'run\')
 ejecutando la prueba de regresión. Esto se establece durante la fase `setup()`. Puede consultarla antes
 de la fase de ejecución de la siguiente forma:
 
-:::: formalpara
-::: title
-Ejemplo \@run_before(\'run\')
-:::
+<span style="color: #990819;">*Ejemplo \@run_before(\'run\')*</span>
 
 ``` python
     @run_before('run')
@@ -712,13 +702,17 @@ Ejemplo \@run_before(\'run\')
             self.num_tasks = 20
             self.num_tasks_per_node=10
 ```
-::::
+
 
 # Variantes de prueba
 
-A través del componente `parameter`, una prueba de regresión puede almacenar múltiples versiones o variantes de una prueba de regresión. Durante la creación de la clase, los parámetros de la prueba se construyen y combinan, asignando un índice único a cada una de las variantes de prueba disponibles.
+A través del componente `parameter`, una prueba de regresión puede almacenar múltiples 
+versiones o variantes de una prueba de regresión. Durante la creación de la clase, los 
+parámetros de la prueba se construyen y combinan, asignando un índice único a cada una 
+de las variantes de prueba disponibles.
 
-Para obtener más información, consulte la sección de [Parámetros](reframe/scripts/parametros.xml).
+Para obtener más información, consulte la sección de [Parámetros](../scripts/parametros.md).
+
 
 # Programadores de trabajos y lanzadores paralelos
 
@@ -732,13 +726,16 @@ Para obtener más información, consulte la sección de [Parámetros](reframe/sc
 
 - `launcher`
 
-  El lanzador de programas (paralelo) que se usará para lanzar el ejecutable (paralelo) de este trabajo.
+  El lanzador de programas (paralelo) que se usará para lanzar el ejecutable (paralelo) 
+  de este trabajo.
 
-  Los usuarios pueden configurar explícitamente el iniciador de trabajos actual, esto es relevante en situaciones especificas.
+  Los usuarios pueden configurar explícitamente el iniciador de trabajos actual, esto es 
+  relevante en situaciones especificas.
 
-  El siguiente ejemplo muestra cómo puede reemplazar el iniciador de la partición actual para esta prueba con el iniciador \"local\":
+  El siguiente ejemplo muestra cómo puede reemplazar el iniciador de la partición actual 
+  para esta prueba con el iniciador \"local\":
 
-  ``` python
+  ```python
   from reframe.core.backends import getlauncher
 
   @run_before('run')
@@ -810,33 +807,25 @@ Para obtener más información, consulte la sección de [Parámetros](reframe/sc
 
   Límite de tiempo para este trabajo.
 
+
 # Asignación de atributos al backend del programador de trabajos (SLURM)
 
-+-----------------------------------+-----------------------------------+
-| Atributo de prueba                | Opción SLURM                      |
-+===================================+===================================+
+| **Atributo de prueba** | **Opción SLURM** |
+|------------------------|------------------|
 | `num_tasks`                       | `--ntasks`                        |
-+-----------------------------------+-----------------------------------+
 | `num_tasks_per_node`              | `--ntasks-per-node`               |
-+-----------------------------------+-----------------------------------+
 | `num_tasks_per_core`              | `--ntasks-per-core`               |
-+-----------------------------------+-----------------------------------+
 | `num_tasks_per_socket`            | `--ntasks-per-socket`             |
-+-----------------------------------+-----------------------------------+
 | `num_cpus_per_task`               | `--cpus-per-task`                 |
-+-----------------------------------+-----------------------------------+
 | `time_limit`                      | `--time=hh:mm:ss`                 |
-+-----------------------------------+-----------------------------------+
 | `exclusive_access`                | `--exclusive`                     |
-+-----------------------------------+-----------------------------------+
 
 Si se establece alguno de los atributos en `None`, no se emitirá en absoluto en el script del trabajo.
 
-:::: note
-::: title
-:::
+```admonish info title=" "
+La opción `--nodes` también se puede emitir si se establece el parámetro `use_nodes_option` 
+en la configuración del planificador de trabajos.
 
-La opción `--nodes` también se puede emitir si se establece el parámetro `use_nodes_option` en la configuración del planificador de trabajos.
-
-Para obtener más información, consulte la consulte la sección [Configuracion de schedulers](reframe/anexos/archivo_configuracion.xml#configuracion_schedulers).
-::::
+Para obtener más información, consulte la consulte la sección 
+[Configuracion de schedulers](./archivo_configuracion.md#configuración-de-schedulers).
+```

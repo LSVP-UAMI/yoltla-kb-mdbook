@@ -46,8 +46,8 @@
             - [Topología](./modules/tutoriales/pages/reframe/anexos/topologia.md)
             - [Referencias del API](./modules/tutoriales/pages/reframe/anexos/referencia_api.md)
 
-    - [Spack]()
-        - [Aplicaciones]()
+    - [Spack](./modules/tutoriales/pages/spack/spack.md)
+        - [Aplicaciones](./modules/tutoriales/pages/spack/aplicaciones.md)
         - [Instalar aplicaciones]()
     
     - [NGINX]()
