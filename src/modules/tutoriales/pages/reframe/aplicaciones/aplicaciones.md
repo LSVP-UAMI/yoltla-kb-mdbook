@@ -22,7 +22,7 @@ Para este trabajo se uso las siguientes aplicaciones científicas:
 
 Elementos de los scripts de Reframe de prueba de aplicaciones para el cluster Yoltla.
 
-Clase base de prueba: [RunOnlyRegressionTest](/reframe/anexos/referencia_api.xml#run_only_regression)
+Clase base de prueba: [RunOnlyRegressionTest](../anexos/referencia_api.md#reframerunonlyregressiontest)
 
 - ## bench_name
 
@@ -358,8 +358,9 @@ scripts de Reframe buscan la carpetas de la siguiente forma:
     self.sourcesdir= f'src/{self.bench_name}'
 ```
 
-Revise la variable [`sourcesdir`](/reframe/anexos/referencia_api.xml#sourcesdir) de Reframe para
+Revise la variable [`sourcesdir`](../anexos/referencia_api.md#sourcesdir--src) de Reframe para
 más información.
+
 
 # Ejecución
 
@@ -373,7 +374,7 @@ se presentara el siguiente error:
     `/LUSTRE/home/../../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/ reframe-3.9.2/bin/reframe:
     failed to load configuration: [Errno 2] No such file or directory: '/LUSTRE/home/../../../t.800/Pruebas/logs/rfm.out'`
 
-Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
+Para más detalles, consulte la sección [Archivo de configuración](../anexos/archivo_configuracion.md).
 ```
 
 Ejemplos:
@@ -391,7 +392,7 @@ reframe -c . -r --performance-report
 ```
 
 Recomendamos el uso de la opción
-[`--performance-report`](../scripts/lanzar_pruebas.md##performance-report).
+[`--performance-report`](../scripts/lanzar_pruebas.md#performance-report).
 
 
 
@@ -440,7 +441,9 @@ reframe -c aplicacion-gpu.py -t test-gpus-4 -r --performance-report
 ```
 
 Revise la opción
-[`tags`](/reframe/scripts/lanzar_pruebas.xml#tags)
+[`tags`](../scripts/lanzar_pruebas.md#list-tags)
+
+
 de Reframe para más información.
 
 ## Ejecución recursiva
@@ -475,7 +478,7 @@ para más información.
 Al ejecutar múltiples pruebas tome en cuenta que se creara un solo archivo `logs` 
 y una sola carpeta `output` y `stage` para todas las pruebas que se encuentre.
 
-Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
+Para más detalles, consulte la sección [Archivo de configuración](../anexos/archivo_configuracion.md).
 ```
 
 # Función sanity

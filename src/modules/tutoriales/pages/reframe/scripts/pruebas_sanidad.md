@@ -72,8 +72,8 @@ de Python. Y se usa para buscar una cadena de caracteres en la salida.
 
 Toda función de sanidad debe regresar un valor booleano (True). Esto se explicará más 
 adelante, por el momento se destaca el uso de la [función diferible](#funciones-diferibles) 
-[`sn.assert_found`](#assert_found) que afirma la existencia de una cadena. Esta función 
-se hereda de la clase `sanity`:
+[`sn.assert_found`](./pruebas_sanidad.md#reframeutilitysanityassert_foundpatt-filename-msgnone-encodingutf-8-¶) 
+que afirma la existencia de una cadena. Esta función se hereda de la clase `sanity`:
 
 ```bash
 import reframe.utility.sanity as sn

@@ -14,7 +14,7 @@ la evaluación del rendimiento.
 A continuación se presenta la estructura general de una prueba de ReFrame:
 
 
-<span style="color: red;">*simple_test.py*</span>
+<span style="color: #990819;">*simple_test.py*</span>
 
 ```python
 # Lista de imports necesarios para la prueba
@@ -184,7 +184,7 @@ class Simple_Test(rfm.RegressionTest):
 
 ```admonish info title=" "
 Como podrá haber observado, todas las funciones de la clase `Simple_Test` están decoradas. El [decorador](https://docs.python.org/3/glossary.html#term-decorator) de 
-cada función le indica a ReFrame en que punto de su [pipeline](../anexos/referencia_api.md) debe ejecutarla. Por ejemplo, en este fragmento de código:
+cada función le indica a ReFrame en que punto de su [pipeline](../anexos/referencia_api.md#pipeline) debe ejecutarla. Por ejemplo, en este fragmento de código:
 
         @run_before('performance')
         def set_perf_vars(self):
@@ -196,7 +196,7 @@ cada función le indica a ReFrame en que punto de su [pipeline](../anexos/refere
 
 el decorator `@run_before('performance')` indica a ReFrame que debe ejecutar la función `set_perf_vars` antes de la etapa de `performance`.
 
-Para obtener más información de los decoradores, consulte la sección [Test Decorators](../anexos/referencia_api.md).
+Para obtener más información de los decoradores, consulte la sección [Test Decorators](../anexos/referencia_api.md#test-decorators).
 ```
 
 
@@ -249,7 +249,7 @@ Posteriormente, cambie al directorio *reframe/hello_world*:
 
 y cree el archivo *hello_test.py*:
 
-<span style="color: red;">*hello_test.py*</span>
+<span style="color: #990819;">*hello_test.py*</span>
 
 ```python
 # Import necesario para definir pruebas de ReFrame
@@ -296,7 +296,7 @@ class HelloTest(rfm.RegressionTest):
 
 Dentro del directorio *src*, cree el archivo *hello.c*:
 
-<span style="color: red;">*hello.c*</span>
+<span style="color: #990819;">*hello.c*</span>
 
 ```c
 #include <stdio.h>
@@ -488,7 +488,7 @@ Posteriormente, cambie al directorio *reframe/prime_numbers*:
 
 y cree el archivo *prime_numbers_test.py*:
 
-<span style="color: red;">*prime_numbers_test.py*</span>
+<span style="color: #990819;">*prime_numbers_test.py*</span>
 
 ```python
 import reframe as rfm
@@ -575,7 +575,7 @@ class PrimeNumbersTest(rfm.RegressionTest):
 
 Dentro del directorio *src*, cree el archivo *prime_numbers.c*:
 
-<span style="color: red;">*prime_numbers.c*</span>
+<span style="color: #990819;">*prime_numbers.c*</span>
 
 ```c
 #include <stdio.h>
@@ -715,7 +715,7 @@ Es muy similar al visto en el ejemplo anterior, pero nos encontramos con un nuev
 directorio, el directorio *perflogs*. En este directorio se almacenan los resultados 
 del rendimiento de la prueba:
 
-<span style="color: red;">*PrimeNumbersTest.log*</span>
+<span style="color: #990819;">*PrimeNumbersTest.log*</span>
 
 ```bash
 2022-06-21T23:27:53|reframe 3.9.2|PrimeNumbersTest on yoltla:q1h-20p using builtin-gcc-7.2.0|jobid=926296|time=0.62|ref=0.65 (l=-0.2, u=0.2)|
@@ -733,7 +733,7 @@ del rendimiento de la prueba:
 
 - ref=\<valor esperado\> (l=-\<umbral inferior\>, u=\<umbral superior\>)
 
-Para obtener más información de las pruebas de rendimiento, consulte la sección [Pruebas de rendimiento](reframe/scripts/pruebas_rendimiento.xml).
+Para obtener más información de las pruebas de rendimiento, consulte la sección [Pruebas de rendimiento](../scripts/pruebas_rendimiento.md).
 
 ## Tags
 
@@ -758,7 +758,7 @@ Dentro del directorio *reframe* cree la siguiente estructura de directorios y ar
         └── hola.c
 ```
 
-<span style="color: red;">*hello_test.py*</span>
+<span style="color: #990819;">*hello_test.py*</span>
 
 ```python
 import reframe as rfm
@@ -800,7 +800,7 @@ class HelloTest(rfm.RegressionTest):
         return sn.assert_found(r'Hello!', self.stdout)
 ```
 
-<span style="color: red;">*hello.c*</span>
+<span style="color: #990819;">*hello.c*</span>
 
 ```c
 #include <stdio.h>
@@ -812,7 +812,7 @@ int main()
 }
 ```
 
-<span style="color: red;">*hola_test.py*</span>
+<span style="color: #990819;">*hola_test.py*</span>
 
 ```python
 import reframe as rfm
@@ -854,7 +854,7 @@ class HolaTest(rfm.RegressionTest):
         return sn.assert_found(r'Hola!', self.stdout)
 ```
 
-<span style="color: red;">*hola.c*</span>
+<span style="color: #990819;">*hola.c*</span>
 
 ```c
 #include <stdio.h>
@@ -988,7 +988,7 @@ tags/
     └── namaste.c
 ```
 
-<span style="color: red;">*konnichiwa_test.py*</span>
+<span style="color: #990819;">*konnichiwa_test.py*</span>
 
 ```python
 import reframe as rfm
@@ -1030,7 +1030,7 @@ class KonnichiwaTest(rfm.RegressionTest):
         return sn.assert_found(r'Konnichiwa!', self.stdout)
 ```
 
-<span style="color: red;">*konnichiwa.c*</span>
+<span style="color: #990819;">*konnichiwa.c*</span>
 
 ```c
 #include <stdio.h>
@@ -1042,7 +1042,7 @@ int main()
 }
 ```
 
-<span style="color: red;">*namaste_test.py*</span>
+<span style="color: #990819;">*namaste_test.py*</span>
 
 ```python
 import reframe as rfm
@@ -1084,7 +1084,7 @@ class NamasteTest(rfm.RegressionTest):
         return sn.assert_found(r'Namaste!', self.stdout)
 ```
 
-<span style="color: red;">*namaste.c*</span>
+<span style="color: #990819;">*namaste.c*</span>
 
 ```c
 #include <stdio.h>
@@ -1274,7 +1274,7 @@ Existen dos razones principales para que falle la función de sanidad:
 
 En este ejemplo, la prueba falló porque el archivo fuente fue modificado:
 
-<span style="color: red;">*hello.c*</span>
+<span style="color: #990819;">*hello.c*</span>
 
 ```c
 #include <stdio.h>
@@ -1405,7 +1405,7 @@ Existen tres razones principales para que falle la función de rendimiento:
 
 En este ejemplo, la prueba no obtuvo el rendimiento que se esperaba:
 
-<span style="color: red;">*PrimeNumbersTest.log*</span>
+<span style="color: #990819;">*PrimeNumbersTest.log*</span>
 
 ```bash
 2022-06-21T23:32:54|reframe 3.9.2|PrimeNumbersTest on yoltla:q1h-20p using builtin-gcc-7.2.0|jobid=926299|time=1.36|ref=0.65 (l=-0.2, u=0.2)|s

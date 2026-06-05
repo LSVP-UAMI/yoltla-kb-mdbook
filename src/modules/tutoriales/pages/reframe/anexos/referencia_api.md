@@ -50,95 +50,95 @@ de la documentación oficial de ReFrame.
 
   **Propiedades**
 
-  - `build_locally = True`
+  ### `build_locally = True`
 
-    Esta opción compila el codigo localmente. Si se establece en False, ReFrame generará 
-    un trabajo de compilación en la partición donde se ejecutará la prueba. Establecer 
-    esto en False es útil cuando la compilación no es compatible con el sistema donde 
-    se ejecuta ReFrame.
+  Esta opción compila el codigo localmente. Si se establece en False, ReFrame generará 
+  un trabajo de compilación en la partición donde se ejecutará la prueba. Establecer 
+  esto en False es útil cuando la compilación no es compatible con el sistema donde 
+  se ejecuta ReFrame.
 
-    - **Type**: booleano
+  - **Type**: booleano
 
-    - **Default**: True
+  - **Default**: True
 
-  - `build_system = None`
+  ### `build_system = None`
 
-    El sistema de compilación que se usará para esta pruebai, ejemplo: `Make` para 
-    detectar Makefile's. Si no se especifica, Reframe intentará resolverlo automáticamente 
-    en función del valor de sourcepath.
+  El sistema de compilación que se usará para esta pruebai, ejemplo: `Make` para 
+  detectar Makefile's. Si no se especifica, Reframe intentará resolverlo automáticamente 
+  en función del valor de sourcepath.
 
-    - **Type**: str o [reframe.core.buildsystems.BuildSystem](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=api%20#reframe.core.buildsystems.BuildSystem)
+  - **Type**: str o [reframe.core.buildsystems.BuildSystem](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html?highlight=api%20#reframe.core.buildsystems.BuildSystem)
 
-    - **Default**: `None`
+  - **Default**: `None`
 
-  - `build_time_limit = None`
+  ### `build_time_limit = None`
 
-    El límite de tiempo para el trabajo de compilación de la prueba de regresión. 
-    Se especifica de forma similar al atributo `time_limit`.
+  El límite de tiempo para el trabajo de compilación de la prueba de regresión. 
+  Se especifica de forma similar al atributo `time_limit`.
 
-    - **Type**: str, float o int
+  - **Type**: str, float o int
 
-    - **Default**: `None`
+  - **Default**: `None`
 
-  - `property current_environ`
+  ### `property current_environ`
 
-    Variable de consulta donde se guarda el entorno de programación con el que se está 
-    ejecutando actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
+  Variable de consulta donde se guarda el entorno de programación con el que se está 
+  ejecutando actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
 
-  - `property current_partition`
+  ### `property current_partition`
 
-    Variable de consulta donde se guarda la partición del sistema en la que se está ejecutando 
-    actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
+  Variable de consulta donde se guarda la partición del sistema en la que se está ejecutando 
+  actualmente la prueba de regresión. Esto se establece durante la fase `setup()`.
 
-    Ejemplo de consulta:
+  Ejemplo de consulta:
 
-    ```python
-      @run_before('run')
-      def define_tasks(self):
-          # Se definen opciones para cada partición
-          if self.current_partition.fullname in ['yoltla:q1h-20p']:
-              self.num_tasks = 20
-              self.num_tasks_per_node=20
-          elif self.current_partition.fullname in ['yoltla:q1h-40p']:
-              self.num_tasks = 20
-              self.num_tasks_per_node=10
-    ```
+  ```python
+    @run_before('run')
+    def define_tasks(self):
+        # Se definen opciones para cada partición
+        if self.current_partition.fullname in ['yoltla:q1h-20p']:
+            self.num_tasks = 20
+            self.num_tasks_per_node=20
+        elif self.current_partition.fullname in ['yoltla:q1h-40p']:
+            self.num_tasks = 20
+            self.num_tasks_per_node=10
+  ```
 
-  - `property current_system`
+  ### `property current_system`
 
-    Variable de consulta donde se guarda sistema en el que se está ejecutando 
-    actualmente la prueba de regresión.Esto se establece durante la fase de 
-    inicialización.
+  Variable de consulta donde se guarda sistema en el que se está ejecutando 
+  actualmente la prueba de regresión.Esto se establece durante la fase de 
+  inicialización.
 
-  - `descr`
+  ### `descr`
 
-    Una descripción detallada de la prueba.
+  Una descripción detallada de la prueba.
 
-  - `exclusive_access = False`
+  ### `exclusive_access = False`
 
-    Especifica si esta prueba necesita acceso exclusivo a los nodos.
+  Especifica si esta prueba necesita acceso exclusivo a los nodos.
 
-    - **Type**: booleano
+  - **Type**: booleano
 
-    - **Default**: False
+  - **Default**: False
 
-  - `executable`
+  ### `executable`
 
-    El nombre del ejecutable que se lanzará durante la fase de ejecución.
+  El nombre del ejecutable que se lanzará durante la fase de ejecución.
 
-    - **Type**: str
+  - **Type**: str
 
-    - **Default**: Requerido
+  - **Default**: Requerido
 
-  - `executable_opts = []`
+  ### `executable_opts = []`
 
-    Lista de opciones a pasar al executable.
+  Lista de opciones a pasar al executable.
 
-    - **Type**: List\[str\]
+  - **Type**: List\[str\]
 
-    - **Default**: \[\]
+  - **Default**: \[\]
 
-- `extra_resources = {}`
+  ### `extra_resources = {}`
 
   Este campo es para especificar los recursos personalizados que necesita esta prueba. 
   Estos recursos se definen en el archivo de configuración de una partición del sistema. 
@@ -168,7 +168,7 @@ de la documentación oficial de ReFrame.
   #SBATCH --gres=gpu:2
   ```
 
-- `keep_files = []`
+  ### `keep_files = []`
 
   Lista de archivos que se guardarán después de que finalice la prueba.
 
@@ -185,7 +185,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: \[\]
 
-- `maintainers = []`
+  ### `maintainers = []`
 
   Lista de personas responsables de esta prueba. Cuando la prueba falla, se imprimirá 
   esta lista de contactos.
@@ -194,7 +194,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: None
 
-- `modules = []`
+  ### `modules = []`
 
   Lista de módulos que se cargarán antes de ejecutar esta prueba.
   Estos módulos se cargarán durante la fase `setup()`.
@@ -203,7 +203,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: \[\]
 
-- `num_cpus_per_task = None`
+  ### `num_cpus_per_task = None`
 
   Número de CPU por tarea requeridas por esta prueba.
   Ignorado si es `None`.
@@ -212,7 +212,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: `None`
 
-- `num_gpus_per_node = 0`
+  ### `num_gpus_per_node = 0`
 
   Número de GPU por nodo requeridas por esta prueba. Este atributo se traduce internamente como recurso.
   Eche un vistazo al atributo [`extra_resources`](#extra_resources).
@@ -228,7 +228,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: 0.
 
-- `num_tasks = 1`
+  ### `num_tasks = 1`
 
   Número de tareas requeridas por esta prueba.
 
@@ -236,7 +236,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: 1
 
-- `num_tasks_per_core = None`
+  ### `num_tasks_per_core = None`
 
   Número de tareas por núcleo requeridas por esta prueba.
   Ignorado si `None`.
@@ -245,7 +245,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: `None`
 
-- `num_tasks_per_node = None`
+  ### `num_tasks_per_node = None`
 
   Número de tareas por nodo requeridas por esta prueba.
   Ignorado si `None`.
@@ -254,7 +254,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: `None`
 
-- `num_tasks_per_socket = None`
+  ### `num_tasks_per_socket = None`
 
   Número de tareas por socket requeridas por esta prueba.
   Ignorado si None.
@@ -263,7 +263,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: None.
 
-- `postbuild_cmds = []`
+  ### `postbuild_cmds = []`
 
   Lista de comandos de shell que se ejecutarán después de una compilación exitosa.
 
@@ -274,7 +274,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: \[\]
 
-- `postrun_cmds = []`
+  ### `postrun_cmds = []`
 
   Lista de comandos de shell para ejecutar después del comando de lanzamiento paralelo.
 
@@ -282,7 +282,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: \[\]
 
-- `prebuild_cmds = []`
+  ### `prebuild_cmds = []`
 
   Lista de comandos de shell que se ejecutarán antes de compilar.
 
@@ -293,7 +293,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: \[\].
 
-- `prerun_cmds = []`
+  ### `prerun_cmds = []`
 
   Lista de comandos de shell para ejecutar antes del comando de lanzamiento paralelo.
 
@@ -301,7 +301,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: \[\]
 
-- `reference = {}`
+  ### `reference = {}`
 
   El conjunto de valores de referencia para esta prueba.
 
@@ -309,7 +309,7 @@ de la documentación oficial de ReFrame.
   rendimiento definidas en `perf_patterns` y en combinaciones de sistema/partición. Consulte la sección
   de pruebas de rendimiento.
 
-- `skip(msg=None)`
+  ### `skip(msg=None)`
 
   Skip test.
 
@@ -317,7 +317,7 @@ de la documentación oficial de ReFrame.
 
     - **msg** - un mensaje que explica por qué se omitió la prueba.
 
-- `skip_if(cond, msg=None)`
+  ### `skip_if(cond, msg=None)`
 
   Omite la prueba si la condición es verdadera.
 
@@ -327,7 +327,7 @@ de la documentación oficial de ReFrame.
 
     - **msg** -- un mensaje que explica por qué se omitió la prueba.
 
-- `skip_if_no_procinfo(msg=None)`
+  ### `skip_if_no_procinfo(msg=None)`
 
   Omite la prueba si no hay información disponible sobre la topología del procesador.
 
@@ -338,7 +338,7 @@ de la documentación oficial de ReFrame.
     - **msg** - un mensaje que explica por qué se omitió la prueba. Si no se especifica, 
     se utilizará un mensaje predeterminado.
 
-- `sourcepath = ' '`
+  ### `sourcepath = ' '`
 
   La ruta al archivo de origen o al directorio de origen de la prueba.
 
@@ -354,7 +354,7 @@ de la documentación oficial de ReFrame.
   - **Default**: \' \'
 
 
-- `sourcesdir = 'src'`
+  ### `sourcesdir = 'src'`
 
   El directorio que contiene los recursos de la prueba.
 
@@ -371,7 +371,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: \'src\' si tal directorio existe en el nivel de prueba, de lo contrario `None`
 
-- `tags = set()`
+  ### `tags = set()`
 
   Conjunto de etiquetas asociadas a esta prueba.
 
@@ -381,14 +381,14 @@ de la documentación oficial de ReFrame.
 
   - **Default**: Un conjunto vacío
 
-- `time_limit = None`
+  ### `time_limit = None`
 
   Límite de tiempo para esta prueba.
 
   El límite de tiempo se especifica como una cadena en el formulario `<days>d<hours>h<minutes>m<seconds>s` 
   o como número de segundos. Si se establece en `None`, se utilizará el `time_limit` de la partición.
 
-- `use_multithreading = None`
+  ### `use_multithreading = None`
 
   Especifica si esta prueba necesita subprocesos múltiples simultáneos habilitados.
   Ignorado si None.
@@ -397,7 +397,7 @@ de la documentación oficial de ReFrame.
 
   - **Default**: `None`
 
-- `valid_prog_environs`
+  ### `valid_prog_environs`
 
   Lista de entornos o características del entorno o propiedades del entorno requeridas por esta prueba.
 
@@ -405,11 +405,11 @@ de la documentación oficial de ReFrame.
 
   - **Default**: Requerido
 
-- `valid_systems`
+  ### `valid_systems`
 
   Lista de sistemas o características del sistema o propiedades del sistema requeridas por esta prueba.
 
-- `variables = {}`
+  ### `variables = {}`
 
   Las variables de entorno deben establecerse antes de ejecutar esta prueba.
   Estas variables se configurarán durante la fase setup().

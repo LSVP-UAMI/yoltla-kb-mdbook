@@ -65,7 +65,7 @@ de la documentación oficial de ReFrame.
     ```admonish info title=" "
     Debe existir una carpeta `logs` desde el directorio donde se invoca a Reframe.
 
-    Para más detalles, consulte la sección [Configuración de Logging](reframe/anexos/archivo_configuracion.xml#configuracion_logging).
+    Para más detalles, consulte la sección [Configuración de Logging](../anexos/archivo_configuracion.md#configuración-de-logging).
     ```
 
     Despues de ejecutar obtendremos las siguientes carpetas:
@@ -87,8 +87,9 @@ de la documentación oficial de ReFrame.
     Tome en cuenta que se creara un solo archivo [`logs`](#lanzar_pruebas) y una sola 
     carpeta [`output`](#out) y [`stage`](#stage) para todas las pruebas que se encuentre.
 
-    Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
+    Para más detalles, consulte la sección [Archivo de configuración](../anexos/archivo_configuracion.md).
     ```
+
 
 - ## --ignore-check-conflicts
 
@@ -112,7 +113,7 @@ de la documentación oficial de ReFrame.
     Tome en cuenta que se creara un solo archivo [`logs`](#lanzar_pruebas) y una sola 
     carpeta [`output`](#out) y [`stage`](#stage) para todas las pruebas que se encuentre.
 
-    Para más detalles, consulte la sección [Archivo de configuración](reframe/anexos/archivo_configuracion.xml).
+    Para más detalles, consulte la sección [Archivo de configuración](../anexos/archivo_configuracion.md).
     ```
 
 
@@ -154,7 +155,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     con cualquiera de los nombres especificados: `-n NAME1 -n NAME2` esto equivale a 
     `-n 'NAME1|NAME2'`.
 
-    Para más detalles, consulte la sección [Tags](reframe/scripts/scripts.xml#tags).
+    Para más detalles, consulte la sección [Tags](../scripts/scripts.md#tags).
 
 - ## -t, --tag=TAG
 
@@ -163,7 +164,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     Esta opción se puede especificar varias veces, en cuyo caso se seleccionarán las pruebas 
     con cualquiera de los nombres especificados: `-n NAME1 -n NAME2` esto equivale a `-n 'NAME1|NAME2'`.
 
-    Para más detalles, consulte la sección [Tags](reframe/scripts/scripts.xml#tags).
+    Para más detalles, consulte la sección [Tags](../scripts/scripts.md#tags).
 
 - ## -x, --exclude=NAME
 
@@ -355,7 +356,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     - La salida estándar y el error estándar de la fase de ejecución, si no es una prueba de 
     solo compilación.
 
-    - Cualquier archivo adicional especificado por el atributo [`keep_files`](reframe/anexos/referencia_api.xml#keep_files) 
+    - Cualquier archivo adicional especificado por el atributo [`keep_files`](../anexos/referencia_api.md#keep_files) 
     de prueba de regresión.
 
     Esta opción también se puede configurar con la variable de ambiente `RFM_OUTPUT_DIR` o 
@@ -404,7 +405,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
 
     Usa `FILE` cómo archivo de configuración para ReFrame.
 
-    Esta opción también se puede configurar con la [variable de ambiente](/reframe/anexos/archivo_configuracion.xml#variables_ambiente)
+    Esta opción también se puede configurar con la [variable de ambiente](../anexos/archivo_configuracion.md#variables-de-ambiente)
     `RFM_CONFIG_FILE`.
 
 - ## --detect-host-topology=[FILE]

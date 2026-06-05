@@ -2,15 +2,19 @@
 
 ## Descripción
 
-HPL es un paquete de software que resuelve un sistema lineal denso (aleatorio) en aritmética de doble precisión (64 bits) en computadoras con memoria distribuida. Por lo tanto, se puede considerar como una implementación portátil y de libre acceso del High Performance Computing Linpack Benchmark.
+HPL es un paquete de software que resuelve un sistema lineal denso (aleatorio) en aritmética 
+de doble precisión (64 bits) en computadoras con memoria distribuida. Por lo tanto, se puede 
+considerar como una implementación portátil y de libre acceso del High Performance Computing 
+Linpack Benchmark.
 
 Para obtener más información, visite el sitio oficial de [HPL](https://netlib.org/benchmark/hpl/).
+
 
 ## Instalación
 
 Para instalar HPL, ejecute el comando:
 
-``` shell
+```bash
 [t.800@yoltla ~]$ spack install hpl
 ==> intel-mkl@2017.4.239 : has external module in ['intel/mkl-2017u4']
 [+] /LUSTRE/yoltla/compiladores/intel/parallel_studio_xe_2017_update4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64 (external intel-mkl-2017.4.239-qkzp6oh4caiy7vm2hen7a5xnndxpd6br)
@@ -31,26 +35,31 @@ Para instalar HPL, ejecute el comando:
 
 Puede verificar la instalación de HPL utilizando el comando:
 
-``` shell
+```bash
 [t.800@yoltla ~]$ spack find hpl
 ==> 1 installed package
 -- linux-centos6-ivybridge / gcc@7.2.0 --------------------------
 hpl@2.3
 ```
 
+
 # HPCG
+
 
 ## Descripción
 
-El proyecto High Performance Conjugate Gradients (HPCG) es un esfuerzo por crear una nueva métrica para clasificar los sistemas HPC. HPCG está pensado como un complemento al benchmark High Performance LINPACK (HPL).
+El proyecto High Performance Conjugate Gradients (HPCG) es un esfuerzo por crear una 
+nueva métrica para clasificar los sistemas HPC. HPCG está pensado como un complemento 
+al benchmark High Performance LINPACK (HPL).
 
 Para obtener más información, visite el sitio oficial de [HPCG](https://hpcg.info/).
+
 
 ## Instalación
 
 Para instalar HPCG, ejecute el comando:
 
-``` shell
+```bash
 [t.800@yoltla ~]$ spack install hpcg
 ==> intel-mpi@2017.0.4 : has external module in ['intel/impi-2017u4']
 [+] /LUSTRE/yoltla/compiladores/intel/parallel_studio_xe_2017_update4/compilers_and_libraries_2017.4.196/linux/mpi/intel64 (external intel-mpi-2017.0.4-eb7655s35tmvobbjzlnys66eiqn6wvhn)
@@ -69,26 +78,30 @@ Para instalar HPCG, ejecute el comando:
 
 Puede verificar la instalación de HPCG utilizando el comando:
 
-``` shell
+```bash
 [t.800@yoltla ~]$ spack find hpcg
 ==> 1 installed package
 -- linux-centos6-ivybridge / gcc@7.2.0 --------------------------
 hpcg@3.1
 ```
 
+
 # memtester
+
 
 ## Descripción
 
-memtester es una utilidad para probar el subsistema de memoria en una computadora para determinar si está defectuoso.
+memtester es una utilidad para probar el subsistema de memoria en una computadora para 
+determinar si está defectuoso.
 
 Para obtener más información, visite el sitio oficial de [memtester](https://pyropus.ca./software/memtester/).
+
 
 ## Instalación
 
 Para instalar memtester, ejecute el comando:
 
-``` shell
+```bash
 [t.800@yoltla ~]$ spack install memtester
 ==> Installing memtester-4.3.0-mttqeqxf5zlzqoooooyooavqzn54tzbk
 ==> No binary for memtester-4.3.0-mttqeqxf5zlzqoooooyooavqzn54tzbk found: installing from source
@@ -104,7 +117,7 @@ Para instalar memtester, ejecute el comando:
 
 Puede verificar la instalación de memtester utilizando el comando:
 
-``` shell
+```bash
 [t.800@yoltla ~]$ spack find memtester
 ==> 1 installed package
 -- linux-centos6-ivybridge / gcc@7.2.0 --------------------------

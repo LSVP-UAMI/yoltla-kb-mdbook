@@ -87,7 +87,7 @@ class StreamTest(rfm.RegressionTest):
 En este ejemplo, extraemos cuatro variables de rendimiento, que son los valores de 
 ancho de banda de la memoria para cada uno de los subpuntos de referencia: `Copy`, 
 `Scale`, `Add` y `Tríad` de STREAM, donde cada una de las funciones de rendimiento 
-utiliza la función de utilidad [`extractsingle()`](reframe/scripts/pruebas_sanidad.xml#extractsingle). 
+utiliza la función de utilidad [`extractsingle()`](./pruebas_sanidad.md#reframeutilitysanityextractsinglepatt-filename-tag0-convnone-item0-encodingutf-8-¶). 
 Para cada uno de los subpuntos de referencia, se define una [expresión regular](https://docs.python.org/3/library/re.html) 
 de Python para extraer la columna \"Best Rate MB/s\" de la salida (ver más abajo) y la convertimos en un valor flotante.
 
@@ -387,7 +387,8 @@ su valor, sus referencias y umbrales, etc. El formato predeterminado está en un
 adecuada para un fácil análisis, pero puede controlar completamente no solo el formato, 
 sino también lo que se está registrando desde el archivo de configuración.
 
-Para obtener más información, consulte la sección [Configuración de Logging](reframe/anexos/archivo_configuracion.xml#configuracion_logging).
+Para obtener más información, consulte la sección [Configuración de Logging](../../reframe/anexos/archivo_configuracion.md#configuración-de-logging).
+
 
 # Ejemplos avanzados
 
@@ -499,4 +500,5 @@ a partir de tres parametros: \[Número de nodos\]\[Arquitectura del nodo(s)\]\[N
 del Benchmark usado\] en una lista (allref) previamente definida.
 
 Este ejemplo usa otros elementos de ReFrame, sugerimos consultar la sección 
-[Parámetros](reframe/scripts/parametros.xml) y [Topología](reframe/anexos/topologia.xml).
+[Parámetros](../scripts/parametros.md) y [Topología](../anexos/topologia.md).
+
