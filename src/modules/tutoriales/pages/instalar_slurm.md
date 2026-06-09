@@ -1,15 +1,16 @@
-# Introducción
+# Taller de administración de Slurm
 
-Notas para curso de instalación y configuración de slurm
-dado el 28 de diciembre de 2020
+## Introducción
 
-# Objetivos
+Notas para curso de instalación y configuración de slurm dado el 28 de diciembre de 2020.
+
+## Objetivos
 
 - Instalar y configurar un cluster slurm básico de tres nodos.
 
 - Realizar pruebas de funcionamiento.
 
-# Antecedentes de Slurm
+## Antecedentes de Slurm
 
 slurm es un sistema manejador de clusters linux y planificador de jobs:
 
@@ -27,7 +28,7 @@ Sus principales funciones:
 
 - Lidia con la contención de recursos al manejar una cola de trabajos pendientes.
 
-# Arquitectura
+## Arquitectura
 
 Los componentes de slurm:
 
@@ -39,7 +40,7 @@ Los componentes de slurm:
 
 - Varios demonio ejecutándose en cada nodo de cómputo (slurmd)
 
-# Instalación de slurm
+## Instalación de slurm
 
 - Requisitos previos
 
@@ -49,7 +50,7 @@ Los componentes de slurm:
 
 - Configuración de slurm
 
-## Requisitos previos
+### Requisitos previos
 
 - Instalar todos los nodos
 
@@ -63,38 +64,25 @@ Los componentes de slurm:
 
 - Sincronización de usuarios
 
-:::: formalpara
-::: title
-Para instalar todos los nodos
-:::
+<span style="color: #990819;">*Para instalar todos los nodos*</span> 
 
 Se deja como ejercicio
-::::
 
-:::: formalpara
-::: title
-Para deshabilitar Selinux
-:::
+<span style="color: #990819;">*Para deshabilitar Selinux*</span> 
+```bahs
+sed -i 's/^SELINUX=. /SELINUX=disabled/' /etc/sysconfig/selinux
+setenforce 0
+getenforce
+```
 
-    sed -i 's/^SELINUX=. /SELINUX=disabled/' /etc/sysconfig/selinux
-    setenforce 0
-    getenforce
-::::
-
-:::: tip
-::: title
-:::
-
+```admonish tip title=" "
 También se puede deshabilitar desde la instalación de los nodos pasando la
 opción al kernel
 
     selinux=0
-::::
+```
 
-:::: example
-::: title
-Para configurar el nodo maestro como gateway
-:::
+<span style="color: #990819;">*Example1. Para configurar el nodo maestro como gateway*</span> 
 
 Asumiendo que el nodo maestro tiene dos interfaces de red
 
@@ -103,56 +91,43 @@ Asumiendo que el nodo maestro tiene dos interfaces de red
 - **eth1** : salida a internet
 
 Se ejecutan los siguientes comandos
+```bash
+sysctl -w net.ipv4.ip_forward=1
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+```
 
-    sysctl -w net.ipv4.ip_forward=1
-    iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
-::::
+<span style="color: #990819;">*para crear configurar las llaves*</span> 
 
-:::: formalpara
-::: title
-para crear configurar las llaves
-:::
+```bash
+ssh-keygen
+ssh-copy-id localhost
+```
 
-    ssh-keygen
-    ssh-copy-id localhost
-::::
-
-:::: important
-::: title
-:::
-
+```admonish important title=" "
 Las llaves se deben copiar a todos los nodos del cluster
-::::
+```
 
-:::: formalpara
-::: title
-Para sincronizar la hora
-:::
+<span style="color: #990819;">*Para sincronizar la hora*</span> 
 
 Se debe iniciar y habilitar el servicio chrony
-::::
+```bash
+systemctl start  chronyd
+systemctl enable chronyd
+```
 
-    systemctl start  chronyd
-    systemctl enable chronyd
-
-:::: important
-::: title
-:::
-
+```admonish important title=" "
 El servicio chrony se debe habilitar en todos los nodos
-::::
+```
 
-:::: formalpara
-::: title
-Para sincronizar de cuentas
-:::
+<span style="color: #990819;">*Para sincronizar de cuentas*</span> 
 
 Se deben copiar los archivos /etc/passwd, /etc/shadow, /etc/group
-::::
+```bash
+clush -v -w z[1-2] --copy --dest=/etc /etc/{passwd,shadow,group}
+```
 
-    clush -v -w z[1-2] --copy --dest=/etc /etc/{passwd,shadow,group}
 
-## Instalación de munge
+### Instalación de munge
 
 Munge es el mecanismo predeterminado para la autenticación
 utilizado por Slurm para la ejecución de los trabajos
@@ -164,105 +139,76 @@ periodo de tiempo dado **TTL** (default 300 seg, máximo 1hr)
 
 Munge debe instalarse y habilitarse en todos los nodos del cluster.
 
-:::: note
-::: title
-:::
-
+```admonish note title=" "
 El periodo TTL es la principal razón para sincronizar los relojes de
 los nodos del cluster.
-::::
+```
 
-:::: important
-::: title
-:::
-
+```admonish important title=" "
 La llave munge debe ser la misma en todos los nodos del cluster.
-::::
+```
 
-:::: formalpara
-::: title
-Para instalar munge
-:::
+<span style="color: #990819;">*Para instalar munge*</span> 
 
-    dnf -y install munge
-::::
+```bash
+dnf -y install munge
+```
 
-:::: note
-::: title
-:::
-
+```admonish note title=" "
 Para las distribuciones CentOS munge está en el repositorio **epel**
-::::
+```
 
-:::: note
-::: title
-:::
-
+```admonish note title=" "
 Durante la instalación se crea automáticamente el usuario y grupo munge.
-::::
+```
 
-:::: important
-::: title
-:::
-
+```admonish important title=" "
 Durante la instalación **NO** se genera la **llave**, esta debe ser generada manualmente.
-::::
+```
 
-:::: formalpara
-::: title
-Para generar la llave munge
-:::
+<span style="color: #990819;">*Para generar la llave munge*</span> 
 
 La llave munge es un archivo regular que se puede crear como uno quiera pero se recomienda
 usar el comando
-::::
 
-    create-munge-key
+```bash
+create-munge-key
+```
 
-:::: important
-::: title
-:::
-
+```admonish important title=" "
 Este archivo debe tener permisos 0600, propietario y grupo munge
-::::
+```
 
-:::: note
-::: title
-:::
-
+```admonish note title=" "
 Una vez creada se debe propagar la llave
-::::
+```
 
-:::: formalpara
-::: title
-Para probar munge
-:::
+<span style="color: #990819;">*Para probar munge*</span> 
 
-    #generar credencial encriptada a STDOUT
-    munge --no-input
+```bash
+#generar credencial encriptada a STDOUT
+munge --no-input
 
-    #encriptar / des-encriptar credencial
-    munge --no-input | unmunge
+#encriptar / des-encriptar credencial
+munge --no-input | unmunge
 
-    #encriptar con tiempo de vida de la credencial 5 segundos
-    munge --ttl=5 --no-input --output=file.cred ; sleep 10 ; unmunge --input=file.cred
+#encriptar con tiempo de vida de la credencial 5 segundos
+munge --ttl=5 --no-input --output=file.cred ; sleep 10 ; unmunge --input=file.cred
 
-    #encriptar en un nodo, des-encriptar en otro
-    munge --no-input | ssh z1 unmunge
-    munge --no-input | clush -b -w z[1-2] unmunge
-::::
+#encriptar en un nodo, des-encriptar en otro
+munge --no-input | ssh z1 unmunge
+munge --no-input | clush -b -w z[1-2] unmunge
+```
 
-## Compilación de Slurm
+
+### Compilación de Slurm
 
 Compilaremos los componentes
 \* slurmd
 \* slurmctld
 \* slurmdbd
 
-:::: {}
-::: title
-Paquetes requeridos y recomendados
-:::
+<span style="color: #990819;">*Paquetes requeridos y recomendados*</span> 
 
 - \"Development tools\"
 
@@ -295,184 +241,177 @@ Paquetes requeridos y recomendados
 - readline-devel
 
 - libssh2-devel
-::::
 
-:::: formalpara
-::: title
-Para instalar los paquetes
-:::
+<span style="color: #990819;">*Para instalar los paquetes*</span> 
 
-    dnf group install "Development tools"
-    dnf -y install rpm-build perl perl-Switch \
-           munge-devel mysql-devel pam-devel freeipmi-devel \
-           libibmad-devel libibumad-devel rrdtool-devel ncurses-devel \
-           numactl-devel libssh2-devel readline-devel
-::::
+```bash
+dnf group install "Development tools"
+dnf -y install rpm-build perl perl-Switch \
+        munge-devel mysql-devel pam-devel freeipmi-devel \
+        libibmad-devel libibumad-devel rrdtool-devel ncurses-devel \
+        numactl-devel libssh2-devel readline-devel
+```
 
-:::: note
-::: title
-:::
-
+```admonish note title=" "
 Se deben habilitar los repositorios **powertools** y **epel** para
 estas instalaciones
-::::
+```
 
-:::: formalpara
-::: title
-Para descargar y compilar el código fuente
-:::
+<span style="color: #990819;">*Para descargar y compilar el código fuente*</span> 
 
-    wget https://download.schedmd.com/slurm/slurm-20.11.2.tar.bz2
-    rpmbuild -ta slurm*.tar.bz2
-::::
+```bash
+wget https://download.schedmd.com/slurm/slurm-20.11.2.tar.bz2
+rpmbuild -ta slurm*.tar.bz2
+```
 
 Este comando genera paquetes rpm dentro de la carpeta
 
-    /root/rpmbuild/RPMS/x86_64
+```bash
+/root/rpmbuild/RPMS/x86_64
+```
 
-:::: note
-::: title
-:::
-
+```admonish note title=" "
 Para hacer una compilación más cuidadosa y seleccionar manualmente
 los plugins y sus dependencias se requiere compilar mediante autotools
 como se explica en <https://slurm.schedmd.com/quickstart_admin.html>
-::::
+```
 
-## Instalación de Slurm
 
-:::: formalpara
-::: title
-Para instalar archivos del nodo maestro
-:::
+### Instalación de Slurm
 
-    rpm -ivh \
-    slurm-*.rpm
-::::
+<span style="color: #990819;">*Para instalar archivos del nodo maestro*</span> 
 
-:::: formalpara
-::: title
-Para instalar los paquetes en nodos de computo
-:::
+```bash
+rpm -ivh \
+slurm-*.rpm
+```
 
-    rpm -ivh \
-    slurm-20*.rpm \
-    slurm-slurmd-20*.rpm \
-    slurm-pam_slurm-20*.rpm
-::::
+<span style="color: #990819;">*Para instalar los paquetes en nodos de computo*</span> 
+
+```bash
+rpm -ivh \
+slurm-20*.rpm \
+slurm-slurmd-20*.rpm \
+slurm-pam_slurm-20*.rpm
+```
 
 Es recomendable que los demonios slurm se ejecute con su propio usuario
 
-    useradd slurm
+```bash
+useradd slurm
+```
 
-Slurm requiere varios archivos y directorios auxiliares
-que deben crearse manualmente
+Slurm requiere varios archivos y directorios auxiliares que deben crearse manualmente
 
-:::: formalpara
-::: title
-Para crear los directorios y archivos que requiere slurm
-:::
+<span style="color: #990819;">*Para crear los directorios y archivos que requiere slurm*</span> 
 
-    mkdir -p \
-        /var/run/slurm \
-        /var/spool/slurm/slurm \
-        /var/spool/slurm/log \
-        /var/lib/slurmd
+```bash
+mkdir -p \
+    /var/run/slurm \
+    /var/spool/slurm/slurm \
+    /var/spool/slurm/log \
+    /var/lib/slurmd
 
-    touch   /var/lib/slurmd/node_state \
-            /var/lib/slurmd/front_end_state \
-            /var/lib/slurmd/job_state \
-            /var/lib/slurmd/resv_state \
-            /var/lib/slurmd/trigger_state \
-            /var/lib/slurmd/assoc_mgr_state \
-            /var/lib/slurmd/assoc_usage \
-            /var/lib/slurmd/qos_usage \
-            /var/lib/slurmd/fed_mgr_state
-::::
+touch   /var/lib/slurmd/node_state \
+        /var/lib/slurmd/front_end_state \
+        /var/lib/slurmd/job_state \
+        /var/lib/slurmd/resv_state \
+        /var/lib/slurmd/trigger_state \
+        /var/lib/slurmd/assoc_mgr_state \
+        /var/lib/slurmd/assoc_usage \
+        /var/lib/slurmd/qos_usage \
+        /var/lib/slurmd/fed_mgr_state
+```
 
-:::: formalpara
-::: title
-Para darle los permisos correctos
-:::
+<span style="color: #990819;">*Para darle los permisos correctos*</span> 
 
-    chown -R slurm:slurm /var/*/slurm*
-::::
+```bash
+chown -R slurm:slurm /var/*/slurm*
+```
 
-# Configuración de slurm
+
+## Configuración de slurm
 
 Utilizaremos el configurador básico en linea de slurm
 <https://slurm.schedmd.com/configurator.easy.html>
 
-El resultado sin opciones comentadas
-para el cluster zulu es
+El resultado sin opciones comentadas para el cluster zulu es
 
-    SlurmctldHost=zulu
-    SlurmUser=slurm
-    MpiDefault=pmi2
-    ReturnToService=1
-    SwitchType=switch/none
-    TaskPlugin=task/affinity
-    ProctrackType=proctrack/linuxproc
-    SlurmctldPidFile=/var/run/slurmctld.pid
-    SlurmdPidFile=/var/run/slurmd.pid
-    SlurmdSpoolDir=/var/spool/slurm
-    StateSaveLocation=/var/spool/slurm
+```bash
+SlurmctldHost=zulu
+SlurmUser=slurm
+MpiDefault=pmi2
+ReturnToService=1
+SwitchType=switch/none
+TaskPlugin=task/affinity
+ProctrackType=proctrack/linuxproc
+SlurmctldPidFile=/var/run/slurmctld.pid
+SlurmdPidFile=/var/run/slurmd.pid
+SlurmdSpoolDir=/var/spool/slurm
+StateSaveLocation=/var/spool/slurm
 
-    # LOGGING AND ACCOUNTING
-    SlurmctldLogFile=/var/spool/slurm/log/slurmctld.log
-    SlurmdLogFile=/var/spool/slurm/log/slurmd.log
-    JobAcctGatherType=jobacct_gather/linux
-    #AccountingStorageType=accounting_storage/slurmdbd
-    ClusterName=zulu
+# LOGGING AND ACCOUNTING
+SlurmctldLogFile=/var/spool/slurm/log/slurmctld.log
+SlurmdLogFile=/var/spool/slurm/log/slurmd.log
+JobAcctGatherType=jobacct_gather/linux
+#AccountingStorageType=accounting_storage/slurmdbd
+ClusterName=zulu
 
-    # SCHEDULING
-    SchedulerType=sched/backfill
-    SelectType=select/cons_tres
-    SelectTypeParameters=CR_Core
+# SCHEDULING
+SchedulerType=sched/backfill
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core
 
-    # COMPUTE NODES
-    NodeName=z[1-2] CPUs=1 RealMemory=100 Sockets=1 CoresPerSocket=1 ThreadsPerCore=1 State=UNKNOWN
-    PartitionName=zulu-shaka Nodes=z[1-2] Default=YES MaxTime=01-00:00:00 State=UP
+# COMPUTE NODES
+NodeName=z[1-2] CPUs=1 RealMemory=100 Sockets=1 CoresPerSocket=1 ThreadsPerCore=1 State=UNKNOWN
+PartitionName=zulu-shaka Nodes=z[1-2] Default=YES MaxTime=01-00:00:00 State=UP
+```
 
 Este archivo debe guardarse en /etc/slurm/slurm.conf
 y debe compartirse con el resto de los nodos
 
-    clush -v -w z[1-2] --copy --dest=/etc /etc/slurm/slurm.conf
+```bash
+clush -v -w z[1-2] --copy --dest=/etc /etc/slurm/slurm.conf
+```
 
-:::: formalpara
-::: title
-Para probar las configuraciones en el nodo maestro
-:::
+<span style="color: #990819;">*Para probar las configuraciones en el nodo maestro*</span> 
 
-    slurmctld -Dvvv
-::::
+```bash
+slurmctld -Dvvv
+```
 
-:::: formalpara
-::: title
-Para probar las configuraciones en un nodo de cómputo
-:::
+<span style="color: #990819;">*Para probar las configuraciones en un nodo de cómputo*</span> 
 
-    slurmd -Dvvv
-::::
+```bash
+slurmd -Dvvv
+```
 
-# Para configurar slurmdbd
+
+## Para configurar slurmdbd
 
 Se instala una base de datos mysql
 
-    dnf install -y mysql-server
+```bash
+dnf install -y mysql-server
+```
 
 Se inicia el servicio
 
-    systemctl start mysqld
+```bash
+systemctl start mysqld
+```
 
 Se crea una base de datos, un usuario y un password
 
-    mysql> CREATE DATABASE slurm_acct_db;
-    mysql> CREATE USER 'slurm'@'localhost' IDENTIFIED BY 'slurm.password';
+```bash
+mysql> CREATE DATABASE slurm_acct_db;
+mysql> CREATE USER 'slurm'@'localhost' IDENTIFIED BY 'slurm.password';
+```
 
 se edita el archivo de ejmplo slurmdbd.conf.example para agregar los datos de acceso
 
-# Comandos de usuario slurm
+
+## Comandos de usuario slurm
 
 - sinfo
 
@@ -482,49 +421,43 @@ se edita el archivo de ejmplo slurmdbd.conf.example para agregar los datos de ac
 
 - sbatch
 
-:::: formalpara
-::: title
-Para lanzar un job
-:::
+<span style="color: #990819;">*Para lanzar un job*</span> 
 
-    srun -n  2 hostname
-    sbatch job.slrm
-::::
+```bash
+srun -n  2 hostname
+sbatch job.slrm
+```
 
-# Comandos de administrador slurm
+
+## Comandos de administrador slurm
 
 - scontrol
 
 - sacctmgr
 
-:::: formalpara
-::: title
-Para crear un usuario
-:::
+<span style="color: #990819;">*Para crear un usuario*</span> 
 
 Se debe crear una cuenta y luego un usuario
-::::
 
-    sacctmgr -i create account name="CN_USER" description="CN_DESC" organization="ORG" parent="CP_USER"
-    sacctmgr -i create user name="CN_USER" defaultaccount="CN_USER" Fairshare=parent
+```bash
+sacctmgr -i create account name="CN_USER" description="CN_DESC" organization="ORG" parent="CP_USER"
+sacctmgr -i create user name="CN_USER" defaultaccount="CN_USER" Fairshare=parent
+```
 
-:::: formalpara
-::: title
-Para dar de baja un nodo
-:::
+<span style="color: #990819;">*Para dar de baja un nodo*</span> 
 
-    scontro update nodename=z1 state down reason="prueba"
-::::
+```bash
+scontro update nodename=z1 state down reason="prueba"
+```
 
-:::: formalpara
-::: title
-Para crear una reservación
-:::
+<span style="color: #990819;">*Para crear una reservación*</span> 
 
-    scontrol create reservation=pruebas duration=1-0 partitionname=zulu-shaka accounts=edra starttime=now nodes=
-::::
+```bash
+scontrol create reservation=pruebas duration=1-0 partitionname=zulu-shaka accounts=edra starttime=now nodes=
+```
 
-# Lugares de interés
+
+## Lugares de interés
 
 Toda la documentación de la versión de SLURM instalada puede consultarse
 en:

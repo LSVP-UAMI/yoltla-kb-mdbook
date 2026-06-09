@@ -56,7 +56,9 @@
 
     - [Instalar y configurar pxe](./modules/tutoriales/pages/pxe.md)
 
-    - [Instalar y configurar slurm]()
+    - [Instalar y configurar slurm](./modules/tutoriales/pages/instalar_slurm.md)
 
-    - [Instalar nvgpu-smi-snmp]()
+    - [Instalar nvgpu-smi-snmp](./modules/tutoriales/pages/nvgpu.md)
+
+    - [Nodos de acceso](./modules/tutoriales/partials/reframe/nodos_computo.md)
 

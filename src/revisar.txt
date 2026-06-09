@@ -119,6 +119,8 @@
         - REVISAR ENLACE A "las opciones que puede mandar rsyslog"
 
     - [Instalar y configurar slurm]()
+        -REVISAR ENLACE A "https://slurm.schedmd.com/configurator.easy.html"
+
 
     - [Instalar nvgpu-smi-snmp]()
 
