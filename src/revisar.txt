@@ -114,6 +114,9 @@
         - [Control de acceso para KB]()
 
     - [Instalar y configurar pxe]()
+        - REVISAR ENLACE A "página del manual correspondiente."
+        - REVISAR ENLACE A "versión 6.1"
+        - REVISAR ENLACE A "las opciones que puede mandar rsyslog"
 
     - [Instalar y configurar slurm]()
 

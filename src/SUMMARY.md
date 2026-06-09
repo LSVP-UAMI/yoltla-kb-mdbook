@@ -48,13 +48,13 @@
 
     - [Spack](./modules/tutoriales/pages/spack/spack.md)
         - [Aplicaciones](./modules/tutoriales/pages/spack/aplicaciones.md)
-        - [Instalar aplicaciones]()
+        - [Instalar aplicaciones](./modules/tutoriales/pages/spack/instalar_aplicaciones.md)
     
-    - [NGINX]()
-        - [Certificados para HTTPS]()
-        - [Control de acceso para KB]()
+    - [NGINX](./modules/tutoriales/pages/nginx/nginx.md)
+        - [Certificados para HTTPS](./modules/tutoriales/pages/nginx/certbot.md)
+        - [Control de acceso para KB](./modules/tutoriales/pages/nginx/acceso.md)
 
-    - [Instalar y configurar pxe]()
+    - [Instalar y configurar pxe](./modules/tutoriales/pages/pxe.md)
 
     - [Instalar y configurar slurm]()
 
