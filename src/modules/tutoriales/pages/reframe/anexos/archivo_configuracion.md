@@ -1,4 +1,7 @@
-# Descripción
+# Archivo de configuración
+
+
+## Descripción
 
 ReFrame viene preconfigurado con una configuración genérica mínima que le permitirá 
 ejecutar ReFrame en cualquier sistema. Esto le permitirá ejecutar pruebas locales 
@@ -10,7 +13,7 @@ El archivo de configuración de ReFrame puede ser un archivo JSON o un archivo d
 Python que almacene la configuración del sitio en una cadena con formato JSON.
 
 
-# Localización
+## Localización
 
 ReFrame por de defecto busca un archivo de configuración en las siguientes ubicaciones 
 en ese orden:
@@ -31,13 +34,13 @@ desde la linea de comando.
 
 2.  Utilizando la variable de entorno `RFM_CONFIG_FILE`.
 
-```admonish info title=" "
+```admonish note title=" "
 Las opciones de la línea de comandos siempre tienen prioridad sobre sus respectivas 
 variables de entorno.
 ```
 
 
-# Estructura
+## Estructura
 
 Toda la configuración de ReFrame es un único objeto JSON cuyas propiedades se encargan 
 de configurar los aspectos básicos del framework. Nos referiremos a estas propiedades 
@@ -57,7 +60,7 @@ la sección [Configuration Reference](https://reframe-hpc.readthedocs.io/en/stab
 de la documentación oficial de ReFrame.
 
 
-## Configuración de Systems
+### Configuración de Systems
 
 ReFrame le permite configurar múltiples sistemas en el mismo archivo de configuración. 
 Cada sistema es un objeto diferente dentro de la sección `systems`. En nuestro ejemplo 
@@ -178,7 +181,7 @@ pruebas pueden acceder de forma transparente.
   [enlace](https://reframe-hpc.readthedocs.io/en/stable/config_reference.html#systems-.partitions-.resources-.options).
 
 
-## Configuración de Environments
+### Configuración de Environments
 
 Ya hemos visto entornos a los que se hace referencia por la propiedad `environs` de 
 una partición. Un entorno en ReFrame es simplemente una colección de módulos de entorno, 
@@ -220,7 +223,7 @@ Cada entorno está asociado a un nombre. Este nombre se utilizará para hacer re
 a este entorno en diferentes contextos.
 
 
-## Configuración de Logging
+### Configuración de Logging
 
 ReFrame tiene un poderoso mecanismo de registro que brinda un control detallado sobre 
 qué información se registra, dónde se registra y cómo se formatea esta información. 
@@ -328,7 +331,7 @@ la salida real de ReFrame. Solo hay dos opciones para stream:
 3.  `file`: Un controlador de archivos para imprimir mensajes de depuración en el archivo `rfm.log` 
 usando un formato de mensaje más extenso que contiene una marca de tiempo, el nombre del nivel, etc.
 
-```admonish info title=" "
+```admonish note title=" "
 En la configuración, se encuentra comentado el uso de `timestamp`. Esto agrega una 
 marca de tiempo a los prefijos de los archivos log de ReFrame. Los formatos válidos 
 son los aceptados por la función [time.strftime()](https://docs.python.org/3.8/library/time.html#time.strftime).
@@ -366,7 +369,7 @@ consulte la sección [Logging Configuration](https://reframe-hpc.readthedocs.io/
 de la documentación oficial de ReFrame.
 
 
-# Otras opciones
+## Otras opciones
 
 Finalmente, hay secciones de configuración que son opcionales pero explicaremos a 
 continuación ya que son utilizados en nuestro archivo de configuracion para el cluster Yoltla.
@@ -377,7 +380,7 @@ continuación ya que son utilizados en nuestro archivo de configuracion para el 
 diferentes planificadores de trabajos como SLURM.
 
 
-## Configuración de General
+### Configuración de General
 
 Las configuración `General` utilizada es la siguiente:
 
@@ -399,7 +402,7 @@ cualquier prueba.
 - `report_file`: El archivo donde ReFrame almacenará su informe, en este caso dentro 
 de la carpeta *logs*.
 
-```admonish info title=" "
+```admonish note title=" "
 En la configuración, se encuentra comentado el uso de `timestamp_dirs`. Esto agrega 
 una marca de tiempo a los prefijos de directorio de ReFrame. Los formatos válidos 
 son los aceptados por la función [time.strftime()](https://docs.python.org/3.8/library/time.html#time.strftime). 
@@ -408,7 +411,7 @@ como formato de hora.
 ```
 
 
-## Configuración de Schedulers
+### Configuración de Schedulers
 
 Un objeto de configuración `Scheculers` contiene opciones de configuración específicas 
 para el comportamiento del programador de trabajo. En el caso del Yoltla: [SLURM](https://slurm.schedmd.com/).
@@ -442,7 +445,7 @@ que hará que ReFrame elimine el trabajo. En tales casos, puede configurar este 
 - `use_nodes_option`: Esta opción siempre emite la opción `--nodes` de Slurm en el 
 script de trabajo. Esta opción solo es relevante para los backends de SLURM.
 
-```admonish info title=" "
+```admonish note title=" "
 El uso de la opción `use_node_option` hace obligatorio usar las opciones `num_nodes` 
 y `num_tasks_per_node` de ReFrame, que agrega las opciones `--nodes` y `--ntasks-per-node` 
 respectivamente en el script de trabajo.
@@ -453,7 +456,7 @@ Para ver otras opciones útiles, consulte la sección
 de la documentación oficial de ReFrame.
 
 
-# Configuración del sistema
+## Configuración del sistema
 
 Como se discutió anteriormente, el archivo de configuración de ReFrame puede almacenar 
 las configuraciones para múltiples sistemas. Cuando se inicie, ReFrame elegirá la primera 
@@ -468,7 +471,7 @@ propiedad `hostnames` de cada sistema. El proceso de detección se detiene en la
 coincidencia encontrada y se selecciona la configuración de ese sistema.
 
 
-# Variables de ambiente
+## Variables de ambiente
 
 Varios aspectos de ReFrame se pueden controlar a través de variables de ambiente. Por 
 lo general , las variables de ambiente tienen contrapartes en las opciones de la línea 
@@ -483,13 +486,13 @@ de la documentación oficial de ReFrame.
 Tambien puede consultar y modificar las variables de ambiente directamente en el archivo 
 `config.json` presente en su directorio de instalación de Reframe: `reframe/schemas/config.json`
 
-```admonish info title=" " 
+```admonish note title=" " 
 Recomendamos modificar las variables de ambiente por línea de comandos o parámetros de 
 configuración en lugar de modificar el archivo config.json.
 ```
 
 
-# Detección automática
+## Detección automática
 
 ReFrame puede detectar automáticamente la topología del procesador de las particiones 
 locales y remotas. La información del procesador y del dispositivo se pone a disposición 

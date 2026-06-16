@@ -99,3 +99,44 @@
         display: none;
     }
 }
+
+/* Color títulos tema Light */
+html.light h1 { color: #0066CC }
+html.light .content h1 > .header { color: #005CC5 !important; }
+html.light .content h2 > .header { color: #0366D6 !important; }
+html.light .content h3 > .header { color: #2188FF !important; }
+html.light .content h4 > .header { color: #6F42C1 !important; }
+html.light .content h5 > .header { color: #22863A !important; }
+
+/* Color títulos tema Rust */
+html.rust h1  { color: #CC5500 }
+html.rust .content h1 > .header { color: #D35400 !important; }
+html.rust .content h2 > .header { color: #E67E22 !important; }
+html.rust .content h3 > .header { color: #F39C12 !important; }
+html.rust .content h4 > .header { color: #A04000 !important; }
+html.rust .content h5 > .header { color: #CA6F1E !important; }
+
+/* Color títulos tema Coal */
+html.coal h1  { color: #5DADE2 }
+html.coal .content h1 > .header { color: #5DADE2 !important; }
+html.coal .content h2 > .header { color: #85C1E9 !important; }
+html.coal .content h3 > .header { color: #58D68D !important; }
+html.coal .content h4 > .header { color: #F4D03F !important; }
+html.coal .content h5 > .header { color: #BB8FCE !important; }
+
+/* Color títulos tema Navy */
+html.navy h1  { color: #4FC3F7 }
+html.navy .content h1 > .header { color: #4FC3F7 !important; }
+html.navy .content h2 > .header { color: #81D4FA !important; }
+html.navy .content h3 > .header { color: #4DD0E1 !important; }
+html.navy .content h4 > .header { color: #AED581 !important; }
+html.navy .content h5 > .header { color: #FFD54F !important; }
+
+/* Color títulos tema Ayu */
+html.ayu h1   { color: #FFD180 }
+html.ayu .content h1 > .header { color: #FFB454 !important; }
+html.ayu .content h2 > .header { color: #FFD580 !important; }
+html.ayu .content h3 > .header { color: #95E6CB !important; }
+html.ayu .content h4 > .header { color: #73D0FF !important; }
+html.ayu .content h5 > .header { color: #D4BFFF !important; }
+

@@ -1,4 +1,7 @@
-# Descripción
+# Prueba de aplicaciones científicas con el framework ReFrame para el clúster Yoltla
+
+
+## Descripción
 
 Los Benchmarks de computo de alto rendimiento (HPC) se utilizan ampliamente para 
 evaluar y clasificar el rendimiento del sistema. Este trabajo presenta una evaluación 
@@ -18,7 +21,8 @@ Para este trabajo se uso las siguientes aplicaciones científicas:
 
 - [Gaussian](https://gaussian.com/)
 
-# Elementos de los scripts de Reframe
+
+## Elementos de los scripts de Reframe
 
 Elementos de los scripts de Reframe de prueba de aplicaciones para el cluster Yoltla.
 
@@ -123,7 +127,7 @@ Clase base de prueba: [RunOnlyRegressionTest](../anexos/referencia_api.md#refram
     Consulte la sección de [pruebas rendimiento](../scripts/pruebas_rendimiento.md) 
     para más información.
 
-# Estructura general.
+## Estructura general.
 
 Estructura general de los scripts de prueba de aplicaciones con Reframe.
 
@@ -334,7 +338,8 @@ class APP_CPU/GPU_Benchmarks(rfm.RunOnlyRegressionTest):
 
 Para más detalles, consulte la sección [Scripts de Reframe](../scripts/scripts.md#).
 
-# Archivos
+
+## Archivos
 
 Cada aplicación cuenta con 3 scripts de Reframe
 
@@ -362,7 +367,7 @@ Revise la variable [`sourcesdir`](../anexos/referencia_api.md#sourcesdir--src) d
 más información.
 
 
-# Ejecución
+## Ejecución
 
 Dentro de la carpeta de una aplicación para ejecutar uno o todos los archivos presentes
 use la opción `-c` de Reframe.
@@ -395,8 +400,7 @@ Recomendamos el uso de la opción
 [`--performance-report`](../scripts/lanzar_pruebas.md#performance-report).
 
 
-
-## Ejecución por etiqueta
+### Ejecución por etiqueta
 
 Los scripts de Reframe para aplicaciones científicas cuentan con una serie de etiquetas 
 para filtrar las ejecuciones, las etiquetas tienen el siguiente formato:
@@ -446,7 +450,8 @@ Revise la opción
 
 de Reframe para más información.
 
-## Ejecución recursiva
+
+### Ejecución recursiva
 
 `Reframe` puede buscar archivos de prueba de forma recursiva en los directorios que se 
 encuentran en la ruta de búsqueda. Puede usar esta opción para ejecutar varias o todas 
@@ -474,21 +479,23 @@ Consulte la sección
 [Lanzar pruebas](../scripts/lanzar_pruebas.md)
 para más información.
 
-```admonish info title=" "
+```admonish note title=" "
 Al ejecutar múltiples pruebas tome en cuenta que se creara un solo archivo `logs` 
 y una sola carpeta `output` y `stage` para todas las pruebas que se encuentre.
 
 Para más detalles, consulte la sección [Archivo de configuración](../anexos/archivo_configuracion.md).
 ```
 
-# Función sanity
+
+## Función sanity
 
 La función de sanidad de una prueba de aplicaciones consiste en la verificaciones de 
 ciertos patrones y valores esperados en el resultado.
 
 Consulte la [Pruebas de sanidad](../scripts/pruebas_sanidad.md) para más información.
 
-## Verificación de patrones
+
+### Verificación de patrones
 
 Por ejemplo, una ejecución exitosa de Lammps contiene la expresión:
 
@@ -500,20 +507,21 @@ La prueba de sanidad verifica la presencia de la expresión `Total wall time:` p
 marcar la prueba como exitosa. Revise los scripts de Reframe de prueba de aplicaciones 
 para verificar que patrón se busca en cada prueba.
 
-## Verificación de valores
+
+### Verificación de valores
 
 La simulaciones probadas deben llegar a ciertos valores de energía o temperatura 
 dependiendo de cada aplicación. La prueba de sanidad extrae los valores de interés y 
 los compara respecto a valores que se tienen de referencia, si los valores obtenidos 
 entran dentro de cierto rango la prueba se toma como exitosa.
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores de referencia y el rango se obtuvieron de múltiples ejecuciones de cada simulación.
 ```
 
 Consulte la documentación de cada aplicación para más información.
 
-# Función performance
+## Función performance
 
 Por cada aplicación se extrae y se evalúa una variable que determina el desempeño de la 
 aplicación.La mayoría de las aplicaciones tiene un valor de performance, por ejemplo, 
@@ -531,7 +539,7 @@ El umbral de tolerancia que definimos para todas las pruebas es a un 15 % para u
 performance y 50 % para un buen performance. Esto con la finalidad de que Reframe nos avise 
 de un valor inesperado para cada situación.
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores de referencia se obtuvieron del promedio múltiples ejecuciones de cada simulación.
 ```
 

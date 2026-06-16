@@ -1,4 +1,7 @@
-# Descripción
+# Referencia del API
+
+
+## Descripción
 
 Esta sección proporciona una guía de referencia de la API ReFrame para escribir pruebas 
 de regresión que cubre detalles relevantes usados en los scripts para el cluster Yoltla. 
@@ -7,7 +10,7 @@ Se cubre solo en la medida en que esto pueda ser útil para el usuario final del
 Para obtener más información, consulte la sección [Test API Reference](https://reframe-hpc.readthedocs.io/en/stable/regression_test_api.html#test-api-reference) 
 de la documentación oficial de ReFrame.
 
-# Pipeline
+## Pipeline
 
 Cada caso de prueba de ReFrame pasa por un Pipeline de etapas. Las pruebas de ReFrame pueden
 personalizar su funcionamiento a medida que se ejecutan adjuntando [enlaces](./referencia_api.md#enlaces-pipeline) a las
@@ -28,7 +31,7 @@ Para obtener más información, consulte la sección
 de la documentación oficial de ReFrame.
 
 
-# Clases base de prueba
+## Clases base de prueba
 
 ## reframe.CompileOnlyRegressionTest
 
@@ -448,7 +451,7 @@ de la documentación oficial de ReFrame.
     ejecución se delega al `RegressionTest.run()`.
 
 
-# Test Decorators
+## Test Decorators
 
 **@reframe.simple_test**
   
@@ -511,7 +514,7 @@ de la documentación oficial de ReFrame.
   Para obtener más información, consulte la sección de [Pruebas de sanidad](../scripts/pruebas_sanidad.md).
 
 
-# Enlaces Pipeline
+## Enlaces Pipeline
 
 ReFrame proporciona un mecanismo que permite adjuntar funciones para que se ejecuten 
 antes o después de una etapa determinada del pipeline de ejecución. Esto se logra a 
@@ -542,10 +545,10 @@ definir o modificar después o antes de que Reframe haya pasado por ciertas etap
 [`Pipeline`](#pipeline). Algunas de estas variables son:
 
 
-## init
+### init
 
 
-### **Parámetros**
+#### Parámetros
 
 Los parámetros nos ayudan a instanciar múltiples pruebas diferentes en una misma prueba. Consulte la
 sección [Parámetros](../scripts/parametros.md) para más información. Estos se definen
@@ -623,7 +626,7 @@ En el ejemplo anterior , utilizamos los parámetros para definir las variables `
 `sourcedir` y `valid_systems` en la función `setup_system` con del decorador `@run_after('init')`
 
 
-## compile
+### compile
 
 En esta etapa El código fuente asociado con la prueba se compila utilizando el entorno de programación
 actual. Si la prueba es \"solo de ejecución\", esta fase no es operativa.
@@ -648,13 +651,13 @@ Ejemplo
 En el ejemplo anterior definimos cxxflags del entorno de compilación.
 
 
-## run
+### run
 
 Durante esta fase, se creará un script de trabajo asociado con el caso de prueba y se enviará para su
 ejecución.
 
 
-### **getlauncher**
+#### getlauncher
 
 En ocasiones, es posible que deba reemplazar por completo el comando launcher de la partición ,
 ya que el software que está probando puede usar su propio launcher paralelo . El truco aquí es
@@ -683,7 +686,7 @@ Ejemplo:
 ```
 
 
-### **current_partition**
+#### current_partition
 
 `current_partition` es un variable de consulta donde se guarda la partición del sistema en la que se está
 ejecutando la prueba de regresión. Esto se establece durante la fase `setup()`. Puede consultarla antes
@@ -704,7 +707,7 @@ de la fase de ejecución de la siguiente forma:
 ```
 
 
-# Variantes de prueba
+## Variantes de prueba
 
 A través del componente `parameter`, una prueba de regresión puede almacenar múltiples 
 versiones o variantes de una prueba de regresión. Durante la creación de la clase, los 
@@ -714,7 +717,7 @@ de las variantes de prueba disponibles.
 Para obtener más información, consulte la sección de [Parámetros](../scripts/parametros.md).
 
 
-# Programadores de trabajos y lanzadores paralelos
+## Programadores de trabajos y lanzadores paralelos
 
 - `exclusive_access = False`
 
@@ -808,7 +811,7 @@ Para obtener más información, consulte la sección de [Parámetros](../scripts
   Límite de tiempo para este trabajo.
 
 
-# Asignación de atributos al backend del programador de trabajos (SLURM)
+## Asignación de atributos al backend del programador de trabajos (SLURM)
 
 | **Atributo de prueba** | **Opción SLURM** |
 |------------------------|------------------|
@@ -822,7 +825,7 @@ Para obtener más información, consulte la sección de [Parámetros](../scripts
 
 Si se establece alguno de los atributos en `None`, no se emitirá en absoluto en el script del trabajo.
 
-```admonish info title=" "
+```admonish note title=" "
 La opción `--nodes` también se puede emitir si se establece el parámetro `use_nodes_option` 
 en la configuración del planificador de trabajos.
 

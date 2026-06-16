@@ -1,4 +1,7 @@
-# Descripción
+# NWChem
+
+
+## Descripción
 
 El software [NWChem](https://www.nwchem-sw.org/) contiene herramientas de química computacional que son
 escalables tanto en su capacidad para tratar de manera eficiente grandes problemas científicos como en
@@ -23,7 +26,8 @@ hasta clústeres de estaciones de trabajo convencionales.
 
 - Benchmarks: C240, Siosi8.
 
-# Arquitectura de NWChem
+
+## Arquitectura de NWChem
 
 Las simulaciones de dinámica molecular como `NWChem` son una herramienta importante en el estudio y diseño
 racional de sistemas y materiales moleculares, proporcionando información sobre el comportamiento de los
@@ -31,9 +35,9 @@ sistemas químicos que puede ser difícil de obtener por otros medios. Se requie
 computacionales considerables incluso para sistemas moleculares pequeños, que tienen decenas de miles de
 átomos y períodos de simulación cortos en el rango de nanosegundos.
 
-<span style="color: #990819;">*Figure 1. Arquitectura de NWChem*</span>
-
 ![Arquitectura de NWChem](../../../images/Reframe/Apps/NWChem/nwchem-arch.png)
+
+<span style="color: #990819;">*Figure 1. Arquitectura de NWChem*</span>
 
 `NWChem` tiene una arquitectura modular de cinco niveles (Imagen 1). La aplicación incorpora varios
 módulos y kits de herramientas existentes en varios niveles de la arquitectura debido a su adherencia a
@@ -63,7 +67,8 @@ los conceptos de programación orientada a objetos. Los cinco niveles son los si
   niveles superiores. Los ejemplos incluyen las rutinas de temporización, el analizador de entrada y las
   rutinas de impresión.
 
-## Optimizables/No Optimizables
+
+### Optimizables/No Optimizables
 
 Hay una serie de parámetros ajustables que afectan el rendimiento de `NWChem`. Uno de ellos es la
 biblioteca `MPI` utilizada y cómo *Global Arrays* usa `MPI`. A diferencia de muchos códigos HPC, *Global Arrays*
@@ -81,9 +86,9 @@ remota utilizada por `GA`.
 
 La siguiente imagen (Imagen 2) contiene detalles de lo que sucede dentro de *Global Arrays*.
 
-<span style="color: #990819;">*Figure 2. Asignación de ARMCI a MPI*</span>
-
 ![Asignación de ARMCI a MPI](../../../images/Reframe/Apps/NWChem/armci.png)
+
+<span style="color: #990819;">*Figure 2. Asignación de ARMCI a MPI*</span>
 
 - Hay dos implementaciones de la API ARMCI: la biblioteca ARMCI/ComEx distribuida con Global Arrays y
   la biblioteca ARMCI MPI distribuida por separado.
@@ -95,7 +100,8 @@ La siguiente imagen (Imagen 2) contiene detalles de lo que sucede dentro de *Glo
   comunicación en NWChem. La elección de la biblioteca MPI es un parámetro ajustable importante para
   NWChem.
 
-## Valor de ARMCI_DEFAULT_SHMMAX
+
+### Valor de ARMCI_DEFAULT_SHMMAX
 
 Algunos valores de ARMCI_NETWORK dependen del valor `ARMCI_DEFAULT_SHMMAX` para grandes
 asignaciones de memoria global. Recomendamos un valor de, al menos, 2048, por ejemplo:
@@ -111,7 +117,8 @@ sea mayor que 2147483648. Puede comprobar el valor actual de `kernel.shmmax` en 
   sysctl kernel.shmmax
 ```  
 
-## Valor de Memory
+
+### Valor de Memory
 
 `memory` es una directiva de inicio que permite al usuario especificar la cantidad de memoria
 **POR NÚCLEO DE PROCESADOR** que NWChem puede usar para el trabajo. Si no se especifica esta directiva,
@@ -146,7 +153,8 @@ Para este trabajo definimos una memoria `total` para cada simulación y optamos 
 automática de `NWChem`. Más información en
 [MEMORY](https://nwchemgit.github.io/Memory.html)
 
-# NWChem Performance
+
+## NWChem Performance
 
 NWChem no tiene una variable de performance como tal, en cambio muestra estadísticas de recursos
 utilizados como el tiempo de cpu o memoria utilizada. Para este trabajo, para medir el performance y la eficiencia
@@ -183,7 +191,8 @@ paralela de `NWChem`, usaremos el tiempo de pared (`Wall time (s)`).
     Total times  cpu:    18836.5s     wall:    18899.4s
 ```
 
-## Total DFT energy
+
+### Total DFT energy
 
 `NWChem` muestra las energías
 [DFT](https://nwchemgit.github.io/Density-Functional-Theory-for-Molecules.html)
@@ -235,7 +244,8 @@ advertencia si la tarea falla y la ejecución del código continúa con la sigui
 En este trabajo nos interesa evaluar que la variable `Total DFT energy` llegue a ciertos valores
 esperados para cada simulación.
 
-# Eficiencia Paralela
+
+## Eficiencia Paralela
 
 La única forma confiable de ver si un trabajo escala de manera eficiente es compararlo. Comparar un
 trabajo significa ejecutar un trabajo de prueba breve y representativo varias veces en diferentes
@@ -260,7 +270,7 @@ Como regla general, los trabajos que se ejecutan con una gran cantidad de núcle
 una eficiencia paralela superior o igual a 0,7.
 
 
-# C240 Benchmark
+## C240 Benchmark
 
 Rendimiento del módulo DFT de conjunto de bases gaussianas en `NWChem`. Este cálculo implicó realizar un
 cálculo PBE0 (en modo directo) en el sistema on C 240 con el conjunto básico 6-31G\* (3600 funciones
@@ -269,12 +279,13 @@ básicas) sin simetría. Disponible
 
 La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.856741718977`
 
-<span style="color: #990819;">*Figure 3. Performance C240 Benchmark*</span>
-
 ![Performance C240 Benchmark](../../../images/Reframe/Apps/NWChem/Figure_C240.png)
 
-<span style="color: #990819;">*Table 1. Performance C240 Benchmark*</span>
+<span style="color: #990819;">*Figure 3. Performance C240 Benchmark*</span>
 
+\
+<span style="color: #990819;">*Table 1. Performance C240 Benchmark*</span>
+```
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 | **\#    | **CPU's Nodos nc\        | **CPU's Nodos            | **CPU's Nodos            |
 | Nodos** | 20 Cores x 2.50GHz Intel | ttv1\[1-58\]\            | ttv2\[59-104\]\          |
@@ -299,20 +310,18 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 | 16      | 207.10    | 77 %         | 199.51    | 78 %         | 190.97    | 73 %         |
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
+```
 
-: Performance C240 Benchmark
 
-
-## Performance C240 Benchmark en nodos NC
-
-C240 Performance nc
-
-<span style="color: #990819;">*Figure 4. Performance C240 Benchmark en nodos nc.*</span>
+### Performance C240 Benchmark en nodos NC
 
 ![Performance C240 Benchmark en nodos nc.](../../../images/Reframe/Apps/NWChem/Figure_error_nc_c240.png)
 
-<span style="color: #990819;">*Table 2. Performance C240 Benchmark en nodos nc.*</span>
+<span style="color: #990819;">*Figure 4. Performance C240 Benchmark en nodos nc.*</span>
 
+\
+<span style="color: #990819;">*Table 2. Performance C240 Benchmark en nodos nc.*</span>
+```
 +----------+---------------+---------------+---------------+---------------+---------------+
 | **\#     | **CPU's Nodos nc\                                                             |
 | Nodos**  | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                      |
@@ -335,20 +344,18 @@ C240 Performance nc
 +----------+---------------+---------------+---------------+---------------+---------------+
 | 16       | 20            | 207.1         | 205.9         | 210.4         | 1.558         |
 +----------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance C240 Benchmark en nodos nc.
 
-
-## Performance C240 Benchmark en nodos TTV1
-
-C240 Performance ttv1
-
-<span style="color: #990819;">*Figure 5. Performance C240 Benchmark en nodos ttv1.*</span>
+### Performance C240 Benchmark en nodos TTV1
 
 ![Performance C240 Benchmark en nodos ttv1.](../../../images/Reframe/Apps/NWChem/Figure_error_ttv1_c240.png)
 
-<span style="color: #990819;">*Table 3. Performance C240 Benchmark en nodos ttv1.*</span>
+<span style="color: #990819;">*Figure 5. Performance C240 Benchmark en nodos ttv1.*</span>
 
+\
+<span style="color: #990819;">*Table 3. Performance C240 Benchmark en nodos ttv1.*</span>
+```
 +----------+---------------+---------------+---------------+---------------+---------------+
 | **\#     | **CPU's Nodos ttv1\                                                           |
 | Nodos**  | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                      |
@@ -373,20 +380,18 @@ C240 Performance ttv1
 +----------+---------------+---------------+---------------+---------------+---------------+
 | 16       | 20            | 199.51        | 197.6         | 204.3         | 2.058         |
 +----------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance C240 Benchmark en nodos ttv1.
 
-
-## Performance C240 Benchmark en nodos TTV2
-
-C240 Performance ttv2
-
-<span style="color: #990819;">*Figure 6. Performance C240 Benchmark en nodos ttv2.*</span>
+### Performance C240 Benchmark en nodos TTV2
 
 ![Performance C240 Benchmark en nodos ttv2.](../../../images/Reframe/Apps/NWChem/Figure_error_ttv2_c240.png)
 
-<span style="color: #990819;">*Table 4. Performance C240 Benchmark en nodos ttv2.*</span>
+<span style="color: #990819;">*Figure 6. Performance C240 Benchmark en nodos ttv2.*</span>
 
+\
+<span style="color: #990819;">*Table 4. Performance C240 Benchmark en nodos ttv2.*</span>
+```
 +----------+---------------+---------------+---------------+---------------+---------------+
 | **\#     | **CPU's Nodos ttv2\                                                           |
 | Nodos**  | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                      |
@@ -409,10 +414,10 @@ C240 Performance ttv2
 +----------+---------------+---------------+---------------+---------------+---------------+
 | 16       | 20            | 190.97        | 188.0         | 196.5         | 2.829         |
 +----------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance C240 Benchmark en nodos ttv2.
 
-# Siosi8 Benchmark
+## Siosi8 Benchmark
 
 Cálculo del funcional de densidad de un fragmento de zeolita. Cálculos LDA (energy plus gradient) en un
 fragmento de zeolita siosi8 de 533 átomos.
@@ -422,12 +427,13 @@ densidad de carga con 16501 funciones. El archivo de entrada está disponible en
 
 La simulación debe llegar a un valor `Total DFT energy` cercano a: `-65667.628352536878`
 
-<span style="color: #990819;">*Figure 7. Performance Siosi8 Benchmark*</span>
-
 ![Performance Siosi8 Benchmark](../../../images/Reframe/Apps/NWChem/Figure_Siosi8.png)
 
-<span style="color: #990819;">*Table 5. Performance Siosi8 Benchmark*</span>
+<span style="color: #990819;">*Figure 7. Performance Siosi8 Benchmark*</span>
 
+\
+<span style="color: #990819;">*Table 5. Performance Siosi8 Benchmark*</span>
+```
 +-----------------+-----------------+-----------------+-----------------+
 | **\# Nodos**    | **CPU's Nodos   | **CPU's Nodos   | **CPU's Nodos   |
 |                 | nc\             | ttv1\[1-58\]\   | ttv2\[59-104\]\ |
@@ -453,16 +459,16 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-65667.6283
 +-----------------+-----------------+-----------------+-----------------+
 | 16              | 520.48          | 484.16          | 513.51          |
 +-----------------+-----------------+-----------------+-----------------+
+```
 
-: Performance Siosi8 Benchmark
 
-## Eficiencia Paralela
+### Eficiencia Paralela
 
 La simulación requiere altos recursos para un correcto performance. Calculamos la eficiencia paralela
 a partir de 8 nodos de computo para cada tipo de nodo para una mejor interpretación de lo datos.
 
 <span style="color: #990819;">*Table 6. Eficiencia Paralela Siosi8 Benchmark*</span>
-
+```
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 | **\#    | **CPU's Nodos nc\        | **CPU's Nodos            | **CPU's Nodos            |
 | Nodos** | 20 Cores x 2.50GHz Intel | ttv1\[1-58\]\            | ttv2\[59-104\]\          |
@@ -479,9 +485,10 @@ a partir de 8 nodos de computo para cada tipo de nodo para una mejor interpretac
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 | 16      | 520.48    | 121 %        | 484.16    | 92 %         | 513.51    | 74 %         |
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
+```
 
 
-# Referencias
+## Referencias
 
 [NWChem Website](https://nwchemgit.github.io/)
 

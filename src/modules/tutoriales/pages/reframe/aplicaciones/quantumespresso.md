@@ -1,4 +1,7 @@
-# Descripción
+# QuantumEspresso
+
+
+## Descripción
 
 [`Quantum Espresso`](https://www.quantum-espresso.org/) es un conjunto de códigos Open-Source para
 cálculos de estructuras electrónicas y modelado de materiales a nanoescala. Se basa en la teoría
@@ -9,7 +12,7 @@ funcional de la densidad, ondas planas y pseudopotenciales.
 - Benchmarks: AUSURF112
 
 
-# PWscf
+## PWscf
 
 PWscf es el paquete de programas que permite a Quantum ESPRESSO utilizar ondas planas en las
 simulaciones. PWscf existió como un proyecto independiente. El cual permitía realizar cálculos de
@@ -19,7 +22,7 @@ perturbado. PWscf son las siglas en inglés de Plane-Wave Self-Consistent Field 
 Licencia Pública General GNU.
 
 
-## Input data
+### Input data
 
 Los datos de entrada de un archivo PWscf se organizan como varias listas de nombres, seguidas de otros
 campos (\"tarjetas\") introducidos por palabras clave. Las listas de nombres son:
@@ -36,7 +39,7 @@ Para este trabajo nos interesa la sección &ELECTRONS ya que en esta apartado se
 de calculo que afectan el performance de `Quantum Espresso`. Los métodos que utilizamos son:
 
 
-### [Método de diagonalización](https://www.quantum-espresso.org/Doc/INPUT_PW.html#idm805)
+#### [Método de diagonalización](https://www.quantum-espresso.org/Doc/INPUT_PW.html#idm805)
 
 `Quantum Espresso` por default utiliza el método de
 [Davidson](https://joshuagoings.com/2013/08/23/davidsons-method/) (`david`) ya que es el más rápido. Para
@@ -45,20 +48,20 @@ este trabajo optamos por el uso del método
 ya que aunque es MUCHO más lento que `david` usa menos memoria y es (un poco) más robusto.
 
 
-### [K_POINTS](https://www.quantum-espresso.org/Doc/INPUT_PW.html#idm1487)
+#### [K_POINTS](https://www.quantum-espresso.org/Doc/INPUT_PW.html#idm1487)
 
 El método que utilizamos para el calculo k-points es el método Gamma de PWscf
 ya que los requisitos de memoria y CPU se reducen aproximadamente a la mitad y permite el estudio de
 `Quantum Espresso` en particiones con recursos limitados.
 
 
-# Quantum Espresso Performance
+## Quantum Espresso Performance
 
 En el contexto de este trabajo, para revisar el performance de Quantum Espresso, solo nos interesa
 los siguiente elementos:
 
 
-## Total energy
+### Total energy
 
 Quantum Espresso muestra en cada paso de simulación la energía de la simulación, donde muestra:
 
@@ -147,13 +150,13 @@ se detendrá la prueba y se informara de la siguiente forma:
 .
 ```
 
-```admonish info title=" "
+```admonish note title=" "
 Algunas simulaciones requieren un número de iteraciones muy alto y un alto tiempo de computo para cada
 iteración, en dado caso solo se estudia la simulación para un número pequeño de iteraciones.
 ```
 
 
-## Timing info
+### Timing info
 
 El informe de tiempo impreso al final de una ejecución de `pw.x` contiene mucha información útil que puede
 utilizarse para comprender los cuellos de botella y mejorar el rendimiento.
@@ -202,7 +205,7 @@ calculando la solución auto-consistente. Para este trabajo usaremos el tiempo d
 \"electrons\" para calcular el performance y la eficiencia paralela.
 
 
-# Eficiencia paralela
+## Eficiencia paralela
 
 La única forma confiable de ver si un trabajo escala de manera eficiente es compararlo. Comparar un
 trabajo significa ejecutar un trabajo de prueba breve y representativo varias veces en diferentes
@@ -227,7 +230,7 @@ Como regla general, los trabajos que se ejecutan con una gran cantidad de núcle
 una eficiencia paralela superior o igual a 0,7.
 
 
-# AUSURF112 Benchmark
+## AUSURF112 Benchmark
 
 Atomic species ：Au complex (Au<sub>112</sub>), Number of atoms ： 112 atoms / cell, G-vectors : 381654, FFT dimensions : ( 125, 64, 200)
 
@@ -242,7 +245,7 @@ La simulación debe llegar a un valor `! total energy` cercano a: `-11427.090171
 
 \
 <span style="color: #990819;">*Table 1. Performance AUSURF112 Benchmark*</span>
-
+```
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
 | Nodos** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
@@ -267,15 +270,14 @@ La simulación debe llegar a un valor `! total energy` cercano a: `-11427.090171
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | 16      | 460.930     | 56.0 %       | 329.950     | 53.4 %       | 446.970     | 63.4 %       |
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
-
-: Performance AUSURF112 Benchmark
+```
 
 Para esta aplicación notamos que el rendimiento de las simulaciones depende mucho de la cantidad de átomos
 y modelo simulado, obteniendo un mejor o peor rendimiento dependiendo de como se divide la cantidad de
 procesos MPI para la resolución del problema.
 
 
-# GRIR443 Benchmark
+## GRIR443 Benchmark
 
 Atomic species ： Carbon-Iridium complex (C<sub>200</sub>Ir<sub>243</sub>), Number of atoms ： 443 atoms / cell, 
 G-vectors : 1116532 G-vectors, FFT dimensions: ( 180, 180, 192)
@@ -291,6 +293,7 @@ La simulación debe llegar a un valor `total energy` cercano a: `-179010.8746286
 
 \
 <span style="color: #990819;">*Table 2. Performance GRIR443 Benchmark*</span>
+```
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
 | Nodos** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
@@ -313,15 +316,15 @@ La simulación debe llegar a un valor `total energy` cercano a: `-179010.8746286
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | 16      | 2496.460    | 90.2 %       | 1955.085    | 88.8 %       |             |              |
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
-
-: Performance GRIR443 Benchmark
+```
 
 Para esta simulación notamos que el rendimiento depende del modelo simulado, obteniendo un mejor o peor
 rendimiento dependiendo de como se divide la cantidad de procesos MPI para la resolución del problema.
 En los resultados reportados, omitimos la cantidad de procesos MPI para cada tipo de nodo
 que no brindaban un buen rendimiento para una mejor interpretación de los datos.
 
-# Referencias
+
+## Referencias
 
 [Quantum Espresso](https://www.quantum-espresso.org/)
 

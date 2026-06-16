@@ -1,4 +1,6 @@
-# Requisitos previos
+# Antora
+
+## Requisitos previos
 
 Antes de comenzar, es indispensable instalar y configurar las siguientes aplicaciones:
 
@@ -6,7 +8,7 @@ Antes de comenzar, es indispensable instalar y configurar las siguientes aplicac
 
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-# Clonar el repositorio
+## Clonar el repositorio
 
 Clone el repositorio en el que se encuentra la configuración de Antora:
 
@@ -26,7 +28,7 @@ y cambie a la rama `develop`:
 $ git checkout develop
 ```
 
-# Token y UI
+## Token y UI
 
 ```bash
 yoltla-antora
@@ -49,7 +51,7 @@ yoltla-antora
 
 2. En cada directorio debe colocar el archivo *ui-bundle.zip* correspondiente. [Build a UI Project for Local Preview](https://docs.antora.org/antora-ui-default/build-preview-ui//).
 
-# Construir la imágen
+## Construir la imágen
 
 Desde el directorio raíz del repositorio, navegue al directorio *images*:
 
@@ -100,7 +102,7 @@ Successfully built 6b932c8ee038
 Successfully tagged antora/server:latest
 ```
 
-# Iniciar servidor web
+## Iniciar servidor web
 
 Desde el directorio raíz, ejecute el comando:
 
@@ -116,7 +118,7 @@ Creating yoltla_docs ... done
 Creating yoltla_kb   ... done
 ```
 
-# Construir el sitio web
+## Construir el sitio web
 
 Para construir el sitio web es necesario conectarse al contenedor de Antora por medio 
 de su ID. Para obtener el ID del contenedor, ejecute el comando:
@@ -157,7 +159,7 @@ Para salir del contenedor ejecute el comando:
 /antora # exit
 ```
 
-# Ingresar al sitio
+## Ingresar al sitio
 
 Para acceder a Yoltla Documentación, ingrese a la URL:
 
@@ -171,7 +173,7 @@ Para acceder a Yoltla Knowledge Base, ingrese a la URL:
 http://localhost:3036/
 ```
 
-# Detener el servidor web
+## Detener el servidor web
 
 Desde el directorio raíz, ejecute el comando:
 

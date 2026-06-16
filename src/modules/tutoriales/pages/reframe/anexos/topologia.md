@@ -1,4 +1,7 @@
-# Descripción
+# Topología
+
+
+## Descripción
 
 ReFrame puede detectar automáticamente la topología del procesador de las particiones 
 locales y remotas. La información del procesador se pone a disposición de las pruebas 
@@ -13,7 +16,7 @@ Para obtener más información, consulte la sección
 de la documentación oficial de ReFrame.
 
 
-# Detección automática
+## Detección automática
 
 La detección automática de información del procesador funciona de la siguiente manera:
 
@@ -53,14 +56,14 @@ En caso de errores durante la detección automática, ReFrame simplemente emitir
 y continuará.
 
 
-## Cluster Yoltla
+### Clúster Yoltla
 
 Hay dos formas de iniciar el proceso de detección de la topología, en ambas formas ReFrame 
 se ejecutara localmente en las particiones. Revise la variable 
 [`hostnames`](./archivo_configuracion.md#configuración-de-systems) del archivo de configuración.
 
 
-### **Forma automática**
+#### Forma automática
 
 Para detectar la topología en el cluster de forma automática, se requiere el uso de un 
 archivo de configuración `settings.py` que haga uso de la opción [remote_detect](https://reframe-hpc.readthedocs.io/en/stable/manpage.html#envvar-RFM_REMOTE_DETECT) 
@@ -69,7 +72,7 @@ lo puede encontrar [*aquí*](../../../attachments/reframe/topologia/settings.py)
 
 Puede pasar el archivo de configuración con la opción [`-C`](../scripts/lanzar_pruebas.md#otras-opciones)
 
-```admonish info title =" " 
+```admonish note title =" " 
 La opción `remote_detect` tiene conflictos con algunos parámetros de configuración como 
 `use_nodes_option`. Para evitar estos conflictos y que ReFrame busque detectar la topología 
 cada vez que se ejecuta, se recomienda solo usar esta opción cuando sea necesario detectar 
@@ -106,7 +109,7 @@ trap _onerror ERR
 srun -np 1 ./bin/reframe --detect-host-topology=topo.json
 ```
 
-```admonish info title=" "
+```admonish note title=" "
 Al lanzar la prueba para la detección automática, se recomienda usar la opción
 [`-v`,`–verbose`](../scripts/lanzar_pruebas.md#otras-opciones) de la siguiente forma:
 
@@ -114,7 +117,7 @@ Al lanzar la prueba para la detección automática, se recomienda usar la opció
 ```
 
 
-### **Forma manual**
+#### Forma manual
 
 Puede lanzar un trabajo para detectar la topología cargando los entornos necesarios 
 de ReFrame. Un ejemplo del script de SLURM necesario se puede ver en el siguiente ejemplo:
@@ -150,7 +153,7 @@ El script hace uso de la opción [`--detect-host-topology`](../scripts/lanzar_pr
 de Reframe para detectar la información. La topología resultante de la particion 
 `q1h-20p` la puede consultar en el archivo resultante: `processor.json`
 
-```admonish info title=" "
+```admonish note title=" "
 Se tiene que crear las carpetas:
 
     ~/.reframe/topology/{system}-{part}/
@@ -159,7 +162,7 @@ manualmente y mover los archivos correspondientes.
 ```
 
 
-# Ejemplos
+## Ejemplos
 
 La siguiente parcialidad de código es un ejemplo del uso de la topología en pruebas 
 de regresión:

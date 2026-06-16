@@ -1,4 +1,7 @@
-# Descripción
+# Lanzar pruevas
+
+
+## Descripción
 
 ReFrame proporciona una interfaz de programación para escribir pruebas de regresión 
 y una interfaz de línea de comandos para administrar y ejecutar las pruebas, algunas 
@@ -14,7 +17,7 @@ Para obtener más información del pipeline y la aquitectura de Reframe, consult
 sección [How ReFrame Executes Tests](https://reframe-hpc.readthedocs.io/en/stable/pipeline.html) 
 de la documentación oficial de ReFrame.
 
-# Detección y carga de pruebas
+## Detección y carga de pruebas
 
 - `-c, --checkpath=PATH`
 
@@ -62,7 +65,7 @@ de la documentación oficial de ReFrame.
     reframe -c Ejemplos/PipelineMpi/pipeMpi.py -r
     ```
 
-    ```admonish info title=" "
+    ```admonish note title=" "
     Debe existir una carpeta `logs` desde el directorio donde se invoca a Reframe.
 
     Para más detalles, consulte la sección [Configuración de Logging](../anexos/archivo_configuracion.md#configuración-de-logging).
@@ -83,7 +86,7 @@ de la documentación oficial de ReFrame.
     reframe -c Ejemplos/HolaMundo/ -r
     ```
 
-    ```admonish info title=" "
+    ```admonish note title=" "
     Tome en cuenta que se creara un solo archivo [`logs`](#lanzar_pruebas) y una sola 
     carpeta [`output`](#out) y [`stage`](#stage) para todas las pruebas que se encuentre.
 
@@ -109,7 +112,7 @@ de la documentación oficial de ReFrame.
     reframe -c Ejemplos/ -R -r
     ```
 
-    ```admonish info title=" "
+    ```admonish note title=" "
     Tome en cuenta que se creara un solo archivo [`logs`](#lanzar_pruebas) y una sola 
     carpeta [`output`](#out) y [`stage`](#stage) para todas las pruebas que se encuentre.
 
@@ -117,7 +120,7 @@ de la documentación oficial de ReFrame.
     ```
 
 
-# Filtrado de pruebas
+## Filtrado de pruebas
 
 Las pruebas se pueden filtrar por diferentes atributos y existen opciones de línea de 
 comandos específicas para lograrlo. Una característica común de todas las opciones de 
@@ -177,7 +180,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     reframe -c hello_mpi.py -x HelloTest_8 -r
     ```
 
-# Enlistar y ejecutar pruebas
+## Enlistar y ejecutar pruebas
 
 - ## -L
 
@@ -313,9 +316,9 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     Para más detalles, consulte el siguiente [enlace](https://reframe-hpc.readthedocs.io/en/stable/manpage.html?#cmdoption-o).
 
 
-# Opciones de control
+## Opciones de control
 
-## Salida
+### Salida
 
 - ### --dont-restaging
 
@@ -381,7 +384,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     Esta opción también se puede configurar con la variable de ambiente `RFM_STAGE_DIR` 
     o el parámetro `stagedir` del archivo de configuración.
 
-## Envío de trabajos
+### Envío de trabajos
 
 - ### -J, --job-option=OPTION
 
@@ -399,7 +402,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     #SBATCH --exclude=tt[81-88]
     ```
 
-# Otras opciones
+## Otras opciones
 
 - ## -C --config-file=FILE
 
@@ -436,7 +439,7 @@ de T3, la selección T1 también seleccionaría T2 y T3.
     se establece en `all`, se mostrará toda la configuración para el sistema actualmente 
     seleccionado.
 
-# Más opciones
+## Más opciones
 
 Puede consultar más opciones en la sección [Command Line Reference](https://reframe-hpc.readthedocs.io/en/stable/manpage.html) 
 de la documentación oficial de ReFrame.

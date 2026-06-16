@@ -104,6 +104,7 @@
             - [Referencias del API]()
                 - REVISAR ENLACE A "extra_resources"
                 - REVISAR ENLACE A "Pruebas de rendimiento"
+                - REVISAR ORDEN DE TITULOS (de clases_base_prueba a test_decorators )
 
     - [Spack]()
         - [Aplicaciones]()
@@ -119,12 +120,13 @@
         - REVISAR ENLACE A "las opciones que puede mandar rsyslog"
 
     - [Instalar y configurar slurm]()
-        -REVISAR ENLACE A "https://slurm.schedmd.com/configurator.easy.html"
-
+        - REVISAR ENLACE A "https://slurm.schedmd.com/configurator.easy.html"
+        - REVISAR EL "Example 1. Para configurar el nodo maestro como gateway"
 
     - [Instalar nvgpu-smi-snmp]()
 
 
-
-
 - [REVISAR ENLACE A ""]()
+
+
+<span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>

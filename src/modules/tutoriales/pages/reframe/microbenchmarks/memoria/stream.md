@@ -1,4 +1,7 @@
-# Descripción
+# STREAM
+
+
+## Descripción
 
 STREAM es un benchmark sintético simple que mide el ancho de banda de memoria sostenible 
 (en MB/s) y la tasa de cálculo correspondiente para núcleos vectoriales simples.
@@ -34,7 +37,7 @@ carga/almacenamiento en máquinas vectoriales.
 Para obtener más información, visite el sitio oficial de [STREAM](https://www.cs.virginia.edu/stream/).
 
 
-# Compilación
+## Compilación
 
 1.  Descargue el [código fuente](https://www.cs.virginia.edu/stream/FTP/Code/) del benchmark STREAM:
 
@@ -66,7 +69,7 @@ Para obtener más información, visite el sitio oficial de [STREAM](https://www.
     <built-in>: note: this is the location of the previous definition
     ```
 
-```admonish info title=" "
+```admonish note title=" "
 Para compilar STREAM, siga el siguiente formato:
     
         gcc <opciones> stream.c -o stream
@@ -84,7 +87,7 @@ En el archivo fuente *stream.c* puede encontrar más información acerca de esta
 ```
 
 
-# Ejecución
+## Ejecución
 
 1.  Modifique la variable de entorno `OMP_NUM_THREADS`:
 
@@ -99,7 +102,7 @@ En el archivo fuente *stream.c* puede encontrar más información acerca de esta
     ```
 
 
-# Salida
+## Salida
 
 A continuación se presenta la salida de una ejecución de STREAM:
 
@@ -162,12 +165,12 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
     - Tiempo máximo
 
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in stream.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
 
-# Pruebas
+## Pruebas
 
 La regla general para STREAM es que cada matriz debe tener al menos 4 veces el tamaño 
 de la suma de todos los cachés de último nivel utilizados en la ejecución, o 1 millón 
@@ -220,15 +223,15 @@ mencionada. En las siguientas tablas se da un resumen de las pruebas realizadas:
 | tt87            | 60000000        | 20              | 20              |
 | tt92            | 60000000        | 20              | 20              |
 
-```admonish info title=" "
+```admonish note title=" "
 Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa de cada tipo de nodo.
 ```
 
 
-# Scripts
+## Scripts
 
 
-## Estructura de directorios
+### Estructura de directorios
 
 Dentro de la carpeta raíz *stream* existen tres subdirectorios, uno por cada tipo de 
 nodo en el cluster Yoltla:
@@ -252,15 +255,15 @@ nodo en el cluster Yoltla:
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de STREAM utilizada en estos scripts es la 5.10.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba 
 de interés, y ejecute el comando:
@@ -276,7 +279,7 @@ Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 ```
 
 
-### **Etiquetas**
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para lanzar todas las pruebas, siga los siguientes pasos:
 
@@ -306,10 +309,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-# Resultados
+## Resultados
 
 
-## Nodos NC
+### Nodos NC
 
 <span style="color: #990819;">*Tabla 4. Resultados de las pruebas de Copy y Scale en los nodos NC*</span>
 ```
@@ -403,7 +406,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 1. Resultados del benchmark STREAM en los nodos NC*</span>
 
 
-## Nodos TTv1
+### Nodos TTv1
 
 <span style="color: #990819;">*Tabla 6. Resultados de las pruebas de Copy y Scale en los nodos TTv1*</span>
 ```
@@ -464,7 +467,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 2. Resultados del benchmark STREAM en los nodos TTv1*</span>
 
 
-## Nodos TTv2
+### Nodos TTv2
 
 <span style="color: #990819;">*Tabla 8. Resultados de las pruebas de Copy y Scale en los nodos TTv2*</span>
 ```
@@ -513,7 +516,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 3. Resultados del benchmark STREAM en los nodos TTv2*</span>
 
 
-## Yoltla
+### Yoltla
 
 <span style="color: #990819;">*Tabla10. Resultados de las pruebas de Copy y Scale en el cluster Yoltla*</span>
 ```
@@ -551,11 +554,11 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Figura 4. Resultados del benchmark STREAM en el cluster Yoltla*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
 ```
 
-# Sitios de interés
+## Sitios de interés
 
 - [STREAM: Sustainable Memory Bandwidth in High Performance Computers](https://www.cs.virginia.edu/stream/)
 

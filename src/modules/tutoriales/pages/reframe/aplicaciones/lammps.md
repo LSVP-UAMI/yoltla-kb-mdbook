@@ -1,4 +1,7 @@
-# Descripción
+# Lammps
+
+
+## Descripción
 
 [LAMMPS](https://www.lammps.org/#gsc.tab=0) es un código clásico de dinámica molecular 
 y un acrónimo de Simulador masivo paralelo atómico/molecular a gran escala. Fue desarrollado 
@@ -18,7 +21,8 @@ sea fácil de modificar o ampliar con nuevas funciones.
 
 - Benchmarks: LennardJones, Rhodopsin protein
 
-# Lammps Performance
+
+## Lammps Performance
 
 La salida de `LAMMPS` contiene la mayor parte de la información importante como la versión `LAMMPS`,
 la cantidad de procesadores utilizados para las ejecuciones, el diseño del procesador, los pasos
@@ -115,7 +119,8 @@ ayuda a identificar dónde pasa la mayor parte del tiempo de computo :
 
 - Other = todo el tiempo restante
 
-## Total Energy
+
+### Total Energy
 
 `LAMMPS` muestra un informe de datos termodinámicos en su salida y los archivos de registro.
 
@@ -183,7 +188,8 @@ Las variables usadas en `thermo_style` son las siguientes:
 En este trabajo nos interesa evaluar que la variable `TotEng` llegue a ciertos valores
 esperados para el ultimo `timesteps` de cada simulación.
 
-# Eficiencia paralela
+
+## Eficiencia paralela
 
 La única forma confiable de ver si un trabajo escala de manera eficiente es compararlo. Comparar un
 trabajo significa ejecutar un trabajo de prueba breve y representativo varias veces en diferentes
@@ -207,7 +213,8 @@ disponible.
 Como regla general, los trabajos que se ejecutan con una gran cantidad de núcleos deben tener
 una eficiencia paralela superior o igual a 0,7.
 
-# Uso de MPI
+
+## Uso de MPI
 
 `LAMMPS` divide el espacio 3d en una cuadricula de sub-volúmenes 3d de acuerdo a la cantidad de
 procesos, por ejemplo, para una cuadrícula AxBxC, el número total de procesos (p) = A \* B \* C.
@@ -218,7 +225,8 @@ datos intercambiados es proporcional a la superficie del sub-volumen. Las rutina
 
 ![](Reframe/Apps/Lammps/lammps_space.png){alt="lammps space"}
 
-# Tamaño del sistema
+
+## Tamaño del sistema
 
 Podemos variar el tamaño del sistema (es decir, el número de átomos) asignando valores apropiados a las
 variables `x`, `y` y `z` al principio del archivo de entrada. La duración de la simulación puede ser
@@ -233,7 +241,8 @@ de 1000 \"espacios\" (`x*y*z`) con un átomo cada uno y 3 vecinos por átomo (`n
 Si tomamos esta entrada y la modificamos de modo que `x = y = z = 140` la simulación contendrá alrededor
 de 10 millones de átomos.
 
-## Efectos debido al tamaño del sistema sobre el recurso utilizado
+
+### Efectos debido al tamaño del sistema sobre el recurso utilizado
 
 Los sistemas de diferentes tamaños pueden comportarse de manera diferente a medida que aumentamos
 nuestro uso de recursos, ya que tendrán diferentes distribuciones de trabajo entre nuestros recursos
@@ -255,7 +264,8 @@ Modify  | 52.619     | 59.173     | 61.577     |  25.0 |  4.53
 Other   |            | 12.03      |            |       |  0.92
 ```
 
-# Load balancing
+
+## Load balancing
 
 Un problema importante con la paralelización basada en `MPI` es que puede tener un rendimiento pobre
 con una distribución no homogénea de partículas o sistemas que tienen mucho espacio vacío.
@@ -284,7 +294,8 @@ Este tipo de interrupción del tiempo generalmente indica que hay algún problem
 geometría del sistema muy, muy inusual. Esto resulta en un mal performance de `LAMMPS` para una cantidad
 de recursos grande.
 
-# Lennard-Jones liquid benchmark (Junio 2022)
+
+## Lennard-Jones liquid benchmark (Junio 2022)
 
 Simulación de un fluido atómico con potencial de Lennard-Jones 1 (disponible
 [aquí](https://www.lammps.org/bench.html#lj)).
@@ -311,10 +322,12 @@ La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercan
 
 <span style="color: #990819;">*Figure 1. Performance Lennard-Jones Benchmark*</span>
 
+\
 ![Figure Le parallel](../../../images/Reframe/Apps/Lammps/Figure_Le_parallel.png)
 
 <span style="color: #990819;">*Figure 2. Parallel Efficiency Lennard-Jones Benchmark*</span>
 
+```
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 | **\#    | **CPU's Nodos nc\              | **CPU's Nodos ttv1\[1-58\]\    | **CPU's Nodos ttv2\[59-104\]\  |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón  | 20 Cores x 2.60GHz Intel Xeón  | 32 Cores x 2.10GHz Intel Xeon  |
@@ -337,7 +350,7 @@ La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercan
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 | 16      | 9.832           | 98.1 %       | 10.048          | 101.1 %      | 10.023          | 100.9 %      |
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
-
+```
 Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
 tres tipos de nodos para este sistema en particular.
 
@@ -387,14 +400,16 @@ Observamos que no se presenta ningún desbalance de carga es el sistema. Destaca
 `ttv2` el porcentaje de tiempo en la comunicación (`Comm`) es ligeramente mayor respecto a los otros tipo
 de nodos lo cual puede ser un factor en los tiempos finales reportados en este trabajo.
 
-## Performance Lennard-Jones Benchmark en nodos NC
 
-<span style="color: #990819;">*Figure 3. Performance Lennard-Jones Benchmark en nodos NC*</span>
+### Performance Lennard-Jones Benchmark en nodos NC
 
 ![Figure error Le nc](../../../images/Reframe/Apps/Lammps/Figure_error_Le_nc.png)
 
-<span style="color: #990819;">*Table 1. Performance Lennard-Jones Benchmark en nodos nc*</span>
+<span style="color: #990819;">*Figure 3. Performance Lennard-Jones Benchmark en nodos NC*</span>
 
+\
+<span style="color: #990819;">*Table 1. Performance Lennard-Jones Benchmark en nodos nc*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                                      |
@@ -418,17 +433,19 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 9.832         | 9.814         | 9.864         | 0.0217        | 508.66        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Lennard-Jones Benchmark en nodos nc
 
-## Performance Lennard-Jones Benchmark en nodos TTV1
 
-<span style="color: #990819;">*Figure 4. Performance Lennard-Jones Benchmark en nodos TTV1*</span>
+### Performance Lennard-Jones Benchmark en nodos TTV1
 
 ![Figure error Le ttv1](../../../images/Reframe/Apps/Lammps/Figure_error_Le_ttv1.png)
 
-<span style="color: #990819;">*Table 2. Performance Lennard-Jones Benchmark en nodos ttv1*</span>
+<span style="color: #990819;">*Figure 4. Performance Lennard-Jones Benchmark en nodos TTV1*</span>
 
+\
+<span style="color: #990819;">*Table 2. Performance Lennard-Jones Benchmark en nodos ttv1*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
 | Nodos** | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                                      |
@@ -454,17 +471,18 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 10.048        | 9.98          | 10.098        | 0.0499        | 485.0         |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Lennard-Jones Benchmark en nodos ttv1
 
-## Performance Lennard-Jones Benchmark en nodos TTV2
-
-<span style="color: #990819;">*Figure 5. Performance Lennard-Jones Benchmark en nodos TTV2*</span>
+### Performance Lennard-Jones Benchmark en nodos TTV2
 
 ![Figure error Le ttv2](../../../images/Reframe/Apps/Lammps/Figure_error_Le_ttv2.png)
 
-<span style="color: #990819;">*Table 3. Performance Lennard_Jones Benchmark en nodos ttv2*</span>
+<span style="color: #990819;">*Figure 5. Performance Lennard-Jones Benchmark en nodos TTV2*</span>
 
+\
+<span style="color: #990819;">*Table 3. Performance Lennard_Jones Benchmark en nodos ttv2*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
 | Nodos** | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                                      |
@@ -488,10 +506,10 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 10.022        | 7.449         | 10.817        | 1.2972        | 487.43        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Lennard_Jones Benchmark en nodos ttv2
 
-# Rhodopsin protein benchmark (Junio 2022)
+## Rhodopsin protein benchmark (Junio 2022)
 
 Proteína de rodopsina de todos los átomos en bicapa lipídica solvatada con campo de
 fuerza CHARMM, Coulombics de largo alcance a través de PPPM (malla de partículas
@@ -512,14 +530,15 @@ Características del benchmark:
 
 La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercano a: `-8654699.6`
 
-<span style="color: #990819;">*Figure 6. Performance Rhodopsin Benchmark*</span>
-
 ![Performance Rhodopsin Benchmark](../../../images/Reframe/Apps/Lammps/Figure_Rhodopsin.png)
 
-<span style="color: #990819;">*Figure 7. Parallel Efficiency Rhodopsin Benchmark*</span>
+<span style="color: #990819;">*Figure 6. Performance Rhodopsin Benchmark*</span>
 
+\
 ![Parallel Efficiency Rhodopsin Benchmark](../../../images/Reframe/Apps/Lammps/Figure_Rhodopsin_Parallel.png)
 
+<span style="color: #990819;">*Figure 7. Parallel Efficiency Rhodopsin Benchmark*</span>
+```
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 | **\#    | **CPU's Nodos nc\              | **CPU's Nodos ttv1\[1-58\]\    | **CPU's Nodos ttv2\[59-104\]\  |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón  | 20 Cores x 2.60GHz Intel Xeón  | 32 Cores x 2.10GHz Intel Xeon  |
@@ -542,6 +561,7 @@ La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercan
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 | 16      | 1.977           | 93.2 %       | 1.999           | 90.4 %       | 2.119           | 93.6 %       |
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
+```
 
 Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
 tres tipos de nodos para este sistema en particular.
@@ -598,14 +618,16 @@ Observamos que no se presenta ningún desbalance de carga es el sistema. Destaca
 `ttv2` el porcentaje de tiempo en la comunicación (`Comm`) es ligeramente mayor respecto a los 
 otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportados en este trabajo.
 
-## Performance Rhodopsin Benchmark en nodos NC
 
-<span style="color: #990819;">*Figure 8. Performance Rhodopsin Benchmark en nodos NC*</span>
+### Performance Rhodopsin Benchmark en nodos NC
 
 ![Performance Rhodopsin Benchmark en nodos NC](../../../images/Reframe/Apps/Lammps/Figure_error_Rho_nc.png)
 
-<span style="color: #990819;">*Table 4. Performance Rhodopsin Benchmark en nodos nc*</span>
+<span style="color: #990819;">*Figure 8. Performance Rhodopsin Benchmark en nodos NC*</span>
 
+\
+<span style="color: #990819;">*Table 4. Performance Rhodopsin Benchmark en nodos nc*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                                      |
@@ -629,17 +651,18 @@ otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportado
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 1.976         | 1.841         | 2.067         | 0.1092        | 2418.5        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Rhodopsin Benchmark en nodos nc
 
-## Performance Rhodopsin Benchmark en nodos TTV1
-
-<span style="color: #990819;">*Figure 9. Performance Rhodopsin Benchmark en nodos TTV1*</span>
+### Performance Rhodopsin Benchmark en nodos TTV1
 
 ![Performance Rhodopsin Benchmark en nodos TTV1](../../../images/Reframe/Apps/Lammps/Figure_error_Rho_ttv1.png)
 
-<span style="color: #990819;">*Table 5. Performance Rhodopsin Benchmark en nodos ttv1*</span>
+<span style="color: #990819;">*Figure 9. Performance Rhodopsin Benchmark en nodos TTV1*</span>
 
+\
+<span style="color: #990819;">*Table 5. Performance Rhodopsin Benchmark en nodos ttv1*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
 | Nodos** | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                                      |
@@ -665,17 +688,18 @@ otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportado
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 1.998         | 1.954         | 2.034         | 0.0333        | 2474.16       |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Rhodopsin Benchmark en nodos ttv1
 
-## Performance Rhodopsin Benchmark en nodos TTV2
-
-<span style="color: #990819;">*Figure 10. Performance Rhodopsin Benchmark en nodos TTV2*</span>
+### Performance Rhodopsin Benchmark en nodos TTV2
 
 ![Performance Rhodopsin Benchmark en nodos TTV2](../../../images/Reframe/Apps/Lammps/Figure_error_Rho_ttv2.png)
 
-<span style="color: #990819;">*Table 6. Performance Rhodopsin Benchmark en nodos ttv2*</span>
+<span style="color: #990819;">*Figure 10. Performance Rhodopsin Benchmark en nodos TTV2*</span>
 
+\
+<span style="color: #990819;">*Table 6. Performance Rhodopsin Benchmark en nodos ttv2*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
 | Nodos** | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                                      |
@@ -699,10 +723,10 @@ otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportado
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 2.118         | 1.825         | 2.282         | 0.1686        | 2307.61       |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Rhodopsin Benchmark en nodos ttv2
 
-# Lammps en GPU
+## Lammps en GPU
 
 Usando paquetes de GPU en LAMMPS, se puede lograr una mejora en el rendimiento acoplando las GPU a una
 o varias CPU.
@@ -722,7 +746,8 @@ Por lo tanto, el paquete de GPU
 puede proporcionar una combinación equilibrada de uso de GPU y CPU para una simulación en particular
 para lograr una mejora en el rendimiento.
 
-## Ejecutando GPU Lammps
+
+### Ejecutando GPU Lammps
 
 Al usar el paquete de GPU, no puede asignar más de una GPU a una sola tarea de MPI. Sin embargo, varias
 tareas de MPI pueden compartir la misma GPU y, en muchos casos, será más eficiente ejecutarse de esta
@@ -740,7 +765,8 @@ usar. Si Ng es 0, el número se selecciona automáticamente.
 
 ![Palabras clave del paquete GPU](../../../images/Reframe/Apps/Lammps/lammps_gpu_keys.png)
 
-## Comprender la salida del paquete GPU
+
+### Comprender la salida del paquete GPU
 
 Una vez que complete un trabajo con éxito, es hora de buscar aspectos de interés en el archivo de salida
 LAMMPS. El primero de ellos es verificar que LAMMPS está haciendo las cosas que usted solicitó y el
@@ -780,7 +806,8 @@ También se imprimen los detalles sobre la tarjeta gráfica, junto con la precis
 el paquete GPU . En este caso, está usando precisión mixta. Posteriormente, muestra cuántos procesos MPI
 se generan por GPU.
 
-### Versión acelerada de par-potencial
+
+#### Versión acelerada de par-potencial
 
 La salida le muestra que en realidad está usando la versión acelerada del par potencial `lj/cut`, aunque
 en el archivo de entrada se mencionó que se usara `pair_style lj/cut 2.5`.
@@ -802,7 +829,8 @@ automáticamente que se llame a la versión acelerada correcta para esta ejecuci
       bin: standard
 ```
 
-### Sección de rendimiento
+
+#### Sección de rendimiento
 
 La siguiente salida de pantalla le informa sobre el rendimiento. Cuando usa el paquete GPU , se muestra
 un bloque adicional de información conocido como `Device Time Info (average)`. Esto le brinda un
@@ -826,7 +854,8 @@ desglose de cómo se han utilizado los dispositivos (GPU) para realizar varias p
   ---------------------------------------------------------------------
 ```  
 
-## Aceleración esperada
+
+### Aceleración esperada
 
 El rendimiento de una GPU en comparación con una CPU multinúcleo depende de su hardware, qué
 [`pair style`](https://docs.lammps.org/pair_style.html) se usa, la cantidad de átomos/GPU y la precisión
@@ -838,7 +867,8 @@ está usando. Del mismo modo, debe experimentar con la configuración de precisi
 para ver si la precisión simple o mixta le dará resultados precisos, ya que normalmente serán más
 rápidos.
 
-### **Elección de parámetros**
+
+#### **Elección de parámetros**
 
 Como regla general, debe tener al menos la misma cantidad de procesos MPI que la cantidad de GPU
 disponibles. Pero a menudo, el uso de muchas tareas MPI por GPU le brinda un mejor rendimiento.
@@ -850,7 +880,8 @@ Además, uno puede encontrar que para un problema particular, el uso de 2 GPU en
 brindar un mejor rendimiento, y es por eso que es recomendable averiguar el mejor conjunto posible de
 parámetros de ejecución.
 
-### **Precisión**
+
+#### **Precisión**
 
 Para muchos de los paquetes de aceleradores se tiene la opción de usar precisión `single`, `double` o `mixed`.
 La precisión significa la cantidad de bytes que se utilizan para almacenar un número en una computadora:
@@ -865,11 +896,13 @@ La precisón `mixed` es diferente en el sentido de que se implementa en un algor
 significa que usa `single` cuando puede (para ahorrar tiempo de CPU y ancho de banda de interconexión)
 y el `double` (o más) de precisión cuando es necesario (porque necesita números con cierta precisión).
 
-# Lennard-Jones liquid benchmark con GPU (Junio 2022)
+
+## Lennard-Jones liquid benchmark con GPU (Junio 2022)
 
 Pendiente
 
-# Referencias
+
+## Referencias
 
 [LAMMPS](https://www.lammps.org/#gsc.tab=0)
 

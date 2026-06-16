@@ -1,11 +1,14 @@
-# Descripción
+# Discrete 3D fast Fourier Transform
+
+
+## Descripción
 
 Resuelve numéricamente una ecuación diferencial parcial en 3D utilizando la 
 transformada rápida de Fourier. Esta es una prueba rigurosa del rendimiento 
 de la comunicación a larga distancia.
 
 
-# Compilación
+## Compilación
 
 1.  Descargue el [código fuente](https://www.nas.nasa.gov/assets/npb/NPB3.4.2.tar.gz) de los NPB:
 
@@ -81,12 +84,12 @@ de la comunicación a larga distancia.
         [t.800@yoltla NPB3.4-OMP]$ ls bin/
         ft.C.x
 
-```admonish info title=" "
+```admonish note title=" "
 En el archivo *README.install* puede encontrar más información acerca de la compilación de los NPB.
 ```
 
 
-# Ejecución
+## Ejecución
 
 1.  Cambie al directorio *bin*:
 
@@ -102,12 +105,12 @@ En el archivo *README.install* puede encontrar más información acerca de la co
 
         [c.553@yoltla bin]$ ./bt.C.x
 
-```admonish info title=" "
+```admonish note title=" "
 En el archivo *README.install* puede encontrar más información acerca de la ejecución de los NPB.
 ```
 
 
-# Salida
+## Salida
 
 A continuación se presenta la salida de una ejecución de este benchmark:
 
@@ -192,12 +195,12 @@ npb@nas.nasa.gov
 5. Opciones con las que se compiló el benchmark
 
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in ft.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
 
-# Pruebas
+## Pruebas
 
 Existen diferentes [clases de problemas](https://www.nas.nasa.gov/software/npb_problem_sizes.html) 
 para este benchmark, que varían en el tamaño de la rejilla y en el número de iteraciones, 
@@ -277,10 +280,10 @@ tablas se da un resumen de las pruebas realizadas:
 ```
 
 
-# Scripts
+## Scripts
 
 
-## Estructura de directorios
+### Estructura de directorios
 
 Dentro de la carpeta raíz *ft* existen tres subdirectorios principales, uno por cada 
 tipo de nodo en el cluster Yoltla:
@@ -365,15 +368,15 @@ correspondiente:
 
 Estas pruebas pueden ser lanzadas de manera individual o por etiquetas.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de los NPB utilizada en estos scripts es la 3.4.2.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
 
@@ -387,7 +390,7 @@ Por ejemplo, para lanzar la prueba de 20 procesos, en los nodos NC, ejecute el c
 [t.800@yoltla procesos_20]$ reframe -c npb_ft_nc_20p.py -r
 ```
 
-### **Etiquetas**
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Por ejemplo, para lanzar todas las pruebas de los nodos NC, siga los siguientes pasos:
 
@@ -437,10 +440,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-# Resultados
+## Resultados
 
 
-## Nodos NC
+### Nodos NC
 
 <span style="color: #990819;">*Tabla 4. Resultados del benchmark FT en los nodos NC*</span>
 ```
@@ -466,7 +469,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ``` 
 
 
-## Nodos TTv1
+### Nodos TTv1
 
 <span style="color: #990819;">*Tabla 5. Resultados del benchmark FT en los nodos TTv1*</span>
 ```
@@ -491,7 +494,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +---------------+------------+----------+----------+----------+--------------+------------+------------+----------+
 ```
 
-## Nodos TTv2
+### Nodos TTv2
 
 <span style="color: #990819;">*Tabla 6. Resultados del benchmark FT en los nodos TTv2*</span>
 ```
@@ -519,18 +522,18 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-## Yoltla
+### Yoltla
 
 <span style="color: #1285E3;">Resultados del benchmark FT en el cluster Yoltla</span>
 
 ![Resultados del benchmark FT en el cluster Yoltla](../../../../images/Reframe/microBenchmarks/npb/ft/yoltla.png)
 
-<span style="color: #990819;">*Resultados del benchmark FT en el cluster Yoltla*</span>
+<span style="color: #990819;">*Figura 1. Resultados del benchmark FT en el cluster Yoltla*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
 ```
 
-# Sitios de interés
+## Sitios de interés
 
 - [NAS Parallel Benchmarks](https://www.nas.nasa.gov/software/npb.html)

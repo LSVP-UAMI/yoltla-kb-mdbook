@@ -1,4 +1,7 @@
-# Descripción
+# memtester
+
+
+## Descripción
 
 memtester es una utilidad para probar el subsistema de memoria en una 
 computadora para determinar si está defectuoso.
@@ -6,7 +9,7 @@ computadora para determinar si está defectuoso.
 Para obtener más información, visite el sitio oficial de 
 [memtester](https://pyropus.ca./software/memtester/).
 
-# Compilación
+## Compilación
 
 1.  Descargue el [código fuente](https://pyropus.ca./software/memtester/old-versions/memtester-4.5.1.tar.gz) de memtester:
 
@@ -96,7 +99,8 @@ Para obtener más información, visite el sitio oficial de
     ./load memtester tests.o `cat extra-libs`
     ```
 
-# Ejecución
+
+## Ejecución
 
 Para ejecutar memtester, siga el siguiente formato:
 ```bash
@@ -115,7 +119,7 @@ Para este ejemplo, utilice el comando:
 ```
 
 
-# Salida
+## Salida
 
 A continuación se presenta la salida de una ejecución de memtester:
 
@@ -166,15 +170,15 @@ real.
 bits circundantes en la misma word32, o en las word32s anteriores y posteriores.
 
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in memtester.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
 
-# Scripts
+## Scripts
 
 
-## Estructura de directorios
+### Estructura de directorios
 
 Dentro de la carpeta raíz *memtester* existen tres subdirectorios, uno por cada tipo 
 de nodo en el cluster Yoltla:
@@ -195,15 +199,15 @@ de nodo en el cluster Yoltla:
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de memtester utilizada en estos scripts es la 4.3.0.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba 
 de interés, y ejecute el comando:
@@ -218,7 +222,7 @@ Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 [t.800@yoltla nc]$ reframe -c memtester_nc.py -r
 ```
 
-### **Etiquetas**
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para lanzar 
 todas las pruebas, siga los siguientes pasos:
@@ -248,6 +252,6 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
     /LUSTRE/home/uam/.../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2-gqmjpwbafkinwklzww777oktqutklrfn/bin/reframe: Log file(s) saved in '/tmp/rfm-jxeonz2e.log'
 ```
 
-# Sitios de interés
+## Sitios de interés
 
 - [memtester](https://pyropus.ca./software/memtester/)

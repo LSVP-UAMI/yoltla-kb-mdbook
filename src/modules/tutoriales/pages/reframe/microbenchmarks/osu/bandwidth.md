@@ -1,4 +1,7 @@
-# Descripción
+# Bandwidth
+
+
+## Descripción
 
 Las prueba de ancho de banda se lleva a cabo de la siguiente manera:
 
@@ -13,7 +16,8 @@ mensaje hasta el momento en que recibe la respuesta del receptor) y la cantidad 
 bytes enviados por el emisor. El objetivo de esta prueba es determinar la \"tasa de 
 datos sostenida máxima\" que se puede lograr a nivel de red.
 
-# Salida
+
+## Salida
 
 A continuación se presenta la salida de una ejecución de esta prueba:
 ```bash
@@ -47,12 +51,12 @@ A continuación se presenta la salida de una ejecución de esta prueba:
 ```
 
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in bandwidth.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
 
-# Pruebas
+## Pruebas
 
 Durante la prueba de ancho de banda el emisor envía al receptor diferentes cantidades 
 de bytes, desde 1 hasta 4194304. Para determinar la \"tasa de datos sostenida máxima\" 
@@ -106,17 +110,17 @@ resumen de las pruebas realizadas:
 | nc92                 | nc60                 | 4194304               |
 
 
-```admonish info title=" "
+```admonish note title=" "
 Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su 
 disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa 
 de cada tipo de nodo.
 ```
 
 
-# Scripts
+## Scripts
 
 
-## Estructura de directorios
+### Estructura de directorios
 
 Dentro de la carpeta raíz *bandwidth* existen tres subdirectorios, uno por cada tipo de 
 nodo en el cluster Yoltla:
@@ -140,15 +144,15 @@ nodo en el cluster Yoltla:
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de los OSU Micro-Benchmarks utilizada en estos scripts es la 5.9.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
 
@@ -162,7 +166,7 @@ Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 [t.800@yoltla nc]$ reframe -c osu_bw_nc.py -r
 ```
 
-### **Etiquetas**
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para lanzar todas las pruebas, siga los siguientes pasos:
 
@@ -192,10 +196,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-# Resultados
+## Resultados
 
 
-## Nodos NC
+### Nodos NC
 
 <span style="color: #990819;">*Tabla 4. Ancho de banda de los nodos NC*</span>
 ```
@@ -240,7 +244,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-## Nodos TTv1
+### Nodos TTv1
 
 <span style="color: #990819;">*Tabla 5. Ancho de banda de los nodos TTv1*</span>
 ```
@@ -265,7 +269,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-## Nodos TTv2
+### Nodos TTv2
 
 <span style="color: #990819;">*Tabla 6. Ancho de banda de los nodos TTv2*</span>
 ```
@@ -290,8 +294,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-
-## Yoltla
+### Yoltla
 
 <span style="color: #990819;">*Tabla 7. Ancho de banda del cluster Yoltla*</span>
 ```
@@ -316,12 +319,12 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Figura 1. Ancho de banda del cluster Yoltla*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
 ```
 
 
-# Sitios de interés
+## Sitios de interés
 
 - [MVAPICH: MPI over InfiniBand, Omni-Path, Ethernet/iWARP, and RoCE](http://mvapich.cse.ohio-state.edu/benchmarks/)
 

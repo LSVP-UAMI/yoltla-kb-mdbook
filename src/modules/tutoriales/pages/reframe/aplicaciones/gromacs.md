@@ -1,4 +1,7 @@
-# Descripción
+# Gromacs
+
+
+## Descripción
 
 [GROMACS](http://www.gromacs.org/)
 (GROningen MAchine for Chemical Simulations) es un paquete versátil para realizar
@@ -13,7 +16,8 @@ ejemplo, polímeros. Fue diseñado por la Universidad de Groningen.
 
 - Benchmarks: HECBioSim Benchmarks
 
-# GROMACS Performance
+
+## GROMACS Performance
 
 Obtener el mejor rendimiento de `mdrun` con `GROMACS` no es una tarea sencilla. Los desarrolladores
 de GROMACS mantienen una larga sección en su guía de usuario dedicada a
@@ -29,7 +33,8 @@ GROMACS imprime información y estadísticas de rendimiento al final del archivo
 que es útil para identificar cuellos de botella. Esta sección a menudo contiene notas sobre cómo
 mejorar aún más el rendimiento.
 
-## ns/day
+
+### ns/day
 
 <span style="color: #990819;">*Ejemplo de salida de GROMACS*</span>
 
@@ -44,7 +49,8 @@ mejorar aún más el rendimiento.
 El rendimiento de la simulación en `GROMACS` normalmente se cuantifica por el número de nanosegundos
 de trayectoria `MD` que se pueden simular en un día (`ns/day`).
 
-## Energy
+
+### Energy
 
 Gromacs muestra un informe del promedio obtenido de los cálculos de la simulación.
 
@@ -71,7 +77,8 @@ Gromacs muestra un informe del promedio obtenido de los cálculos de la simulaci
 Los valores de energía están en kcal/mol. Para este trabajo, solo nos interesa evaluar que la variable
 `Total Energy` llegue a ciertos valores esperados para cada simulación.
 
-# Eficiencia paralela
+
+## Eficiencia paralela
 
 La eficiencia de un sistema paralelo describe la fracción del tiempo que utilizan los procesadores para
 un cálculo determinado. Se define como:
@@ -79,9 +86,9 @@ un cálculo determinado. Se define como:
 <span style="color: #990819;">*Calculo de eficiencia paralela:*</span>
 
 ```bash
-               Tiempo de ejecución usando un procesador             ts
-        E(n)= -----------------------------------------------   = ------
-               N * Tiempo de ejecución usando N procesadores      N * tN
+            Tiempo de ejecución usando un procesador             ts
+    E(n)= -----------------------------------------------   = ------
+            N * Tiempo de ejecución usando N procesadores      N * tN
 ```
 
 
@@ -98,14 +105,15 @@ cálculo por nodo, en lugar de por CPU. La eficiencia paralela quedaría del sig
 <span style="color: #990819;">*Calculo de eficiencia paralela por nodo*</span>
 
 ```bash
-                Wall time donde N = 1
-        ------------------------------------- * 100 = Eficiencia
-                N * Wall time en N nodos
+            Wall time donde N = 1
+    ------------------------------------- * 100 = Eficiencia
+            N * Wall time en N nodos
 ```
 
 Idealmente, el rendimiento aumenta linealmente con el número de núcleos de CPU.
 
-# Obtener un buen rendimiento de mdrun
+
+## Obtener un buen rendimiento de mdrun
 
 Aquí ofrecemos una descripción general de los esquemas de paralelización y aceleración empleados en este
 trabajo por GROMACS. El objetivo es proporcionar una comprensión de los mecanismos subyacentes que hacen
@@ -114,14 +122,16 @@ de GROMACS uno de los paquetes de dinámica molecular más rápidos.
 El sistema de compilación GROMACS y la herramienta `gmx_mdrun` tienen mucha inteligencia integrada y
 configurable para detectar el hardware y hacer un uso bastante efectivo de él.
 
-## Distribución del trabajo por paralelización en GROMACS
+
+### Distribución del trabajo por paralelización en GROMACS
 
 Los algoritmos de
 [`gmx mdrun`](https://manual.gromacs.org/documentation/current/onlinehelp/gmx-mdrun.html#gmx-mdrun)
 y sus implementaciones son los más relevantes a la hora de elegir cómo hacer
 un buen uso del hardware. Los más importantes de estos son:
 
-### Descomposición de Dominio
+
+#### Descomposición de Dominio
 
 El algoritmo de descomposición de dominios (DD) descompone el componente (de corto alcance) de
 las interacciones no vinculadas en dominios que comparten localidad espacial, lo que permite el uso de
@@ -136,7 +146,8 @@ opciones de
 [línea de comandos](https://manual.gromacs.org/documentation/current/user-guide/mdrun-performance.html#controlling-the-domain-decomposition-algorithm)
 para controlar el comportamiento del algoritmo DD.
 
-### Malla de partículas Ewald
+
+#### Malla de partículas Ewald
 
 El algoritmo Ewald de malla de partículas (PME) se encarga del componente de largo alcance de las
 interacciones no enlazadas. Todos, o solo un subconjunto de procesos pueden participar en el trabajo
@@ -146,7 +157,8 @@ puede significar que es más rápido usar solo un subconjunto de procesos (por e
 parte a la mitad de los procesos). Si hay procesos de PME separados, los procesos restantes manejan el
 trabajo de PP. De lo contrario, todos los procesos trabajan tanto en PP como en PME.
 
-## Ejecutando mdrun en más de un nodo
+
+### Ejecutando mdrun en más de un nodo
 
 De forma predeterminada, `gmx_mdrun` inspeccionará el hardware disponible en tiempo de ejecución y
 hará todo lo posible para hacer un uso bastante eficiente de todo el nodo. El archivo de registro, stdout
@@ -186,7 +198,8 @@ predeterminado, para este trabajo se usaron los siguientes :
     solo si el número total de subprocesos es de al menos 12, y utilizará alrededor de una cuarta parte de
     los procesos. Para este trabajo se utilizo una cuarta parte de los procesos dedicados a PME
 
-# The HECBioSim Benchmarks (Junio 2022)
+
+## The HECBioSim Benchmarks (Junio 2022)
 
 El conjunto de pruebas
 [HECBioSim](https://www.hecbiosim.ac.uk/access-hpc/benchmarks)
@@ -265,7 +278,8 @@ los científicos de biosimulación harían en producción.
 
 Los siguientes resultados, son el promedio de 20 ejecuciones por Benchmark.
 
-## 20K atom system -- 3NIR Crambin
+
+### 20K atom system -- 3NIR Crambin
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 
@@ -273,8 +287,9 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 
 ![Figure crambin](../../../images/Reframe/Apps/Gromacs/Figure_crambin.png)
 
+\
 <span style="color: #990819;">*Table 1. Performance 20K atom system: Crambin Benchmark*</span>
-
+```
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón      | 20 Cores x 2.60GHz Intel Xeón      | 32 Cores x 2.10GHz Intel Xeon      |
@@ -297,12 +312,10 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | 16      | 432.181    | 19.33  | 49 %         | 435.212    | 18.92  | 50 %         | 356.081    | 24.44  | 24 %         |
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
+```
 
 
-
-: Performance 20K atom system: Crambin Benchmark
-
-## 61K atom system - 1WDN Glutamine-Binding Protein
+### 61K atom system - 1WDN Glutamine-Binding Protein
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-724598.0`
 
@@ -310,8 +323,9 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-724598.0`
 
 ![Figure glutamine](../../../images/Reframe/Apps/Gromacs/Figure_glutamine.png)
 
+\
 <span style="color: #990819;">*Table 2. Performance 61K atom system: Glutamine-Binding Benchmark*</span>
-
+```
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón      | 20 Cores x 2.60GHz Intel Xeón      | 32 Cores x 2.10GHz Intel Xeon      |
@@ -334,10 +348,10 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-724598.0`
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | 16      | 196.275    | 44.20  | 69 %         | 199.261    | 43.41  | 71 %         | 224.141    | 38.69  | 56 %         |
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
+```
 
-: Performance 61K atom system: Glutamine-Binding Benchmark
 
-## 465K atom system - hEGFR Dimer of 1IVO and 1NQL
+### 465K atom system - hEGFR Dimer of 1IVO and 1NQL
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-3.32892e+06`
 
@@ -345,8 +359,9 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-3.32892e+06`
 
 ![Figure dimer](../../../images/Reframe/Apps/Gromacs/Figure_dimer.png)
 
+\
 <span style="color: #990819;">*Table 3. Performance 465K atom system: hEGFR Dimer Benchmark*</span>
-
+```
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón      | 20 Cores x 2.60GHz Intel Xeón      | 32 Cores x 2.10GHz Intel Xeon      |
@@ -369,10 +384,10 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-3.32892e+06`
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 | 16      | 29.912     | 57.49  | 86 %         | 27.162     | 61.83  | 81 %         | 38.853     | 44.59  | 81 %         |
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
+```
 
-: Performance 465K atom system: hEGFR Dimer Benchmark
 
-## 1.4M atom system - A Pair of hEGFR Dimers of 1IVO and 1NQL
+### 1.4M atom system - A Pair of hEGFR Dimers of 1IVO and 1NQL
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-1.20733e+07`
 
@@ -380,8 +395,9 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-1.20733e+07`
 
 ![Figure dimer pair](../../../images/Reframe/Apps/Gromacs/Figure_dimer_pair.png)
 
+\
 <span style="color: #990819;">*Table 4. Performance 1.4M atom system: A Pair of hEGFR Dimer Benchmark*</span>
-
+```
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
 | **\#    | **CPU's Nodos nc\                   | **CPU's Nodos ttv1\[1-58\]\         | **CPU's Nodos ttv2\[59-104\]\       |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón       | 20 Cores x 2.60GHz Intel Xeón       | 32 Cores x 2.10GHz Intel Xeon       |
@@ -404,10 +420,10 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-1.20733e+07`
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
 | 16      | 12.00      | 143.01  | 92 %         | 11.724     | 147.57  | 91 %         | 13.423     | 128.21  | 80 %         |
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
+```
 
-: Performance 1.4M atom system: A Pair of hEGFR Dimer Benchmark
 
-## 3M atom system - A Pair of hEGFR tetramers of 1IVO and 1NQL
+### 3M atom system - A Pair of hEGFR tetramers of 1IVO and 1NQL
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
@@ -415,8 +431,9 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
 ![Figure tetramers](../../../images/Reframe/Apps/Gromacs/Figure_tetramers.png)
 
+\
 <span style="color: #990819;">*Table 5. Performance 3M atom system: Tetramers Benchmark*</span>
-
+```
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
 | **\#    | **CPU's Nodos nc\                   | **CPU's Nodos ttv1\[1-58\]\         | **CPU's Nodos ttv2\[59-104\]\       |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón       | 20 Cores x 2.60GHz Intel Xeón       | 32 Cores x 2.10GHz Intel Xeon       |
@@ -439,17 +456,18 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
 | 16      | 5.202      | 313.81  | 92 %         | 5.234      | 335.36  | 86 %         | 6.029      | 287.27  | 84 %         |
 +---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
+```
 
-: Performance 3M atom system: Tetramers Benchmark
 
-### Performance Tetramers Benchmark en nodos NC
+#### Performance Tetramers Benchmark en nodos NC
 
 <span style="color: #990819;">*Figure 6. Performance Tetramers Benchmark en nodos NC*</span>
 
 ![Figure error nc tetramers](../../../images/Reframe/Apps/Gromacs/Figure_error_nc_tetramers.png)
 
+\
 <span style="color: #990819;">*Table 6. Performance Tetramers Benchmark en nodos NC*</span>
-
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                                      |
@@ -473,17 +491,18 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 5.202         | 4.146         | 5.580         | 0.6101        | 313           |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Tetramers Benchmark en nodos NC
 
-### Performance Tetramers Benchmark en nodos TTV1
+#### Performance Tetramers Benchmark en nodos TTV1
 
 <span style="color: #990819;">*Figure 7. Performance Tetramers Benchmark en nodos TTV1*</span>
 
 ![Figure error ttv1 tetramers](../../../images/Reframe/Apps/Gromacs/Figure_error_ttv1_tetramers.png)
 
-<span style="color: #990819;">*table 7. Performance Tetramers Benchmark en nodos TTV1*</span>
-
+\
+<span style="color: #990819;">*Table 7. Performance Tetramers Benchmark en nodos TTV1*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
 | Nodos** | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                                      |
@@ -509,17 +528,18 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 5.234         | 5.125         | 5.377         | 0.0832        | 335           |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Tetramers Benchmark en nodos TTV1
 
-### Performance Tetramers Benchmark en nodos TTV2
+#### Performance Tetramers Benchmark en nodos TTV2
 
 <span style="color: #990819;">*Figure 8. Performance Tetramers Benchmark en nodos TTv2*</span>
 
 ![Figure error ttv2 tetramers](../../../images/Reframe/Apps/Gromacs/Figure_error_ttv2_tetramers.png)
 
+\
 <span style="color: #990819;">*Table 8. Performance Tetramers Benchmark en nodos TTv2*</span>
-
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
 | Nodos** | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                                      |
@@ -543,10 +563,10 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 6.029         | 5.831         | 6.105         | 0.1013        | 287           |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance Tetramers Benchmark en nodos TTV2
 
-# Gromacs en GPU
+## Gromacs en GPU
 
 De forma predeterminada, GROMACS lanza un rango de procesos por GPU. En este trabajo
 exploraremos la paralización haciendo uso de más procesos thread-mpi,
@@ -637,16 +657,18 @@ fijación de subprocesos usando y opciones de `-pin on`, `-pinstride 1`. La prim
 fijación de subprocesos, la segunda establece cómo deben distribuirse entre los núcleos (1 significa
 consecutivos).
 
-## 3M atom system - A Pair of hEGFR tetramers of 1IVO and 1NQL (Junio 2022)
+
+### 3M atom system - A Pair of hEGFR tetramers of 1IVO and 1NQL (Junio 2022)
 
 La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
-<span style="color: #990819;">*Figure 10. Performance Tetramers Benchmark en GPUS*</span>
+<span style="color: #990819;">*Figure 9. Performance Tetramers Benchmark en GPUS*</span>
 
 ![Figure tetramer Gpu](../../../images/Reframe/Apps/Gromacs/Figure_tetramer-Gpu.png)
 
-<span style="color: #990819;">*Table 10. Performance Tetramers Benchmark en GPUS*</span>
-
+\
+<span style="color: #990819;">*Table 9. Performance Tetramers Benchmark en GPUS*</span>
+```
 +-------------+---------------+---------------+---------------+---------------+
 | **\# GPU    | **Nodos GPUS Tesla K20\       | **Nodos nc con GPUS V100\     |
 | devices**   | 20 Cores\                     | 36 Cores\                     |
@@ -664,8 +686,7 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 +-------------+---------------+---------------+---------------+---------------+
 | 8           | 1.872         | 987.119       |               |               |
 +-------------+---------------+---------------+---------------+---------------+
-
-: Performance Tetramers Benchmark en GPUS
+```
 
 Observamos una aceleración considerable en la particiones vgpus obteniendo un performance
 en 4 gpus superior al uso de 8 nodos de las particiones cpu.
@@ -676,7 +697,8 @@ tentativas solo para demostrar su uso. Se recomienda a los usuarios que realicen
 exhaustiva para obtener valores óptimos de esta configuración para aprovechar la máxima aceleración
 posible.
 
-# Rerencias
+
+## Rerencias
 
 [Gromacs](http://www.gromacs.org/)
 

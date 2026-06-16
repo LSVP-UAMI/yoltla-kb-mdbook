@@ -1,4 +1,4 @@
-# <span style="color: blue;">NGINX</span> 
+# NGINX
 
 
 ## Descripción
@@ -111,7 +111,7 @@ server {
 }
 ```
 
-```admonish attention title=" "
+```admonish important title=" "
 Todas las configuraciones mostradas en las siguientes secciones deben realizarse en el 
 archivo *default.conf*, a menos que se indique lo contrario.
 ```

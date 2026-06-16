@@ -1,4 +1,6 @@
-# Descripción
+# HPCG
+
+## Descripción
 
 El benchmark High Performance Conjugate Gradients (HPCG) es un esfuerzo por crear una 
 nueva métrica para clasificar los sistemas HPC. HPCG pretende ser un complemento del 
@@ -14,7 +16,7 @@ el rendimiento colectivo de estas aplicaciones.
 
 Para obtener más información, visite el sitio oficial de [HPCG](https://hpcg.info/).
 
-# Archivo de entrada
+## Archivo de entrada
 
 HPCG necesita un archivo de entrada para poder ejecutarse, por defecto HPCG buscará 
 este archivo con el nombre *hpcg.dat*. A continuación se presenta un ejemplo de este 
@@ -72,12 +74,12 @@ cronometrada del benchmark. El valor por defecto de esta línea es:
   de tiempo no es suficiente para enviar una ejecución oficial, pero brinda datos suficientes 
   para ajustar el punto de referencia en la mayoría de los casos.
   
-  ```admonish info title=" "
+  ```admonish note title=" "
   Las ejecuciones oficiales deben ser de al menos 1800 segundos (30 minutos).
   ```
   
 
-# Archivos de salida
+## Archivos de salida
 
 A continuación se presenta el archivo de entrada:
 
@@ -322,11 +324,11 @@ en la fase de configuración de HPCG.
 
   Resultados finales obtenidos por el benchmark. GFLOP/s obtenidos.
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in hpcg.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
-# Pruebas
+## Pruebas
 
 Una ejecución válida debe utilizar un tamaño de problema que sea lo suficientemente 
 grande para que las matrices de datos a las que se accede en el bucle de iteración 
@@ -361,7 +363,7 @@ en cada tipo de nodo:
 | 16       | 320      | 144          | 144          | 144          | 1800      |
 +----------+----------+--------------+--------------+--------------+-----------+
 ```
-
+\
 <span style="color: #990819;">*Tabla 2. Pruebas en los nodos TTv1*</span>
 ```
 +----------+----------+--------------+--------------+--------------+-----------+
@@ -385,7 +387,7 @@ en cada tipo de nodo:
 | 16       | 320      | 176          | 176          | 176          | 1800      |
 +----------+----------+--------------+--------------+--------------+-----------+
 ```
-
+\
 <span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
 ```
 +----------+----------+--------------+--------------+--------------+-----------+
@@ -411,10 +413,10 @@ en cada tipo de nodo:
 ```
 
 
-# Scripts
+## Scripts
 
 
-## Estructura de directorios
+### Estructura de directorios
 
 Dentro de la carpeta raíz *hpcg* existen tres subdirectorios principales, uno por 
 cada tipo de nodo en el cluster Yoltla:
@@ -504,15 +506,15 @@ hpcg/
 Estas pruebas van desde 1 hasta 16 nodos, y pueden ser lanzadas de manera individual 
 o por etiquetas.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de HPCG utilizada en estos scripts es la 3.1.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba 
 de interés, y ejecute el comando:
@@ -527,7 +529,7 @@ Por ejemplo, para lanzar la prueba de 16 nodos, en los nodos NC, ejecute el coma
 [t.800@yoltla nodos_16]$ reframe -c hpcg_nc_320p.py -r
 ```
 
-### **Etiquetas**
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Por ejemplo, 
 para lanzar todas las pruebas de los nodos NC, siga los siguientes pasos:
@@ -578,10 +580,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-# Resultados
+## Resultados
 
 
-## Nodos NC
+### Nodos NC
 
 <span style="color: #990819;">*Tabla 4. Rendimiento de los nodos NC*</span>
 ```
@@ -612,7 +614,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Figura 1. Rendimiento de los nodos NC*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento obtenido en 1 nodo.
 ```
 
@@ -646,12 +648,12 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 <span style="color: #990819;">*Figura 2. Eficiencia Paralela de los nodos NC*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficiencia paralela del resto.
 ```
 
 
-## Nodos TTv1
+### Nodos TTv1
 
 <span style="color: #990819;">*Tabla 6. Rendimiento de los nodos TTv1*</span>
 ```
@@ -683,7 +685,7 @@ Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficienc
 
 <span style="color: #990819;">*Figura 3. Rendimiento de los nodos TTv1*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento obtenido en 1 nodo.
 ```
 
@@ -717,12 +719,12 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 <span style="color: #990819;">*Figura 4. Eficiencia Paralela de los nodos TTv1*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficiencia paralela del resto.
 ```
 
 
-## Nodos TTv2
+### Nodos TTv2
 
 <span style="color: #990819;">*Tabla 8. Rendimiento de los nodos TTv2*</span>
 ```
@@ -754,7 +756,7 @@ Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficienc
 
 <span style="color: #990819;">*Figura 5. Rendimiento de los nodos TTv2*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento obtenido en 1 nodo.
 ```
 
@@ -789,12 +791,12 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 <span style="color: #990819;">*Figura 6. Eficiencia Paralela de los nodos TTv2*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficiencia paralela del resto.
 ```
 
 
-## Yoltla
+### Yoltla
 
 <span style="color: #1285E3;">Rendimiento promedio de los nodos del cluster Yoltla</span>
 
@@ -809,12 +811,12 @@ Se utilizó como base la eficiencia paralela en 1 nodo para calcular la eficienc
 
 <span style="color: #990819;">*Figura 8. Eficiencia Paralela promedio de los nodos del cluster Yoltla*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el periodo de Febrero-Marzo del 2022.
 ```
 
 
-# Sitios de interés
+## Sitios de interés
 
 - [HPCG Benchmark](https://hpcg.info/)
 

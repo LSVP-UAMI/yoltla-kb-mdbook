@@ -1,4 +1,7 @@
-# Descripción
+# Latency
+
+
+## Descripción
 
 La latencia de datos o ancho de banda es uno de los elementos clave responsables del 
 rendimiento y la escalabilidad de las aplicaciones. Cuanto menor sea la latencia, mejor 
@@ -19,7 +22,8 @@ Para este trabajo se probo:
 
 - Versión de MPI: intel-impi-2017u4
 
-# OSU MPI Micro-Benchmark: All-to-all.
+
+## OSU MPI Micro-Benchmark: All-to-all.
 
 El `osu_alltoall` benchmark mide la latencia mínima, máxima y promedio de la operación 
 colectiva de bloqueo `MPI_Alltoall` en N procesos, para varias longitudes de mensajes, en una gran
@@ -80,7 +84,7 @@ iteraciones que se ejecutan en nodos completos por partición, 1 proceso por cor
 Observamos una latencia consistente en los diferentes tipo de nodos presente en el cluster Yoltla.
 
 
-## Performance OSU MPI Micro-Benchmark: All-to-all en nodos NC.
+### Performance OSU MPI Micro-Benchmark: All-to-all en nodos NC.
 
 <span style="color: #990819;">*Salida OSU MPI: All-to-all en 1 nodo NC*</span>
 
@@ -182,7 +186,7 @@ Nodos usados: nc[82,90-91,94,102,104,116,124-125,127,134,144-146,149-150]
 ```
 
 
-## Performance OSU MPI Micro-Benchmark: All-to-all en nodos TTV1.
+### Performance OSU MPI Micro-Benchmark: All-to-all en nodos TTV1.
 
 <span style="color: #990819;">*Salida OSU MPI: All-to-all en 1 nodo TTV1*</span>
 
@@ -305,7 +309,7 @@ Nodos usados: tt[9-11,16,27-28,30-31,33-34,36-39,41,51]
 ```
 
 
-## Performance OSU MPI Micro-Benchmark: All-to-all en nodos TTV2.
+### Performance OSU MPI Micro-Benchmark: All-to-all en nodos TTV2.
 
 <span style="color: #990819;">*Salida OSU MPI: All-to-all en 1 nodos TTV2*</span>
 
@@ -408,7 +412,7 @@ Nodos usados: tt[61-62,64-67,69-76,91,93]
 ```
 
 
-# Referencias
+## Referencias
 
 [OSU micro-benchmarks](http://mvapich.cse.ohio-state.edu/benchmarks/)
 

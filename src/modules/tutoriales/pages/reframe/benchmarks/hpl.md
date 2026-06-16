@@ -1,4 +1,7 @@
-# Descripción
+# HPL
+
+
+## Descripción
 
 HPL es un paquete de software que resuelve un sistema lineal denso (aleatorio)
 en aritmética de doble precisión (64 bits) en computadoras con memoria distribuida. 
@@ -11,7 +14,7 @@ la precisión de la solución obtenida, así como el tiempo necesario para calcu
 Para obtener más información, visite el sitio oficial de [HPL](https://netlib.org/benchmark/hpl/).
 
 
-# Archivo de entrada
+## Archivo de entrada
 
 HPL necesita un archivo de entrada para poder ejecutarse, por defecto HPL buscará
 este archivo con el nombre *HPL.dat*. A continuación se presenta un ejemplo de este archivo:
@@ -133,7 +136,7 @@ Para obtener más información, consulte la sección
 [HPL Tuning](https://netlib.org/benchmark/hpl/tuning.html) del sitio oficial de HPL.
 
 
-# Archivo de salida
+## Archivo de salida
 
 A continuación se presenta el archivo de entrada:
 
@@ -286,11 +289,11 @@ End of Tests.
   - Número de pruebas omitidas debido a valores de entrada ilegales
 
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in hpl.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
-# Pruebas
+## Pruebas
 
 Las pruebas realizadas con este benchmark se dividen en dos grupos:
 
@@ -303,7 +306,7 @@ del problema se mantiene fijo en todas las pruebas.
 En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo de nodo:
 
 <span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>
-
+```
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | **Número\ | **Número\ | **Tamaño del problema**         | **Tamaño | **Tamaño de\          |
 | de        | de CPUs** |                                 | del\     | la cuadrícula**       |
@@ -324,11 +327,10 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | 16        | 320       | 329728          | 82432         | 224      | 16        | 20        |
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
-
-: Pruebas en los nodos NC
-
-<span style="color: #990819;">*Tabla 1. Pruebas en los nodos TTv1*</span>
-
+```
+\
+<span style="color: #990819;">*Tabla 2. Pruebas en los nodos TTv1*</span>
+```
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | **Número\ | **Número\ | **Tamaño del problema**         | **Tamaño | **Tamaño de\          |
 | de        | de CPUs** |                                 | del\     | la cuadrícula**       |
@@ -349,11 +351,10 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | 16        | 320       | 466368          | 116480        | 224      | 16        | 20        |
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
-
-: Pruebas en los nodos TTv1
-
-<span style="color: #990819;">*Tabla 1. Pruebas en los nodos TTv2*</span>
-
+```
+\
+<span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
+```
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | **Número\ | **Número\ | **Tamaño del problema**         | **Tamaño | **Tamaño de\          |
 | de        | de CPUs** |                                 | del\     | la cuadrícula**       |
@@ -374,14 +375,13 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
 | 16        | 512       | 659456          | 164864        | 224      | 16        | 32        |
 +-----------+-----------+-----------------+---------------+----------+-----------+-----------+
-
-: Pruebas en los nodos TTv2
-
-
-# Scripts
+```
 
 
-## Estructura de directorios
+## Scripts
+
+
+### Estructura de directorios
 
 Dentro de la carpeta raíz *hpl* existen tres subdirectorios principales, uno por cada tipo de nodo en el cluster Yoltla:
 
@@ -468,15 +468,15 @@ hpl
 
 Estas pruebas van desde 1 hasta 16 nodos, y pueden ser lanzadas de manera individual o por etiquetas.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de HPL utilizada en estos scripts es la 2.3.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de interés, y ejecute el comando:
 
@@ -491,7 +491,7 @@ Por ejemplo, para lanzar la prueba de 16 nodos, en los nodos NC, ejecute el coma
 ```
 
 
-### **Etiquetas**
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Por ejemplo, para lanzar todas las pruebas de los nodos NC, siga los siguientes pasos:
 
@@ -541,16 +541,15 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-# Resultados
+## Resultados
 
 
-## Nodos NC
+### Nodos NC
 
 
-### **Rendimiento**
+#### Rendimiento
 
 <span style="color: #990819;">*Tabla 4. Rendimiento de los nodos NC*</span>
-
 ```
 +---------------+----------+------------+-------------+--------------+------------+------------+------------+
 | **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
@@ -572,24 +571,23 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 | 5             | 16       | 329728     | 6400.00     | 6228.20      | 6044.70    | 6284.20    | 92.06      |
 +---------------+----------+------------+-------------+--------------+------------+------------+------------+
 ```
-
+\
 <span style="color: #1285E3;">Rendimiento de los nodos NC</span>
 
 ![Rendimiento de los nodos NC](../../../images/Reframe/benchmarks/hpl/rendimiento/nc.png)
 
 <span style="color: #990819;">*Figura 1. Rendimiento de los nodos NC*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento teórico en 1 nodo. Este valor se obtuvo del siguiente [documento](https://www.intel.com/content/dam/support/us/en/documents/processors/APP-for-Intel-Xeon-Processors.pdf).
 
 Para obtener más información, consulte el siguiente [enlace](https://www.intel.com/content/www/us/en/support/articles/000005755/processors.html).
 ```
 
 
-### **Eficiencia paralela**
+#### Eficiencia paralela
 
 <span style="color: #990819;">*Tabla 5. Rendimiento de los nodos NC*</span>
-
 ```
 +---------------+----------+------------+-------------+--------------+------------+------------+------------+
 | **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
@@ -611,7 +609,6 @@ Para obtener más información, consulte el siguiente [enlace](https://www.intel
 | 5             | 16       | 82432      | 6576.86     | 5129.76      | 5068.80    | 5171.00    | 38.33      |
 +---------------+----------+------------+-------------+--------------+------------+------------+------------+
 ```
-
 \
 <span style="color: #1285E3;">Rendimiento de los nodos NC</span>
 
@@ -619,12 +616,11 @@ Para obtener más información, consulte el siguiente [enlace](https://www.intel
 
 <span style="color: #990819;">*Figura 2. Rendimiento de los nodos NC*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento obtenido en 1 nodo.
 ```
 
 <span style="color: #990819;">*Tabla 6. SpeedUp de los nodos NC*</span>
-
 ```
 +---------------+----------+------------+------------+--------------+------------+------------+------------+
 | **No. de\     | **Número | **Tamaño   | **SpeedUp**                                                      |
@@ -646,7 +642,6 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 | 5             | 16       | 82432      | 16.00      | 12.48        | 12.29      | 12.62      | 0.11       |
 +---------------+----------+------------+------------+--------------+------------+------------+------------+
 ```
-
 \
 <span style="color: #1285E3;">SpeedUp de los nodos NC</span>
 
@@ -677,7 +672,6 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 | 5             | 16       | 82432      | 1.00       | 0.78         | 0.77       | 0.79       | 0.01       |
 +---------------+----------+------------+------------+--------------+------------+------------+------------+
 ```
-
 \
 <span style="color: #1285E3;">Eficiencia Paralela de los nodos NC</span>
 
@@ -686,10 +680,10 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <span style="color: #990819;">*Figura 4. Eficiencia Paralela de los nodos NC*</span>
 
 
-## Nodos TTv1
+### Nodos TTv1
 
 
-### **Rendimiento**
+#### Rendimiento
 
 <span style="color: #990819;">*Tabla 8. Rendimiento de los nodos TTv1*</span>
 ```
@@ -720,14 +714,14 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 <span style="color: #990819;">*Figura 5. Rendimiento de los nodos TTv1*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento teórico en 1 nodo. Este valor se obtuvo del siguiente [documento](https://www.intel.com/content/dam/support/us/en/documents/processors/APP-for-Intel-Xeon-Processors.pdf).
 
 Para obtener más información, consulte el siguiente [enlace](https://www.intel.com/content/www/us/en/support/articles/000005755/processors.html).
 ```
 
 
-### **Eficiencia paralela**
+#### Eficiencia paralela
 
 <span style="color: #990819;">*Tabla 9. Rendimiento de los nodos TTv1*</span>
 ```
@@ -758,7 +752,7 @@ Para obtener más información, consulte el siguiente [enlace](https://www.intel
 
 <span style="color: #990819;">*Figura 6. Rendimiento de los nodos TTv1*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento obtenido en 1 nodo.
 ```
 
@@ -824,10 +818,10 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <span style="color: #990819;">*Figura 8. Eficiencia Paralela de los nodos TTv1*</span>
 
 
-## Nodos TTv2
+### Nodos TTv2
 
 
-### **Rendimiento**
+#### Rendimiento
 
 <span style="color: #990819;">Tabla 12. Rendimiento de los nodos TTv2</span>
 ```
@@ -859,14 +853,14 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 <span style="color: #990819;">*Figura 9. Rendimiento de los nodos TTv2*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento teórico en 1 nodo. Este valor se obtuvo del siguiente [documento](https://www.intel.com/content/dam/support/us/en/documents/processors/APP-for-Intel-Xeon-Processors.pdf).
 
 Para obtener más información, consulte el siguiente [enlace](https://www.intel.com/content/www/us/en/support/articles/000005755/processors.html).
 ```
 
 
-### **Eficiencia paralela**
+#### Eficiencia paralela
 
 <span style="color: #990819;">*Tabla 13. Rendimiento de los nodos TTv2*</span>
 ```
@@ -898,7 +892,7 @@ Para obtener más información, consulte el siguiente [enlace](https://www.intel
 
 <span style="color: #990819;">*Figura 10. Rendimiento de los nodos TTv2*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Los valores teóricos se calcularon tomando como base el rendimiento obtenido en 1 nodo.
 ```
 
@@ -965,10 +959,10 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <span style="color: #990819;">*Figura 12. Eficiencia Paralela de los nodos TTv2*</span>
 
 
-## Yoltla
+### Yoltla
 
 
-### **Rendimiento**
+#### Rendimiento
 
 <span style="color: #1285E3;">Rendimiento promedio de los nodos del cluster Yoltla</span>
 
@@ -977,7 +971,7 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <span style="color: #990819;">*Figura 13. Rendimiento promedio de los nodos del cluster Yoltla*</span>
 
 
-### **Eficiencia paralela**
+#### Eficiencia paralela
 
 <span style="color: #1285E3;">Rendimiento promedio de los nodos del cluster Yoltla</span>
 
@@ -1000,11 +994,11 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <span style="color: #990819;">*Figura 16. Eficiencia Paralela promedio de los nodos del cluster Yoltla*</span>
 
 
-```admonish info title=" "
+```admonish note title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Febrero del 2022.
 ```
 
-# Sitios de interés
+## Sitios de interés
 
 - [HPL - A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers](https://netlib.org/benchmark/hpl/)
 

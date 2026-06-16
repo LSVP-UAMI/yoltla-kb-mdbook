@@ -1,4 +1,6 @@
-# Descripción
+# DiskWrite
+
+## Descripción
 
 La velocidad de escritura de un disco es el parámetro que determina la rapidez con 
 la que se puede escribir un archivo en el sistema. Una baja velocidad de escritura 
@@ -10,7 +12,8 @@ de ellos requieren permisos de superusuario (root) para su ejecución, con el fi
 este problema, se optó por utilizar el comando `dd` del del paquete 
 [GNU Core Utilities](https://www.gnu.org/software/coreutils/).
 
-# Ejecución
+
+## Ejecución
 
 1.  Cargue el módulo de Coreutils:
 
@@ -24,7 +27,7 @@ este problema, se optó por utilizar el comando `dd` del del paquete
     [t.800@yoltla ~]$ sync; dd if=/dev/zero of=/tmp/write_file bs=1M count=1024 oflag=dsync status=progress; sync
     ```
 
-# Salida
+## Salida
 
 A continuación se presenta la salida de una ejecución de esta prueba:
 
@@ -43,11 +46,11 @@ A continuación se presenta la salida de una ejecución de esta prueba:
 
 4. Bytes copiados, tiempo de ejecución, velocidad final de escritura
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in diskwrite.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
-# Pruebas
+## Pruebas
 
 No existe una restricción en el tamaño del archivo a escribir en esta prueba, por lo 
 que el criterio para determinar los parámetros de la misma fue el de poder realizar 
@@ -99,16 +102,16 @@ En las siguientas tablas se da un resumen de las pruebas realizadas:
 | tt92     | 1M     | 8192      |
 
 
-```admonish info title=" "
+```admonish note title=" "
 Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su 
 disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa 
 de cada tipo de nodo.
 ```
 
 
-# Scripts
+## Scripts
 
-## Estructura de directorios
+### Estructura de directorios
 
 Dentro de la carpeta raíz *diskwrite* existen tres subdirectorios, uno por cada tipo 
 de nodo en el cluster Yoltla:
@@ -129,15 +132,15 @@ de nodo en el cluster Yoltla:
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de coreutils utilizada en estos scripts es la 8.32.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba de 
 interés, y ejecute el comando:
@@ -152,7 +155,8 @@ Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 [t.800@yoltla nc]$ reframe -c diskwrite_nc.py -r
 ```
 
-### **Etiquetas**
+
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para lanzar 
 todas las pruebas, siga los siguientes pasos:
@@ -183,10 +187,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-# Resultados
+## Resultados
 
 
-## Nodos NC
+### Nodos NC
 
 <span style="color: #990819;">*Tabla 4. Resultados de la prueba DiskWrite en los nodos NC*</span>
 ```
@@ -237,7 +241,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 1. Resultados de la prueba DiskWrite en los nodos NC*</span>
 
 
-## Nodos TTv1
+### Nodos TTv1
 
 <span style="color: #990819;">*Tabla 5. Resultados de la prueba DiskWrite en los nodos TTv1*</span>
 ```
@@ -272,7 +276,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 2. Resultados de la prueba DiskWrite en los nodos TTv1*</span>
 
 
-## Nodos TTv2
+### Nodos TTv2
 
 <span style="color: #990819;">*Tabla 6. Resultados de la prueba DiskWrite en los nodos TTv2*</span>
 ```
@@ -301,7 +305,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 3. Resultados de la prueba DiskWrite en los nodos TTv2*</span>
 
 
-## Yoltla
+### Yoltla
 
 <span style="color: #990819;">*Tabla 7. Resultados de la prueba DiskWrite en el cluster Yoltla*</span>
 ```
@@ -324,11 +328,11 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Figura 4. Resultados de la prueba DiskWrite en el cluster Yoltla*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
 ```
 
-# Sitios de interés
+## Sitios de interés
 
 - [dd: Convert and copy a file](https://www.gnu.org/software/coreutils/manual/coreutils.html#dd-invocation)
 

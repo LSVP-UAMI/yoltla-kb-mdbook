@@ -1,8 +1,11 @@
-# Requisitos previos
+# Nuevos tutoriales
+
+
+## Requisitos previos
 
 Para agregar un nuevo tutorial a Yoltla Knowledge Base
 
-# Clonar el repositorio
+## Clonar el repositorio
 
 Clone el repositorio en el que se encuentra la configuración de Antora:
 
@@ -49,7 +52,7 @@ $ git commit -m "nuevo_tutorial"
 $ git push
 ```
 
-# Actualizar el sitio web
+## Actualizar el sitio web
 
 Para actualizar el sitio web es necesario conectarse al contenedor de Antora por 
 medio de su ID. Para obtener el ID del contenedor, ejecute el comando:

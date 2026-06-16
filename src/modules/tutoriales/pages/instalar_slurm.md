@@ -82,7 +82,7 @@ opción al kernel
     selinux=0
 ```
 
-<span style="color: #990819;">*Example1. Para configurar el nodo maestro como gateway*</span> 
+<span style="color: #990819;">*Example 1. Para configurar el nodo maestro como gateway*</span> 
 
 Asumiendo que el nodo maestro tiene dos interfaces de red
 

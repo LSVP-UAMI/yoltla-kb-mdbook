@@ -1,4 +1,7 @@
-# Descripción
+# Scripts
+
+
+## Descripción
 
 Las pruebas de regresión en ReFrame son clases simples de Python que especifican los 
 parámetros básicos de la prueba.
@@ -9,7 +12,8 @@ interacción del sistema, como el cambio de entorno de programación, la compila
 el envío de trabajos, la consulta del estado del trabajo, la verificación del estado y 
 la evaluación del rendimiento.
 
-# Estructura general
+
+## Estructura general
 
 A continuación se presenta la estructura general de una prueba de ReFrame:
 
@@ -182,7 +186,7 @@ class Simple_Test(rfm.RegressionTest):
         }
 ```
 
-```admonish info title=" "
+```admonish note title=" "
 Como podrá haber observado, todas las funciones de la clase `Simple_Test` están decoradas. El [decorador](https://docs.python.org/3/glossary.html#term-decorator) de 
 cada función le indica a ReFrame en que punto de su [pipeline](../anexos/referencia_api.md#pipeline) debe ejecutarla. Por ejemplo, en este fragmento de código:
 
@@ -200,7 +204,7 @@ Para obtener más información de los decoradores, consulte la sección [Test De
 ```
 
 
-# Estructura de directorios
+## Estructura de directorios
 
 Además de nuestro script de ReFrame, debemos tener la estructura de directorios adecuada 
 para nuestra prueba. A continuación se presenta la estructura general de directorios de 
@@ -228,9 +232,11 @@ una prueba de ReFrame:
     - Código fuente
     - Archivos de entrada
 
-# Ejemplos
 
-## Hello, World!
+## Ejemplos
+
+
+### Hello, World!
 
 Dentro del directorio *reframe* cree la siguiente estructura de directorios:
 
@@ -469,7 +475,8 @@ reframe
 
 9. Directorio que almacena temporalmente los recursos de la prueba
 
-## Performance
+
+### Performance
 
 Dentro del directorio *reframe* cree la siguiente estructura de directorios:
 
@@ -735,7 +742,8 @@ del rendimiento de la prueba:
 
 Para obtener más información de las pruebas de rendimiento, consulte la sección [Pruebas de rendimiento](../scripts/pruebas_rendimiento.md).
 
-## Tags
+
+### Tags
 
 Hasta el momento hemos visto ejemplos de como lanzar pruebas de manera individual, sin 
 embargo, cuando se tiene una gran cantidad de pruebas, probablemente deseemos lanzar 
@@ -744,7 +752,7 @@ permiten realizar esta función, y uno de estos es el uso de etiquetas (`tags`).
 etiquetas nos permiten seleccionar y lanzar pruebas utilizando los valores declarados 
 en la variable `tags`.
 
-### **Ejemplo 1**
+#### Ejemplo 1
 
 Dentro del directorio *reframe* cree la siguiente estructura de directorios y archivos:
 
@@ -893,7 +901,7 @@ reframe -c <directorio/archivo> -t <etiqueta>  -r
 | -t, --tag=TAG | Filtrar pruebas por etiqueta. |
 | -r, --run | Ejecutar las pruebas seleccionadas |
 
-```admonish info title=" "
+```admonish note title=" "
 TAG se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) de Python; 
 se seleccionarán todas las pruebas que tengan al menos una etiqueta coincidente.
 
@@ -970,7 +978,7 @@ Run report saved in 'logs/run-report.json'
 Log file(s) saved in '/LUSTRE/home/uam/.../t.800/reframe/tags/logs/rfm.out', '/LUSTRE/home/uam/.../t.800/reframe/tags/logs/rfm.log'
 ```
 
-### **Ejemplo 2**
+#### **Ejemplo 2**
 
 Utilizando el mismo directorio *tags* del ejemplo anterior, cree la siguiente estructura de directorios y archivos:
 
@@ -1114,7 +1122,7 @@ reframe -c <directorio/archivo> -T <etiqueta>  -r
 | -r, --run | Ejecutar las pruebas seleccionadas. |
 
 
-```admonish info title=" "
+```admonish note title=" "
 TAG se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) de Python; 
 se excluirá cualquier prueba con etiquetas que coincidan con TAG.
 
@@ -1202,12 +1210,13 @@ Run report saved in 'logs/run-report.json'
 Log file(s) saved in '/LUSTRE/home/uam/.../t.800/reframe/tags/logs/rfm.out', '/LUSTRE/home/uam/.../t.800/reframe/tags/logs/rfm.log'
 ```
 
-# Errores
+
+## Errores
 
 Hasta el momento hemos escrito y ejecutado varias pruebas de ReFrame de manera exitosa, 
 sin embargo, esto no siempre es así.
 
-## Prueba de sanidad
+### Prueba de sanidad
 
 ```bash
 [t.800@yoltla hello_world]$ reframe -c hello_test.py -r
@@ -1295,7 +1304,7 @@ pero la expresión regular de la función de sanidad no fue actualizada:
 ```
 
 
-```admonish info title=" "
+```admonish note title=" "
 Como ya se mencionó anteriormente, todos los recursos de la prueba se almacenan en el 
 directorio *stage* de manera temporal, estos recursos incluyen los archivos fuente y 
 compilados, y cualquier otro archivo que se haya generado durante la prueba. Cuando la 
@@ -1333,7 +1342,8 @@ los recursos permanecen en el directorio *stage*:
                         └── rfm_HelloTest_job.sh
 ```
 
-## Prueba de rendimiento
+
+### Prueba de rendimiento
 
 ```bash
 [t.800@yoltla prime_numbers]$ reframe -c prime_numbers_test.py -r

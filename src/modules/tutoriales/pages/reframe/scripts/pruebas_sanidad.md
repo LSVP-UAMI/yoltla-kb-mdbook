@@ -1,4 +1,7 @@
-# Descripción
+# Pruebas de sanidad
+
+
+## Descripción
 
 Durante la fase sanidad, se verifica el estado de la salida de la prueba. ReFrame no hace
 ninguna suposición de lo que es una prueba exitosa; ni siquiera busca por defecto algo en 
@@ -13,17 +16,18 @@ como parte de la prueba. Esta función se convierte en una expresión de evaluac
 afirma la salud de la prueba.
 ```
 
-# Ejemplos
+
+## Ejemplos
 
 En el siguiente ejemplo, la función de sanidad especificada verifica que el ejecutable 
 haya producido la frase deseada en la salida estándar de la prueba.
 
-```admonish info title=" "
+```admonish note title=" "
 Tenga en cuenta que ReFrame no determina el éxito de una prueba por su código de salida.
 En cambio, la evaluación del éxito es responsabilidad de la prueba misma.
 ```
 
-<span style="color: red;">*hello.c*</span>
+<span style="color: #990819;">*hello.c*</span>
 
 ```c
 #include <stdio.h>
@@ -35,7 +39,7 @@ int main()
 }
 ```
 
-<span style="color: red;">*HelloTest.py*</span>
+<span style="color: #990819;">*HelloTest.py*</span>
 
 ```python
 import reframe as rfm
@@ -65,7 +69,7 @@ Nuestra función de sanidad esta identificada por el decorador `@sanity_function
 función se convierte en una expresión de evaluación perezosa que afirma la "cordura" 
 de la prueba.
 
-```admonish info title=" "
+```admonish note title=" "
 La expresion de evaluación es una [expresión regular](https://docs.python.org/3/library/re.html) 
 de Python. Y se usa para buscar una cadena de caracteres en la salida.
 ```
@@ -129,14 +133,16 @@ La prueba ha verificado que se produjo la salida deseada y ha sido exitosa, hemo
 verificado que tenemos un compilador de C en funcionamiento en nuestro sistema. Si 
 todo ha salido bien, puede verificar el resultado en la carpeta *output*.
 
-# Comprobación avanzada
+
+## Comprobación avanzada
 
 Hasta ahora, solo hemos visto una búsqueda similar a `grep`, pero las funcion de sanidad
 son mucho más que esto. De hecho, uno podría prácticamente hacer casi cualquier 
 operación en la salida y procesarla como quisiera antes de evaluar la \"cordura\" de la 
 prueba. A continuación describiremos algunas operaciones de sanidad útiles.
 
-## Funciones Diferibles
+
+### Funciones Diferibles
 
 Las funciones de sanidad y sus operaciones entran en la categoría de funciones diferibles
 de ReFrame.
@@ -149,13 +155,17 @@ la función se evalúa explícita o implícitamente.
 Para obtener más información, consulte la sección 
 [Deferrable Functions Reference](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html#deferrable-functions-reference) de la documentación oficial de ReFrame.
 
-### **Lista de funciones y utilidades**
+
+#### **Lista de funciones y utilidades**
+
 
 #### reframe.utility.sanity.abs(x) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.abs)
 - Calcula el valor absoluto de x
 
+
 #### reframe.utility.sanity.all(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.all)
 - Lista de múltiples pruebas de sanidad
+
 
 #### reframe.utility.sanity.assert_eq(a, b, msg=None) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_eq)
 - Confirma que `a == b`.
@@ -262,6 +272,7 @@ Para obtener más información, consulte la sección
 #### reframe.utility.sanity.avg(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.avg)
 - Devuelve el promedio de todos los elementos de `iterable`.
 
+
 #### reframe.utility.sanity.count(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.count)
 - Devuelve el recuento de elementos de `iterable`.
 
@@ -312,14 +323,15 @@ ReFrame tiene muchas más funciones útiles, que puede consultar en la sección
 [List of deferrable functions and utilities](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#list-of-deferrable-functions-and-utilities) 
 de la documentación oficial de ReFrame.
 
-```admonish info title=" "
+```admonish note title=" "
 Una función de sanidad **verifica** la presencia de patrones y elementos, por lo tanto 
 debe ser explícita en cuanto al valor que regresa (un booleano). Si la función de 
 sanidad no se puede resolver debido a una sintaxis ambigua, se marcará el error 
 [reframe.core.exceptions.ReframeSyntaxError](https://reframe-hpc.readthedocs.io/en/stable/exceptions.html#reframe.core.exceptions.ReframeSyntaxError).
 ```
 
-# Ejemplos avanzados
+
+## Ejemplos avanzados
 
 Ahora que hemos visto operaciones avanzadas de las funciones de sanidad, podemos 
 analizar ejemplos más complejos.
@@ -397,7 +409,8 @@ promedio de la energía obtenida con la energía promedio esperada.
 entra en el margen de tolerancia: `energy_diff < energy_tolerance`, en este caso 
 `sn.assert.lt` regresa True, falla la prueba en caso contrario.
 
-## Múltiples pruebas de sanidad
+
+### Múltiples pruebas de sanidad
 
 Con ayuda de la funcion `sn.all` se puede definir una lista de múltiples pruebas de 
 sanidad a cumplir, usando el ejemplo anterior, modificamos el código de la siguiente forma:

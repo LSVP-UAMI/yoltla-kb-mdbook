@@ -27,7 +27,7 @@ Se procede a instalar el paquete dnsmasq desde el repositorio local de Fedora.
 dnf install dnsmasq
 ```
 
-```admonish info title=" "
+```admonish note title=" "
 Es importante corroborar que no exista un servicio que proporcione DNS, DHCP o TFTP en 
 el servidor actualmente, ya que dnsmasq realizará estas funciones, en caso contrario, 
 estos paquetes deben ser desinstalados o realizar ajustes para que permitan la convivencia 
@@ -62,7 +62,7 @@ vim /etc/dnsmasq.conf
 
 Y se coloca el siguiente contenido en él
 
-``` admonish danger title=" "
+``` admonish caution title=" "
 Reemplaza las interfaces y direcciones por las que se usarán en el servidor.
 ```
 
@@ -232,7 +232,7 @@ vim /var/ftpd/boot/pxelinux.cfg/0A0A64E6
 
 En el archivo se va a colocar el siguiente contenido:
 
-```admonish danger title=" "
+```admonish caution title=" "
 Las opciones correspondientes a **syslog** y **ks** dependen de la dirección y la ruta 
 desde la cual se va a instalar remotamente el sistema operativo en los clientes. Los 
 valores se deben reemplazar por los apropiados. La ruta correspondiente a **ks** es en 
@@ -247,7 +247,7 @@ definida, se puede dejar en blanco hasta llegar a la
 Unresolved directive in pxe.adoc - include::example$0A0A64E6.txt[]
 ```
 
-```admonish info title=" "
+```admonish note title=" "
 Las rutas de los parámetros **KERNEL** y **APPEND** son relativas a la ruta donde se colocó 
 la raíz de el servidor tftp con la variable **tftp-root** en la configuración de dnsmasq 
 y donde se copiaron los archivos de syslinux.
@@ -274,7 +274,7 @@ instalar en los clientes. En este caso la [versión 6.1](http://mirror.math.prin
 
 Se monta la imagen de disco en la ruta **/mnt**
 
-```admonish info title=" "
+```admonish note title=" "
 Reemplazar la ruta de la imagen descargada por la ruta correspondiente en el equipo.
 ```
 
@@ -368,7 +368,7 @@ vim /var/ftp/kickstart/ks-preprocesamiento.cfg
 Reemplaza las direcciones por las previamente definidas en tu entorno
 ```
 
-```admonish danger title=" "
+```admonish caution title=" "
 Las opciones **zerombr** y **part** causarán que el cliente formatee automáticamente su 
 disco duro, no usar en entornos de producción sin las debidas precauciones.
 ```
@@ -425,7 +425,7 @@ vim /etc/httpd.conf
 
 Y se coloca el siguiente contenido en él.
 
-```admonish danger title=" "
+```admonish caution title=" "
 El archivo de configuración en este caso restringe acceso al servidor web sólamente a los 
 usuarios de la red por la cual se pretende distribuir archivos por PXE y otras direcciones 
 para realizar pruebas del servidor web. Reemplazar por las direcciones correspondientes 
@@ -444,7 +444,7 @@ Para ejecutar el servidor web se ejecuta el comando
 busybox httpd -vv -f -p 80 -h /var/ftp -c /etc/httpd.conf
 ```
 
-```admonish info title=" " 
+```admonish note title=" " 
 Las opciones **-f**, **-vv**, **-p**, **-c** son opcionales en el caso de que se ocupen 
 los puertos por defecto, se colocan para ilustrar. La ruta indicada en la opción **-h** 
 es la raíz del directorio donde se alojaron las carpetas de kickstart y de los archivos 
@@ -465,7 +465,7 @@ que proporciona soporte para el registro de mensajes, los registros de los clien
 se instalen serán almacenados de manera remota por el servidor Rsyslog, permitiendo 
 diagnosticar el proceso de instalación mientras este transcurre.
 
-```admonish info title=" "
+```admonish note title=" "
 Dado que el servicio de logs ha sido centralizado en los sistemas que cuentan con systemd, 
 el manual está enfocado en estos sistemas. Al momento de agregar los registros remotos al 
 diario local, se debe hacer considerando [las opciones que puede mandar rsyslog](https://www.rsyslog.com/doc/master/configuration/properties.html) 

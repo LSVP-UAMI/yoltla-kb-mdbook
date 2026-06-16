@@ -1,5 +1,6 @@
 # Instalar aplicaciones
 
+
 ## Descripción
 
 En este documentos se describen diversas formas de realizar instalaciones en el 

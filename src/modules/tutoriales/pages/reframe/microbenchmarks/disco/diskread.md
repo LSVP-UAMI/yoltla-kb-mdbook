@@ -1,4 +1,7 @@
-# Descripción
+# DiskRead
+
+
+## Descripción
 
 La velocidad de lectura de un disco es el parámetro que determina la rapidez con la 
 que se puede leer un archivo en el sistema. Una baja velocidad de lectura puede ser 
@@ -10,7 +13,8 @@ de ellos requieren permisos de superusuario (root) para su ejecución, con el fi
 este problema, se optó por utilizar el comando `dd` del del paquete 
 [GNU Core Utilities](https://www.gnu.org/software/coreutils/).
 
-# Ejecución
+
+## Ejecución
 
 1.  Cargue el módulo de Coreutils:
 
@@ -37,7 +41,8 @@ este problema, se optó por utilizar el comando `dd` del del paquete
     [t.800@yoltla ~]$ sync; dd if=/tmp/read_file of=/dev/null bs=1M status=progress; sync
     ```
 
-# Salida
+
+## Salida
 
 A continuación se presenta la salida de una ejecución de esta prueba:
 
@@ -57,11 +62,11 @@ A continuación se presenta la salida de una ejecución de esta prueba:
 4. Bytes copiados, tiempo de ejecución, velocidad final de lectura
 
 
-# Nodos de cómputo
+## Nodos de cómputo
 
 Unresolved directive in diskread.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
 
-# Pruebas
+## Pruebas
 
 No existe una restricción en el tamaño del archivo a leer en esta prueba, por lo que el 
 criterio para determinar los parámetros de la misma fue el de poder realizar pruebas 
@@ -113,15 +118,15 @@ tablas se da un resumen de las pruebas realizadas:
 | tt87     | 1M     | 8192      |
 | tt92     | 1M     | 8192      |
 
-```admonish info title=" "
+```admonish note title=" "
 Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa de cada tipo de nodo.
 ```
 
 
-# Scripts
+## Scripts
 
 
-## Estructura de directorios
+### Estructura de directorios
 
 Dentro de la carpeta raíz *diskread* existen tres subdirectorios, uno por cada tipo 
 de nodo en el cluster Yoltla:
@@ -142,15 +147,15 @@ de nodo en el cluster Yoltla:
 
 Cada uno de estos directorios alberga una prueba de ReFrame.
 
-```admonish info title=" "
+```admonish note title=" "
 La versión de coreutils utilizada en estos scripts es la 8.32.
 ```
 
 
-## Lanzar pruebas
+### Lanzar pruebas
 
 
-### **Individualmente**
+#### Individualmente
 
 Para lanzar pruebas de forma individual, ubíquese dentro del directorio de la prueba 
 de interés, y ejecute el comando:
@@ -166,7 +171,7 @@ Por ejemplo, para lanzar la prueba de los nodos NC, ejecute el comando:
 ```
 
 
-### **Etiquetas**
+#### Etiquetas
 
 Utilizando etiquetas puede lanzar múltiples pruebas con un solo comando. Para lanzar 
 todas las pruebas, siga los siguientes pasos:
@@ -197,10 +202,10 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 ```
 
 
-# Resultados
+## Resultados
 
 
-## Nodos NC
+### Nodos NC
 
 <span style="color: #990819;">*Pruebas en los nodos TTv2*</span>
 ```
@@ -251,7 +256,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 1. Resultados de la prueba DiskRead en los nodos NC*</span>
 
 
-## Nodos TTv1
+### Nodos TTv1
 
 <span style="color: #990819;">*Tabla 5. Resultados de la prueba DiskRead en los nodos TTv1*</span>
 ```
@@ -286,7 +291,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 2. Resultados de la prueba DiskRead en los nodos TTv1*</span>
 
 
-## Nodos TTv2
+### Nodos TTv2
 
 <span style="color: #990819;">*Tabla 6. Resultados de la prueba DiskRead en los nodos TTv2*</span>
 ```
@@ -315,7 +320,7 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 3. Resultados de la prueba DiskRead en los nodos TTv2*</span>
 
 
-## Yoltla
+### Yoltla
 
 <span style="color: #990819;">*Tabla 7. Resultados de la prueba DiskRead en el cluster Yoltla*</span>
 ```
@@ -338,11 +343,12 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Figura 4. Resultados de la prueba DiskRead en el cluster Yoltla*</span>
 
-```admonish info title=" "
+```admonish note title=" "
 Todos los resultados mostrados en esta sección fueron obtenidos en el mes de Agosto del 2022.
 ```
 
-# Sitios de interés
+
+## Sitios de interés
 
 - [dd: Convert and copy a file](https://www.gnu.org/software/coreutils/manual/coreutils.html#dd-invocation)
 

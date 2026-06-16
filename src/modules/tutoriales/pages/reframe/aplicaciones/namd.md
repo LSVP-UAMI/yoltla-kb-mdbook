@@ -1,4 +1,7 @@
-# Descripción
+# Namd
+
+
+## Descripción
 
 NAMD, es un código de dinámica molecular paralelo diseñado para la simulación de alto rendimiento
 de grandes sistemas biomoleculares. Basado en objetos paralelos *Charm++* , NAMD escala en cientos de
@@ -13,7 +16,7 @@ núcleos para simulaciones típicas y más allá de 500 000 núcleos para las si
 - Benchmarks: F1-ATPase y STMV
 
 
-# NAMD Performance
+## NAMD Performance
 
 El rendimiento de simulación obtenido de NAMD depende de muchos factores. El protocolo de
 simulación en particular que se está ejecutando es uno de los factores individuales más grandes
@@ -24,7 +27,7 @@ través del uso de GPU o vectorización de CPU, y otros atributos que también c
 rendimiento general de NAMD.
 
 
-## Medición de desempeño
+### Medición de desempeño
 
 Cuando NAMD comienza a ejecutarse, realiza operaciones de E/S significativas, ajuste de FFT,
 configuración de contexto de GPU y otros trabajos que no están relacionados con la actividad de
@@ -63,7 +66,7 @@ WallClock: 4783.658691  CPUTime: 4783.658691  Memory: 1137.476562 MB
 En este trabajo, para calcular su eficiencia paralela, solo nos interesa el tiempo de pared (WallClock).
 
 
-## ENERGY
+### ENERGY
 
 Las energías, junto con las temperaturas y presiones, se imprimen cada ciclo `outputEnergies` (presente en
 el archivo de entrada) en una sola línea con un prefijo único
@@ -106,7 +109,7 @@ Los valores de energía están en kcal/mol.Para este trabajo nos interesa el pro
 `TOTAL` que es la suma de las diversas energías potenciales y la energía `KINETIC`.
 
 
-# Eficiencia paralela
+## Eficiencia paralela
 
 La única forma confiable de ver si un trabajo escala de manera eficiente es compararlo. Comparar un
 trabajo significa ejecutar un trabajo de prueba breve y representativo varias veces en diferentes
@@ -131,7 +134,7 @@ Como regla general, los trabajos que se ejecutan con una gran cantidad de núcle
 una eficiencia paralela superior o igual a 0,7.
 
 
-# STMV Benchmark (Junio 2022)
+## STMV Benchmark (Junio 2022)
 
 STMV benchmark, 1,066,628 atoms, periodic, PME (disponible
 [aquí](https://www.ks.uiuc.edu/Research/namd/utilities/)).
@@ -153,7 +156,7 @@ Los datos muestran que el uso de nodos *nc* proporciona una mejor aceleración y
 que otro tipo de nodo.
 
 <span style="color: #990819;">*Table 1. Performance STMV Benchmark*</span>
-
+```
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
 | Nodos** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
@@ -177,18 +180,18 @@ que otro tipo de nodo.
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | 16      | 0.362       | 79 %         | 0.424       | 76 %         | 0.473       | 73 %         |
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
+```
 
-: Performance STMV Benchmark
 
-
-## Performance STMV Benchmark en nodos NC
-
-<span style="color: #990819;">*Figure 2. Performance STMV Benchmark en nodos NC.*</span>
+### Performance STMV Benchmark en nodos NC
 
 ![Performance STMV Benchmark en nodos NC.](../../../images/Reframe/Apps/Namd/Figure_nc_error_stmv.png)
 
-<span style="color: #990819;">*Table 2. Performance STMV Benchmark en nodos nc*</span>
+<span style="color: #990819;">*Figure 2. Performance STMV Benchmark en nodos NC.*</span>
 
+\
+<span style="color: #990819;">*Table 2. Performance STMV Benchmark en nodos nc*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                                      |
@@ -212,18 +215,18 @@ que otro tipo de nodo.
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 0.361         | 0.358         | 0.364         | 0.0026        | 391           |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance STMV Benchmark en nodos nc
 
-
-## Performance STMV Benchmark en nodos TTV1
-
-<span style="color: #990819;">*Figure 3. Performance STMV Benchmark en nodos TTV1.*</span>
+### Performance STMV Benchmark en nodos TTV1
 
 ![Performance STMV Benchmark en nodos TTV1.](../../../images/Reframe/Apps/Namd/Figure_ttv1_error_stmv.png)
 
-<span style="color: #990819;">*Table 3. Performance STMV Benchmark en nodos ttv1*</span>
+<span style="color: #990819;">*Figure 3. Performance STMV Benchmark en nodos TTV1.*</span>
 
+\
+<span style="color: #990819;">*Table 3. Performance STMV Benchmark en nodos ttv1*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
 | Nodos** | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                                      |
@@ -249,18 +252,18 @@ que otro tipo de nodo.
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 0.424         | 0.380         | 0.660         | 0.0842        | 397.65        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance STMV Benchmark en nodos ttv1
 
-
-## Performance STMV Benchmark en nodos TTV2
-
-<span style="color: #990819;">*Figure 4. Performance STMV Benchmark en nodos TTV2.*</span>
+### Performance STMV Benchmark en nodos TTV2
 
 ![Performance STMV Benchmark en nodos TTV2.](../../../images/Reframe/Apps/Namd/Figure_ttv2_error_stmv.png)
 
-<span style="color: #990819;">*Table 4. Performance STMV Benchmark en nodos ttv2*</span>
+<span style="color: #990819;">*Figure 4. Performance STMV Benchmark en nodos TTV2.*</span>
 
+\
+<span style="color: #990819;">*Table 4. Performance STMV Benchmark en nodos ttv2*</span>
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
 | Nodos** | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                                      |
@@ -284,20 +287,18 @@ que otro tipo de nodo.
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 0.473         | 0.326         | 0.987         | 0.1744        | 381.91        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance STMV Benchmark en nodos ttv2
 
-
-## STMV: Múltiples dispositivos GPU en un solo nodo
+### STMV: Múltiples dispositivos GPU en un solo nodo
 
 Evaluación comparativa de STMV Benchmark en un solo nodo con equipos Tesla K20 y V100, con NAMD 2.13.
 Las ejecuciones utilizaron todos los núcleos físicos y 2, 4 u 8 dispositivos GPU en el nodo.
 
-<span style="color: #990819;">*Figure 5. Performance STMV Benchmark en GPUS.*</span>
-
 ![Performance STMV Benchmark en GPUS.](../../../images/Reframe/Apps/Namd/Grafica-STMV-GPU.png)
 
-\
+<span style="color: #990819;">*Figure 5. Performance STMV Benchmark en GPUS.*</span>
+
 La ejecución en un nodo de GPU K20 (1 GPU, 20 núcleos físicos) brinda aproximadamente el mismo
 rendimiento que 2 nodos nc (40 núcleos físicos). La ejecución con 4 dispositivos GPU (+ 20 núcleos
 físicos) ofrece aproximadamente el mismo rendimiento que en 8 nodos nc (160 núcleos físicos).
@@ -306,7 +307,7 @@ Los resultados muestran que el rendimiento de usar 1 GPU V100 es 6 veces mejor q
 K20. Utilizar más de una GPU V100 para este Benchmark es ineficiente.
 
 <span style="color: #990819;">*Table 5. Performance STMV Benchmark en GPUS.*</span>
-
+```
 +-------------+---------------+---------------+---------------+---------------+
 | **\# GPU    | **Nodos GPUS Tesla K20\       | **Nodos GPUS V100\            |
 | devices**   | 20 Cores\                     | 36 Cores\                     |
@@ -324,11 +325,10 @@ K20. Utilizar más de una GPU V100 para este Benchmark es ineficiente.
 +-------------+---------------+---------------+---------------+---------------+
 | 8           | 0.712         | 684           |               |               |
 +-------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance STMV Benchmark en GPUS.
 
-
-# F1-ATPase Benchmark (Junio 2022)
+## F1-ATPase Benchmark (Junio 2022)
 
 F1ATPase benchmark, 327,506 atoms, periodic, PME (disponible
 [aquí](https://www.ks.uiuc.edu/Research/namd/utilities/)).
@@ -338,11 +338,10 @@ ejecutan en nodos completos por partición.
 
 La simulación debe llegar a un valor `ENERGY:TOTAL` cercano a: `-725159.11`
 
-<span style="color: #990819;">*Figure 6. Performance F1ATPase Benchmark.*</span>
-
 ![Performance F1ATPase Benchmark.](../../../images/Reframe/Apps/Namd/Figure_F1atpase.png)
 
-\
+<span style="color: #990819;">*Figure 6. Performance F1ATPase Benchmark.*</span>
+
 El gráfico de eficiencia muestra que para un sistema molecular pequeño como ATPase, la
 eficiencia cae por debajo del 70 % después de 8 nodos, siendo el valor ideal entre 160 y 256 cores para
 su ejecución.
@@ -351,7 +350,7 @@ Los datos muestran que el uso de nodos *nc* proporciona un mejor rendimiento en 
 particiones de nodos presentes en Yoltla.
 
 <span style="color: #990819;">*Table 6. Performance F1ATPase Benchmark*</span>
-
+```
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
 | Nodos** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
@@ -375,19 +374,18 @@ particiones de nodos presentes en Yoltla.
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 | 16      | 0.101       | 51 %         | 0.133       | 52 %         | 0.115       | 39 %         |
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
+```
 
-: Performance F1ATPase Benchmark
 
-
-## Performance F1-ATPase Benchmark en nodos NC
-
-<span style="color: #990819;">*Figure 7. Performance F1ATPase Benchmark en nodos NC.*</span>
+### Performance F1-ATPase Benchmark en nodos NC
 
 ![Performance F1ATPase Benchmark en nodos NC.](../../../images/Reframe/Apps/Namd/Figure_nc_error_f1atpase.png)
 
+<span style="color: #990819;">*Figure 7. Performance F1ATPase Benchmark en nodos NC.*</span>
+
 \
 <span style="color: #990819;">*Table 7. Performance F1ATPase Benchmark en nodos nc*</span>
-
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos nc\                                                                             |
 | Nodos** | 20 Cores x 2.50GHz Intel Xeón E5-2670v2\                                                      |
@@ -411,18 +409,18 @@ particiones de nodos presentes en Yoltla.
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 0.101         | 0.101         | 0.102         | 0.0002        | 162.74        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance F1ATPase Benchmark en nodos nc
 
-## Performance F1-ATPase Benchmark en nodos TTV1
-
-<span style="color: #990819;">*Figure 8. Performance F1ATPase Benchmark en nodos TTV1.*</span>
+### Performance F1-ATPase Benchmark en nodos TTV1
 
 ![Performance F1ATPase Benchmark en nodos TTV1.](../../../images/Reframe/Apps/Namd/Figure_ttv1_error_f1atpase.png)
 
+<span style="color: #990819;">*Figure 8. Performance F1ATPase Benchmark en nodos TTV1.*</span>
+
 \
 <span style="color: #990819;">*Table 8. Performance F1ATPase Benchmark en nodos ttv1*</span>
-
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv1\                                                                           |
 | Nodos** | 20 Cores x 2.60GHz Intel Xeón E5-2660v3\                                                      |
@@ -448,18 +446,18 @@ particiones de nodos presentes en Yoltla.
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 0.133         | 0.102         | 0.198         | 0.036         | 172.10        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance F1ATPase Benchmark en nodos ttv1
 
-## Performance F1-ATPase Benchmark en nodos TTV2
-
-<span style="color: #990819;">*Figure 9. Performance F1ATPase Benchmark en nodos TTV2.*</span>
+### Performance F1-ATPase Benchmark en nodos TTV2
 
 ![Performance F1ATPase Benchmark en nodos TTV2.](../../../images/Reframe/Apps/Namd/Figure_ttv2_error_f1atpase.png)
 
+<span style="color: #990819;">*Figure 9. Performance F1ATPase Benchmark en nodos TTV2.*</span>
+
 \
 <span style="color: #990819;">*Table 9. Performance F1ATPase Benchmark en nodos ttv2*</span>
-
+```
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | **\#    | **CPU's Nodos ttv2\                                                                           |
 | Nodos** | 32 Cores x 2.10GHz Intel Xeon E5-2683v4\                                                      |
@@ -483,20 +481,18 @@ particiones de nodos presentes en Yoltla.
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 | 16      | 20            | 0.115         | 0.087         | 0.327         | 0.051         | 174.03        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance F1ATPase Benchmark en nodos ttv2
 
-
-## F1-ATPase: Múltiples dispositivos GPU en un solo nodo
+### F1-ATPase: Múltiples dispositivos GPU en un solo nodo
 
 Evaluación comparativa de F1-ATPase en un solo nodo con equipos Tesla K20 y V100, con NAMD
 2.13. Las ejecuciones utilizaron todos los núcleos físicos y 1, 2, 4 u 8 dispositivos GPU en el nodo.
 
-<span style="color: #990819;">*Figure 10. Performance ATPase Benchmark en GPUS.*</span>
-
 ![Performance ATPase Benchmark en GPUS.](../../../images/Reframe/Apps/Namd/Grafica-ATPASE-GPU.png)
 
-\
+<span style="color: #990819;">*Figure 10. Performance ATPase Benchmark en GPUS.*</span>
+
 La ejecución con 1 dispositivos GPU V100 (+ 36 núcleos físicos) ofrece un rendimiento similar que 8
 nodos en los tres tipos de nodo.
 
@@ -504,7 +500,7 @@ Los resultados muestran que el rendimiento de usar 4 GPU V100 es superior a 512 
 nodos ttv2.
 
 <span style="color: #990819;">*Table 10. Performance ATPase Benchmark en GPUS.*</span>
-
+```
 +-------------+---------------+---------------+---------------+---------------+
 | **\# GPU    | **Nodos GPUS Tesla K20\       | **Nodos GPUS V100\            |
 | devices**   | 20 Cores\                     | 36 Cores\                     |
@@ -522,10 +518,10 @@ nodos ttv2.
 +-------------+---------------+---------------+---------------+---------------+
 | 8           | 0.255         | 278           |               |               |
 +-------------+---------------+---------------+---------------+---------------+
+```
 
-: Performance ATPase Benchmark en GPUS.
 
-# Referencias
+## Referencias
 
 [NAMD Benchmarks](https://www.ks.uiuc.edu/Research/namd/utilities/)
 

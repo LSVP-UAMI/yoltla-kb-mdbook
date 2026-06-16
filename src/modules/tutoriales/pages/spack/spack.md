@@ -1,11 +1,14 @@
-# Descripción
+# Spack
+
+
+## Descripción
 
 Spack es una herramienta de administración de paquetes diseñada para soportar múltiples 
 versiones y configuraciones de software en una amplia variedad de plataformas y entornos.
 
 Para obtener más información, consulte la documentación oficial de [Spack](https://spack.readthedocs.io/en/latest/).
 
-# Descarga
+## Descarga
 
 Cargue el módulo de Git:
 ```bash
@@ -36,7 +39,7 @@ Si no carga el módulo de Git, obtendrá el siguiente mensaje:
 ```
 
 
-# Configuración del shell
+## Configuración del shell
 
 Cargue el módulo de Python:
 ```bash
@@ -61,7 +64,7 @@ Para obtener más información, consulte la sección [Shell support](https://spa
 de la documentación oficial de Spack.
 
 
-# Spack scope
+## Spack scope
 
 Por defecto, Spack cuenta sus propios archivos de configuración, sin embargo, nosotros 
 queremos proveerle de una configuración personalizada. Todos los archivos de nuestra 
@@ -142,7 +145,7 @@ Para obtener más información, consulte la sección [Configuration Scopes](http
 de la documentación oficial de Spack.
 
 
-# Clingo
+## Clingo
 
 Spack usa *clingo* para encontrar las versiones óptimas y variantes de dependencias al 
 instalar un paquete. Dado que *clingo* en sí es un binario, Spack debe instalarlo la 
@@ -223,7 +226,7 @@ Para obtener más información, consulte la sección [Bootstrapping clingo](http
 e la documentación oficial de Spack.
 
 
-# MODULEPATH
+## MODULEPATH
 
 Agregue el directorio *spack_scope/module/linux-centos6-ivybridge* al *MODULEPATH*:
 ```bash

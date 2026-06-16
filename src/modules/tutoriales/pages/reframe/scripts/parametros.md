@@ -1,4 +1,7 @@
-# Descripción
+# Parámetros
+
+
+## Descripción
 
 Cualquier prueba ReFrame se convierte en una parametrizada si el usuario define 
 parámetros dentro del cuerpo de la clase de la prueba. Esto se hace usando la 
@@ -13,11 +16,12 @@ Para obtener más información, consulte la sección
 [Parameterizing a Regression Test](https://reframe-hpc.readthedocs.io/en/stable/tutorial_advanced.html#parameterizing-a-regression-test) 
 de la documentación oficial de ReFrame.
 
-# Ejemplos
+
+## Ejemplos
 
 Vamos a ejecutar el siguiente codigo en C de MPI:
 
-<span style="color: red;">*hola_mpi.c*</span>
+<span style="color: #990819;">*hola_mpi.c*</span>
 
 ```c
 #include <stdio.h>
@@ -50,7 +54,7 @@ int main(int argc,char *argv[]){
 
 Utilizamos el siguiente script de ReFrame para lanzar las pruebas:
 
-<span style="color: red;">*hello_mpi.c*</span>
+<span style="color: #990819;">*hello_mpi.c*</span>
 
 ```python
 import reframe as rfm
@@ -132,7 +136,7 @@ Para obtener más detalles sobre cómo se generan los nombres de las pruebas par
 tipos de pruebas, consulte la sección [Test Naming Scheme](https://reframe-hpc.readthedocs.io/en/stable/manpage.html#test-naming-scheme) 
 de la la documentación oficial de ReFrame.
 
-```admonish info title=" "
+```admonish note title=" "
 El nombre único está formado por el nombre de la clase de prueba seguido de un `_` 
 y el valor del parámetro. Por cada elemento en los parámetros de la prueba se obtendra 
 un nombre único.
@@ -198,7 +202,7 @@ Confirmamos que ReFrame ejecutó 5 pruebas distintas a partir de una única prue
 La parametrización de pruebas en ReFrame es muy poderosa ya que puede parametrizar 
 sus pruebas en cualquier cosa y puede crear espacios de parametrización complejos.
 
-## Ejecución por parámetro
+### Ejecución por parámetro
 
 ReFrame permite filtrar las pruebas por diferentes atributos y existen opciones de 
 línea de comandos específicas para lograrlo. Como vimos, ReFrame asigna un nombre 
@@ -222,7 +226,7 @@ reframe -c hello_mpi.py -n HelloTest_4 -r
 ```
 Esto ejecutara solo una prueba especifica.
 
-```admonish info title=" "
+```admonish note title=" "
 La opción `-n, --name` filtra las pruebas por nombre. NAME se interpreta como una 
 expresión regular de Python; se seleccionará cualquier prueba cuyo nombre coincida 
 con NOMBRE.
@@ -235,12 +239,12 @@ ejecutar 2 y 20 procesos en el ejemplo anterior, ejecutamos:
 ```bash
 reframe -c hello_mpi.py -n HelloTest_2.*? -r
 ```
-## Múltiples parámetros
+### Múltiples parámetros
 
 En el siguiente ejemplo, utilizamos una combinación de parámetros para definir el 
 número de nodos y número de tareas por nodo para el ejemplo Hola Mundo MPI.
 
-<span style="color: red;">*hello_mpi.py*</span>
+<span style="color: #990819;">*hello_mpi.py*</span>
 
 ```python
 import reframe as rfm
@@ -297,12 +301,12 @@ Esto lanza una combinación de pruebas, que se ilustra en la siguiente tabla:
 
 Así puede crear y administrar multiples pruebas.
 
-## Etiquetas
+### Etiquetas
 
 Es posible combinar parámetros y etiquetas en una misma prueba, como se puede ver en 
 el siguiente ejemplo:
 
-<span style="color: red;">*hello_mpi.py*</span>
+<span style="color: #990819;">*hello_mpi.py*</span>
 
 ```python
 import reframe as rfm

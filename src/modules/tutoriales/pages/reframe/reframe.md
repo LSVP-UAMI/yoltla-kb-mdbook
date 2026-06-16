@@ -1,3 +1,6 @@
+# ReFrame
+
+
 # Descripción
 
 ReFrame es un poderoso framework que permite escribir pruebas de regresión, 
@@ -7,7 +10,8 @@ prueba de los detalles de bajo nivel.
 
 Para obtener más información, consulte la documentación oficial de [ReFrame](https://reframe-hpc.readthedocs.io/en/stable/).
 
-# Instalación
+
+## Instalación
 
 Para instalar ReFrame, ejecute el comando:
 
@@ -30,7 +34,8 @@ reframe@3.9.2
 
 Para obtener más información, consulte la sección [Getting the Framework](https://reframe-hpc.readthedocs.io/en/stable/started.html#getting-the-framework) de la documentación oficial de ReFrame.
 
-# Configuración
+
+## Configuración
 
 ReFrame viene con una configuración genérica mínima que le permite ejecutarse en 
 cualquier sistema, sin embargo, con el fin de que ReFrame funcione de manera correcta
@@ -87,7 +92,8 @@ reframe [OPCIONES] COMANDO
 Para obtener más información, consulte la sección [Configuring ReFrame for Your Site](https://reframe-hpc.readthedocs.io/en/stable/configure.html#configuring-reframe-for-your-site) 
 de la documentación oficial de ReFrame.
 
-# Cargar módulo
+
+## Cargar módulo
 
 Para utilizar ReFrame, primero cargue el módulo de Python:
 
@@ -101,7 +107,8 @@ y posteriormente el módulo de ReFrame:
 [t.800@yoltla ~]$ module load reframe-3.9.2-gcc-7.2.0-zejkyvw
 ```
 
-# Autocompletado
+
+## Autocompletado
 
 Para habilitar el autocompletado de ReFrame en el shell, ejecute el comando:
 
@@ -112,7 +119,8 @@ Para habilitar el autocompletado de ReFrame en el shell, ejecute el comando:
 Para obtener más información, consulte la sección [Enabling auto-completion](https://reframe-hpc.readthedocs.io/en/stable/started.html#enabling-auto-completion) 
 de la documentación oficial de ReFrame.
 
-# Repositorio
+
+## Repositorio
 
 El cluster Yoltla cuenta con un repositorio dedicado a ReFrame. En este repositorio 
 se encuentran los archivos de configuración de ReFrame, así como scripts de benchmarks 
@@ -122,7 +130,8 @@ y aplicaciones. Para acceder al repositorio, ingrese a la URL:
 https://github.com/LSVP-UAMI/reframe/
 ```
 
-## Descargar
+
+### Descargar
 
 Cargue el módulo de Git:
 
@@ -143,19 +152,20 @@ Esto creará un nuevo directorio llamado *reframe*:
     reframe
 ```
 
-```admonish warning "Asegurese de tener configuradas y actualizadas sus llaves ssh, de lo contrario recibirá el siguiente error:"
-    
-        [t.800@yoltla git]$  git clone git@github.com:LSVP-UAMI/reframe.git
-        Clonando en 'reframe'...
-        git@github.com: Permission denied (publickey).
-        fatal: No se pudo leer del repositorio remoto.
+```admonish warning title=" "
+Asegurese de tener configuradas y actualizadas sus llaves ssh, de lo contrario recibirá el siguiente error:
 
-        Por favor asegúrese que tiene los permisos de acceso correctos
-        y que el repositorio existe.
+    [t.800@yoltla git]$  git clone git@github.com:LSVP-UAMI/reframe.git
+    Clonando en 'reframe'...
+    git@github.com: Permission denied (publickey).
+    fatal: No se pudo leer del repositorio remoto.
+
+    Por favor asegúrese que tiene los permisos de acceso correctos
+    y que el repositorio existe.
     
 ```
 
-## Estructura
+### Estructura
 
 A continuación se presenta la estructura general del repositorio reframe:
 

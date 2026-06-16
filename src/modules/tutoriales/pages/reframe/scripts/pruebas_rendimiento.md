@@ -1,4 +1,7 @@
-# Descripción
+# Pruebas de rendimiento
+
+
+## Descripción
 
 Un aspecto importante de las pruebas de regresión es verificar el rendimiento.
 
@@ -20,7 +23,7 @@ cada una de las funciones de rendimiento disponibles.
 Para obtener más información, consulte la sección [Writing A Performance Test](https://reframe-hpc.readthedocs.io/en/stable/tutorial_basics.html#writing-a-performance-test) 
 de la documentación oficial de ReFrame.
 
-# Ejemplos
+## Ejemplos
 
 El siguiente script de reframe ejecuta una prueba del microbenchmark 
 [STREAM](https://www.cs.virginia.edu/stream/ref.html):
@@ -160,7 +163,7 @@ Run report saved in 'logs/run-report.json'
 Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/stream/logs/rfm.out', '/LUSTRE/home/uam/../../Pruebas/stream/logs/rfm.log'
 ```
 
-# Valores de referencia
+## Valores de referencia
 
 En su estado actual, la prueba de rendimiento STREAM anterior simplemente extraerá e 
 informará las variables de rendimiento independientemente de los valores. Sin embargo, 
@@ -173,7 +176,7 @@ definidas en una prueba y también establecer diferentes referencias para difere
 sistemas o particiones. En el siguiente ejemplo establecemos los valores de referencia 
 para todos los subpuntos de referencia de STREAM.
 
-```admonish info title=" "
+```admonish note title=" "
 La optimización del rendimiento de las pruebas comparativas de STREAM está fuera del 
 alcance de este tutorial.
 ```
@@ -252,7 +255,7 @@ valores de referencia de rendimiento consta del valor deseado de referencia, los
 inferior y superior expresados como porcentajes en formato decimal relativos al valor de 
 referencia y la unidad de medida.
 
-``` admonish info title=" "
+``` admonish note title=" "
 Si alguno de los umbrales no es relevante, `None` se puede utilizar en su lugar.
 ```
 
@@ -273,7 +276,7 @@ pasan a la función [`assert_reference()`](https://reframe-hpc.readthedocs.io/en
 junto con el valor de rendimiento obtenido para evaluar realmente si la prueba pasa 
 la verificación de rendimiento o no.
 
-```admonish info title=" "
+```admonish note title=" "
 El nombre de los valores de referencia debe coincidir con el nombre de su función de 
 rendimiento asociada. Sin embargo, se puede personalizar el nombre de la variable de 
 rendimiento generada por `@performance_function` con el argumento `perf_key` como se 
@@ -349,7 +352,7 @@ Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/stream/logs/rfm.out',
 En este ejemplo, la prueba falla porque se esperaba otro valor para la variable Triad. 
 Los demas valores entraron en el marguen esperado.
 
-# Registros de rendimiento
+## Registros de rendimiento
 
 ReFrame tiene un poderoso mecanismo para registrar sus actividades, así como los datos
 de rendimiento. Admite diferentes tipos de canales de registro y puede enviar datos 
@@ -390,7 +393,7 @@ sino también lo que se está registrando desde el archivo de configuración.
 Para obtener más información, consulte la sección [Configuración de Logging](../../reframe/anexos/archivo_configuracion.md#configuración-de-logging).
 
 
-# Ejemplos avanzados
+## Ejemplos avanzados
 
 ReFrame ofrece operaciones complejas para definir, evaluar y administrar las funciones 
 y variables de rendimiento de una forma más eficiente. Algunos ejemplos son:
