@@ -140,3 +140,27 @@ html.ayu .content h3 > .header { color: #95E6CB !important; }
 html.ayu .content h4 > .header { color: #73D0FF !important; }
 html.ayu .content h5 > .header { color: #D4BFFF !important; }
 
+h6#assert-found {
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+
+h6#sanity-extractsingle {
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+
+h6#performance-report {
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+
+h6#tag-lanzar-pruebas {
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+

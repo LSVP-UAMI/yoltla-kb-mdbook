@@ -28,17 +28,17 @@ Elementos de los scripts de Reframe de prueba de aplicaciones para el cluster Yo
 
 Clase base de prueba: [RunOnlyRegressionTest](../anexos/referencia_api.md#reframerunonlyregressiontest)
 
-- ## bench_name
+- **bench_name**
 
     Nombre del Benchmark a ejecutar. Su respectiva carpeta debe encontrarse en la 
     carpeta source (src).
 
-- ## in_name
+- **in_name**
 
     Nombre del archivo a ejecutar. El archivo debe encontrarse dentro de la carpeta 
     del benchmark en source.
 
-- ## benchmark_info
+- **benchmark_info**
 
     Paquete de parámetros que contiene la información del Benchmark.
 
@@ -57,39 +57,39 @@ Clase base de prueba: [RunOnlyRegressionTest](../anexos/referencia_api.md#refram
     Estos paquetes de parámetros pueden contener más valores, como referencia energética 
     o el umbral de tolerancia.
 
-- ## energy_reference
+- **energy_reference**
 
     El valor esperado de energía para el Bencharmk.
 
-- ## energy_tolerance
+- **energy_tolerance**
 
     El valor de tolerancia de energía para el Benchmark.
 
-- ## num_tasks_per_node
+- **num_tasks_per_node**
 
     Número de tareas por nodo.
 
-- ## num_tasks
+- **num_tasks**
 
     Número de tareas MPI.
 
-- ## num_tasks_per_core
+- **num_tasks_per_core**
 
     Número de tareas por cores, fijada en 1.
 
-- ## num_nodes
+- **num_nodes**
 
     Parámetro de número de nodos para la prueba
 
-- ## num_gpus_per_node
+- **num_gpus_per_node**
 
     Número de gpus por nodo.
 
-- ## keep_files
+- **keep_files**
 
     Lista de archivos a conservar después de una prueba.
 
-- ## node_type
+- **node_type**
 
     Conjunto de [parámetros](../scripts/parametros.md) asociado a una 
     partición de nodos de Slurm. Los valores que se manejan son:
@@ -98,7 +98,7 @@ Clase base de prueba: [RunOnlyRegressionTest](../anexos/referencia_api.md#refram
 
     Consulte cada prueba para revisar sus valores.
 
-- ## tags
+- **tags**
 
     Conjunto de etiquetas asociadas a la prueba.
 
@@ -113,12 +113,12 @@ Clase base de prueba: [RunOnlyRegressionTest](../anexos/referencia_api.md#refram
     Esto ejecutara todas las pruebas que se encuentren para los nodos ttv1 con 4 nodos. 
     Consulte la sección de etiquetas para más detalles.
 
-- ## arch
+- **arch**
 
     Variable donde se guarda la arquitectura del procesador donde se ejecuta la prueba.
     Consulte la sección [Topología](../anexos/topologia.md).
 
-- ## allref
+- **allref**
 
     Los valores de referencia de cada prueba, se especifican como un diccionario en el 
     ámbito de las combinaciones:
@@ -445,9 +445,7 @@ reframe -c aplicacion-gpu.py -t test-gpus-4 -r --performance-report
 ```
 
 Revise la opción
-[`tags`](../scripts/lanzar_pruebas.md#list-tags)
-
-
+[`tags`](../scripts/lanzar_pruebas.md#tag-lanzar-pruebas)
 de Reframe para más información.
 
 

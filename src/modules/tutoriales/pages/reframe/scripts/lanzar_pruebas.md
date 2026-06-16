@@ -94,30 +94,30 @@ de la documentación oficial de ReFrame.
     ```
 
 
-- ## --ignore-check-conflicts
+- **--ignore-check-conflicts**
+  
+  Ignora las pruebas con nombres en conflicto al cargar las pruebas.
 
-    Ignora las pruebas con nombres en conflicto al cargar las pruebas.
+  ReFrame requiere que los nombres de las pruebas sean únicos. Esta opción generalmente 
+  debe evitarse a menos que haya una razón específica.
 
-    ReFrame requiere que los nombres de las pruebas sean únicos. Esta opción generalmente 
-    debe evitarse a menos que haya una razón específica.
+- **-R, --recursive**
 
-- ## -R, --recursive
+  Busca archivos de prueba recursivamente en los directorios que se encuentran en la ruta 
+  de búsqueda `--checkpath=PATH`.
 
-    Busca archivos de prueba recursivamente en los directorios que se encuentran en la ruta 
-    de búsqueda `--checkpath=PATH`.
+  Para nuestro ejemplo anterior, si queremos [ejecutar](#ejecutar) todas las pruebas, ejecutamos:
 
-    Para nuestro ejemplo anterior, si queremos [ejecutar](#ejecutar) todas las pruebas, ejecutamos:
+  ```bash
+  reframe -c Ejemplos/ -R -r
+  ```
 
-    ```bash
-    reframe -c Ejemplos/ -R -r
-    ```
+  ```admonish note title=" "
+  Tome en cuenta que se creara un solo archivo [`logs`](#lanzar_pruebas) y una sola 
+  carpeta [`output`](#out) y [`stage`](#stage) para todas las pruebas que se encuentre.
 
-    ```admonish note title=" "
-    Tome en cuenta que se creara un solo archivo [`logs`](#lanzar_pruebas) y una sola 
-    carpeta [`output`](#out) y [`stage`](#stage) para todas las pruebas que se encuentre.
-
-    Para más detalles, consulte la sección [Archivo de configuración](../anexos/archivo_configuracion.md).
-    ```
+  Para más detalles, consulte la sección [Archivo de configuración](../anexos/archivo_configuracion.md).
+  ```
 
 
 ## Filtrado de pruebas
@@ -129,315 +129,318 @@ sus dependencias, independientemente de si coinciden o no con los criterios de f
 Esto sucede de forma recursiva, de modo que si la prueba T1 depende de T2 y T2 depende 
 de T3, la selección T1 también seleccionaría T2 y T3.
 
-- ## --cpu-only
+- **--cpu-only**
 
-    Seleccione pruebas que no estén dirigidas a las GPU.
+  Seleccione pruebas que no estén dirigidas a las GPU.
 
-    Estas son todas las pruebas con `num_gpus_per_node` igual a cero. Esta opción y 
-    `--gpu-only` son mutuamente excluyentes.
+  Estas son todas las pruebas con `num_gpus_per_node` igual a cero. Esta opción y 
+  `--gpu-only` son mutuamente excluyentes.
 
-- ## --failed
+- **--failed**
 
-    Selecciona solo los casos de prueba fallidos para una ejecución anterior.
+  Selecciona solo los casos de prueba fallidos para una ejecución anterior.
 
-    Esta opción solo se puede utilizar en combinación con `--restore-session`. Para volver a 
-    ejecutar los casos fallidos de la última ejecución, puede usar `reframe --restore-session --failed -r`.
+  Esta opción solo se puede utilizar en combinación con `--restore-session`. Para volver a 
+  ejecutar los casos fallidos de la última ejecución, puede usar `reframe --restore-session --failed -r`.
 
-- ## -n, --name=NAME
+- **-n, --name=NAME**
 
-    Filtra pruebas por nombre.
+  Filtra pruebas por nombre.
 
-    NAME se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) 
-    de Python; se seleccionará cualquier prueba cuyomnombre coincida con NAME.
+  NAME se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) 
+  de Python; se seleccionará cualquier prueba cuyomnombre coincida con NAME.
 
-- ## -T, --exclude-tag=TAG
+- **-T, --exclude-tag=TAG**
 
-    Excluir pruebas por etiquetas.
+  Excluir pruebas por etiquetas.
 
-    Esta opción se puede especificar varias veces, en cuyo caso se seleccionarán las pruebas 
-    con cualquiera de los nombres especificados: `-n NAME1 -n NAME2` esto equivale a 
-    `-n 'NAME1|NAME2'`.
+  Esta opción se puede especificar varias veces, en cuyo caso se seleccionarán las pruebas 
+  con cualquiera de los nombres especificados: `-n NAME1 -n NAME2` esto equivale a 
+  `-n 'NAME1|NAME2'`.
 
-    Para más detalles, consulte la sección [Tags](../scripts/scripts.md#tags).
+  Para más detalles, consulte la sección [Tags](../scripts/scripts.md#tags).
 
-- ## -t, --tag=TAG
+###### tag-lanzar-pruebas
 
-    Filtrar pruebas por etiqueta.
+- **-t, --tag=TAG**
 
-    Esta opción se puede especificar varias veces, en cuyo caso se seleccionarán las pruebas 
-    con cualquiera de los nombres especificados: `-n NAME1 -n NAME2` esto equivale a `-n 'NAME1|NAME2'`.
+  Filtrar pruebas por etiqueta.
 
-    Para más detalles, consulte la sección [Tags](../scripts/scripts.md#tags).
+  Esta opción se puede especificar varias veces, en cuyo caso se seleccionarán las pruebas 
+  con cualquiera de los nombres especificados: `-n NAME1 -n NAME2` esto equivale a `-n 'NAME1|NAME2'`.
 
-- ## -x, --exclude=NAME
+  Para más detalles, consulte la sección [Tags](../scripts/scripts.md#tags).
 
-    Excluir pruebas por nombre. NAME se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) 
-    de Python; se seleccionará cualquier prueba cuyo nombre coincida con NAME.
+- **-x, --exclude=NAME**
 
-    Ejemplo:
+  Excluir pruebas por nombre. NAME se interpreta como una [expresión regular](https://docs.python.org/3/library/re.html) 
+  de Python; se seleccionará cualquier prueba cuyo nombre coincida con NAME.
 
-    ```bash
-    reframe -c hello_mpi.py -x HelloTest_8 -r
-    ```
+  Ejemplo:
+
+  ```bash
+  reframe -c hello_mpi.py -x HelloTest_8 -r
+  ```
 
 ## Enlistar y ejecutar pruebas
 
-- ## -L
+- **-L**
 
-    Lista las pruebas seleccionadas proporcionando más detalles de cada prueba.
+  Lista las pruebas seleccionadas proporcionando más detalles de cada prueba.
 
-    Ejemplo:
+  Ejemplo:
 
-    ```python
-    [t.800@yoltla ~]$ reframe -c hello_mpi.py -L
+  ```python
+  [t.800@yoltla ~]$ reframe -c hello_mpi.py -L
 
-    [ReFrame Setup]
-      version:           3.9.2
-      command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello_mpi.py -l'
-      launched by:       t.800@yoltla.supercomputo.izt.uam.mx
-      working directory: '/LUSTRE/home/uam/../../Pruebas/parametros'
-      settings file:     '/LUSTRE/home/uam/../../t.800/.reframe/settings.py'
-      check search path: '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py'
-      stage directory:   '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/stage/'
-      output directory:  '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/output/'
+  [ReFrame Setup]
+    version:           3.9.2
+    command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello_mpi.py -l'
+    launched by:       t.800@yoltla.supercomputo.izt.uam.mx
+    working directory: '/LUSTRE/home/uam/../../Pruebas/parametros'
+    settings file:     '/LUSTRE/home/uam/../../t.800/.reframe/settings.py'
+    check search path: '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py'
+    stage directory:   '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/stage/'
+    output directory:  '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/output/'
 
-    [List of matched checks]
-    - HelloTest_8:
-        Description:
-          HelloTest_8
+  [List of matched checks]
+  - HelloTest_8:
+      Description:
+        HelloTest_8
 
-        Environment modules:
-          <none>
+      Environment modules:
+        <none>
 
-        Location:
-          /LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py
+      Location:
+        /LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py
 
-        Maintainers:
-          <none>
+      Maintainers:
+        <none>
 
-        Node allocation:
-          standard (1 task(s) -- may be set differently in hooks)
+      Node allocation:
+        standard (1 task(s) -- may be set differently in hooks)
 
-        Pipeline hooks:
-          - pre_run: replace_launcher
+      Pipeline hooks:
+        - pre_run: replace_launcher
 
-        Tags:
-          <none>
+      Tags:
+        <none>
 
-        Valid environments:
-          builtin-openmpi-2.1.5
+      Valid environments:
+        builtin-openmpi-2.1.5
 
-        Valid systems:
-          yoltla:q1h-20p
+      Valid systems:
+        yoltla:q1h-20p
 
-        Dependencies (conceptual):
-          <none>
+      Dependencies (conceptual):
+        <none>
 
-        Dependencies (actual):
-          <none>
+      Dependencies (actual):
+        <none>
 
-    - HelloTest_20:
-        Description:
-        .
-        .
-        .
-    ```
+  - HelloTest_20:
+      Description:
+      .
+      .
+      .
+  ```
 
-- ## -l
+- **-l**
 
-    Lista las pruebas seleccionadas.
+  Lista las pruebas seleccionadas.
 
-    Ejemplo:
+  Ejemplo:
 
-    ``` bash
-    [t.800@yoltla ~]$ reframe -c hello_mpi.py -l
+  ``` bash
+  [t.800@yoltla ~]$ reframe -c hello_mpi.py -l
 
-    [ReFrame Setup]
-      version:           3.9.2
-      command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello_mpi.py -l'
-      launched by:       t.800@yoltla.supercomputo.izt.uam.mx
-      working directory: '/LUSTRE/home/uam/../../Pruebas/parametros'
-      settings file:     '/LUSTRE/home/uam/../../t.800/.reframe/settings.py'
-      check search path: '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py'
-      stage directory:   '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/stage/'
-      output directory:  '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/output/'
+  [ReFrame Setup]
+    version:           3.9.2
+    command:           '/LUSTRE/home/uam/../../t.800/spack_scope/deps/linux-centos6-ivybridge/gcc-7.2.0/reframe-3.9.2/bin/reframe -c hello_mpi.py -l'
+    launched by:       t.800@yoltla.supercomputo.izt.uam.mx
+    working directory: '/LUSTRE/home/uam/../../Pruebas/parametros'
+    settings file:     '/LUSTRE/home/uam/../../t.800/.reframe/settings.py'
+    check search path: '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py'
+    stage directory:   '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/stage/'
+    output directory:  '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/output/'
 
-    [List of matched checks]
-    - HelloTest_20 (found in '/LUSTRE/home/uam/../../c.800/Pruebas/parametros/hello_mpi.py')
-    - HelloTest_16 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
-    - HelloTest_2 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
-    - HelloTest_8 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
-    - HelloTest_4 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
-    Found 5 check(s)
+  [List of matched checks]
+  - HelloTest_20 (found in '/LUSTRE/home/uam/../../c.800/Pruebas/parametros/hello_mpi.py')
+  - HelloTest_16 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
+  - HelloTest_2 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
+  - HelloTest_8 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
+  - HelloTest_4 (found in '/LUSTRE/home/uam/../../t.800/Pruebas/parametros/hello_mpi.py')
+  Found 5 check(s)
 
-    Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.out', '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.log'
-    ```
+  Log file(s) saved in '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.out', '/LUSTRE/home/uam/../../t.800/Pruebas/parametro/logs/rfm.log'
+  ```
 
-- ## --list-tags
+- **--list-tags**
 
-    Enumera las etiquetas únicas de las pruebas seleccionadas.
+  Enumera las etiquetas únicas de las pruebas seleccionadas.
 
-    Las etiquetas se imprimen en orden alfabético.
+  Las etiquetas se imprimen en orden alfabético.
 
-    Ejemplo
+  Ejemplo
 
-    ```bash
-    [t.800@yoltla ~]$ reframe -c namd.py --list-tags
+  ```bash
+  [t.800@yoltla ~]$ reframe -c namd.py --list-tags
 
-            .
-            .
-            .
+          .
+          .
+          .
 
-    [List of unique tags]
-    'test-cpu-nc-1-F1atpase', 'test-cpu-nc-1-Stmv', 'test-cpu-nc-16-F1atpase', 'test-cpu-nc-16-Stmv',
-    'test-cpu-nc-2-F1atpase', 'test-cpu-nc-2-Stmv', 'test-cpu-nc-4-F1atpase', 'test-cpu-nc-4-Stmv',
-    'test-cpu-nc-8-F1atpase', 'test-cpu-nc-8-Stmv', 'test-cpu-ttv1-16-F1atpase', 'test-cpu-ttv1-16-Stmv',
-    'test-cpu-ttv1-4-F1atpase', 'test-cpu-ttv1-4-Stmv', 'test-cpu-ttv1-5-F1atpase', 'test-cpu-ttv1-5-Stmv',
-    'test-cpu-ttv1-8-F1atpase', 'test-cpu-ttv1-8-Stmv', 'test-cpu-ttv2-16-F1atpase',
-    'test-cpu-ttv2-16-Stmv', 'test-cpu-ttv2-2-F1atpase', 'test-cpu-ttv2-2-Stmv',
-    'test-cpu-ttv2-4-F1atpase', 'test-cpu-ttv2-4-Stmv', 'test-cpu-ttv2-8-F1atpase', 'test-cpu-ttv2-8-Stmv'
+  [List of unique tags]
+  'test-cpu-nc-1-F1atpase', 'test-cpu-nc-1-Stmv', 'test-cpu-nc-16-F1atpase', 'test-cpu-nc-16-Stmv',
+  'test-cpu-nc-2-F1atpase', 'test-cpu-nc-2-Stmv', 'test-cpu-nc-4-F1atpase', 'test-cpu-nc-4-Stmv',
+  'test-cpu-nc-8-F1atpase', 'test-cpu-nc-8-Stmv', 'test-cpu-ttv1-16-F1atpase', 'test-cpu-ttv1-16-Stmv',
+  'test-cpu-ttv1-4-F1atpase', 'test-cpu-ttv1-4-Stmv', 'test-cpu-ttv1-5-F1atpase', 'test-cpu-ttv1-5-Stmv',
+  'test-cpu-ttv1-8-F1atpase', 'test-cpu-ttv1-8-Stmv', 'test-cpu-ttv2-16-F1atpase',
+  'test-cpu-ttv2-16-Stmv', 'test-cpu-ttv2-2-F1atpase', 'test-cpu-ttv2-2-Stmv',
+  'test-cpu-ttv2-4-F1atpase', 'test-cpu-ttv2-4-Stmv', 'test-cpu-ttv2-8-F1atpase', 'test-cpu-ttv2-8-Stmv'
 
-    Found 26 tag(s)
+  Found 26 tag(s)
 
-            .
-            .
-    ```
+          .
+          .
+  ```
+- **-r, --run**
 
+  Ejecutar las pruebas seleccionadas.
 
+  Cuando una prueba se ejecuta se crean los directorios [`output`](#out) y 
+  [`stage`](#stage). Estos directorios contienen las salidas de la pruebas y se 
+  sobreescriben en cada ejecución.
 
-- ## -r, --run
-
-    Ejecutar las pruebas seleccionadas.
-
-    Cuando una prueba se ejecuta se crean los directorios [`output`](#out) y 
-    [`stage`](#stage). Estos directorios contienen las salidas de la pruebas y se 
-    sobreescriben en cada ejecución.
-
-    Para más detalles, consulte el siguiente [enlace](https://reframe-hpc.readthedocs.io/en/stable/manpage.html?#cmdoption-o).
+  Para más detalles, consulte el siguiente [enlace](https://reframe-hpc.readthedocs.io/en/stable/manpage.html?#cmdoption-o).
 
 
 ## Opciones de control
 
+
 ### Salida
 
-- ### --dont-restaging
+- **--dont-restaging**
 
-    No vuelve a preparar una prueba si su directorio [`stage`](#stage) existe. 
-    Normalmente, si existe el directorio de `stage` de una prueba, ReFrame lo 
-    eliminará y lo volverá a crear. Esta opción deshabilita este comportamiento.
+  No vuelve a preparar una prueba si su directorio [`stage`](#stage) existe. 
+  Normalmente, si existe el directorio de `stage` de una prueba, ReFrame lo 
+  eliminará y lo volverá a crear. Esta opción deshabilita este comportamiento.
 
-- ### --keep-stage-files
+- **--keep-stage-files**
 
-    Mantiene los directorios [`stage`](#stage) de prueba incluso para las pruebas que 
-    finalicen con éxito.
+  Mantiene los directorios [`stage`](#stage) de prueba incluso para las pruebas que 
+  finalicen con éxito.
 
-    Esta opción también se puede configurar con la variable de ambiente `RFM_KEEP_STAGE_FILES` 
-    o el parámetro `keep_stage_files` del archivo de configuración.
+  Esta opción también se puede configurar con la variable de ambiente `RFM_KEEP_STAGE_FILES` 
+  o el parámetro `keep_stage_files` del archivo de configuración.
 
-- ### -o, --output=DIR
+- **-o, --output=DIR**
 
-    Directorio para archivos de salida de la prueba.
+  Directorio para archivos de salida de la prueba.
 
-    Cuando una prueba finaliza con éxito, ReFrame copia los archivos de salida 
-    importantes en un directorio específico de la prueba para referencia futura. Este 
-    directorio específico de la prueba tiene el formato:
-    
-    ```bash
-    {output_prefix}/{system}/{partition}/{environment}/{test_name}
-    ```
+  Cuando una prueba finaliza con éxito, ReFrame copia los archivos de salida 
+  importantes en un directorio específico de la prueba para referencia futura. Este 
+  directorio específico de la prueba tiene el formato:
+  
+  ```bash
+  {output_prefix}/{system}/{partition}/{environment}/{test_name}
+  ```
 
-    donde `output_prefix` está establecido por esta opción. Los archivos de prueba 
-    guardados en este directorio son los siguientes:
+  donde `output_prefix` está establecido por esta opción. Los archivos de prueba 
+  guardados en este directorio son los siguientes:
 
-    - El script de compilación generado por ReFrame, si no es una prueba de solo ejecución.
+  - El script de compilación generado por ReFrame, si no es una prueba de solo ejecución.
 
-    - La salida estándar y el error estándar de la fase de compilación, si no es una prueba 
-    de solo ejecución.
+  - La salida estándar y el error estándar de la fase de compilación, si no es una prueba 
+  de solo ejecución.
 
-    - El script de trabajo generado por ReFrame, si no es una prueba de solo compilación.
+  - El script de trabajo generado por ReFrame, si no es una prueba de solo compilación.
 
-    - La salida estándar y el error estándar de la fase de ejecución, si no es una prueba de 
-    solo compilación.
+  - La salida estándar y el error estándar de la fase de ejecución, si no es una prueba de 
+  solo compilación.
 
-    - Cualquier archivo adicional especificado por el atributo [`keep_files`](../anexos/referencia_api.md#keep_files) 
-    de prueba de regresión.
+  - Cualquier archivo adicional especificado por el atributo [`keep_files`](../anexos/referencia_api.md#variables)
+  de prueba de regresión.
 
-    Esta opción también se puede configurar con la variable de ambiente `RFM_OUTPUT_DIR` o 
-    el parámetro `outputdir` del archivo de configuración.
+  Esta opción también se puede configurar con la variable de ambiente `RFM_OUTPUT_DIR` o 
+  el parámetro `outputdir` del archivo de configuración.
 
-- ### -s, --stage=DIR
+- **-s, --stage=DIR**
 
-   Prefijo del directorio para la preparación de recursos de la prueba.
+  Prefijo del directorio para la preparación de recursos de la prueba.
 
-    ReFrame no ejecuta pruebas desde su directorio de origen original. En su lugar, crea 
-    un directorio de estapas (stage) específico por prueba y copia todos los recursos de 
-    la prueba allí. Luego cambia a ese directorio y ejecuta la prueba. Este directorio 
-    específico de la prueba tiene el formato:
+  ReFrame no ejecuta pruebas desde su directorio de origen original. En su lugar, crea 
+  un directorio de estapas (stage) específico por prueba y copia todos los recursos de 
+  la prueba allí. Luego cambia a ese directorio y ejecuta la prueba. Este directorio 
+  específico de la prueba tiene el formato:
 
-    ```bash
-    {stage_prefix}/{system}/{partition}/{environment}/{test_name}
-    ```
+  ```bash
+  {stage_prefix}/{system}/{partition}/{environment}/{test_name}
+  ```
 
-    donde `stage_prefix` está establecido por esta opción. Si una prueba finaliza con 
-    éxito, se eliminará su directorio stage.
+  donde `stage_prefix` está establecido por esta opción. Si una prueba finaliza con 
+  éxito, se eliminará su directorio stage.
 
-    Esta opción también se puede configurar con la variable de ambiente `RFM_STAGE_DIR` 
-    o el parámetro `stagedir` del archivo de configuración.
+  Esta opción también se puede configurar con la variable de ambiente `RFM_STAGE_DIR` 
+  o el parámetro `stagedir` del archivo de configuración.
 
 ### Envío de trabajos
 
-- ### -J, --job-option=OPTION
+- **-J, --job-option=OPTION**
 
-   Pasa `OPTION` directamente al backend del programador de trabajos (en este caso Slurm).
+  Pasa `OPTION` directamente al backend del programador de trabajos (en este caso Slurm).
 
-    Ejemplo:
+  Ejemplo:
 
-    ```bash
-    reframe -c hola_mundo.py -J 'exclude=tt[81-88]' -r
-    ```
+  ```bash
+  reframe -c hola_mundo.py -J 'exclude=tt[81-88]' -r
+  ```
 
-    Esto agregara la siguiente linea al script de trabajo:
+  Esto agregara la siguiente linea al script de trabajo:
 
-    ```bash
-    #SBATCH --exclude=tt[81-88]
-    ```
+  ```bash
+  #SBATCH --exclude=tt[81-88]
+  ```
+
 
 ## Otras opciones
 
-- ## -C --config-file=FILE
+- **-C --config-file=FILE**
 
-    Usa `FILE` cómo archivo de configuración para ReFrame.
+  Usa `FILE` cómo archivo de configuración para ReFrame.
 
-    Esta opción también se puede configurar con la [variable de ambiente](../anexos/archivo_configuracion.md#variables-de-ambiente)
-    `RFM_CONFIG_FILE`.
+  Esta opción también se puede configurar con la [variable de ambiente](../anexos/archivo_configuracion.md#variables-de-ambiente)
+  `RFM_CONFIG_FILE`.
 
-- ## --detect-host-topology=[FILE]
+- **--detect-host-topology=[FILE]**
 
-   Detecta la topología del procesador del host local y la guarda en el archivo `FILE`.
+  Detecta la topología del procesador del host local y la guarda en el archivo `FILE`.
 
-    Si no se especifica `FILE`, se utilizará la salida estándar.
+  Si no se especifica `FILE`, se utilizará la salida estándar.
 
-- ## -h, --help 
+- **-h, --help**
 
-    Imprime un breve mensaje de ayuda.
+  Imprime un breve mensaje de ayuda.
 
-- ## --performance-report
+###### performance-report
 
-    Muestra un informe de rendimiento para todas las pruebas de rendimiento que se han 
-    ejecutado.
+- **--performance-report**
 
-- ## -v, --verbose
+  Muestra un informe de rendimiento para todas las pruebas de rendimiento que se han 
+  ejecutado.
 
-    Aumenta el nivel de detalle de la salida. Esta opción se puede especificar varias veces.
+- **-v, --verbose**
 
-- ## --show-config=[PARAM]
+  Aumenta el nivel de detalle de la salida. Esta opción se puede especificar varias veces.
 
-    Muestra el valor del parámetro de configuración `PARAM` tal como está definido para 
-    el sistema seleccionado actualmente y sale.
+- **--show-config=[PARAM]**
 
-    El valor del parámetro se imprime en formato JSON. Si no se especifica `PARAM` o si 
-    se establece en `all`, se mostrará toda la configuración para el sistema actualmente 
-    seleccionado.
+  Muestra el valor del parámetro de configuración `PARAM` tal como está definido para 
+  el sistema seleccionado actualmente y sale.
+
+  El valor del parámetro se imprime en formato JSON. Si no se especifica `PARAM` o si 
+  se establece en `all`, se mostrará toda la configuración para el sistema actualmente 
+  seleccionado.
 
 ## Más opciones
 

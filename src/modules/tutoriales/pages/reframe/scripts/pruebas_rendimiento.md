@@ -90,7 +90,7 @@ class StreamTest(rfm.RegressionTest):
 En este ejemplo, extraemos cuatro variables de rendimiento, que son los valores de 
 ancho de banda de la memoria para cada uno de los subpuntos de referencia: `Copy`, 
 `Scale`, `Add` y `Tríad` de STREAM, donde cada una de las funciones de rendimiento 
-utiliza la función de utilidad [`extractsingle()`](./pruebas_sanidad.md#reframeutilitysanityextractsinglepatt-filename-tag0-convnone-item0-encodingutf-8-¶). 
+utiliza la función de utilidad [`extractsingle()`](./pruebas_sanidad.md#sanity-extractsingle). 
 Para cada uno de los subpuntos de referencia, se define una [expresión regular](https://docs.python.org/3/library/re.html) 
 de Python para extraer la columna \"Best Rate MB/s\" de la salida (ver más abajo) y la convertimos en un valor flotante.
 

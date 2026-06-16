@@ -10,22 +10,22 @@
         - [Scripts](./modules/tutoriales/pages/reframe/scripts/scripts.md)
             
             - [Pruebas de sanidad](./modules/tutoriales/pages/reframe/scripts/pruebas_sanidad.md)
-                - [REVISAR ENLACE A "#assert_found"]()
+                
 
             - [Pruebas de rendimiento](./modules/tutoriales/pages/reframe/scripts/pruebas_rendimiento.md)
                 - [REVISAR ENLACE A "Writing A Performance Test"]()
-                - [REVISAR ENLACE A "extractsingle()"]()
+                
                 
             - [Parámetros](./modules/tutoriales/pages/reframe/scripts/parametros.md)
                 - [REVISAR ENLACE A "Parameterizing a Regression Test"]()
-                - [REVISAR ENLACE A "Tags"]()
+                
 
             - [Lanzar pruebas](./modules/tutoriales/pages/reframe/scripts/lanzar_pruebas.md)
-                - [REVISAR ENLACE A "keep_files"]()
-                
+                - REVISAR ENLACE A "keep_files" (titulo 3er grado (###))
+                - VERIFICAR ENLACES A "Tags"
+
+
         - [Aplicaciones](./modules/tutoriales/pages/reframe/aplicaciones/aplicaciones.md)
-            - [REVISAR ENLACE A "`--performance-report`"]()
-            - [REVISAR ENLACE A "`tags`"]()
             
             - [Gaussian](./modules/tutoriales/pages/reframe/aplicaciones/gaussian.md)
                         

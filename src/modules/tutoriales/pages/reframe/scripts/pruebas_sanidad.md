@@ -76,7 +76,7 @@ de Python. Y se usa para buscar una cadena de caracteres en la salida.
 
 Toda función de sanidad debe regresar un valor booleano (True). Esto se explicará más 
 adelante, por el momento se destaca el uso de la [función diferible](#funciones-diferibles) 
-[`sn.assert_found`](./pruebas_sanidad.md#reframeutilitysanityassert_foundpatt-filename-msgnone-encodingutf-8-¶) 
+[`sn.assert_found`](#assert-found) 
 que afirma la existencia de una cadena. Esta función se hereda de la clase `sanity`:
 
 ```bash
@@ -159,166 +159,171 @@ Para obtener más información, consulte la sección
 #### **Lista de funciones y utilidades**
 
 
-#### reframe.utility.sanity.abs(x) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.abs)
-- Calcula el valor absoluto de x
+- **reframe.utility.sanity.abs(x) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.abs)**
 
+    - Calcula el valor absoluto de x
 
-#### reframe.utility.sanity.all(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.all)
-- Lista de múltiples pruebas de sanidad
+- **reframe.utility.sanity.all(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.all)**
 
+    - Lista de múltiples pruebas de sanidad
 
-#### reframe.utility.sanity.assert_eq(a, b, msg=None) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_eq)
-- Confirma que `a == b`.
+- **reframe.utility.sanity.assert_eq(a, b, msg=None) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_eq)**
 
-    **Parámetros:**
-    
-    - **a y b** : Variables a comparar.
+    - Confirma que `a == b`.
 
-    - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional.
+        **Parámetros:**
+        
+        - **a y b** : Variables a comparar.
 
-    **Regresa:**
+        - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional.
 
-    `True` si tiene éxito.
+        **Regresa:**
 
-    **Plantea:**
+        `True` si tiene éxito.
 
-    `reframe.core.exceptions.SanityError` -- si falla.
+        **Plantea:**
 
+        `reframe.core.exceptions.SanityError` -- si falla.
 
-#### reframe.utility.sanity.assert_found(patt, filename, msg=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_found)
-- Comprueba que el patrón de expresiones regulares `patt` se encuentra en el archivo `filename`.
+###### assert-found
 
-    **Parámetros:**
+- **reframe.utility.sanity.assert_found(patt, filename, msg=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_found)**
 
-    - **patt** : El patrón de expresión regular para buscar.Se acepta cualquier 
-    expresión regular estándar de Python.
+    - Comprueba que el patrón de expresiones regulares `patt` se encuentra en el archivo `filename`.
 
-    - **filename** : El nombre del archivo a examinar.
+        **Parámetros:**
 
-    - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional
+        - **patt** : El patrón de expresión regular para buscar.Se acepta cualquier 
+        expresión regular estándar de Python.
 
-    - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. 
-    Opcional.
+        - **filename** : El nombre del archivo a examinar.
 
-    **Regresa:**
+        - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional
 
-    `True` si tiene éxito.
+        - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. 
+        Opcional.
 
-    **Plantea:**
+        **Regresa:**
 
-    `reframe.core.exceptions.SanityError` -- si falla.
+        `True` si tiene éxito.
 
+        **Plantea:**
 
-####  reframe.utility.sanity.assert_lt(a, b, msg=None)\] [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_lt)
-- Confirma que `a < b`.
+        `reframe.core.exceptions.SanityError` -- si falla.
 
-    **Parámetros:**
+- **reframe.utility.sanity.assert_lt(a, b, msg=None)\] [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_lt)**
 
-    - **a y b** : Variables a comparar.
+    - Confirma que `a < b`.
 
-    - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional.
+        **Parámetros:**
 
-    **Regresa:**
+        - **a y b** : Variables a comparar.
 
-    `True` si tiene éxito.
+        - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional.
 
-    **Plantea:**
+        **Regresa:**
 
-    `reframe.core.exceptions.SanityError` -- si falla.
+        `True` si tiene éxito.
 
+        **Plantea:**
 
-#### reframe.utility.sanity.assert_ne(a, b, msg=None) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_ne)
-- Confirma que `a != b`.
+        `reframe.core.exceptions.SanityError` -- si falla.
 
-    **Parámetros:**
+- **reframe.utility.sanity.assert_ne(a, b, msg=None) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_ne)**
 
-    - **a y b** : Variables a comparar.
+    - Confirma que `a != b`.
 
-    - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional.
+        **Parámetros:**
 
-    **Regresa:**
+        - **a y b** : Variables a comparar.
 
-    `True` si tiene éxito.
+        - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional.
 
-    **Plantea:**
+        **Regresa:**
 
-    `reframe.core.exceptions.SanityError` -- si falla.
+        `True` si tiene éxito.
 
+        **Plantea:**
 
-#### reframe.utility.sanity.assert_not_found(patt, filename, msg=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_not_found)
-- Comprueba que el patrón de expresiones regulares `patt` no se encuentra en el archivo `filename`.
+        `reframe.core.exceptions.SanityError` -- si falla.
 
-    **Parámetros:**
+- **reframe.utility.sanity.assert_not_found(patt, filename, msg=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.assert_not_found)**
 
-    - **patt** : El patrón de expresión regular para buscar.Se acepta cualquier 
-    expresión regular estándar de Python.
+    - Comprueba que el patrón de expresiones regulares `patt` no se encuentra en el archivo `filename`.
 
-    - **filename** : El nombre del archivo a examinar.
+        **Parámetros:**
 
-    - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional
+        - **patt** : El patrón de expresión regular para buscar.Se acepta cualquier 
+        expresión regular estándar de Python.
 
-    - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. 
-    Opcional.
+        - **filename** : El nombre del archivo a examinar.
 
-    **Regresa:**
+        - **msg** : El mensaje de error que se utilizará si la confirmación falla. Opcional
 
-    `True` si tiene éxito.
+        - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. 
+        Opcional.
 
-    **Plantea:**
+        **Regresa:**
 
-    `reframe.core.exceptions.SanityError` -- si falla.
+        `True` si tiene éxito.
 
+        **Plantea:**
 
-#### reframe.utility.sanity.avg(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.avg)
-- Devuelve el promedio de todos los elementos de `iterable`.
+        `reframe.core.exceptions.SanityError` -- si falla.
 
+- **reframe.utility.sanity.avg(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.avg)**
 
-#### reframe.utility.sanity.count(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.count)
-- Devuelve el recuento de elementos de `iterable`.
+    - Devuelve el promedio de todos los elementos de `iterable`.
 
+- **reframe.utility.sanity.count(iterable) [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.count)**
 
-#### reframe.utility.sanity.extractall(patt, filename, tag=0, conv=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractall)
-- Extrae todos los valores del grupo de captura `tag` de una expresión regular coincidente `patt` en el archivo filename\`.
+    - Devuelve el recuento de elementos de `iterable`.
 
-    **Parámetros:**
+- **reframe.utility.sanity.extractall(patt, filename, tag=0, conv=None, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractall)**
 
-    - **patt** : El patrón de expresión regular para buscar. Se acepta cualquier 
-    expresión regular estándar de Python.
+    - Extrae todos los valores del grupo de captura `tag` de una expresión regular coincidente `patt` en el archivo filename\`.
 
-    - **filename** : El nombre del archivo a examinar.
+        **Parámetros:**
 
-    - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. Opcional.
+        - **patt** : El patrón de expresión regular para buscar. Se acepta cualquier 
+        expresión regular estándar de Python.
 
-    - **tag** : El grupo de captura de expresiones regulares que se va a extraer.
+        - **filename** : El nombre del archivo a examinar.
 
-    - **conv** : Función de conversión de los valores extraídos.
+        - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. Opcional.
 
-    **Regresa:**
+        - **tag** : El grupo de captura de expresiones regulares que se va a extraer.
 
-    Una lista de valores convertidos extraídos de los grupos de captura especificados en `tag`.
+        - **conv** : Función de conversión de los valores extraídos.
 
-    **Plantea:**
+        **Regresa:**
 
-    `reframe.core.exceptions.SanityError` -- si falla.
+        Una lista de valores convertidos extraídos de los grupos de captura especificados en `tag`.
 
+        **Plantea:**
 
-#### reframe.utility.sanity.extractsingle(patt, filename, tag=0, conv=None, item=0, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractsingle)
-- Extrae un valor del grupo de captura `tag` de una expresión regular coincidente `patt` en el archivo `filename`.
+        `reframe.core.exceptions.SanityError` -- si falla.
 
-    **Parámetros:**
+###### sanity-extractsingle
 
-    - **patt** : El patrón de expresión regular para buscar. Se acepta cualquier 
-    expresión regular estándar de Python.
+- **reframe.utility.sanity.extractsingle(patt, filename, tag=0, conv=None, item=0, encoding=\'utf-8\') [¶](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#reframe.utility.sanity.extractsingle)**
 
-    - **filename** : El nombre del archivo a examinar.
+    - Extrae un valor del grupo de captura `tag` de una expresión regular coincidente `patt` en el archivo `filename`.
 
-    - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. Opcional.
+        **Parámetros:**
 
-    - **tag** : El grupo de captura de expresiones regulares que se va a extraer.
+        - **patt** : El patrón de expresión regular para buscar. Se acepta cualquier 
+        expresión regular estándar de Python.
 
-    - **item** : El numero del elemento especifico a extraer. Valor -1 extrae el último.
+        - **filename** : El nombre del archivo a examinar.
 
+        - **encodig** : El nombre de la codificación utilizada para decodificar el archivo. Opcional.
 
+        - **tag** : El grupo de captura de expresiones regulares que se va a extraer.
+
+        - **item** : El numero del elemento especifico a extraer. Valor -1 extrae el último.
+
+\
 ReFrame tiene muchas más funciones útiles, que puede consultar en la sección 
 [List of deferrable functions and utilities](https://reframe-hpc.readthedocs.io/en/stable/deferrable_functions_reference.html?highlight=sanity.all#list-of-deferrable-functions-and-utilities) 
 de la documentación oficial de ReFrame.
@@ -433,3 +438,4 @@ def assert_step_num(self):
 
 Esta función de sanidad ahora evalua dos pruebas a cumplir, si cualquiera de estas falla
 la prueba se marcará como fallida.
+

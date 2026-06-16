@@ -382,4 +382,4 @@ Found 6 tag(s)
 Log file(s) saved in '/LUSTRE/home/uam/.../t.800/Pruebas/etiquetas/logs/rfm.out', '/LUSTRE/home/uam/.../t.800/Pruebas/etiquetas/logs/rfm.log'
 ```
 
-Para obtener más información sobre el uso de las etiquetas, consulte la sección [Tags](reframe/scripts/scripts.xml#tags).
+Para obtener más información sobre el uso de las etiquetas, consulte la sección [Tags](./scripts.md#tags).
