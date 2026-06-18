@@ -351,6 +351,102 @@ La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercan
 | 16      | 9.832           | 98.1 %       | 10.048          | 101.1 %      | 10.023          | 100.9 %      |
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th colspan="2">
+CPU’s Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU’s Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU’s Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>time steps/s</th>
+<th>Eficiencia Paralela </th>
+<th>time steps/s</th>
+<th>Eficiencia Paralela </th>
+<th>time steps/s</th>
+<th>Eficiencia Paralela </th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>0.617</td>
+<td>100.0 %</td>
+<td>0.620</td>
+<td>100.0 %</td>
+<td>0.636</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>1.181</td>
+<td>97.3 %</td>
+<td>1.217</td>
+<td>98.2 %</td>
+<td>1.233</td>
+<td>92.6 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>2.375</td>
+<td>94.1 %</td>
+<td>2.402</td>
+<td>95.8 %</td>
+<td>2.326</td>
+<td>94.0 %</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>3.022</td>
+<td>94.6 %</td>
+<td></td>
+<td></td>
+</tr>
+		
+<tr>
+<td>8</td>
+<td>4.697</td>
+<td>97.4 %</td>
+<td>4.754</td>
+<td>94.5 %</td>
+<td>5.033</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>9.832</td>
+<td>98.1 %</td>
+<td>10.048</td>
+<td>101.1 %</td>
+<td>10.023</td>
+<td>100.9 %</td>
+</tr>
+
+</table>
+
 Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
 tres tipos de nodos para este sistema en particular.
 
@@ -435,7 +531,81 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
 
+<table border="1">
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU’s Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
 
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">time steps/s</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.616</td>
+<td>0.603</td>
+<td>0.628</td>
+<td>0.010</td>
+<td>7981.68</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>1.181</td>
+<td>1.176</td>
+<td>1.196</td>
+<td>0.0069</td>
+<td>4102.31</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>2.375</td>
+<td>2.367</td>
+<td>2.383</td>
+<td>0.0067</td>
+<td>2120.28</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>4.696</td>
+<td>4.674</td>
+<td>4.752</td>
+<td>0.0257</td>
+<td>1024.0</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>9.832</td>
+<td>9.814</td>
+<td>9.864</td>
+<td>0.0217</td>
+<td>508.66</td>
+</tr>
+
+</table>
 
 ### Performance Lennard-Jones Benchmark en nodos TTV1
 
@@ -473,6 +643,92 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+    CPU's Nodos ttv1<br>
+    20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+    128GB RAM<br>
+    Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">timesteps/s</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.621</td>
+<td>0.605</td>
+<td>0.640</td>
+<td>0.0143</td>
+<td>7843.445</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>1.216</td>
+<td>1.213</td>
+<td>1.227</td>
+<td>0.0059</td>
+<td>3993.045</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>2.401</td>
+<td>2.252</td>
+<td>2.442</td>
+<td>0.0614</td>
+<td>2047.12</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>20</td>
+<td>3.021</td>
+<td>3.014</td>
+<td>3.027</td>
+<td>0.0040</td>
+<td>1659.04</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>4.754</td>
+<td>4.560</td>
+<td>4.844</td>
+<td>0.1014</td>
+<td>1037.445</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>10.048</td>
+<td>9.980</td>
+<td>10.098</td>
+<td>0.0499</td>
+<td>485.0</td>
+</tr>
+
+</table>
 
 ### Performance Lennard-Jones Benchmark en nodos TTV2
 
@@ -507,6 +763,83 @@ de nodos lo cual puede ser un factor en los tiempos finales reportados en este t
 | 16      | 20            | 10.022        | 7.449         | 10.817        | 1.2972        | 487.43        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos ttv2<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">timesteps/s</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.635</td>
+<td>0.615</td>
+<td>0.655</td>
+<td>0.0163</td>
+<td>7871.73</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>1.233</td>
+<td>1.038</td>
+<td>1.289</td>
+<td>0.0929</td>
+<td>4248.6</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>2.326</td>
+<td>1.757</td>
+<td>2.553</td>
+<td>0.3178</td>
+<td>2092.96</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>5.033</td>
+<td>3.622</td>
+<td>5.228</td>
+<td>0.4716</td>
+<td>975.82</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>10.022</td>
+<td>7.449</td>
+<td>10.817</td>
+<td>1.2972</td>
+<td>487.43</td>
+</tr>
+
+</table>
 
 
 ## Rhodopsin protein benchmark (Junio 2022)
@@ -562,6 +895,102 @@ La simulación debe llegar a un valor `TotEng` para el ultimo `timesteps` cercan
 | 16      | 1.977           | 93.2 %       | 1.999           | 90.4 %       | 2.119           | 93.6 %       |
 +---------+-----------------+--------------+-----------------+--------------+-----------------+--------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th colspan="2">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>timesteps/s</th>
+<th>Eficiencia Paralela %</th>
+<th>timesteps/s</th>
+<th>Eficiencia Paralela %</th>
+<th>timesteps/s</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>0.139</td>
+<td>100.0 %</td>
+<td>0.139</td>
+<td>100.0 %</td>
+<td>0.158</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>0.271</td>
+<td>96.9 %</td>
+<td>0.268</td>
+<td>96.2 %</td>
+<td>0.298</td>
+<td>100.6 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>0.529</td>
+<td>96.0 %</td>
+<td>0.397</td>
+<td>95.1 %</td>
+<td>0.581</td>
+<td>96.9 %</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>0.656</td>
+<td>95.0 %</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>1.038</td>
+<td>95.4 %</td>
+<td>1.018</td>
+<td>94.2 %</td>
+<td>1.173</td>
+<td>100.1 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>1.977</td>
+<td>93.2 %</td>
+<td>1.999</td>
+<td>90.4 %</td>
+<td>2.119</td>
+<td>93.6 %</td>
+</tr>
+
+</table>
+
 
 Observamos que mientras incrementamos la cantidad nodos. `LAMMPS` escala de manera muy eficiente en los
 tres tipos de nodos para este sistema en particular.
@@ -653,6 +1082,83 @@ otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportado
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">timesteps/s</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.138</td>
+<td>0.137</td>
+<td>0.140</td>
+<td>0.0012</td>
+<td>36047.95</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>0.270</td>
+<td>0.269</td>
+<td>0.275</td>
+<td>0.0022</td>
+<td>18593.4</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>0.529</td>
+<td>0.514</td>
+<td>0.534</td>
+<td>0.0077</td>
+<td>9384.665</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>1.037</td>
+<td>0.940</td>
+<td>1.064</td>
+<td>0.0490</td>
+<td>4725.51</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>1.976</td>
+<td>1.841</td>
+<td>2.067</td>
+<td>0.1092</td>
+<td>2418.5</td>
+</tr>
+
+</table>
+
 
 ### Performance Rhodopsin Benchmark en nodos TTV1
 
@@ -690,6 +1196,93 @@ otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportado
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos ttv1<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">timesteps/s</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.138</td>
+<td>0.138</td>
+<td>0.140</td>
+<td>0.0006</td>
+<td>35802.64</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>0.267</td>
+<td>0.262</td>
+<td>0.272</td>
+<td>0.0034</td>
+<td>18602.44</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>0.397</td>
+<td>0.197</td>
+<td>0.529</td>
+<td>0.1591</td>
+<td>9409.19</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>20</td>
+<td>0.655</td>
+<td>0.645</td>
+<td>0.662</td>
+<td>0.0065</td>
+<td>7538.76</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>1.017</td>
+<td>0.952</td>
+<td>1.044</td>
+<td>0.0379</td>
+<td>4753.35</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>1.998</td>
+<td>1.954</td>
+<td>2.034</td>
+<td>0.0333</td>
+<td>2474.16</td>
+</tr>
+
+</table>
+
 
 ### Performance Rhodopsin Benchmark en nodos TTV2
 
@@ -724,6 +1317,83 @@ otros tipo de nodos lo cual puede ser un factor en los tiempos finales reportado
 | 16      | 20            | 2.118         | 1.825         | 2.282         | 0.1686        | 2307.61       |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos ttv2<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">timesteps/s</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.157</td>
+<td>0.139</td>
+<td>0.186</td>
+<td>0.0178</td>
+<td>34542.10</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>0.297</td>
+<td>0.285</td>
+<td>0.302</td>
+<td>0.0064</td>
+<td>17174.75</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>0.580</td>
+<td>0.536</td>
+<td>0.594</td>
+<td>0.0201</td>
+<td>8911.885</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>1.172</td>
+<td>1.164</td>
+<td>1.185</td>
+<td>0.0083</td>
+<td>4312.17</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>2.118</td>
+<td>1.825</td>
+<td>2.282</td>
+<td>0.1686</td>
+<td>2307.61</td>
+</tr>
+
+</table>
 
 
 ## Lammps en GPU

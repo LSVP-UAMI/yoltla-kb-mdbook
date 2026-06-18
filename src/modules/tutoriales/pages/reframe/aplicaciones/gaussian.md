@@ -227,54 +227,6 @@ Infiniband FDR10/FDR
 </tr>
 </table>
 
-\
-<span style="color: #990819;">*Table 1.1. Performance Test 0979 nodos NC*</span>
-
-**CPU’s Nodos nc, 20 Cores x 2.50GHz Intel Xeón E5-2670v2, 64GB RAM, Infiniband FDR10/FDR**7
-
-| # Cores | time (seconds) | Eficiencia Paralela % |
-|---------|----------------|-----------------------|
-| 1  | 1895.314  | 100.0 % |
-| 2  | 999.707   | 94.8 %  |
-| 4  | 533.439   | 88.8 %  |
-| 8  | 310.036   | 76.4 %  |
-| 16 | 173.288   | 68.4 %  |
-| 20 | 152.121   | 62.3 %  |
-| 32 |           |         |  
-
-\
-<span style="color: #990819;">*Table 1.2. Performance Test 0979 nodos TTv1*</span>
-
-**CPU’s Nodos ttv1[1-58], 20 Cores x 2.60GHz Intel Xeón E5-2660v3, 128GB RAM, Infiniband FDR10/FDR**
-
-| # Cores | time (seconds) | Eficiencia Paralela % |
-|---------|----------------|-----------------------|
-| 1  | 2052.557 | 100.0 % |
-| 2  | 1041.206 | 98.6 %  |
-| 4  | 546.997  | 93.8 %  |
-| 8  | 294.713  | 87.1 %  |
-| 16 | 228.473  | 56.1 %  |
-| 20 | 152.093  | 67.5 %  |
-| 32 |          |         |
-
-\
-<span style="color: #990819;">*Table 1.3. Performance Test 0979 nodos TTv2*</span>
-
-**CPU’s Nodos ttv2[59-104], 32 Cores x 2.10GHz Intel Xeon E5-2683v4, 256GB RAM, Infiniband FDR10/FDR**
-
-| # Cores | time (seconds) | Eficiencia Paralela % |
-|---------|----------------|-----------------------|
-| 1  | 2480.583 | 100.0 % |
-| 2  | 1240.281 | 100.0 % | 
-| 4  | 651.619  | 95.2 %  |
-| 8  | 361.331  | 85.8 %  | 
-| 16 | 202.973  | 76.4 %  | 
-| 20 |          |         |
-| 32 | 156.012  | 49.7 %  |  
-
-
-**************************************************************************************************
-
 Para este Benchmarks, observamos un uso eficiente de los recursos entre 8 y 16 cores de cada partición.
 
 

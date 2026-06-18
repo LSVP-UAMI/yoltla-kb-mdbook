@@ -312,6 +312,101 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th colspan="2">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>Wall time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Wall time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Wall time (s)</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2579.97</td>
+<td>100 %</td>
+<td>2512.62</td>
+<td>100 %</td>
+<td>2253.98</td>
+<td>100 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>1294.48</td>
+<td>99 %</td>
+<td>1239.36</td>
+<td>99 %</td>
+<td>1161.38</td>
+<td>97 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>674.51</td>
+<td>95 %</td>
+<td>656.63</td>
+<td>95 %</td>
+<td>609.27</td>
+<td>92 %</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>526.42</td>
+<td>95 %</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>361.77</td>
+<td>89 %</td>
+<td>347.04</td>
+<td>90 %</td>
+<td>329.84</td>
+<td>85 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>207.10</td>
+<td>77 %</td>
+<td>199.51</td>
+<td>78 %</td>
+<td>190.97</td>
+<td>73 %</td>
+</tr>
+
+</table>
+
 
 ### Performance C240 Benchmark en nodos NC
 
@@ -345,6 +440,78 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 | 16       | 20            | 207.1         | 205.9         | 210.4         | 1.558         |
 +----------+---------------+---------------+---------------+---------------+---------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="5">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">Wall time (s)</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>2579.97</td>
+<td>2541.8</td>
+<td>2591.6</td>
+<td>14.722</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>1294.48</td>
+<td>1276.6</td>
+<td>1303.7</td>
+<td>8.727</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>674.51</td>
+<td>671.2</td>
+<td>678.7</td>
+<td>3.215</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>361.77</td>
+<td>355.6</td>
+<td>368.3</td>
+<td>4.176</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>207.1</td>
+<td>205.9</td>
+<td>210.4</td>
+<td>1.558</td>
+</tr>
+
+
+</table>
 
 
 ### Performance C240 Benchmark en nodos TTV1
@@ -382,6 +549,86 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 +----------+---------------+---------------+---------------+---------------+---------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="5">
+CPU's Nodos ttv1<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">Wall time (s)</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>2512.62</td>
+<td>2445.6</td>
+<td>2587.0</td>
+<td>46.820</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>1239.36</td>
+<td>1230.3</td>
+<td>1253.1</td>
+<td>9.875</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>656.63</td>
+<td>651.3</td>
+<td>670.7</td>
+<td>6.722</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>20</td>
+<td>526.42</td>
+<td>519.9</td>
+<td>536.3</td>
+<td>4.665</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>347.04</td>
+<td>345.2</td>
+<td>348.4</td>
+<td>0.921</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>199.51</td>
+<td>197.6</td>
+<td>204.3</td>
+<td>2.058</td>
+</tr>
+
+</table>
+
 
 ### Performance C240 Benchmark en nodos TTV2
 
@@ -415,6 +662,77 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 | 16       | 20            | 190.97        | 188.0         | 196.5         | 2.829         |
 +----------+---------------+---------------+---------------+---------------+---------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="5">
+CPU's Nodos ttv2<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">Wall time (s)</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>2253.98</td>
+<td>2132.2</td>
+<td>2302.3</td>
+<td>52.315</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>1161.38</td>
+<td>1145.3</td>
+<td>1181.2</td>
+<td>12.552</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>609.27</td>
+<td>598.2</td>
+<td>639.6</td>
+<td>13.432</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>329.84</td>
+<td>324.5</td>
+<td>346.7</td>
+<td>7.461</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>190.97</td>
+<td>188.0</td>
+<td>196.5</td>
+<td>2.829</td>
+</tr>
+
+</table>
 
 
 ## Siosi8 Benchmark
@@ -461,6 +779,80 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-65667.6283
 +-----------------+-----------------+-----------------+-----------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th>
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th>
+CPU's Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th>
+CPU's Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>Wall time (s)</th>
+<th>Wall time (s)</th>
+<th>Wall time (s)</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>18909.61</td>
+<td>17956.3</td>
+<td>12388.77</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>9924.14</td>
+<td>9337.85</td>
+<td>6663.14</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>5354.52</td>
+<td>4811.38</td>
+<td>1332.82</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td></td>
+<td>3950.65</td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>1269.56</td>
+<td>899.55</td>
+<td>768.92</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>520.48</td>
+<td>484.16</td>
+<td>513.51</td>
+</tr>
+
+</table>
+
 
 ### Eficiencia Paralela
 
@@ -486,6 +878,62 @@ a partir de 8 nodos de computo para cada tipo de nodo para una mejor interpretac
 | 16      | 520.48    | 121 %        | 484.16    | 92 %         | 513.51    | 74 %         |
 +---------+-----------+--------------+-----------+--------------+-----------+--------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th colspan="2">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>Wall time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Wall time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Wall time (s)</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>8</td>
+<td>1269.56</td>
+<td>100 %</td>
+<td>899.55</td>
+<td>100 %</td>
+<td>768.92</td>
+<td>100 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>520.48</td>
+<td>121 %</td>
+<td>484.16</td>
+<td>92 %</td>
+<td>513.51</td>
+<td>74 %</td>
+</tr>
+
+</table>
+
 
 
 ## Referencias

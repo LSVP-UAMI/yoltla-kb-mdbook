@@ -140,6 +140,23 @@ html.ayu .content h3 > .header { color: #95E6CB !important; }
 html.ayu .content h4 > .header { color: #73D0FF !important; }
 html.ayu .content h5 > .header { color: #D4BFFF !important; }
 
+/* Ajustes para tablas */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid var(--table-border-color);
+    padding: 0.5em;
+}
+
+th {
+    text-align: center;
+}
+
+/* Ocultar h6 */
+
 h6#assert-found {
     font-size: 0;
     margin: 0;

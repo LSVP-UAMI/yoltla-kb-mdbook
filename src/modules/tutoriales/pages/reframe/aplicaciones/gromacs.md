@@ -314,6 +314,174 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 ```
 
+<table>
+<tr>
+<th rowspan="2"># Nodos</th>
+
+<th colspan="3">
+CPU’s Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+
+<th colspan="3">
+CPU’s Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+
+<th colspan="3">
+CPU’s Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>ns/day</th>
+<th>Wall t(s)</th>
+<th>Eficiencia Paralela %</th>
+
+<th>ns/day</th>
+<th>Wall t(s)</th>
+<th>Eficiencia Paralela %</th>
+
+<th>ns/day</th>
+<th>Wall t(s)</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+
+<td>56.508</td>
+<td>152.91</td>
+<td>100 %</td>
+
+<td>56.01</td>
+<td>154.26</td>	
+<td>100 %</td>
+
+<td>89.634</td>
+<td>97.39</td>	
+<td>100 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+
+<td>106.903</td>
+<td>80.82</td>	
+<td>94 %</td>
+
+<td>101.78</td>
+<td>85.12</td>	
+<td>90 %</td>
+
+<td>141.643</td>
+<td>61.00</td>	
+<td>79 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+
+<td>190.727</td>
+<td>45.30</td>	
+<td>84 %</td>
+
+<td>194.970</td>
+<td>44.36</td>	
+<td>86 %</td>
+
+<td>237.384</td>
+<td>36.56</td>	
+<td>66 %</td>
+</tr>
+
+<tr>
+<td>5</td>
+
+<td></td>
+<td></td>	
+<td></td>
+
+<td>232.410</td>
+<td>37.25</td>	
+<td>82 %</td>
+
+<td></td>
+<td></td>	
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+
+<td>301.061</td>
+<td>29.48</td>	
+<td>64 %</td>
+
+<td>321.602</td>
+<td>26.87</td>	
+<td>71 %</td>
+
+<td>378.348</td>
+<td>22.83</td>	
+<td>53 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+
+<td>432.181</td>
+<td>19.33</td>	
+<td>49 %</td>
+
+<td>435.212</td>
+<td>18.92</td>	
+<td>50 %</td>
+
+<td>356.081</td>
+<td>24.44</td>	
+<td>24 %</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### 61K atom system - 1WDN Glutamine-Binding Protein
 
@@ -493,6 +661,83 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">ns/day</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.371</td>
+<td>0.368</td>
+<td>0.375</td>
+<td>0.0027</td>
+<td>4663</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>0.750</td>
+<td>0.748</td>
+<td>0.753</td>
+<td>0.0017</td>
+<td>2300</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>1.489</td>
+<td>1.474</td>
+<td>1.507</td>
+<td>0.0108</td>
+<td>1160</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>2.848</td>
+<td>2.792</td>
+<td>2.880</td>
+<td>0.0337</td>
+<td>607</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>5.202</td>
+<td>4.146</td>
+<td>5.580</td>
+<td>0.6101</td>
+<td>313</td>
+</tr>
+
+</table>
+
 
 #### Performance Tetramers Benchmark en nodos TTV1
 
@@ -530,6 +775,94 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos ttv1<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">ns/day</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<td>Promedio</td>
+<td>Mínimo</td>
+<td>Máximo</td>
+<td>Desviación Estándar</td>
+</tr>
+
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.372</td>
+<td>0.368</td>
+<td>0.380</td>
+<td>0.0040</td>
+<td>4643</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>0.727</td>
+<td>0.706</td>
+<td>0.742</td>
+<td>0.0162</td>
+<td>2352</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>1.461</td>
+<td>1.431</td>
+<td>1.472</td>
+<td>0.0155</td>
+<td>1176</td>
+</tr>
+
+<tr>
+<td>5</t>
+<td>20</td>
+<td>1.785</td>
+<td>1.731</td>
+<td>1.824</td>
+<td>0.0396</td>
+<td>980</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>2.746</td>
+<td>2.724</td>
+<td>2.793</td>
+<td>0.0276</td>
+<td>621</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>5.234</td>
+<td>5.125</td>
+<td>5.377</td>
+<td>0.0832</td>
+<td>335</td>
+</tr>
+
+</table>
+
 
 #### Performance Tetramers Benchmark en nodos TTV2
 
@@ -564,6 +897,83 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 | 16      | 20            | 6.029         | 5.831         | 6.105         | 0.1013        | 287           |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos ttv2<br>
+232 Cores x 2.10GHz Intel Xeón E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">ns/day</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>0.503</td>
+<td>0.404</td>
+<td>0.647</td>
+<td>0.1095</td>
+<td>3913</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>0.813</td>
+<td>0.730</td>
+<td>0.937</td>
+<td>0.0626</td>
+<td>2138</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>1.459</td>
+<td>0.653</td>
+<td>1.792</td>
+<td>0.3698</td>
+<td>1096</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>3.027</td>
+<td>2.403</td>
+<td>3.309</td>
+<td>0.2944</td>
+<td>548</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>20</td>
+<td>6.029</td>
+<td>5.831</td>
+<td>6.105</td>
+<td>0.1013</td>
+<td>287</td>
+</tr>
+
+</table>
 
 
 ## Gromacs en GPU
@@ -687,6 +1097,64 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 | 8           | 1.872         | 987.119       |               |               |
 +-------------+---------------+---------------+---------------+---------------+
 ```
+<table border="1">
+
+<tr>
+<th rowspan="2"># GPU devices</th>
+<th colspan="2">
+Nodos GPUS Tesla K20<br>
+20 Cores<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+Nodos nc con GPUS V100<br>
+36 Cores<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>ns/days</th>
+<th>Wall time (s)</th>
+<th>ns/days</th>
+<th>Wall time (s)</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>0.626</td>
+<td>3068.796</td>
+<td>2.31</td>
+<td>549.212</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>1.256</td>
+<td>2046.388</td>
+<td>2.981</td>
+<td>470.666</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>1.649</td>
+<td>1097.792</td>
+<td>3.711</td>
+<td>439.652</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>1.872</td>
+<td>987.119</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
 
 Observamos una aceleración considerable en la particiones vgpus obteniendo un performance
 en 4 gpus superior al uso de 8 nodos de las particiones cpu.
