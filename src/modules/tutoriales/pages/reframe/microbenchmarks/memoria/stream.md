@@ -533,6 +533,63 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="2">Nodo</th>
+<th colspan="4">Copy</th>
+<th colspan="4">Scale</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>σ</th>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>σ</th>
+</tr>
+
+<tr>
+<td>NC</td>
+<td>54756.72</td>
+<td>48246.80</td>
+<td>61209.80</td>
+<td>4000.61</td>
+<td>53926.19</td>
+<td>47270.60</td>
+<td>61456.40</td>
+<td>4839.48</td>
+</tr>
+
+<tr>
+<td>TTv1</td>
+<td>72739.80</td>
+<td>68020.30</td>
+<td>75011.30</td>
+<td>2001.14</td>
+<td>71280.20</td>
+<td>67204.60</td>
+<td>73479.50</td>
+<td>1825.40</td>
+</tr>
+
+<tr>
+<td>TTv2</td>
+<td>55945.12</td>
+<td>34471.70</td>
+<td>82382.60</td>
+<td>19410.79</td>
+<td>55752.04</td>
+<td>34698.30</td>
+<td>80800.50</td>
+<td>18572.01</td>
+</tr>
+</table>
+
+\
 <span style="color: #990819;">*Tabla 11. Resultados de las pruebas de Add y Triad en el cluster Yoltla*</span>
 ```
 +----------+--------------+------------+------------+----------+--------------+------------+------------+----------+

@@ -245,32 +245,101 @@ La simulación debe llegar a un valor `! total energy` cercano a: `-11427.090171
 
 \
 <span style="color: #990819;">*Table 1. Performance AUSURF112 Benchmark*</span>
-```
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
-| Nodos** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
-|         | Xeón E5-2670v2\            | 20 Cores x 2.60GHz Intel   | 32 Cores x 2.10GHz Intel   |
-|         | 64GB RAM\                  | Xeón E5-2660v3\            | Xeon E5-2683v4\            |
-|         | Infiniband FDR10/FDR**     | 128GB RAM\                 | 256GB RAM\                 |
-|         |                            | Infiniband FDR10/FDR**     | Infiniband FDR10/FDR**     |
-|         +-------------+--------------+-------------+--------------+-------------+--------------+
-|         | **Electrons | **Eficiencia | **Electrons | **Eficiencia | **Electrons | **Eficiencia |
-|         | Wall Time   | Paralela %** | Wall Time   | Paralela %** | Wall Time   | Paralela %** |
-|         | (s)**       |              | (s)**       |              | (s)**       |              |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 1       | 4129.300    | 100.0 %      | 2817.760    | 100.0 %      | 4535.365    | 100.0 %      |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 2       | 1944.305    | 106.2 %      | 1490.185    | 94.5 %       | 2447.600    | 92.6 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 4       | 1217.410    | 84.8 %       | 870.773     | 80.9 %       | 1876.977    | 60.4 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 5       |             |              | 676.075     | 83.4 %       |             |              |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 8       | 763.187     | 67.6 %       | 521.835     | 67.5 %       | 712.180     | 79.6 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 16      | 460.930     | 56.0 %       | 329.950     | 53.4 %       | 446.970     | 63.4 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-```
+
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+
+<th colspan="2">CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>Electrons Wall Time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Electrons Wall Time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Electrons Wall Time (s)</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>4129.300</td>
+<td>100.0 %</td>
+<td>2817.760</td>
+<td>100.0 %</td>
+<td>4535.365</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>1944.305</td>
+<td>106.2 %</td>
+<td>1490.185</td>
+<td>94.5 %</td>
+<td>2447.600</td>
+<td>92.6 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>1217.410</td>
+<td>84.8 %</td>
+<td>870.773</td>
+<td>80.9 %</td>
+<td>1876.977</td>
+<td>60.4 %</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>676.075</td>
+<td>83.4 %</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>763.187</td>
+<td>67.6 %</td>
+<td>521.835</td>
+<td>67.5 %</td>
+<td>712.180</td>
+<td>79.6 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>460.930</td>
+<td>56.0 %</td>
+<td>329.950</td>
+<td>53.4 %</td>
+<td>446.970</td>
+<td>63.4 %</td>
+</tr>
+
+</table>
 
 Para esta aplicación notamos que el rendimiento de las simulaciones depende mucho de la cantidad de átomos
 y modelo simulado, obteniendo un mejor o peor rendimiento dependiendo de como se divide la cantidad de
@@ -293,30 +362,91 @@ La simulación debe llegar a un valor `total energy` cercano a: `-179010.8746286
 
 \
 <span style="color: #990819;">*Table 2. Performance GRIR443 Benchmark*</span>
-```
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| **\#    | **CPU's Nodos nc\          | **CPU's Nodos              | **CPU's Nodos              |
-| Nodos** | 20 Cores x 2.50GHz Intel   | ttv1\[1-58\]\              | ttv2\[59-104\]\            |
-|         | Xeón E5-2670v2\            | 20 Cores x 2.60GHz Intel   | 32 Cores x 2.10GHz Intel   |
-|         | 64GB RAM\                  | Xeón E5-2660v3\            | Xeon E5-2683v4\            |
-|         | Infiniband FDR10/FDR**     | 128GB RAM\                 | 256GB RAM\                 |
-|         |                            | Infiniband FDR10/FDR**     | Infiniband FDR10/FDR**     |
-|         +-------------+--------------+-------------+--------------+-------------+--------------+
-|         | **Electrons | **Eficiencia | **Electrons | **Eficiencia | **Electrons | **Eficiencia |
-|         | Wall Time   | Paralela %** | Wall Time   | Paralela %** | Wall Time   | Paralela %** |
-|         | (s)**       |              | (s)**       |              | (s)**       |              |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 1       | 36027.840   | 100.0 %      | 27787.965   | 100.0 %      | 42080.990   | 100.0 %      |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 4       | 12142.370   | 74.2 %       | 8676.930    | 80.1 %       | 11211.230   | 93.8 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 5       |             |              | 5679.140    | 97.9 %       |             |              |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 8       | 4730.130    | 95.2 %       | 3780.870    | 91.9 %       | 6725.420    | 78.2 %       |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-| 16      | 2496.460    | 90.2 %       | 1955.085    | 88.8 %       |             |              |
-+---------+-------------+--------------+-------------+--------------+-------------+--------------+
-```
+
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th colspan="2">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>Electrons Wall Time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Electrons Wall Time (s)</th>
+<th>Eficiencia Paralela %</th>
+<th>Electrons Wall Time (s)</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>36027.840</td>
+<td>100.0 %</td>
+<td>27787.965</td>
+<td>100.0 %</td>
+<td>42080.990</td>
+<td>100.0 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>12142.370</td>
+<td>74.2 %</td>
+<td>8676.930</td>
+<td>80.1 %</td>
+<td>11211.230</td>
+<td>93.8 %</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>5679.140</td>
+<td>97.9 %</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>4730.130</td>
+<td>95.2 %</td>
+<td>3780.870</td>
+<td>91.9 %</td>
+<td>6725.420</td>
+<td>78.2 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>2496.460</td>
+<td>90.2 %</td>
+<td>1955.085</td>
+<td>88.8 %</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
 
 Para esta simulación notamos que el rendimiento depende del modelo simulado, obteniendo un mejor o peor
 rendimiento dependiendo de como se divide la cantidad de procesos MPI para la resolución del problema.

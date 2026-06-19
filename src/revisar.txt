@@ -37,40 +37,36 @@
                 - REVISAR ENLACE A "HECBioSim" --> Error 404
                 - REVISAR ENLACE A "The HECBioSim Benchmarks" --> Error 404
                 - [REVISAR AJUSTE DE TABLAS]()
+                TABLAS MUY GRANDES, DE "20K atom system --3NIR Crambin --> Performance Tetramers Benchmark en nodos NC"
                 
             - [Lammps](./modules/tutoriales/pages/reframe/aplicaciones/lammps.md)
-                - [REVISAR AJUSTE DE TABLAS]()
 
             - [NWChem](./modules/tutoriales/pages/reframe/aplicaciones/nwchem.md)
-                - [REVISAR AJUSTE DE TABLAS]()
             
             - [Namd](./modules/tutoriales/pages/reframe/aplicaciones/namd.md)
-                - [REVISAR AJUSTE DE TABLAS]()
 
             - [QuantumEspresso](./modules/tutoriales/pages/reframe/aplicaciones/quantumespresso.md)
-                - [REVISAR AJUSTE DE TABLAS]()
         
         - [Benchmarks]()
             - [HPL](./modules/tutoriales/pages/reframe/benchmarks/hpl.md)
             	- REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
-                - REVISAR AJUSTE DE TABLAS
                 - REVISAR ENLACE "AMD \| HPL Benchmark"
+                TABLAS MUY GRANDES --> "t4, t5, t8, t9, t12, t13"
 
             - [HPCG]()
                 - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[]) Unresolved directive in hpcg.adoc - include::partial\$reframe/nodos_computo.adoc\[\]
-                - REVISAR AJUSTE DE TABLAS
                 - REVISAR ENLACE "AMD \| HPCG"
+                TABLAS MUY GRANDES --> t4, t5, t6, t7, t8, t9, 
 
         - [MicroBenchmarks]()
             
             - [Disco]()
                 - [DiskWrite]()
                     - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
-                    - REVISAR AJUSTE DE TABLAS
+                    
                 
                 - [DiskRead]()
                     - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
-                    - REVISAR AJUSTE DE TABLAS
                 
             - [Memoria]()
                 - [memtester]()
@@ -80,9 +76,9 @@
                     - REVISAR ENLACE A "STREAM"
                     - REVISAR ENLACE A "código fuente"
                     - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
-                    - REVISA AJUSTE DE TABLAS
                     - REVISAR ENLACE A "STREAM: Sustainable Memory Bandwidth in High Performance Computers"
                     - REVISAR ENLACE A "AMD \| STREAM Benchmark"
+                    TODAS LAS TABLAS MUY GRANDES
 
             - [NPB]()
                 - [FT]()
