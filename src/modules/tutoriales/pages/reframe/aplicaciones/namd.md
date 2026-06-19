@@ -182,6 +182,101 @@ que otro tipo de nodo.
 +---------+-------------+--------------+-------------+--------------+-------------+--------------+
 ```
 
+<table border="1">
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th colspan="2">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv1[1-58]<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+CPU's Nodos ttv2[59-104]<br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>days/ns</th>
+<th>Eficiencia Paralela %</th>
+<th>days/ns</th>
+<th>Eficiencia Paralela %</th>
+<th>days/ns</th>
+<th>Eficiencia Paralela %</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>5.471</td>
+<td>100 %</td>
+<td>5.658</td>
+<td>100 %</td>
+<td>4.870</td>
+<td>100 %</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>2.647</td>
+<td>100 %</td>
+<td>2.732</td>
+<td>98 %</td>
+<td>3.276</td>
+<td>99 %</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>1.377</td>
+<td>95 %</td>
+<td>1.472</td>
+<td>94 %</td>
+<td>2.024</td>
+<td>92 %</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>1.174</td>
+<td>91 %</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>0.707</td>
+<td>89 %</td>
+<td>0.773</td>
+<td>86 %</td>
+<td>1.024</td>
+<td>88 %</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>0.362</td>
+<td>79 %</td>
+<td>0.424</td>
+<td>76 %</td>
+<td>0.473</td>
+<td>73 %</td>
+</tr>
+
+</table>
+
 
 ### Performance STMV Benchmark en nodos NC
 
@@ -216,6 +311,83 @@ que otro tipo de nodo.
 | 16      | 20            | 0.361         | 0.358         | 0.364         | 0.0026        | 391           |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos nc<br>
+20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">days/ns</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>5.471</td>
+<td>5.419</td>
+<td>5.519</td>
+<td>0.0300</td>
+<td>4816</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>2.640</td>
+<td>2.627</td>
+<td>2.654</td>
+<td>0.0096</td>
+<td>2369</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>1.375</td>
+<td>1.363</td>
+<td>1.413</td>
+<td>0.0157</td>
+<td>1304</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>0.707</td>
+<td>0.699</td>
+<td>0.713</td>
+<td>0.0054</td>
+<td>680</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>0.361</td>
+<td>0.358</td>
+<td>0.364</td>
+<td>0.0026</td>
+<td>391</td>
+</tr>
+
+</table>
 
 
 ### Performance STMV Benchmark en nodos TTV1
@@ -253,6 +425,93 @@ que otro tipo de nodo.
 | 16      | 20            | 0.424         | 0.380         | 0.660         | 0.0842        | 397.65        |
 +---------+---------------+---------------+---------------+---------------+---------------+---------------+
 ```
+
+<table border="1">
+
+<tr>
+<th rowspan="3"># Nodos</th>
+<th colspan="6">
+CPU's Nodos ttv1<br>
+20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th rowspan="2">No. Ejecuciones</th>
+<th colspan="4">days/ns</th>
+<th rowspan="2">Wallclock (s) Promedio</th>
+</tr>
+
+<tr>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>20</td>
+<td>5.658</td>
+<td>5.627</td>
+<td>5.696</td>
+<td>0.0246</td>
+<td>4860.62</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>20</td>
+<td>2.732</td>
+<td>2.724</td>
+<td>2.740</td>
+<td>0.0080</td>
+<td>2433.665</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>20</td>
+<td>1.472</td>
+<td>1.376</td>
+<td>1.702</td>
+<td>0.0814</td>
+<td>1292.24</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>20</td>
+<td>1.174</td>
+<td>1.117</td>
+<td>1.249</td>
+<td>0.0336</td>
+<td>1063.44</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>20</td>
+<td>0.773</td>
+<td>0.735</td>
+<td>0.869</td>
+<td>0.0417</td>
+<td>702.53</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>20</td>
+<td>0.424</td>
+<td>0.380</td>
+<td>0.660</td>
+<td>0.0842</td>
+<td>397.65</td>
+</tr>
+
+</table>
 
 
 ### Performance STMV Benchmark en nodos TTV2
