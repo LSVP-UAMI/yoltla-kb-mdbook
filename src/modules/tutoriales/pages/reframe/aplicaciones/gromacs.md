@@ -381,6 +381,57 @@ Infiniband FDR10/FDR
 </tbody>
 </table>
 
+******************************************************************************************************
+<table border="1">
+
+<tr>
+<thead>
+
+<th rowspan="2"># GPU devices</th>
+<th colspan="2">
+Nodos GPUS Tesla K20<br>
+20 Cores<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="2">
+Nodos nc con GPUS V100<br>
+36 Cores<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th>ns/days</th>
+<th>Wall time (s)</th>
+<th>ns/days</th>
+<th>Wall time (s)</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>1</td><td>0.626</td><td>3068.796</td><td>2.31</td><td>549.212</td>
+</tr>
+
+<tr>
+<td>2</td><td>1.256</td><td>2046.388</td><td>2.981</td><td>470.666</td>
+</tr>
+
+<tr>
+<td>4</td><td>1.649</td><td>1097.792</td><td>3.711</td><td>439.652</td>
+</tr>
+
+<tr>
+<td>8</td><td>1.872</td><td>987.119</td><td></td><td></td>
+</tr>
+
+<tbody>
+</table>
+*********************************************************************************************
+
 
 ### 61K atom system - 1WDN Glutamine-Binding Protein
 
@@ -903,6 +954,8 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 <table border="1">
 
 <tr>
+<thead>
+
 <th rowspan="2"># GPU devices</th>
 <th colspan="2">
 Nodos GPUS Tesla K20<br>
@@ -925,38 +978,26 @@ Infiniband FDR10/FDR
 <th>Wall time (s)</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>0.626</td>
-<td>3068.796</td>
-<td>2.31</td>
-<td>549.212</td>
+<td>1</td><td>0.626</td><td>3068.796</td><td>2.31</td><td>549.212</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>1.256</td>
-<td>2046.388</td>
-<td>2.981</td>
-<td>470.666</td>
+<td>2</td><td>1.256</td><td>2046.388</td><td>2.981</td><td>470.666</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>1.649</td>
-<td>1097.792</td>
-<td>3.711</td>
-<td>439.652</td>
+<td>4</td><td>1.649</td><td>1097.792</td><td>3.711</td><td>439.652</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>1.872</td>
-<td>987.119</td>
-<td></td>
-<td></td>
+<td>8</td><td>1.872</td><td>987.119</td><td></td><td></td>
 </tr>
 
+<tbody>
 </table>
 
 Observamos una aceleración considerable en la particiones vgpus obteniendo un performance

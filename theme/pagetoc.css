@@ -145,6 +145,7 @@ html.ayu .content h5 > .header { color: #D4BFFF !important; }
 table {
     border-collapse: collapse;
     width: 100%;
+    overflow-wrap: break-word;
 }
 
 th, td {
@@ -185,6 +186,58 @@ h6#tag-lanzar-pruebas {
 
 /*
 .content main {
-    max-width: calc(70vw - var(--toc-width) - 60px) !important;
+    max-width: calc(100vw - var(--toc-width) - 60px) !important;
+}
+*/
+
+/*
+.content{
+    max-width: 95%;
+}
+
+.page {
+    max-width: 95%;
+}
+
+.content{
+    max-width: none;
+}
+*/
+
+/*
+.page {
+    margin-left: 0;
+    max-width: 100%;
+}*/
+
+/*
+table {
+    width: 100%;
+}*/
+
+/*
+table {
+    display: table;
+    overflow-x: hidden;
+    white-space: nowrap;
+}*/
+
+
+/*
+.table-wrapper {
+    overflow-x: auto;
+}
+
+html.table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    overflow-x: auto;
+}*/
+
+/*
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 */
