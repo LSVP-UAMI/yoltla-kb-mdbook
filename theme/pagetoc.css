@@ -1,6 +1,7 @@
 :root {
     --toc-width: 270px;
     --center-content-toc-shift: calc(-1 * var(--toc-width) / 2);
+    
 }
 
 .nav-chapters {
@@ -181,3 +182,9 @@ h6#tag-lanzar-pruebas {
     padding: 0;
 }
 
+
+/*
+.content main {
+    max-width: calc(70vw - var(--toc-width) - 60px) !important;
+}
+*/

@@ -102,10 +102,11 @@ Test0979: NBO test with f functions
 
 <span style="color: #990819;">*Table 1. Performance Test 0979*</span>
 
-<table>
+<table border="1">
+<thead>
+
 <tr>
 <th rowspan="2"># Cores</th>
-
 <th colspan="2">
 CPU’s Nodos nc<br>
 20 Cores x 2.50GHz Intel Xeón<br>
@@ -113,7 +114,6 @@ E5-2670v2<br>
 64GB RAM<br>
 Infiniband FDR10/FDR
 </th>
-
 <th colspan="2">
 CPU’s Nodos ttv1[1-58]<br>
 20 Cores x 2.60GHz Intel Xeón<br>
@@ -121,7 +121,6 @@ E5-2660v3<br>
 128GB RAM<br>
 Infiniband FDR10/FDR
 </th>
-
 <th colspan="2">
 CPU’s Nodos ttv2[59-104]<br>
 32 Cores x 2.10GHz Intel Xeón<br>
@@ -134,97 +133,43 @@ Infiniband FDR10/FDR
 <tr>
 <th>time (seconds)</th>
 <th>Eficiencia Paralela %</th>
-
 <th>time (seconds)</th>
 <th>Eficiencia Paralela %</th>
-
 <th>time (seconds)</th>
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>1895.314</td>
-<td>100.0 %</td>
-
-<td>2052.557</td>
-<td>100.0 %</td>
-
-<td>2480.583</td>
-<td>100.0 %</td>
+<td>1</td><td>1895.314</td><td>100.0 %</td><td>2052.557</td><td>100.0 %</td><td>2480.583</td><td>100.0 %</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>999.707</td>
-<td>94.8 %</td>
+<td>2</td><td>999.707</td><td>94.8 %</td><td>1041.206</td><td>98.6 %</td><td>1240.281</td><td>100.0 %</td>
+</tr>
 
-<td>1041.206</td>
-<td>98.6 %</td>
-
-<td>1240.281</td>
-<td>100.0 %</td>
+<tr><td>4</td><td>533.439</td><td>88.8 %</td><td>546.997</td><td>93.8 %</td><td>651.619</td><td>95.2 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>533.439</td>
-<td>88.8 %</td>
-
-<td>546.997</td>
-<td>93.8 %</td>
-
-<td>651.619</td>
-<td>95.2 %</td>
+<td>8</td><td>310.036</td><td>76.4 %</td><td>294.713</td><td>87.1 %</td><td>361.331</td><td>85.8 %</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>310.036</td>
-<td>76.4 %</td>
-
-<td>294.713</td>
-<td>87.1 %</td>
-
-<td>361.331</td>
-<td>85.8 %</td>
+<td>16</td><td>173.288</td><td>68.4 %</td><td>228.473</td><td>56.1 %</td><td>202.973</td><td>76.4 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>173.288</td>
-<td>68.4 %</td>
-
-<td>228.473</td>
-<td>56.1 %</td>
-
-<td>202.973</td>
-<td>76.4 %</td>
+<td>20</td><td>152.121</td><td>62.3 %</td><td>152.093</td><td>67.5 %</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>20</td>
-<td>152.121</td>
-<td>62.3 %</td>
-
-<td>152.093</td>
-<td>67.5 %</td>
-
-<td></td>
-<td></td>
+<td>32</td><td></td><td></td><td></td><td></td><td>156.012</td><td>49.7 %</td>
 </tr>
 
-<tr>
-<td>32</td>
-<td></td>
-<td></td>
-
-<td></td>
-<td></td>
-
-<td>156.012</td>
-<td>49.7 %</td>
-</tr>
+</tbody>
 </table>
 
 Para este Benchmarks, observamos un uso eficiente de los recursos entre 8 y 16 cores de cada partición.
@@ -238,10 +183,11 @@ Test1044: TD 50-50 with PCM test
 
 <span style="color: #990819;">*Table 2. Performance Test 1044*</span>
 
-<table>
+<table border="1">
+<thead>
+
 <tr>
 <th rowspan="2"># Cores</th>
-
 <th colspan="2">
 CPU’s Nodos nc<br>
 20 Cores x 2.50GHz Intel Xeón<br>
@@ -249,7 +195,6 @@ E5-2670v2<br>
 64GB RAM<br>
 Infiniband FDR10/FDR
 </th>
-
 <th colspan="2">
 CPU’s Nodos ttv1[1-58]<br>
 20 Cores x 2.60GHz Intel Xeón<br>
@@ -257,7 +202,6 @@ E5-2660v3<br>
 128GB RAM<br>
 Infiniband FDR10/FDR
 </th>
-
 <th colspan="2">
 CPU’s Nodos ttv2[59-104]<br>
 32 Cores x 2.10GHz Intel Xeón<br>
@@ -270,97 +214,44 @@ Infiniband FDR10/FDR
 <tr>
 <th>time (seconds)</th>
 <th>Eficiencia Paralela %</th>
-
 <th>time (seconds)</th>
 <th>Eficiencia Paralela %</th>
-
 <th>time (seconds)</th>
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>1868.443</td>
-<td>100.0 %</td>
-
-<td>2117.750</td>
-<td>100.0 %</td>
-
-<td>3104.160</td>
-<td>100.0 %</td>
+<td>1</td><td>1868.443</td><td>100.0 %</td><td>2117.750</td><td>100.0 %</td><td>3104.160</td><td>100.0 %</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>958.971</td>
-<td>97.4 %</td>
-
-<td>1068.356</td>
-<td>99.1 %</td>
-
-<td>1628.442</td>
-<td>95.3 %</td>
+<td>2</td><td>958.971</td><td>97.4 %</td><td>1068.356</td><td>99.1 %</td><td>1628.442</td><td>95.3 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>463.332</td>
-<td>100.8 %</td>
-
-<td>539.453</td>
-<td>98.1 %</td>
-
-<td>815.336</td>
-<td>95.2 %</td>
+<td>4</td><td>463.332</td><td>100.8 %</td><td>539.453</td><td>98.1 %</td><td>815.336</td><td>95.2 %</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>242.975</td>
-<td>96.1 %</td>
-
-<td>263.012</td>
-<td>100.6 %</td>
-
-<td>415.186</td>
-<td>93.5 %</td>
+<td>8</td><td>242.975</td><td>96.1 %</td><td>263.012</td><td>100.6 %</td><td>415.186</td><td>93.5 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>129.552</td>
-<td>90.1 %</td>
-
-<td>141.716</td>
-<td>93.4 %</td>
-
-<td>210.299</td>
-<td>92.3 %</td>
+<td>16</td><td>129.552</td><td>90.1 %</td><td>141.716</td><td>93.4 %</td><td>210.299</td><td>92.3 %</td>
 </tr>
 
 <tr>
-<td>20</td>
-<td>105.539</td>
-<td>88.5 %</td>
-
-<td>119.133</td>
-<td>88.9 %</td>
-
-<td></td>
-<td></td>
+<td>20</td><td>105.539</td><td>88.5 %</td><td>119.133</td><td>88.9 %</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>32</td>
-<td></td>
-<td></td>
-
-<td></td>
-<td></td>
-
-<td>116.476</td>
-<td>83.3 %</td>
+<td>32</td><td></td><td></td><td></td><td></td><td>116.476</td><td>83.3 %</td>
 </tr>
+
+</tbody>
 </table>
 
 Para este Benchmarks, observamos que Gaussian hace un uso eficiente de los recursos disponibles

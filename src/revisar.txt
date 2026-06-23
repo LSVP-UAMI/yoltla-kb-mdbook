@@ -88,10 +88,8 @@
             - [OSU]()
                 - [Bandwidth]()
                     - REVISAR SECCION #Nodos de cómputo (Unresolved directive in hpl.adoc - include::partial$reframe/nodos_computo.adoc[])
-                    - REVISA AJUSTE DE TABLAS
 
                 - [Latency]() 
-                    - REVISA AJUSTE DE TABLAS
                     
         - [Anexos]()
             - [Archivo de configuración]()

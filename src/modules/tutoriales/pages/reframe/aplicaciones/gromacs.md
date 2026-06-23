@@ -315,6 +315,7 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 ```
 
 <table border="1">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -350,83 +351,34 @@ Infiniband FDR10/FDR
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>56.508</td>
-<td>152.91</td>
-<td>100 %</td>
-<td>56.01</td>
-<td>154.26</td>	
-<td>100 %</td>
-<td>89.634</td>
-<td>97.39</td>	
-<td>100 %</td>
+<td>1</td><td>56.508</td><td>152.91</td><td>100 %</td><td>56.01</td><td>154.26</td>	<td>100 %</td><td>89.634</td><td>97.39</td><td>100 %</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>106.903</td>
-<td>80.82</td>	
-<td>94 %</td>
-<td>101.78</td>
-<td>85.12</td>	
-<td>90 %</td>
-<td>141.643</td>
-<td>61.00</td>	
-<td>79 %</td>
+<td>2</td><td>106.903</td><td>80.82</td><td>94 %</td><td>101.78</td><td>85.12</td><td>90 %</td><td>141.643</td><td>61.00</td><td>79 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>190.727</td>
-<td>45.30</td>	
-<td>84 %</td>
-<td>194.970</td>
-<td>44.36</td>	
-<td>86 %</td>
-<td>237.384</td>
-<td>36.56</td>	
-<td>66 %</td>
+<td>4</td><td>190.727</td><td>45.30</td><td>84 %</td><td>194.970</td><td>44.36</td><td>86 %</td><td>237.384</td><td>36.56</td><td>66 %</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td></td>
-<td></td>	
-<td></td>
-<td>232.410</td>
-<td>37.25</td>	
-<td>82 %</td>
-<td></td>
-<td></td>	
-<td></td>
+<td>5</td><td></td><td></td><td></td><td>232.410</td><td>37.25</td><td>82 %</td><td></td><td></td><td></td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>301.061</td>
-<td>29.48</td>	
-<td>64 %</td>
-<td>321.602</td>
-<td>26.87</td>	
-<td>71 %</td>
-<td>378.348</td>
-<td>22.83</td>	
-<td>53 %</td>
+<td>8</td><td>301.061</td><td>29.48</td><td>64 %</td><td>321.602</td><td>26.87</td><td>71 %</td><td>378.348</td><td>22.83</td><td>53 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>432.181</td>
-<td>19.33</td>	
-<td>49 %</td>
-<td>435.212</td>
-<td>18.92</td>	
-<td>50 %</td>
-<td>356.081</td>
-<td>24.44</td>	
-<td>24 %</td>
+<td>16</td><td>432.181</td><td>19.33</td><td>49 %</td><td>435.212</td><td>18.92</td><td>50 %</td><td>356.081</td><td>24.44</td><td>24 %</td>
 </tr>
+
+</tbody>
 </table>
 
 

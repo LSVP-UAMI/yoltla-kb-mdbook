@@ -53,33 +53,51 @@ iteraciones que se ejecutan en nodos completos por partición, 1 proceso por cor
 
 ![Figure osu](../../../../images/Reframe/microBenchmarks/osu/latency/Figure_osu.png)
 
-```
-+-----------------+-----------------+-----------------+-----------------+
-| **\# Nodos**    | **CPU's Nodos   | **CPU's Nodos   | **CPU's Nodos   |
-|                 | nc\             | ttv1\[1-58\]\   | ttv2\[59-104\]\ |
-|                 | 20 Cores x      | 20 Cores x      | 32 Cores x      |
-|                 | 2.50GHz Intel   | 2.60GHz Intel   | 2.10GHz Intel   |
-|                 | Xeón E5-2670v2\ | Xeón E5-2660v3\ | Xeon E5-2683v4\ |
-|                 | 64GB RAM\       | 128GB RAM\      | 256GB RAM\      |
-|                 | Infiniband      | Infiniband      | Infiniband      |
-|                 | FDR10/FDR**     | FDR10/FDR**     | FDR10/FDR**     |
-|                 +-----------------+-----------------+-----------------+
-|                 | **Avg           | **Avg           | **Avg           |
-|                 | Latency(us)**   | Latency(us)**   | Latency(us)**   |
-+-----------------+-----------------+-----------------+-----------------+
-| 1               | 7765.70         | 5145.375        | 18924.79        |
-+-----------------+-----------------+-----------------+-----------------+
-| 2               | 47352.84        | 46934.865       | 138239.36       |
-+-----------------+-----------------+-----------------+-----------------+
-| 4               | 157410.27       | 155996.02       | 387857.28       |
-+-----------------+-----------------+-----------------+-----------------+
-| 5               |                 | 272740.99       |                 |
-+-----------------+-----------------+-----------------+-----------------+
-| 8               | 379142.63       | 408208.79       | 1284194.83      |
-+-----------------+-----------------+-----------------+-----------------+
-| 16              | 1135023.25      | 1055702.73      | 3215126.28      |
-+-----------------+-----------------+-----------------+-----------------+
-```
+<table>
+<thead>
+
+<tr>
+<th rowspan="2"># Nodos</th>
+<th>CPU's Nodos nc<br>20 Cores x 2.50GHz Intel Xeón E5-2670v2<br>64GB RAM<br>Infiniband FDR10/FDR</th>
+<th>CPU's Nodos ttv1[1-58]<br>20 Cores x 2.60GHz Intel Xeón E5-2660v3<br>128GB RAM<br>Infiniband FDR10/FDR</th>
+<th>CPU's Nodos ttv2[59-104]<br>32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>256GB RAM<br>Infiniband FDR10/FDR</th>
+</tr>
+
+<tr>
+<th>Avg Latency(us)</th>
+<th>Avg Latency(us)</th>
+<th>Avg Latency(us)</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>1</td><td>7765.70</td><td>5145.375</td><td>18924.79</td>
+</tr>
+
+<tr>
+<td>2</td><td>47352.84</td><td>46934.865</td><td>138239.36</td>
+</tr>
+
+<tr>
+<td>4</td><td>157410.27</td><td>155996.02</td><td>387857.28</td>
+</tr>
+
+<tr>
+<td>5</td><td></td><td>272740.99</td><td></td>
+</tr>
+
+<tr>
+<td>8</td><td>379142.63</td><td>408208.79</td><td>1284194.83</td>
+</tr>
+
+<tr>
+<td>16</td><td>1135023.25</td><td>1055702.73</td><td>3215126.28</td>
+</tr>
+
+</tbody>
+</table>
 
 Observamos una latencia consistente en los diferentes tipo de nodos presente en el cluster Yoltla.
 
