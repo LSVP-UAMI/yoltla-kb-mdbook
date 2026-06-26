@@ -314,6 +314,7 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 +---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
 ```
 
+<div class="tabla-scroll">
 <table border="1">
 <thead>
 
@@ -380,57 +381,7 @@ Infiniband FDR10/FDR
 
 </tbody>
 </table>
-
-******************************************************************************************************
-<table border="1">
-
-<tr>
-<thead>
-
-<th rowspan="2"># GPU devices</th>
-<th colspan="2">
-Nodos GPUS Tesla K20<br>
-20 Cores<br>
-64GB RAM<br>
-Infiniband FDR10/FDR
-</th>
-<th colspan="2">
-Nodos nc con GPUS V100<br>
-36 Cores<br>
-256GB RAM<br>
-Infiniband FDR10/FDR
-</th>
-</tr>
-
-<tr>
-<th>ns/days</th>
-<th>Wall time (s)</th>
-<th>ns/days</th>
-<th>Wall time (s)</th>
-</tr>
-
-</thead>
-<tbody>
-
-<tr>
-<td>1</td><td>0.626</td><td>3068.796</td><td>2.31</td><td>549.212</td>
-</tr>
-
-<tr>
-<td>2</td><td>1.256</td><td>2046.388</td><td>2.981</td><td>470.666</td>
-</tr>
-
-<tr>
-<td>4</td><td>1.649</td><td>1097.792</td><td>3.711</td><td>439.652</td>
-</tr>
-
-<tr>
-<td>8</td><td>1.872</td><td>987.119</td><td></td><td></td>
-</tr>
-
-<tbody>
-</table>
-*********************************************************************************************
+</div>
 
 
 ### 61K atom system - 1WDN Glutamine-Binding Protein
@@ -586,7 +537,9 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 \
 <span style="color: #990819;">*Table 6. Performance Tetramers Benchmark en nodos NC*</span>
 
+<div class="tabla-scroll">
 <table border="1">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -611,58 +564,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>0.371</td>
-<td>0.368</td>
-<td>0.375</td>
-<td>0.0027</td>
-<td>4663</td>
+<td>1</td><td>20</td><td>0.371</td><td>0.368</td><td>0.375</td><td>0.0027</td><td>4663</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>0.750</td>
-<td>0.748</td>
-<td>0.753</td>
-<td>0.0017</td>
-<td>2300</td>
+<td>2</td><td>20</td><td>0.750</td><td>0.748</td><td>0.753</td><td>0.0017</td><td>2300</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>1.489</td>
-<td>1.474</td>
-<td>1.507</td>
-<td>0.0108</td>
-<td>1160</td>
+<td>4</td><td>20</td><td>1.489</td><td>1.474</td><td>1.507</td><td>0.0108</td><td>1160</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>2.848</td>
-<td>2.792</td>
-<td>2.880</td>
-<td>0.0337</td>
-<td>607</td>
+<td>8</td><td>20</td><td>2.848</td><td>2.792</td><td>2.880</td><td>0.0337</td><td>607</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>5.202</td>
-<td>4.146</td>
-<td>5.580</td>
-<td>0.6101</td>
-<td>313</td>
+<td>16</td><td>20</td><td>5.202</td><td>4.146</td><td>5.580</td><td>0.6101</td><td>313</td>
 </tr>
 
+</tbody>
 </table>
-
+</div>
 
 #### Performance Tetramers Benchmark en nodos TTV1
 
@@ -673,7 +600,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 7. Performance Tetramers Benchmark en nodos TTV1*</span>
 
+<div class="tabla-scroll">
 <table border="1">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -692,73 +621,42 @@ Infiniband FDR10/FDR
 </tr>
 
 <tr>
-<td>Promedio</td>
-<td>Mínimo</td>
-<td>Máximo</td>
-<td>Desviación Estándar</td>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>Desviación Estándar</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>1</td><td>20</td><td>0.372</td><td>0.368</td><td>0.380</td><td>0.0040</td><td>4643</td>
 </tr>
 
 <tr>
-<td>1</td>
-<td>20</td>
-<td>0.372</td>
-<td>0.368</td>
-<td>0.380</td>
-<td>0.0040</td>
-<td>4643</td>
+<td>2</td><td>20</td><td>0.727</td><td>0.706</td><td>0.742</td><td>0.0162</td><td>2352</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>0.727</td>
-<td>0.706</td>
-<td>0.742</td>
-<td>0.0162</td>
-<td>2352</td>
+<td>4</td><td>20</td><td>1.461</td><td>1.431</td><td>1.472</td><td>0.0155</td><td>1176</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>1.461</td>
-<td>1.431</td>
-<td>1.472</td>
-<td>0.0155</td>
-<td>1176</td>
+<td>5</t><td>20</td><td>1.785</td><td>1.731</td><td>1.824</td><td>0.0396</td><td>980</td>
 </tr>
 
 <tr>
-<td>5</t>
-<td>20</td>
-<td>1.785</td>
-<td>1.731</td>
-<td>1.824</td>
-<td>0.0396</td>
-<td>980</td>
+<td>8</td><td>20</td><td>2.746</td><td>2.724</td><td>2.793</td><td>0.0276</td><td>621</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>2.746</td>
-<td>2.724</td>
-<td>2.793</td>
-<td>0.0276</td>
-<td>621</td>
+<td>16</td><td>20</td><td>5.234</td><td>5.125</td><td>5.377</td><td>0.0832</td><td>335</td>
 </tr>
 
-<tr>
-<td>16</td>
-<td>20</td>
-<td>5.234</td>
-<td>5.125</td>
-<td>5.377</td>
-<td>0.0832</td>
-<td>335</td>
-</tr>
-
+</tbody>
 </table>
+</div>
 
 
 #### Performance Tetramers Benchmark en nodos TTV2
@@ -770,7 +668,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 8. Performance Tetramers Benchmark en nodos TTv2*</span>
 
+<div class="tabla-scroll">
 <table border="1">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -795,58 +695,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>0.503</td>
-<td>0.404</td>
-<td>0.647</td>
-<td>0.1095</td>
-<td>3913</td>
+<td>1</td><td>20</td><td>0.503</td><td>0.404</td><td>0.647</td><td>0.1095</td><td>3913</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>0.813</td>
-<td>0.730</td>
-<td>0.937</td>
-<td>0.0626</td>
-<td>2138</td>
+<td>2</td><td>20</td><td>0.813</td><td>0.730</td><td>0.937</td><td>0.0626</td><td>2138</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>1.459</td>
-<td>0.653</td>
-<td>1.792</td>
-<td>0.3698</td>
-<td>1096</td>
+<td>4</td><td>20</td><td>1.459</td><td>0.653</td><td>1.792</td><td>0.3698</td><td>1096</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>3.027</td>
-<td>2.403</td>
-<td>3.309</td>
-<td>0.2944</td>
-<td>548</td>
+<td>8</td><td>20</td><td>3.027</td><td>2.403</td><td>3.309</td><td>0.2944</td><td>548</td>
 </tr>
 
 <tr>
-<td>6</td>
-<td>20</td>
-<td>6.029</td>
-<td>5.831</td>
-<td>6.105</td>
-<td>0.1013</td>
-<td>287</td>
+<td>6</td><td>20</td><td>6.029</td><td>5.831</td><td>6.105</td><td>0.1013</td><td>287</td>
 </tr>
 
+</tbody>
 </table>
-
+</div>
 
 ## Gromacs en GPU
 
@@ -951,11 +825,11 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 \
 <span style="color: #990819;">*Table 9. Performance Tetramers Benchmark en GPUS*</span>
 
+<div class="tabla-scroll">
 <table border="1">
-
-<tr>
 <thead>
 
+<tr>
 <th rowspan="2"># GPU devices</th>
 <th colspan="2">
 Nodos GPUS Tesla K20<br>
@@ -997,8 +871,9 @@ Infiniband FDR10/FDR
 <td>8</td><td>1.872</td><td>987.119</td><td></td><td></td>
 </tr>
 
-<tbody>
+</tbody>
 </table>
+</div>
 
 Observamos una aceleración considerable en la particiones vgpus obteniendo un performance
 en 4 gpus superior al uso de 8 nodos de las particiones cpu.

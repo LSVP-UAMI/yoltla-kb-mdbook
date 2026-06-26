@@ -184,60 +184,24 @@ h6#tag-lanzar-pruebas {
 }
 
 
-/*
-.content main {
-    max-width: calc(100vw - var(--toc-width) - 60px) !important;
-}
-*/
+/* escroll-bar para tablas */
 
-/*
-.content{
-    max-width: 95%;
-}
-
-.page {
-    max-width: 95%;
-}
-
-.content{
-    max-width: none;
-}
-*/
-
-/*
-.page {
-    margin-left: 0;
-    max-width: 100%;
-}*/
-
-/*
-table {
-    width: 100%;
-}*/
-
-/*
-table {
-    display: table;
-    overflow-x: hidden;
-    white-space: nowrap;
-}*/
-
-
-/*
-.table-wrapper {
+.tabla-scroll {
+    max-height: 400px;
     overflow-x: auto;
-}
-
-html.table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    overflow-x: auto;
-}*/
-
-/*
-table {
     display: block;
-    overflow-x: auto;
-    white-space: nowrap;
+}
+
+.tabla-scroll table {
+    width: 100%;
+}
+    
+/* Encabezado fijo en tablas 
+
+.tabla-scroll thead th {
+    position: sticky;
+    top: 0;
+    background: var(--table-header-bg);
+    z-index: 1;
 }
 */

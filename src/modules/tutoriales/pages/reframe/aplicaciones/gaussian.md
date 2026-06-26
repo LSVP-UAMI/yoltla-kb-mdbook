@@ -102,6 +102,7 @@ Test0979: NBO test with f functions
 
 <span style="color: #990819;">*Table 1. Performance Test 0979*</span>
 
+<div class="tabla-scroll">
 <table border="1">
 <thead>
 
@@ -171,6 +172,7 @@ Infiniband FDR10/FDR
 
 </tbody>
 </table>
+</div>
 
 Para este Benchmarks, observamos un uso eficiente de los recursos entre 8 y 16 cores de cada partición.
 
@@ -183,6 +185,7 @@ Test1044: TD 50-50 with PCM test
 
 <span style="color: #990819;">*Table 2. Performance Test 1044*</span>
 
+<div class="tabla-scroll">
 <table border="1">
 <thead>
 
@@ -253,6 +256,7 @@ Infiniband FDR10/FDR
 
 </tbody>
 </table>
+</div>
 
 Para este Benchmarks, observamos que Gaussian hace un uso eficiente de los recursos disponibles
 escalando apropiadamente.
