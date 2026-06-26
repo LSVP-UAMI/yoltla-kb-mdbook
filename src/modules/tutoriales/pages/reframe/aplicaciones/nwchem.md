@@ -286,7 +286,9 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-9136.85674
 \
 <span style="color: #990819;">*Table 1. Performance C240 Benchmark*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -319,67 +321,36 @@ Infiniband FDR10/FDR
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>2579.97</td>
-<td>100 %</td>
-<td>2512.62</td>
-<td>100 %</td>
-<td>2253.98</td>
-<td>100 %</td>
+<td>1</td><td>2579.97</td><td>100 %</td><td>2512.62</td><td>100 %</td><td>2253.98</td><td>100 %</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>1294.48</td>
-<td>99 %</td>
-<td>1239.36</td>
-<td>99 %</td>
-<td>1161.38</td>
-<td>97 %</td>
+<td>2</td><td>1294.48</td><td>99 %</td><td>1239.36</td><td>99 %</td><td>1161.38</td><td>97 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>674.51</td>
-<td>95 %</td>
-<td>656.63</td>
-<td>95 %</td>
-<td>609.27</td>
-<td>92 %</td>
+<td>4</td><td>674.51</td><td>95 %</td><td>656.63</td><td>95 %</td><td>609.27</td><td>92 %</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td></td>
-<td></td>
-<td>526.42</td>
-<td>95 %</td>
-<td></td>
-<td></td>
+<td>5</td><td></td><td></td><td>526.42</td><td>95 %</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>361.77</td>
-<td>89 %</td>
-<td>347.04</td>
-<td>90 %</td>
-<td>329.84</td>
-<td>85 %</td>
+<td>8</td><td>361.77</td><td>89 %</td><td>347.04</td><td>90 %</td><td>329.84</td><td>85 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>207.10</td>
-<td>77 %</td>
-<td>199.51</td>
-<td>78 %</td>
-<td>190.97</td>
-<td>73 %</td>
+<td>16</td><td>207.10</td><td>77 %</td><td>199.51</td><td>78 %</td><td>190.97</td><td>73 %</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance C240 Benchmark en nodos NC
@@ -391,7 +362,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 2. Performance C240 Benchmark en nodos nc.*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -415,52 +388,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>2579.97</td>
-<td>2541.8</td>
-<td>2591.6</td>
-<td>14.722</td>
+<td>1</td><td>20</td><td>2579.97</td><td>2541.8</td><td>2591.6</td><td>14.722</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>1294.48</td>
-<td>1276.6</td>
-<td>1303.7</td>
-<td>8.727</td>
+<td>2</td><td>20</td><td>1294.48</td><td>1276.6</td><td>1303.7</td><td>8.727</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>674.51</td>
-<td>671.2</td>
-<td>678.7</td>
-<td>3.215</td>
+<td>4</td><td>20</td><td>674.51</td><td>671.2</td><td>678.7</td><td>3.215</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>361.77</td>
-<td>355.6</td>
-<td>368.3</td>
-<td>4.176</td>
+<td>8</td><td>20</td><td>361.77</td><td>355.6</td><td>368.3</td><td>4.176</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>207.1</td>
-<td>205.9</td>
-<td>210.4</td>
-<td>1.558</td>
+<td>16</td><td>20</td><td>207.1</td><td>205.9</td><td>210.4</td><td>1.558</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance C240 Benchmark en nodos TTV1
@@ -472,7 +425,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 3. Performance C240 Benchmark en nodos ttv1.*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -496,61 +451,36 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>2512.62</td>
-<td>2445.6</td>
-<td>2587.0</td>
-<td>46.820</td>
+<td>1</td><td>20</td><td>2512.62</td><td>2445.6</td><td>2587.0</td><td>46.820</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>1239.36</td>
-<td>1230.3</td>
-<td>1253.1</td>
-<td>9.875</td>
+<td>2</td><td>20</td><td>1239.36</td><td>1230.3</td><td>1253.1</td><td>9.875</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>656.63</td>
-<td>651.3</td>
-<td>670.7</td>
-<td>6.722</td>
+<td>4</td><td>20</td><td>656.63</td><td>651.3</td><td>670.7</td><td>6.722</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>20</td>
-<td>526.42</td>
-<td>519.9</td>
-<td>536.3</td>
-<td>4.665</td>
+<td>5</td><td>20</td><td>526.42</td><td>519.9</td><td>536.3</td><td>4.665</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>347.04</td>
-<td>345.2</td>
-<td>348.4</td>
-<td>0.921</td>
+<td>8</td><td>20</td><td>347.04</td><td>345.2</td><td>348.4</td><td>0.921</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>199.51</td>
-<td>197.6</td>
-<td>204.3</td>
-<td>2.058</td>
+<td>16</td><td>20</td><td>199.51</td><td>197.6</td><td>204.3</td><td>2.058</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance C240 Benchmark en nodos TTV2
@@ -562,7 +492,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 4. Performance C240 Benchmark en nodos ttv2.*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -586,52 +518,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>2253.98</td>
-<td>2132.2</td>
-<td>2302.3</td>
-<td>52.315</td>
+<td>1</td><td>20</td><td>2253.98</td><td>2132.2</td><td>2302.3</td><td>52.315</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>1161.38</td>
-<td>1145.3</td>
-<td>1181.2</td>
-<td>12.552</td>
+<td>2</td><td>20</td><td>1161.38</td><td>1145.3</td><td>1181.2</td><td>12.552</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>609.27</td>
-<td>598.2</td>
-<td>639.6</td>
-<td>13.432</td>
+<td>4</td><td>20</td><td>609.27</td><td>598.2</td><td>639.6</td><td>13.432</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>329.84</td>
-<td>324.5</td>
-<td>346.7</td>
-<td>7.461</td>
+<td>8</td><td>20</td><td>329.84</td><td>324.5</td><td>346.7</td><td>7.461</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>190.97</td>
-<td>188.0</td>
-<td>196.5</td>
-<td>2.829</td>
+<td>16</td><td>20</td><td>190.97</td><td>188.0</td><td>196.5</td><td>2.829</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ## Siosi8 Benchmark
@@ -651,7 +563,9 @@ La simulación debe llegar a un valor `Total DFT energy` cercano a: `-65667.6283
 \
 <span style="color: #990819;">*Table 5. Performance Siosi8 Benchmark*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -681,49 +595,36 @@ Infiniband FDR10/FDR
 <th>Wall time (s)</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>18909.61</td>
-<td>17956.3</td>
-<td>12388.77</td>
+<td>1</td><td>18909.61</td><td>17956.3</td><td>12388.77</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>9924.14</td>
-<td>9337.85</td>
-<td>6663.14</td>
+<td>2</td><td>9924.14</td><td>9337.85</td><td>6663.14</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>5354.52</td>
-<td>4811.38</td>
-<td>1332.82</td>
+<td>4</td><td>5354.52</td><td>4811.38</td><td>1332.82</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td></td>
-<td>3950.65</td>
-<td></td>
+<td>5</td><td></td><td>3950.65</td><td></td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>1269.56</td>
-<td>899.55</td>
-<td>768.92</td>
+<td>8</td><td>1269.56</td><td>899.55</td><td>768.92</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>520.48</td>
-<td>484.16</td>
-<td>513.51</td>
+<td>16</td><td>520.48</td><td>484.16</td><td>513.51</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Eficiencia Paralela
@@ -733,7 +634,9 @@ a partir de 8 nodos de computo para cada tipo de nodo para una mejor interpretac
 
 <span style="color: #990819;">*Table 6. Eficiencia Paralela Siosi8 Benchmark*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -766,27 +669,20 @@ Infiniband FDR10/FDR
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>8</td>
-<td>1269.56</td>
-<td>100 %</td>
-<td>899.55</td>
-<td>100 %</td>
-<td>768.92</td>
-<td>100 %</td>
+<td>8</td><td>1269.56</td><td>100 %</td><td>899.55</td><td>100 %</td><td>768.92</td><td>100 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>520.48</td>
-<td>121 %</td>
-<td>484.16</td>
-<td>92 %</td>
-<td>513.51</td>
-<td>74 %</td>
+<td>16</td><td>520.48</td><td>121 %</td><td>484.16</td><td>92 %</td><td>513.51</td><td>74 %</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ## Referencias

@@ -246,7 +246,9 @@ La simulación debe llegar a un valor `! total energy` cercano a: `-11427.090171
 \
 <span style="color: #990819;">*Table 1. Performance AUSURF112 Benchmark*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -279,67 +281,36 @@ Infiniband FDR10/FDR
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>4129.300</td>
-<td>100.0 %</td>
-<td>2817.760</td>
-<td>100.0 %</td>
-<td>4535.365</td>
-<td>100.0 %</td>
+<td>1</td><td>4129.300</td><td>100.0 %</td><td>2817.760</td><td>100.0 %</td><td>4535.365</td><td>100.0 %</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>1944.305</td>
-<td>106.2 %</td>
-<td>1490.185</td>
-<td>94.5 %</td>
-<td>2447.600</td>
-<td>92.6 %</td>
+<td>2</td><td>1944.305</td><td>106.2 %</td><td>1490.185</td><td>94.5 %</td><td>2447.600</td><td>92.6 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>1217.410</td>
-<td>84.8 %</td>
-<td>870.773</td>
-<td>80.9 %</td>
-<td>1876.977</td>
-<td>60.4 %</td>
+<td>4</td><td>1217.410</td><td>84.8 %</td><td>870.773</td><td>80.9 %</td><td>1876.977</td><td>60.4 %</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td></td>
-<td></td>
-<td>676.075</td>
-<td>83.4 %</td>
-<td></td>
-<td></td>
+<td>5</td><td></td><td></td><td>676.075</td><td>83.4 %</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>763.187</td>
-<td>67.6 %</td>
-<td>521.835</td>
-<td>67.5 %</td>
-<td>712.180</td>
-<td>79.6 %</td>
+<td>8</td><td>763.187</td><td>67.6 %</td><td>521.835</td><td>67.5 %</td><td>712.180</td><td>79.6 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>460.930</td>
-<td>56.0 %</td>
-<td>329.950</td>
-<td>53.4 %</td>
-<td>446.970</td>
-<td>63.4 %</td>
+<td>16</td><td>460.930</td><td>56.0 %</td><td>329.950</td><td>53.4 %</td><td>446.970</td><td>63.4 %</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 Para esta aplicación notamos que el rendimiento de las simulaciones depende mucho de la cantidad de átomos
 y modelo simulado, obteniendo un mejor o peor rendimiento dependiendo de como se divide la cantidad de
@@ -363,7 +334,9 @@ La simulación debe llegar a un valor `total energy` cercano a: `-179010.8746286
 \
 <span style="color: #990819;">*Table 2. Performance GRIR443 Benchmark*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -396,57 +369,32 @@ Infiniband FDR10/FDR
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>36027.840</td>
-<td>100.0 %</td>
-<td>27787.965</td>
-<td>100.0 %</td>
-<td>42080.990</td>
-<td>100.0 %</td>
+<td>1</td><td>36027.840</td><td>100.0 %</td><td>27787.965</td><td>100.0 %</td><td>42080.990</td><td>100.0 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>12142.370</td>
-<td>74.2 %</td>
-<td>8676.930</td>
-<td>80.1 %</td>
-<td>11211.230</td>
-<td>93.8 %</td>
+<td>4</td><td>12142.370</td><td>74.2 %</td><td>8676.930</td><td>80.1 %</td><td>11211.230</td><td>93.8 %</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td></td>
-<td></td>
-<td>5679.140</td>
-<td>97.9 %</td>
-<td></td>
-<td></td>
+<td>5</td><td></td><td></td><td>5679.140</td><td>97.9 %</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>4730.130</td>
-<td>95.2 %</td>
-<td>3780.870</td>
-<td>91.9 %</td>
-<td>6725.420</td>
-<td>78.2 %</td>
+<td>8</td><td>4730.130</td><td>95.2 %</td><td>3780.870</td><td>91.9 %</td><td>6725.420</td><td>78.2 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>2496.460</td>
-<td>90.2 %</td>
-<td>1955.085</td>
-<td>88.8 %</td>
-<td></td>
-<td></td>
+<td>16</td><td>2496.460</td><td>90.2 %</td><td>1955.085</td><td>88.8 %</td><td></td><td></td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 Para esta simulación notamos que el rendimiento depende del modelo simulado, obteniendo un mejor o peor
 rendimiento dependiendo de como se divide la cantidad de procesos MPI para la resolución del problema.

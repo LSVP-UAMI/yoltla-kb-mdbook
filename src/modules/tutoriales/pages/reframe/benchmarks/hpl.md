@@ -307,7 +307,9 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 
 <span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">Número de nodos</th>
@@ -324,72 +326,43 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 <th>Q</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>82432</td>
-<td>82432</td>
-<td>224</td>
-<td>4</td>
-<td>5</td>
+<td>1</td><td>20</td><td>82432</td><td>82432</td><td>224</td><td>4</td><td>5</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>40</td>
-<td>116480</td>
-<td>82432</td>
-<td>224</td>
-<td>5</td>
-<td>8</td>
+<td>2</td><td>40</td><td>116480</td><td>82432</td><td>224</td><td>5</td><td>8</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>80</td>
-<td>164864</td>
-<td>82432</td>
-<td>224</td>
-<td>8</td>
-<td>10</td>
+<td>4</td><td>80</td><td>164864</td><td>82432</td><td>224</td><td>8</td><td>10</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>160</td>
-<td>233184</td>
-<td>82432</td>
-<td>224</td>
-<td>10</td>
-<td>16</td>
+<td>8</td><td>160</td><td>233184</td><td>82432</td><td>224</td><td>10</td><td>16</td>
 </tr>
 
 <tr>
-<td>12</td>
-<td>240</td>
-<td>285600</td>
-<td>82432</td>
-<td>224</td>
-<td>15</td>
-<td>16</td>
+<td>12</td><td>240</td><td>285600</td><td>82432</td><td>224</td><td>15</td><td>16</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>320</td>
-<td>329728</td>
-<td>82432</td>
-<td>224</td>
-<td>16</td>
-<td>20</td>
+<td>16</td><td>320</td><td>329728</td><td>82432</td><td>224</td><td>16</td><td>20</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #990819;">*Tabla 2. Pruebas en los nodos TTv1*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">Número de nodos</th>
@@ -406,72 +379,43 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 <th>Q</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>116480</td>
-<td>116480</td>
-<td>224</td>
-<td>4</td>
-<td>5</td>
+<td>1</td><td>20</td><td>116480</td><td>116480</td><td>224</td><td>4</td><td>5</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>40</td>
-<td>164864</td>
-<td>116480</td>
-<td>224</td>
-<td>5</td>
-<td>8</td>
+<td>2</td><td>40</td><td>164864</td><td>116480</td><td>224</td><td>5</td><td>8</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>80</td>
-<td>233184</td>
-<td>116480</td>
-<td>224</td>
-<td>8</td>
-<td>10</td>
+<td>4</td><td>80</td><td>233184</td><td>116480</td><td>224</td><td>8</td><td>10</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>160</td>
-<td>329728</td>
-<td>116480</td>
-<td>224</td>
-<td>10</td>
-<td>16</td>
+<td>8</td><td>160</td><td>329728</td><td>116480</td><td>224</td><td>10</td><td>16</td>
 </tr>
 
 <tr>
-<td>12</td>
-<td>240</td>
-<td>403872</td>
-<td>116480</td>
-<td>224</td>
-<td>15</td>
-<td>16</td>
+<td>12</td><td>240</td><td>403872</td><td>116480</td><td>224</td><td>15</td><td>16</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>320</td>
-<td>466368</td>
-<td>116480</td>
-<td>224</td>
-<td>16</td>
-<td>20</td>
+<td>16</td><td>320</td><td>466368</td><td>116480</td><td>224</td><td>16</td><td>20</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #990819;">*Tabla 3. Pruebas en los nodos TTv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">Número de nodos</th>
@@ -488,67 +432,36 @@ En las siguientas tablas se da un resumen de las pruebas realizadas en cada tipo
 <th>Q</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>32</td>
-<td>164864</td>
-<td>164864</td>
-<td>224</td>
-<td>4</td>
-<td>8</td>
+<td>1</td><td>32</td><td>164864</td><td>164864</td><td>224</td><td>4</td><td>8</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>64</td>
-<td>233184</td>
-<td>164864</td>
-<td>224</td>
-<td>8</td>
-<td>8</td>
+<td>2</td><td>64</td><td>233184</td><td>164864</td><td>224</td><td>8</td><td>8</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>128</td>
-<td>329728</td>
-<td>164864</td>
-<td>224</td>
-<td>8</td>
-<td>16</td>
+<td>4</td><td>128</td><td>329728</td><td>164864</td><td>224</td><td>8</td><td>16</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>256</td>
-<td>466368</td>
-<td>164864</td>
-<td>224</td>
-<td>16</td>
-<td>16</td>
+<td>8</td><td>256</td><td>466368</td><td>164864</td><td>224</td><td>16</td><td>16</td>
 </tr>
 
 <tr>
-<td>12</td>
-<td>384</td>
-<td>571200</td>
-<td>164864</td>
-<td>224</td>
-<td>16</td>
-<td>24</td>
+<td>12</td><td>384</td><td>571200</td><td>164864</td><td>224</td><td>16</td><td>24</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>512</td>
-<td>659456</td>
-<td>164864</td>
-<td>224</td>
-<td>16</td>
-<td>32</td>
+<td>16</td><td>512</td><td>659456</td><td>164864</td><td>224</td><td>16</td><td>32</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ## Scripts
@@ -723,30 +636,11 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 #### Rendimiento
 
 <span style="color: #990819;">*Tabla 4. Rendimiento de los nodos NC*</span>
-```
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
-| ejecuciones** | de\      | del\       |                                                                   |
-|               | nodos**  | problema** |                                                                   |
-|               |          |            +-------------+--------------+------------+------------+------------+
-|               |          |            | **Teórico** | **Promedio** | **Mínimo** | **Máximo** | **σ**      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 1        | 82432      | 400.00      | 411.05       | 404.29     | 414.69     | 3.73       |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 2        | 116480     | 800.00      | 785.80       | 711.87     | 818.96     | 41.41      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 4        | 164864     | 1600.00     | 1531.58      | 1255.50    | 1617.90    | 138.36     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 8        | 233184     | 3200.00     | 3174.02      | 3171.10    | 3178.10    | 2.72       |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 12       | 285600     | 4800.00     | 4671.76      | 4665.50    | 4676.80    | 4.38       |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 16       | 329728     | 6400.00     | 6228.20      | 6044.70    | 6284.20    | 92.06      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-```
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
 <thead>
+
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
 <th rowspan="2">Número de nodos</th>
@@ -761,77 +655,37 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>Máximo</th>
 <th>σ</th>
 </tr>
+
 </thead>
-
 <tbody>
+
 <tr>
-<td>5</td>
-<td>1</td>
-<td>82432</td>
-<td>400.00</td>
-<td>411.05</td>
-<td>404.29</td>
-<td>414.69</td>
-<td>3.73</td>
+<td>5</td><td>1</td><td>82432</td><td>400.00</td><td>411.05</td><td>404.29</td><td>414.69</td><td>3.73</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>2</td>
-<td>116480</td>
-<td>800.00</td>
-<td>785.80</td>
-<td>711.87</td>
-<td>818.96</td>
-<td>41.41</td>
+<td>5</td><td>2</td><td>116480</td><td>800.00</td><td>785.80</td><td>711.87</td><td>818.96</td><td>41.41</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>4</td>
-<td>164864</td>
-<td>1600.00</td>
-<td>1531.58</td>
-<td>1255.50</td>
-<td>1617.90</td>
-<td>138.36</td>
+<td>5</td><td>4</td><td>164864</td><td>1600.00</td><td>1531.58</td><td>1255.50</td><td>1617.90</td><td>138.36</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>8</td>
-<td>233184</td>
-<td>3200.00</td>
-<td>3174.02</td>
-<td>3171.10</td>
-<td>3178.10</td>
-<td>2.72</td>
+<td>5</td><td>8</td><td>233184</td><td>3200.00</td><td>3174.02</td><td>3171.10</td><td>3178.10</td><td>2.72</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>12</td>
-<td>285600</td>
-<td>4800.00</td>
-<td>4671.76</td>
-<td>4665.50</td>
-<td>4676.80</td>
-<td>4.38</td>
+<td>5</td><td>12</td><td>285600</td><td>4800.00</td><td>4671.76</td><td>4665.50</td><td>4676.80</td><td>4.38</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>16</td>
-<td>329728</td>
-<td>6400.00</td>
-<td>6228.20</td>
-<td>6044.70</td>
-<td>6284.20</td>
-<td>92.06</td>
+<td>5</td><td>16</td><td>329728</td><td>6400.00</td><td>6228.20</td><td>6044.70</td><td>6284.20</td><td>92.06</td>
 </tr>
+
 </tbody>
 </table>
-
+</div>
 
 
 \
@@ -842,7 +696,8 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <span style="color: #990819;">*Figura 1. Rendimiento de los nodos NC*</span>
 
 ```admonish note title=" "
-Los valores teóricos se calcularon tomando como base el rendimiento teórico en 1 nodo. Este valor se obtuvo del siguiente [documento](https://www.intel.com/content/dam/support/us/en/documents/processors/APP-for-Intel-Xeon-Processors.pdf).
+Los valores teóricos se calcularon tomando como base el rendimiento teórico en 1 nodo. 
+Este valor se obtuvo del siguiente [documento](https://www.intel.com/content/dam/support/us/en/documents/processors/APP-for-Intel-Xeon-Processors.pdf).
 
 Para obtener más información, consulte el siguiente [enlace](https://www.intel.com/content/www/us/en/support/articles/000005755/processors.html).
 ```
@@ -851,27 +706,57 @@ Para obtener más información, consulte el siguiente [enlace](https://www.intel
 #### Eficiencia paralela
 
 <span style="color: #990819;">*Tabla 5. Rendimiento de los nodos NC*</span>
-```
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
-| ejecuciones** | de\      | del\       |                                                                   |
-|               | nodos**  | problema** |                                                                   |
-|               |          |            +-------------+--------------+------------+------------+------------+
-|               |          |            | **Teórico** | **Promedio** | **Mínimo** | **Máximo** | **σ**      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 1        | 82432      | 411.05      | 411.05       | 404.29     | 414.69     | 3.73       |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 2        | 82432      | 822.11      | 776.97       | 694.87     | 799.44     | 41.08      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 4        | 82432      | 1644.22     | 1532.72      | 1521.20    | 1548.60    | 11.20      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 8        | 82432      | 3288.43     | 2838.42      | 2805.60    | 2849.70    | 16.56      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 12       | 82432      | 4932.65     | 3953.76      | 3931.70    | 3975.50    | 15.55      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 16       | 82432      | 6576.86     | 5129.76      | 5068.80    | 5171.00    | 38.33      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2">No. de ejecuciones</th>
+<th rowspan="2">Número de nodos</th>
+<th rowspan="2">Tamaño del problema</th>
+<th colspan="5">GFLOP/s</th>
+</tr>
+
+<tr>
+<th>Teórico</th>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>σ<</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>5</td><td>1</td><td>82432</td><td>411.05</td><td>411.05</td><td>404.29</td><td>414.69</td><td>3.73</td>
+</tr>
+
+<tr>
+<td>5</td><td>2</td><td>82432</td><td>822.11</td><td>776.97</td><td>694.87</td><td>799.44</td><td>41.08</td>
+</tr>
+
+<tr>
+<td>5</td><td>4</td><td>82432</td><td>1644.22</td><td>1532.72</td><td>1521.20</td><td>1548.60</td><td>11.20</td>
+</tr>
+
+<tr>
+<td>5</td><td>8</td><td>82432</td><td>3288.43</td><td>2838.42</td><td>2805.60</td><td>2849.70</td><td>16.56</td>
+</tr>
+
+<tr>
+<td>5</td><td>12</td><td>82432</td><td>4932.65</td><td>3953.76</td><td>3931.70</td><td>3975.50</td><td>15.55</td>
+</tr>
+
+<tr>
+<td>5</td><td>16</td><td>82432</td><td>6576.86</td><td>5129.76</td><td>5068.80</td><td>5171.00</td><td>38.33</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
 \
 <span style="color: #1285E3;">Rendimiento de los nodos NC</span>
 
@@ -885,7 +770,9 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 <span style="color: #990819;">*Tabla 6. SpeedUp de los nodos NC*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -902,74 +789,36 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>5</td>
-<td>1</td>
-<td>82432</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>0.00</td>
+<td>5</td><td>1</td><td>82432</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>2</td>
-<td>82432</td>
-<td>2.00</td>
-<td>1.88</td>
-<td>1.68</td>
-<td>1.98</td>
-<td>0.11</td>
+<td>5</td><td>2</td><td>82432</td><td>2.00</td><td>1.88</td><td>1.68</td><td>1.98</td><td>0.11</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>4</td>
-<td>82432</td>
-<td>4.00</td>
-<td>3.73</td>
-<td>3.68</td>
-<td>3.78</td>
-<td>0.03</td>
+<td>5</td><td>4</td><td>82432</td><td>4.00</td><td>3.73</td><td>3.68</td><td>3.78</td><td>0.03</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>8</td>
-<td>82432</td>
-<td>8.00</td>
-<td>6.91</td>
-<td>6.80</td>
-<td>7.05</td>
-<td>0.08</td>
+<td>5</td><td>8</td><td>82432</td><td>8.00</td><td>6.91</td><td>6.80</td><td>7.05</td><td>0.08</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>12</td>
-<td>82432</td>
-<td>12.00</td>
-<td>9.62</td>
-<td>9.50</td>
-<td>9.78</td>
-<td>0.09</td>
+<td>5</td><td>12</td><td>82432</td><td>12.00</td><td>9.62</td><td>9.50</td><td>9.78</td><td>0.09</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>16</td>
-<td>82432</td>
-<td>16.00</td>
-<td>12.48</td>
-<td>12.29</td>
-<td>12.62</td>
-<td>0.11</td>
+<td>5</td><td>16</td><td>82432</td><td>16.00</td><td>12.48</td><td>12.29</td><td>12.62</td><td>0.11</td>
 </tr>
 
+</body>
 </table>
-
+</div>
 
 \
 <span style="color: #1285E3;">SpeedUp de los nodos NC</span>
@@ -981,7 +830,9 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 \
 <span style="color: #990819;">*Tabla 7. Eficiencia paralela de los nodos NC*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -998,73 +849,36 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>5</td>
-<td>1</td>
-<td>82432</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>0.00</td>
+<td>5</td><td>1</td><td>82432</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>2</td>
-<td>82432</td>
-<td>1.00</td>
-<td>0.94</td>
-<td>0.84</td>
-<td>0.99</td>
-<td>0.05</td>
+<td>5</td><td>2</td><td>82432</td><td>1.00</td><td>0.94</td><td>0.84</td><td>0.99</td><td>0.05</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>4</td>
-<td>82432</td>
-<td>1.00</td>
-<td>0.93</td>
-<td>0.92</td>
-<td>0.95</td>
-<td>0.01</td>
+<td>5</td><td>4</td><td>82432</td><td>1.00</td><td>0.93</td><td>0.92</td><td>0.95</td><td>0.01</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>8</td>
-<td>82432</td>
-<td>1.00</td>
-<td>0.86</td>
-<td>0.85</td>
-<td>0.88</td>
-<td>0.01</td>
+<td>5</td><td>8</td><td>82432</td><td>1.00</td><td>0.86</td><td>0.85</td><td>0.88</td><td>0.01</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>12</td>
-<td>82432</td>
-<td>1.00</td>
-<td>0.80</td>
-<td>0.79</td>
-<td>0.82</td>
-<td>0.01</td>
+<td>5</td><td>12</td><td>82432</td><td>1.00</td><td>0.80</td><td>0.79</td><td>0.82</td><td>0.01</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>16</td>
-<td>82432</td>
-<td>1.00</td>
-<td>0.78</td>
-<td>0.77</td>
-<td>0.79</td>
-<td>0.01</td>
+<td>5</td><td>16</td><td>82432</td><td>1.00</td><td>0.78</td><td>0.77</td><td>0.79</td><td>0.01</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Eficiencia Paralela de los nodos NC</span>
@@ -1075,32 +889,62 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 
 ### Nodos TTv1
-
+ 
 
 #### Rendimiento
 
 <span style="color: #990819;">*Tabla 8. Rendimiento de los nodos TTv1*</span>
-```
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
-| ejecuciones** | de\      | del\       |                                                                   |
-|               | nodos**  | problema** |                                                                   |
-|               |          |            +-------------+--------------+------------+------------+------------+
-|               |          |            | **Teórico** | **Promedio** | **Mínimo** | **Máximo** | **σ**      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 1        | 116480     | 832.00      | 598.28       | 576.12     | 617.02     | 15.18      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 2        | 164864     | 1664.00     | 1140.56      | 1077.40    | 1162.60    | 32.24      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 4        | 233184     | 3328.00     | 2157.34      | 1698.70    | 2355.90    | 239.96     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 8        | 329728     | 6656.00     | 3891.14      | 2419.00    | 4632.90    | 787.50     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 12       | 403872     | 9984.00     | 4627.80      | 3241.60    | 6507.70    | 1433.78    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 16       | 466368     | 13312.00    | 5796.84      | 3118.60    | 8684.90    | 2121.74    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2">No. de ejecuciones</th>
+<th rowspan="2">Número de nodos</th>
+<th rowspan="2">Tamaño del problema</th>
+<th colspan="5">GFLOP/s</th>
+</tr>
+
+<tr>
+<th>Teórico</th>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>σ</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>5</td><td>1</td><td>116480</td><td>832.00</td><td>598.28</td><td>576.12</td><td>617.02</td><td>15.18</td>
+</tr>
+
+<tr>
+<td>5</td><td>2</td><td>164864</td><td>1664.00</td><td>1140.56</td><td>1077.40</td><td>1162.60</td><td>32.24</td>
+</tr>
+
+<tr>
+<td>5</td><td>4</td><td>233184</td><td>3328.00</td><td>2157.34</td><td>1698.70</td><td>2355.90</td><td>239.96</td>
+</tr>
+
+<tr>
+<td>5</td><td>8</td><td>329728</td><td>6656.00</td><td>3891.14</td><td>2419.00</td><td>4632.90</td><td>787.50</td>
+</tr>
+
+<tr>
+<td>5</td><td>12</td><td>403872</td><td>9984.00</td><td>4627.80</td><td>3241.60</td><td>6507.70</td><td>1433.78</td>
+</tr>
+
+<tr>
+<td>5</td><td>16</td><td>466368</td><td>13312.00</td><td>5796.84</td><td>3118.60</td><td>8684.90</td><td>2121.74</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
 \
 <span style="color: #1285E3;">Rendimiento de los nodos TTv1</span>
 
@@ -1118,27 +962,57 @@ Para obtener más información, consulte el siguiente [enlace](https://www.intel
 #### Eficiencia paralela
 
 <span style="color: #990819;">*Tabla 9. Rendimiento de los nodos TTv1*</span>
-```
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
-| ejecuciones** | de\      | del\       |                                                                   |
-|               | nodos**  | problema** |                                                                   |
-|               |          |            +-------------+--------------+------------+------------+------------+
-|               |          |            | **Teórico** | **Promedio** | **Mínimo** | **Máximo** | **σ**      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 1        | 116480     | 598.28      | 598.28       | 576.12     | 617.02     | 15.18      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 2        | 116480     | 1196.56     | 1103.86      | 1050.6     | 1146.4     | 38.66      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 4        | 116480     | 2393.11     | 2101.16      | 1737.2     | 2265.9     | 200.42     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 8        | 116480     | 4786.22     | 3702.76      | 2263.8     | 4259.7     | 739.10     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 12       | 116480     | 7179.34     | 4250.50      | 3245.7     | 6021.9     | 1217.63    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 16       | 116480     | 9572.45     | 5636.48      | 4197.3     | 7901.7     | 1742.36    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2">No. de ejecuciones</th>
+<th rowspan="2">Número de nodos</th>
+<th rowspan="2">Tamaño del problema</th>
+<th colspan="5">GFLOP/s</th>
+</tr>
+
+<tr>
+<th>Teórico</th>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>σ</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>5</td><td>1</td><td>116480</td><td>598.28</td><td>598.28</td><td>576.12</td><td>617.02</td><td>15.18</td>
+</tr>
+
+<tr>
+<td>5</td><td>2</td><td>116480</td><td>1196.56</td><td>1103.86</td><td>1050.6</td><td>1146.4</td><td>38.66</td>
+</tr>
+
+<tr>
+<td>5</td><td>4</td><td>116480</td><td>2393.11</td><td>2101.16</td><td>1737.2</td><td>2265.9</td><td>200.42</td>
+</tr>
+
+<tr>
+<td>5</td><td>8</td><td>116480</td><td>4786.22</td><td>3702.76</td><td>2263.8</td><td>4259.7</td><td>739.10</td>
+</tr>
+
+<tr>
+<td>5</td><td>12</td><td>116480</td><td>7179.34</td><td>4250.50</td><td>3245.7</td><td>6021.9</td><td>1217.63</td>
+</tr>
+
+<tr>
+<td>5</td><td>16</td><td>116480</td><td>9572.45</td><td>5636.48</td><td>4197.3</td><td>7901.7</td><td>1742.36</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
 \
 <span style="color: #1285E3;">Rendimiento de los nodos TTv1</span>
 
@@ -1152,7 +1026,9 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 
 <span style="color: #990819;">*Tabla 10. SpeedUp de los nodos TTv1*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -1169,73 +1045,36 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>5</td>
-<td>1</td>
-<td>116480</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>0.00</td>
+<td>5</td><td>1</td><td>116480</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>2</td>
-<td>116480</td>
-<td>2.00</td>
-<td>1.84</td>
-<td>1.72</td>
-<td>1.95</td>
-<td>0.08</td>
+<td>5</td><td>2</td><td>116480</td><td>2.00</td><td>1.84</td><td>1.72</td><td>1.95</td><td>0.08</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>4</td>
-<td>116480</td>
-<td>4.00</td>
-<td>3.48</td>
-<td>3.02</td>
-<td>3.84</td>
-<td>0.30</td>
+<td>5</td><td>4</td><td>116480</td><td>4.00</td><td>3.48</td><td>3.02</td><td>3.84</td><td>0.30</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>8</td>
-<td>116480</td>
-<td>8.00</td>
-<td>5.85</td>
-<td>3.93</td>
-<td>7.09</td>
-<td>1.15</td>
+<td>5</td><td>8</td><td>116480</td><td>8.00</td><td>5.85</td><td>3.93</td><td>7.09</td><td>1.15</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>12</td>
-<td>116480</td>
-<td>12.00</td>
-<td>6.59</td>
-<td>5.35</td>
-<td>10.27</td>
-<td>2.04</td>
+<td>5</td><td>12</td><td>116480</td><td>12.00</td><td>6.59</td><td>5.35</td><td>10.27</td><td>2.04</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>16</td>
-<td>116480</td>
-<td>16.00</td>
-<td>8.63</td>
-<td>7.05</td>
-<td>12.81</td>
-<td>2.68</td>
+<td>5</td><td>16</td><td>116480</td><td>16.00</td><td>8.63</td><td>7.05</td><td>12.81</td><td>2.68</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">SpeedUp de los nodos TTv1</span>
@@ -1247,7 +1086,9 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 \
 <span style="color: #990819;">*Tabla 11. Eficiencia paralela de los nodos TTv1*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -1264,74 +1105,36 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>5</td>
-<td>1</td>
-<td>116480</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>0.00</td>
+<td>5</td><td>1</td><td>116480</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>2</td>
-<td>116480</td>
-<td>1.00</td>
-<td>0.92</td>
-<td>0.86</td>
-<td>0.98</td>
-<td>0.04</td>
+<td>5</td><td>2</td><td>116480</td><td>1.00</td><td>0.92</td><td>0.86</td><td>0.98</td><td>0.04</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>4</td>
-<td>116480</td>
-<td>1.00</td>
-<td>0.87</td>
-<td>0.76</td>
-<td>0.96</td>
-<td>0.08</td>
+<td>5</td><td>4</td><td>116480</td><td>1.00</td><td>0.87</td><td>0.76</td><td>0.96</td><td>0.08</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>8</td>
-<td>116480</td>
-<td>1.00</td>
-<td>0.73</td>
-<td>0.49</td>
-<td>0.89</td>
-<td>0.14</td>
+<td>5</td><td>8</td><td>116480</td><td>1.00</td><td>0.73</td><td>0.49</td><td>0.89</td><td>0.14</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>12</td>
-<td>116480</td>
-<td>1.00</td>
-<td>0.55</td>
-<td>0.45</td>
-<td>0.86</td>
-<td>0.17</td>
+<td>5</td><td>12</td><td>116480</td><td>1.00</td><td>0.55</td><td>0.45</td><td>0.86</td><td>0.17</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>16</td>
-<td>116480</td>
-<td>1.00</td>
-<td>0.54</td>
-<td>0.44</td>
-<td>0.80</td>
-<td>0.17</td>
+<td>5</td><td>16</td><td>116480</td><td>1.00</td><td>0.54</td><td>0.44</td><td>0.80</td><td>0.17</td>
 </tr>
 
+</tbody>
 </table>
-
+</div>
 
 \
 <span style="color: #1285E3;">Eficiencia Paralela de los nodos TTv1</span>
@@ -1347,27 +1150,56 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 #### Rendimiento
 
 <span style="color: #990819;">Tabla 12. Rendimiento de los nodos TTv2</span>
-```
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
-| ejecuciones** | de\      | del\       |                                                                   |
-|               | nodos**  | problema** |                                                                   |
-|               |          |            +-------------+--------------+------------+------------+------------+
-|               |          |            | **Teórico** | **Promedio** | **Mínimo** | **Máximo** | **σ**      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 1        | 164864     | 1075.20     | 729.58       | 686.95     | 761.56     | 29.24      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 2        | 233184     | 2150.40     | 1438.04      | 1381.10    | 1496.80    | 42.90      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 4        | 329728     | 4300.80     | 1724.86      | 1232.80    | 2659.00    | 539.26     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 8        | 466368     | 8601.60     | 3236.20      | 2455.10    | 4972.80    | 886.62     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 12       | 571200     | 12902.40    | 5254.36      | 2497.90    | 8010.10    | 1748.29    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 16       | 659456     | 17203.20    | 4508.90      | 2689.00    | 7151.30    | 1661.60    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2">No. de ejecuciones</th>
+<th rowspan="2">Número de nodos</th>
+<th rowspan="2">Tamaño del problema</th>
+<th colspan="5">GFLOP/s</th>
+</tr>
+
+<tr>
+<th>Teórico</th>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>σ</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>5</td><td>1</td><td>164864</td><td>1075.20</td><td>729.58</td><td>686.95</td><td>761.56</td><td>29.24</td>
+</tr>
+
+<tr>
+<td>5</td><td>2</td><td>233184</td><td>2150.40</td><td>1438.04</td><td>1381.10</td><td>1496.80</td><td>42.90</td>
+</tr>
+
+<tr>
+<td>5</td><td>4</td><td>329728</td><td>4300.80</td><td>1724.86</td><td>1232.80</td><td>2659.00</td><td>539.26</td>
+</tr>
+
+<tr>
+<td>5</td><td>8</td><td>466368</td><td>8601.60</td><td>3236.20</td><td>2455.10</td><td>4972.80</td><td>886.62</td>
+</tr>
+
+<tr>
+<td>5</td><td>12</td><td>571200</td><td>12902.40</td><td>5254.36</td><td>2497.90</td><td>8010.10</td><td>1748.29</td>
+</tr>
+
+<tr>
+<td>5</td><td>16</td><td>659456</td><td>17203.20</td><td>4508.90</td><td>2689.00</td><td>7151.30</td><td>1661.60</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 \
 <span style="color: #1285E3;">Rendimiento de los nodos TTv2</span>
@@ -1386,27 +1218,56 @@ Para obtener más información, consulte el siguiente [enlace](https://www.intel
 #### Eficiencia paralela
 
 <span style="color: #990819;">*Tabla 13. Rendimiento de los nodos TTv2*</span>
-```
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| **No. de\     | **Número | **Tamaño   | **GFLOP/s**                                                       |
-| ejecuciones** | de\      | del\       |                                                                   |
-|               | nodos**  | problema** |                                                                   |
-|               |          |            +-------------+--------------+------------+------------+------------+
-|               |          |            | **Teórico** | **Promedio** | **Mínimo** | **Máximo** | **σ**      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 1        | 164864     | 729.58      | 729.58       | 686.95     | 761.56     | 29.24      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 2        | 164864     | 1459.15     | 1382.94      | 1338.30    | 1445.60    | 38.44      |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 4        | 164864     | 2918.30     | 1574.09      | 416.97     | 2490.90    | 795.92     |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 8        | 164864     | 5836.61     | 3107.22      | 1951.00    | 4834.50    | 1008.10    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 12       | 164864     | 8754.91     | 3451.72      | 1115.20    | 6475.40    | 1818.78    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-| 5             | 16       | 164864     | 11673.22    | 4288.94      | 2398.70    | 6023.20    | 1153.10    |
-+---------------+----------+------------+-------------+--------------+------------+------------+------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2">No. de ejecuciones</th>
+<th rowspan="2">Número de nodos</th>
+<th rowspan="2">Tamaño del problema</th>
+<th colspan="5">GFLOP/s</th>
+</tr>
+
+<tr>
+<th>Teórico</th>
+<th>Promedio</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+<th>σ</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>5</td><td>1</td><td>164864</td><td>729.58</td><td>729.58</td><td>686.95</td><td>761.56</td><td>29.24</td>
+</tr>
+
+<tr>
+<td>5</td><td>2</td><td>164864</td><td>1459.15</td><td>1382.94</td><td>1338.30</td><td>1445.60</td><td>38.44</td>
+</tr>
+
+<tr>
+<td>5</td><td>4</td><td>164864</td><td>2918.30</td><td>1574.09</td><td>416.97</td><td>2490.90</td><td>795.92</td>
+</tr>
+
+<tr>
+<td>5</td><td>8</td><td>164864</td><td>5836.61</td><td>3107.22</td><td>1951.00</td><td>4834.50</td><td>1008.10</td>
+</tr>
+
+<tr>
+<td>5</td><td>12</td><td>164864</td><td>8754.91</td><td>3451.72</td><td>1115.20</td><td>6475.40</td><td>1818.78</td>
+</tr>
+
+<tr>
+<td>5</td><td>16</td><td>164864</td><td>11673.22</td><td>4288.94</td><td>2398.70</td><td>6023.20</td><td>1153.10</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 \
 <span style="color: #1285E3;">Rendimiento de los nodos TTv2</span>
@@ -1422,7 +1283,9 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 \
 <span style="color: #990819;">*Tabla 14. SpeedUp de los nodos TTv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -1439,73 +1302,36 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>5</td>
-<td>1</td>
-<td>164864</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>0.00</td>
+<td>5</td><td>1</td><td>164864</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>2</td>
-<td>164864</td>
-<td>2.00</td>
-<td>1.90</td>
-<td>1.85</td>
-<td>1.95</td>
-<td>0.03</td>
+<td>5</td><td>2</td><td>164864</td><td>2.00</td><td>1.90</td><td>1.85</td><td>1.95</td><td>0.03</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>4</td>
-<td>164864</td>
-<td>4.00</td>
-<td>1.43</td>
-<td>0.61</td>
-<td>3.27</td>
-<td>1.01</td>
+<td>5</td><td>4</td><td>164864</td><td>4.00</td><td>1.43</td><td>0.61</td><td>3.27</td><td>1.01</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>8</td>
-<td>164864</td>
-<td>8.00</td>
-<td>3.87</td>
-<td>2.84</td>
-<td>6.35</td>
-<td>1.22</td>
+<td>5</td><td>8</td><td>164864</td><td>8.00</td><td>3.87</td><td>2.84</td><td>6.35</td><td>1.22</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>12</td>
-<td>164864</td>
-<td>12.00</td>
-<td>3.35</td>
-<td>1.62</td>
-<td>8.50</td>
-<td>2.32</td>
+<td>5</td><td>12</td><td>164864</td><td>12.00</td><td>3.35</td><td>1.62</td><td>8.50</td><td>2.32</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>16</td>
-<td>164864</td>
-<td>16.00</td>
-<td>5.38</td>
-<td>3.49</td>
-<td>7.91</td>
-<td>1.40</td>
+<td>5</td><td>16</td><td>164864</td><td>16.00</td><td>5.38</td><td>3.49</td><td>7.91</td><td>1.40</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">SpeedUp de los nodos TTv2</span>
@@ -1517,7 +1343,9 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 \
 <span style="color: #990819;">*Tabla 15. Eficiencia paralela de los nodos TTv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -1534,73 +1362,36 @@ Los valores teóricos se calcularon tomando como base el rendimiento obtenido en
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>5</td>
-<td>1</td>
-<td>164864</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>1.00</td>
-<td>0.00</td>
+<td>5</td><td>1</td><td>164864</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>2</td>
-<td>164864</td>
-<td>1.00</td>
-<td>0.95</td>
-<td>0.93</td>
-<td>0.98</td>
-<td>0.02</td>
+<td>5</td><td>2</td><td>164864</td><td>1.00</td><td>0.95</td><td>0.93</td><td>0.98</td><td>0.02</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>4</td>
-<td>164864</td>
-<td>1.00</td>
-<td>0.36</td>
-<td>0.15</td>
-<td>0.82</td>
-<td>0.25</td>
+<td>5</td><td>4</td><td>164864</td><td>1.00</td><td>0.36</td><td>0.15</td><td>0.82</td><td>0.25</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>8</td>
-<td>164864</td>
-<td>1.00</td>
-<td>0.48</td>
-<td>0.36</td>
-<td>0.79</td>
-<td>0.15</td>
+<td>5</td><td>8</td><td>164864</td><td>1.00</td><td>0.48</td><td>0.36</td><td>0.79</td><td>0.15</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>12</td>
-<td>164864</td>
-<td>1.00</td>
-<td>0.28</td>
-<td>0.14</td>
-<td>0.71</td>
-<td>0.19</td>
+<td>5</td><td>12</td><td>164864</td><td>1.00</td><td>0.28</td><td>0.14</td><td>0.71</td><td>0.19</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>16</td>
-<td>164864</td>
-<td>1.00</td>
-<td>0.34</td>
-<td>0.22</td>
-<td>0.49</td>
-<td>0.09</td>
+<td>5</td><td>16</td><td>164864</td><td>1.00</td><td>0.34</td><td>0.22</td><td>0.49</td><td>0.09</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Eficiencia Paralela de los nodos TTv2</span>

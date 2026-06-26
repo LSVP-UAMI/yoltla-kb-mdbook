@@ -128,3 +128,7 @@
 
 
 <span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>
+
+style="text-align: center;"
+
+sed -i 's#/palabra/a/eliminar##g' archivo.txt

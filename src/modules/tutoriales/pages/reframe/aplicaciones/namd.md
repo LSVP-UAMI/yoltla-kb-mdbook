@@ -157,7 +157,9 @@ que otro tipo de nodo.
 
 <span style="color: #990819;">*Table 1. Performance STMV Benchmark*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -190,67 +192,36 @@ Infiniband FDR10/FDR
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>5.471</td>
-<td>100 %</td>
-<td>5.658</td>
-<td>100 %</td>
-<td>4.870</td>
-<td>100 %</td>
+<td>1</td><td>5.471</td><td>100 %</td><td>5.658</td><td>100 %</td><td>4.870</td><td>100 %</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>2.647</td>
-<td>100 %</td>
-<td>2.732</td>
-<td>98 %</td>
-<td>3.276</td>
-<td>99 %</td>
+<td>2</td><td>2.647</td><td>100 %</td><td>2.732</td><td>98 %</td><td>3.276</td><td>99 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>1.377</td>
-<td>95 %</td>
-<td>1.472</td>
-<td>94 %</td>
-<td>2.024</td>
-<td>92 %</td>
+<td>4</td><td>1.377</td><td>95 %</td><td>1.472</td><td>94 %</td><td>2.024</td><td>92 %</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td></td>
-<td></td>
-<td>1.174</td>
-<td>91 %</td>
-<td></td>
-<td></td>
+<td>5</td><td></td><td></td><td>1.174</td><td>91 %</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>0.707</td>
-<td>89 %</td>
-<td>0.773</td>
-<td>86 %</td>
-<td>1.024</td>
-<td>88 %</td>
+<td>8</td><td>0.707</td><td>89 %</td><td>0.773</td><td>86 %</td><td>1.024</td><td>88 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>0.362</td>
-<td>79 %</td>
-<td>0.424</td>
-<td>76 %</td>
-<td>0.473</td>
-<td>73 %</td>
+<td>16</td><td>0.362</td><td>79 %</td><td>0.424</td><td>76 %</td><td>0.473</td><td>73 %</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance STMV Benchmark en nodos NC
@@ -262,7 +233,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 2. Performance STMV Benchmark en nodos nc*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -287,57 +260,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>5.471</td>
-<td>5.419</td>
-<td>5.519</td>
-<td>0.0300</td>
-<td>4816</td>
+<td>1</td><td>20</td><td>5.471</td><td>5.419</td><td>5.519</td><td>0.0300</td><td>4816</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>2.640</td>
-<td>2.627</td>
-<td>2.654</td>
-<td>0.0096</td>
-<td>2369</td>
+<td>2</td><td>20</td><td>2.640</td><td>2.627</td><td>2.654</td><td>0.0096</td><td>2369</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>1.375</td>
-<td>1.363</td>
-<td>1.413</td>
-<td>0.0157</td>
-<td>1304</td>
+<td>4</td><td>20</td><td>1.375</td><td>1.363</td><td>1.413</td><td>0.0157</td><td>1304</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>0.707</td>
-<td>0.699</td>
-<td>0.713</td>
-<td>0.0054</td>
-<td>680</td>
+<td>8</td><td>20</td><td>0.707</td><td>0.699</td><td>0.713</td><td>0.0054</td><td>680</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>0.361</td>
-<td>0.358</td>
-<td>0.364</td>
-<td>0.0026</td>
-<td>391</td>
+<td>16</td><td>20</td><td>0.361</td><td>0.358</td><td>0.364</td><td>0.0026</td><td>391</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance STMV Benchmark en nodos TTV1
@@ -349,7 +297,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 3. Performance STMV Benchmark en nodos ttv1*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -374,67 +324,36 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>5.658</td>
-<td>5.627</td>
-<td>5.696</td>
-<td>0.0246</td>
-<td>4860.62</td>
+<td>1</td><td>20</td><td>5.658</td><td>5.627</td><td>5.696</td><td>0.0246</td><td>4860.62</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>2.732</td>
-<td>2.724</td>
-<td>2.740</td>
-<td>0.0080</td>
-<td>2433.665</td>
+<td>2</td><td>20</td><td>2.732</td><td>2.724</td><td>2.740</td><td>0.0080</td><td>2433.665</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>1.472</td>
-<td>1.376</td>
-<td>1.702</td>
-<td>0.0814</td>
-<td>1292.24</td>
+<td>4</td><td>20</td><td>1.472</td><td>1.376</td><td>1.702</td><td>0.0814</td><td>1292.24</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>20</td>
-<td>1.174</td>
-<td>1.117</td>
-<td>1.249</td>
-<td>0.0336</td>
-<td>1063.44</td>
+<td>5</td><td>20</td><td>1.174</td><td>1.117</td><td>1.249</td><td>0.0336</td><td>1063.44</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>0.773</td>
-<td>0.735</td>
-<td>0.869</td>
-<td>0.0417</td>
-<td>702.53</td>
+<td>8</td><td>20</td><td>0.773</td><td>0.735</td><td>0.869</td><td>0.0417</td><td>702.53</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>0.424</td>
-<td>0.380</td>
-<td>0.660</td>
-<td>0.0842</td>
-<td>397.65</td>
+<td>16</td><td>20</td><td>0.424</td><td>0.380</td><td>0.660</td><td>0.0842</td><td>397.65</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance STMV Benchmark en nodos TTV2
@@ -446,7 +365,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 4. Performance STMV Benchmark en nodos ttv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -471,57 +392,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>4.870</td>
-<td>3.769</td>
-<td>5.160</td>
-<td>0.5509</td>
-<td>4519.31</td>
+<td>1</td><td>20</td><td>4.870</td><td>3.769</td><td>5.160</td><td>0.5509</td><td>4519.31</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>3.276</td>
-<td>2.486</td>
-<td>7.662</td>
-<td>1.6676</td>
-<td>2214.67</td>
+<td>2</td><td>20</td><td>3.276</td><td>2.486</td><td>7.662</td><td>1.6676</td><td>2214.67</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>2.024</td>
-<td>1.305</td>
-<td>7.994</td>
-<td>1.6832</td>
-<td>1215.76</td>
+<td>4</td><td>20</td><td>2.024</td><td>1.305</td><td>7.994</td><td>1.6832</td><td>1215.76</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>1.024</td>
-<td>0.637</td>
-<td>3.881</td>
-<td>0.8495</td>
-<td>636.0</td>
+<td>8</td><td>20</td><td>1.024</td><td>0.637</td><td>3.881</td><td>0.8495</td><td>636.0</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>0.473</td>
-<td>0.326</td>
-<td>0.987</td>
-<td>0.1744</td>
-<td>381.91</td>
+<td>16</td><td>20</td><td>0.473</td><td>0.326</td><td>0.987</td><td>0.1744</td><td>381.91</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### STMV: Múltiples dispositivos GPU en un solo nodo
@@ -542,7 +438,9 @@ K20. Utilizar más de una GPU V100 para este Benchmark es ineficiente.
 
 <span style="color: #990819;">*Table 5. Performance STMV Benchmark en GPUS.*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># GPU devices</th>
@@ -567,39 +465,28 @@ Infiniband FDR10/FDR
 <th>WallClock (s)</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>2.119</td>
-<td>1938</td>
-<td>0.368</td>
-<td>392</td>
+<td>1</td><td>2.119</td><td>1938</td><td>0.368</td><td>392</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>1.287</td>
-<td>1171</td>
-<td>0.336</td>
-<td>373</td>
+<td>2</td><td>1.287</td><td>1171</td><td>0.336</td><td>373</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>0.764</td>
-<td>745</td>
-<td>0.353</td>
-<td>391</td>
+<td>4</td><td>0.764</td><td>745</td><td>0.353</td><td>391</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>0.712</td>
-<td>684</td>
-<td></td>
-<td></td>
+<td>8</td><td>0.712</td><td>684</td><td></td><td></td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ## F1-ATPase Benchmark (Junio 2022)
@@ -625,7 +512,9 @@ particiones de nodos presentes en Yoltla.
 
 <span style="color: #990819;">*Table 6. Performance F1ATPase Benchmark*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># Nodos</th>
@@ -658,67 +547,36 @@ Infiniband FDR10/FDR
 <th>Eficiencia Paralela %</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>1.487</td>
-<td>100 %</td>
-<td>1.591</td>
-<td>100 %</td>
-<td>1.083</td>
-<td>100 %</td>
+<td>1</td><td>1.487</td><td>100 %</td><td>1.591</td><td>100 %</td><td>1.083</td><td>100 %</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>0.715</td>
-<td>98 %</td>
-<td>0.738</td>
-<td>100 %</td>
-<td>0.778</td>
-<td>87 %</td>
+<td>2</td><td>0.715</td><td>98 %</td><td>0.738</td><td>100 %</td><td>0.778</td><td>87 %</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>0.374</td>
-<td>88 %</td>
-<td>0.398</td>
-<td>92 %</td>
-<td>0.396</td>
-<td>78 %</td>
+<td>4</td><td>0.374</td><td>88 %</td><td>0.398</td><td>92 %</td><td>0.396</td><td>78 %</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td></td>
-<td></td>
-<td>0.325</td>
-<td>89 %</td>
-<td></td>
-<td></td>
+<td>5</td><td></td><td></td><td>0.325</td><td>89 %</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>0.197</td>
-<td>74 %</td>
-<td>0.212</td>
-<td>77 %</td>
-<td>0.253</td>
-<td>66 %</td>
+<td>8</td><td>0.197</td><td>74 %</td><td>0.212</td><td>77 %</td><td>0.253</td><td>66 %</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>0.101</td>
-<td>51 %</td>
-<td>0.133</td>
-<td>52 %</td>
-<td>0.115</td>
-<td>39 %</td>
+<td>16</td><td>0.101</td><td>51 %</td><td>0.133</td><td>52 %</td><td>0.115</td><td>39 %</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance F1-ATPase Benchmark en nodos NC
@@ -730,7 +588,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 7. Performance F1ATPase Benchmark en nodos nc*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -754,57 +614,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>1.488</td>
-<td>1.482</td>
-<td>1.497</td>
-<td>0.004</td>
-<td>1335.32</td>
+<td>1</td><td>20</td><td>1.488</td><td>1.482</td><td>1.497</td><td>0.004</td><td>1335.32</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>0.720</td>
-<td>0.711</td>
-<td>0.782</td>
-<td>0.016</td>
-<td>678.47</td>
+<td>2</td><td>20</td><td>0.720</td><td>0.711</td><td>0.782</td><td>0.016</td><td>678.47</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>0.374</td>
-<td>0.372</td>
-<td>0.382</td>
-<td>0.002</td>
-<td>376.60</td>
+<td>4</td><td>20</td><td>0.374</td><td>0.372</td><td>0.382</td><td>0.002</td><td>376.60</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>0.197</td>
-<td>0.195</td>
-<td>0.201</td>
-<td>0.002</td>
-<td>224.89</td>
+<td>8</td><td>20</td><td>0.197</td><td>0.195</td><td>0.201</td><td>0.002</td><td>224.89</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>0.101</td>
-<td>0.101</td>
-<td>0.102</td>
-<td>0.0002</td>
-<td>162.74</td>
+<td>16</td><td>20</td><td>0.101</td><td>0.101</td><td>0.102</td><td>0.0002</td><td>162.74</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance F1-ATPase Benchmark en nodos TTV1
@@ -816,7 +651,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 8. Performance F1ATPase Benchmark en nodos ttv1*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -841,67 +678,36 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>1.591</td>
-<td>1.527</td>
-<td>1.677</td>
-<td>0.069</td>
-<td>1433.37</td>
+<td>1</td><td>20</td><td>1.591</td><td>1.527</td><td>1.677</td><td>0.069</td><td>1433.37</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>0.738</td>
-<td>0.727</td>
-<td>0.762</td>
-<td>0.013</td>
-<td>702.08</td>
+<td>2</td><td>20</td><td>0.738</td><td>0.727</td><td>0.762</td><td>0.013</td><td>702.08</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>0.398</td>
-<td>0.377</td>
-<td>0.461</td>
-<td>0.020</td>
-<td>387.20</td>
+<td>4</td><td>20</td><td>0.398</td><td>0.377</td><td>0.461</td><td>0.020</td><td>387.20</td>
 </tr>
 
 <tr>
-<td>5</td>
-<td>20</td>
-<td>0.325</td>
-<td>0.307</td>
-<td>0.404</td>
-<td>0.024</td>
-<td>321.12</td>
+<td>5</td><td>20</td><td>0.325</td><td>0.307</td><td>0.404</td><td>0.024</td><td>321.12</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>0.212</td>
-<td>0.198</td>
-<td>0.322</td>
-<td>0.031</td>
-<td>231.30</td>
+<td>8</td><td>20</td><td>0.212</td><td>0.198</td><td>0.322</td><td>0.031</td><td>231.30</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>0.133</td>
-<td>0.102</td>
-<td>0.198</td>
-<td>0.036</td>
-<td>172.10</td>
+<td>16</td><td>20</td><td>0.133</td><td>0.102</td><td>0.198</td><td>0.036</td><td>172.10</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### Performance F1-ATPase Benchmark en nodos TTV2
@@ -913,7 +719,9 @@ Infiniband FDR10/FDR
 \
 <span style="color: #990819;">*Table 9. Performance F1ATPase Benchmark en nodos ttv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="3"># Nodos</th>
@@ -938,57 +746,32 @@ Infiniband FDR10/FDR
 <th>Desviación Estándar</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>20</td>
-<td>1.083</td>
-<td>0.982</td>
-<td>1.365</td>
-<td>0.162</td>
-<td>1089.27</td>
+<td>1</td><td>20</td><td>1.083</td><td>0.982</td><td>1.365</td><td>0.162</td><td>1089.27</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>20</td>
-<td>0.778</td>
-<td>0.567</td>
-<td>1.919</td>
-<td>0.358</td>
-<td>625.69</td>
+<td>2</td><td>20</td><td>0.778</td><td>0.567</td><td>1.919</td><td>0.358</td><td>625.69</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>20</td>
-<td>0.396</td>
-<td>0.294</td>
-<td>0.884</td>
-<td>0.130</td>
-<td>346.98</td>
+<td>4</td><td>20</td><td>0.396</td><td>0.294</td><td>0.884</td><td>0.130</td><td>346.98</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>20</td>
-<td>0.253</td>
-<td>0.168</td>
-<td>0.961</td>
-<td>0.183</td>
-<td>204.90</td>
+<td>8</td><td>20</td><td>0.253</td><td>0.168</td><td>0.961</td><td>0.183</td><td>204.90</td>
 </tr>
 
 <tr>
-<td>16</td>
-<td>20</td>
-<td>0.115</td>
-<td>0.087</td>
-<td>0.327</td>
-<td>0.051</td>
-<td>174.03</td>
+<td>16</td><td>20</td><td>0.115</td><td>0.087</td><td>0.327</td><td>0.051</td><td>174.03</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ### F1-ATPase: Múltiples dispositivos GPU en un solo nodo
@@ -1008,7 +791,9 @@ nodos ttv2.
 
 <span style="color: #990819;">*Table 10. Performance ATPase Benchmark en GPUS.*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2"># GPU devices</th>
@@ -1033,39 +818,28 @@ Infiniband FDR10/FDR
 <th>WallClock (s)</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
-<td>1</td>
-<td>0.879</td>
-<td>802</td>
-<td>0.167</td>
-<td>147</td>
+<td>1</td><td>0.879</td><td>802</td><td>0.167</td><td>147</td>
 </tr>
 
 <tr>
-<td>2</td>
-<td>0.473</td>
-<td>458</td>
-<td>0.095</td>
-<td>193</td>
+<td>2</td><td>0.473</td><td>458</td><td>0.095</td><td>193</td>
 </tr>
 
 <tr>
-<td>4</td>
-<td>0.321</td>
-<td>312</td>
-<td>0.073</td>
-<td>135</td>
+<td>4</td><td>0.321</td><td>312</td><td>0.073</td><td>135</td>
 </tr>
 
 <tr>
-<td>8</td>
-<td>0.255</td>
-<td>278</td>
-<td></td>
-<td></td>
+<td>8</td><td>0.255</td><td>278</td><td></td><td></td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 
 ## Referencias

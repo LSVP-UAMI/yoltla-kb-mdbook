@@ -289,33 +289,9 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-204107.0`
 
 \
 <span style="color: #990819;">*Table 1. Performance 20K atom system: Crambin Benchmark*</span>
-```
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
-| Nodos** | 20 Cores x 2.50GHz Intel Xeón      | 20 Cores x 2.60GHz Intel Xeón      | 32 Cores x 2.10GHz Intel Xeon      |
-|         | E5-2670v2\                         | E5-2660v3\                         | E5-2683v4\                         |
-|         | 64GB RAM\                          | 128GB RAM\                         | 256GB RAM\                         |
-|         | Infiniband FDR10/FDR**             | Infiniband FDR10/FDR**             | Infiniband FDR10/FDR**             |
-|         +------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-|         | **ns/day** | **Wall | **Eficiencia | **ns/day** | **Wall | **Eficiencia | **ns/day** | **Wall | **Eficiencia |
-|         |            | t(s)** | Paralela %** |            | t(s)** | Paralela %** |            | t(s)** | Paralela %** |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 1       | 56.508     | 152.91 | 100 %        | 56.01      | 154.26 | 100 %        | 89.634     | 97.39  | 100 %        |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 2       | 106.903    | 80.82  | 94 %         | 101.78     | 85.12  | 90 %         | 141.643    | 61.00  | 79 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 4       | 190.727    | 45.30  | 84 %         | 194.970    | 44.36  | 86 %         | 237.384    | 36.56  | 66 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 5       |            |        |              | 232.410    | 37.25  | 82 %         |            |        |              |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 8       | 301.061    | 29.48  | 64 %         | 321.602    | 26.87  | 71 %         | 378.348    | 22.83  | 53 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 16      | 432.181    | 19.33  | 49 %         | 435.212    | 18.92  | 50 %         | 356.081    | 24.44  | 24 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-```
 
 <div class="tabla-scroll">
-<table border="1">
+<table style="text-align: center;">
 <thead>
 
 <tr>
@@ -394,30 +370,75 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-724598.0`
 
 \
 <span style="color: #990819;">*Table 2. Performance 61K atom system: Glutamine-Binding Benchmark*</span>
-```
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
-| Nodos** | 20 Cores x 2.50GHz Intel Xeón      | 20 Cores x 2.60GHz Intel Xeón      | 32 Cores x 2.10GHz Intel Xeon      |
-|         | E5-2670v2\                         | E5-2660v3\                         | E5-2683v4\                         |
-|         | 64GB RAM\                          | 128GB RAM\                         | 256GB RAM\                         |
-|         | Infiniband FDR10/FDR**             | Infiniband FDR10/FDR**             | Infiniband FDR10/FDR**             |
-|         +------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-|         | **ns/day** | **Wall | **Eficiencia | **ns/day** | **Wall | **Eficiencia | **ns/day** | **Wall | **Eficiencia |
-|         |            | t(s)** | Paralela %** |            | t(s)** | Paralela %** |            | t(s)** | Paralela %** |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 1       | 17.591     | 491.16 | 100 %        | 17.465     | 494.74 | 100 %        | 24.933     | 352.65 | 100 %        |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 2       | 34.035     | 253.86 | 96 %         | 32.912     | 262.57 | 94 %         | 43.914     | 196.76 | 89 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 4       | 62.133     | 139.06 | 88 %         | 61.312     | 140.92 | 87 %         | 79.514     | 109.18 | 80 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 5       |            |        |              | 75.118     | 115.03 | 85 %         |            |        |              |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 8       | 115.214    | 75.02  | 81 %         | 113.176    | 76.34  | 81 %         | 147.549    | 58.55  | 75 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 16      | 196.275    | 44.20  | 69 %         | 199.261    | 43.41  | 71 %         | 224.141    | 38.69  | 56 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2"><strong># Nodos</strong></th>
+<th colspan="3">
+<strong>CPU's Nodos nc</strong><br>
+20 Cores x 2.50GHz Intel Xeon E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv1[1-58]</strong><br>
+20 Cores x 2.60GHz Intel Xeon E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv2[59-104]</strong><br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>1</td><td>17.591</td><td>491.16</td><td>100 %</td><td>17.465</td><td>494.74</td><td>100 %</td><td>24.933</td><td>352.65</td><td>100 %</td>
+</tr>
+
+<tr>
+<td>2</td><td>34.035</td><td>253.86</td><td>96 %</td><td>32.912</td><td>262.57</td><td>94 %</td><td>43.914</td><td>196.76</td><td>89 %</td>
+</tr>
+
+<tr>
+<td>4</td><td>62.133</td><td>139.06</td><td>88 %</td><td>61.312</td><td>140.92</td><td>87 %</td><td>79.514</td><td>109.18</td><td>80 %</td>
+</tr>
+
+<tr>
+<td>5</td><td></td><td></td><td></td><td>75.118</td><td>115.03</td><td>85 %</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>8</td><td>115.214</td><td>75.02</td><td>81 %</td><td>113.176</td><td>76.34</td><td>81 %</td><td>147.549</td><td>58.55</td><td>75 %</td>
+</tr>
+
+<tr>
+<td>16</td><td>196.275</td><td>44.20</td><td>69 %</td><td>199.261</td><td>43.41</td><td>71 %</td><td>224.141</td><td>38.69</td><td>56 %</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 
 ### 465K atom system - hEGFR Dimer of 1IVO and 1NQL
@@ -430,30 +451,75 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-3.32892e+06`
 
 \
 <span style="color: #990819;">*Table 3. Performance 465K atom system: hEGFR Dimer Benchmark*</span>
-```
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| **\#    | **CPU's Nodos nc\                  | **CPU's Nodos ttv1\[1-58\]\        | **CPU's Nodos ttv2\[59-104\]\      |
-| Nodos** | 20 Cores x 2.50GHz Intel Xeón      | 20 Cores x 2.60GHz Intel Xeón      | 32 Cores x 2.10GHz Intel Xeon      |
-|         | E5-2670v2\                         | E5-2660v3\                         | E5-2683v4\                         |
-|         | 64GB RAM\                          | 128GB RAM\                         | 256GB RAM\                         |
-|         | Infiniband FDR10/FDR**             | Infiniband FDR10/FDR**             | Infiniband FDR10/FDR**             |
-|         +------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-|         | **ns/day** | **Wall | **Eficiencia | **ns/day** | **Wall | **Eficiencia | **ns/day** | **Wall | **Eficiencia |
-|         |            | t(s)** | Paralela %** |            | t(s)** | Paralela %** |            | t(s)** | Paralela %** |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 1       | 2.182      | 792.51 | 100 %        | 2.158      | 803.93 | 100 %        | 2.823      | 589.62 | 100 %        |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 2       | 4.291      | 402.45 | 98 %         | 4.199      | 413.36 | 97 %         | 4.318      | 371.02 | 79 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 4       | 8.376      | 205.96 | 95 %         | 8.055      | 216.56 | 92 %         | 9.264      | 185.84 | 78 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 5       |            |        |              | 10.232     | 168.98 | 95 %         |            |        |              |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 8       | 16.347     | 105.68 | 92 %         | 15.463     | 113.18 | 88 %         | 19.312     | 89.015 | 82 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-| 16      | 29.912     | 57.49  | 86 %         | 27.162     | 61.83  | 81 %         | 38.853     | 44.59  | 81 %         |
-+---------+------------+--------+--------------+------------+--------+--------------+------------+--------+--------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2"><strong># Nodos</strong></th>
+<th colspan="3">
+<strong>CPU's Nodos nc</strong><br>
+20 Cores x 2.50GHz Intel Xeon E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv1[1-58]</strong><br>
+20 Cores x 2.60GHz Intel Xeon E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv2[59-104]</strong><br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+
+</tr>
+<tr>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>1</td><td>2.182</td><td>792.51</td><td>100 %</td><td>2.158</td><td>803.93</td><td>100 %</td><td>2.823</td><td>589.62</td><td>100 %</td>
+</tr>
+
+<tr>
+<td>2</td><td>4.291</td><td>402.45</td><td>98 %</td><td>4.199</td><td>413.36</td><td>97 %</td><td>4.318</td><td>371.02</td><td>79 %</td>
+</tr>
+
+<tr>
+<td>4</td><td>8.376</td><td>205.96</td><td>95 %</td><td>8.055</td><td>216.56</td><td>92 %</td><td>9.264</td><td>185.84</td><td>78 %</td>
+</tr>
+
+<tr>
+<td>5</td><td></td><td></td><td></td><td>10.232</td><td>168.98</td><td>95 %</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>8</td><td>16.347</td><td>105.68</td><td>92 %</td><td>15.463</td><td>113.18</td><td>88 %</td><td>19.312</td><td>89.015</td><td>82 %</td>
+</tr>
+
+<tr>
+<td>16</td><td>29.912</td><td>57.49</td><td>86 %</td><td>27.162</td><td>61.83</td><td>81 %</td><td>38.853</td><td>44.59</td><td>81 %</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 
 ### 1.4M atom system - A Pair of hEGFR Dimers of 1IVO and 1NQL
@@ -466,30 +532,75 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-1.20733e+07`
 
 \
 <span style="color: #990819;">*Table 4. Performance 1.4M atom system: A Pair of hEGFR Dimer Benchmark*</span>
-```
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| **\#    | **CPU's Nodos nc\                   | **CPU's Nodos ttv1\[1-58\]\         | **CPU's Nodos ttv2\[59-104\]\       |
-| Nodos** | 20 Cores x 2.50GHz Intel Xeón       | 20 Cores x 2.60GHz Intel Xeón       | 32 Cores x 2.10GHz Intel Xeon       |
-|         | E5-2670v2\                          | E5-2660v3\                          | E5-2683v4\                          |
-|         | 64GB RAM\                           | 128GB RAM\                          | 256GB RAM\                          |
-|         | Infiniband FDR10/FDR**              | Infiniband FDR10/FDR**              | Infiniband FDR10/FDR**              |
-|         +------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-|         | **ns/day** | **Wall  | **Eficiencia | **ns/day** | **Wall  | **Eficiencia | **ns/day** | **Wall  | **Eficiencia |
-|         |            | t(s)**  | Paralela %** |            | t(s)**  | Paralela %** |            | t(s)**  | Paralela %** |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 1       | 0.820      | 2109.12 | 100 %        | 0.800      | 2169.86 | 100 %        | 0.918      | 1664.99 | 100 %        |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 2       | 1.650      | 1046.09 | 99 %         | 1.594      | 1094.46 | 99 %         | 1.734      | 1004.19 | 82 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 4       | 3.257      | 530.41  | 98 %         | 3.131      | 554.92  | 97 %         | 3.395      | 536.28  | 77 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 5       |            |         |              | 3.947      | 438.29  | 99 %         |            |         |              |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 8       | 6.422      | 269.21  | 97 %         | 5.966      | 282.81  | 95 %         | 6.483      | 269.53  | 76 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 16      | 12.00      | 143.01  | 92 %         | 11.724     | 147.57  | 91 %         | 13.423     | 128.21  | 80 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2"><strong># Nodos</strong></th>
+<th colspan="3">
+<strong>CPU's Nodos nc</strong><br>
+20 Cores x 2.50GHz Intel Xeon E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv1[1-58]</strong><br>
+20 Cores x 2.60GHz Intel Xeon E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv2[59-104]</strong><br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>1</td><td>0.820</td><td>2109.12</td><td>100 %</td><td>0.800</td><td>2169.86</td><td>100 %</td><td>0.918</td><td>1664.99</td><td>100 %</td>
+</tr>
+
+<tr>
+<td>2</td><td>1.650</td><td>1046.09</td><td>99 %</td><td>1.594</td><td>1094.46</td><td>99 %</td><td>1.734</td><td>1004.19</td><td>82 %</td>
+</tr>
+
+<tr>
+<td>4</td><td>3.257</td><td>530.41</td><td>98 %</td><td>3.131</td><td>554.92</td><td>97 %</td><td>3.395</td><td>536.28</td><td>77 %</td>
+</tr>
+
+<tr>
+<td>5</td><td></td><td></td><td></td><td>3.947</td><td>438.29</td><td>99 %</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>8</td><td>6.422</td><td>269.21</td><td>97 %</td><td>5.966</td><td>282.81</td><td>95 %</td><td>6.483</td><td>269.53</td><td>76 %</td>
+</tr>
+
+<tr>
+<td>16</td><td>12.00</td><td>143.01</td><td>92 %</td><td>11.724</td><td>147.57</td><td>91 %</td><td>13.423</td><td>128.21</td><td>80 %</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 
 ### 3M atom system - A Pair of hEGFR tetramers of 1IVO and 1NQL
@@ -502,30 +613,75 @@ La simulación debe llegar a un valor `Total Energy` cercano a: `-2.09831e+07`
 
 \
 <span style="color: #990819;">*Table 5. Performance 3M atom system: Tetramers Benchmark*</span>
-```
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| **\#    | **CPU's Nodos nc\                   | **CPU's Nodos ttv1\[1-58\]\         | **CPU's Nodos ttv2\[59-104\]\       |
-| Nodos** | 20 Cores x 2.50GHz Intel Xeón       | 20 Cores x 2.60GHz Intel Xeón       | 32 Cores x 2.10GHz Intel Xeon       |
-|         | E5-2670v2\                          | E5-2660v3\                          | E5-2683v4\                          |
-|         | 64GB RAM\                           | 128GB RAM\                          | 256GB RAM\                          |
-|         | Infiniband FDR10/FDR**              | Infiniband FDR10/FDR**              | Infiniband FDR10/FDR**              |
-|         +------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-|         | **ns/day** | **Wall  | **Eficiencia | **ns/day** | **Wall  | **Eficiencia | **ns/day** | **Wall  | **Eficiencia |
-|         |            | t(s)**  | Paralela %** |            | t(s)**  | Paralela %** |            | t(s)**  | Paralela %** |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 1       | 0.371      | 4663.00 | 100 %        | 0.372      | 4643.84 | 100 %        | 0.503      | 3913.65 | 100 %        |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 2       | 0.750      | 2300.71 | 99 %         | 0.727      | 2352.36 | 98 %         | 0.813      | 2138.54 | 91 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 4       | 1.489      | 1160.10 | 99 %         | 1.461      | 1176.60 | 97 %         | 1.459      | 1096.09 | 89 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 5       |            |         |              | 1.785      | 980.53  | 94 %         |            |         |              |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 8       | 2.848      | 607.68  | 95 %         | 2.746      | 621.83  | 93 %         | 3.027      | 548.42  | 88 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-| 16      | 5.202      | 313.81  | 92 %         | 5.234      | 335.36  | 86 %         | 6.029      | 287.27  | 84 %         |
-+---------+------------+---------+--------------+------------+---------+--------------+------------+---------+--------------+
-```
+
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
+
+<tr>
+<th rowspan="2"><strong># Nodos</strong></th>
+<th colspan="3">
+<strong>CPU's Nodos nc</strong><br>
+20 Cores x 2.50GHz Intel Xeon E5-2670v2<br>
+64GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv1[1-58]</strong><br>
+20 Cores x 2.60GHz Intel Xeon E5-2660v3<br>
+128GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+<th colspan="3">
+<strong>CPU's Nodos ttv2[59-104]</strong><br>
+32 Cores x 2.10GHz Intel Xeon E5-2683v4<br>
+256GB RAM<br>
+Infiniband FDR10/FDR
+</th>
+</tr>
+
+<tr>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+<th><strong>ns/day</strong></th>
+<th><strong>Wall t(s)</strong></th>
+<th><strong>Eficiencia Paralela %</strong></th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>1</td><td>0.371</td><td>4663.00</td><td>100 %</td><td>0.372</td><td>4643.84</td><td>100 %</td><td>0.503</td><td>3913.65</td><td>100 %</td>
+</tr>
+
+<tr>
+<td>2</td><td>0.750</td><td>2300.71</td><td>99 %</td><td>0.727</td><td>2352.36</td><td>98 %</td><td>0.813</td><td>2138.54</td><td>91 %</td>
+</tr>
+
+<tr>
+<td>4</td><td>1.489</td><td>1160.10</td><td>99 %</td><td>1.461</td><td>1176.60</td><td>97 %</td><td>1.459</td><td>1096.09</td><td>89 %</td>
+</tr>
+
+<tr>
+<td>5</td><td></td><td></td><td></td><td>1.785</td><td>980.53</td><td>94 %</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>8</td><td>2.848</td><td>607.68</td><td>95 %</td><td>2.746</td><td>621.83</td><td>93 %</td><td>3.027</td><td>548.42</td><td>88 %</td>
+</tr>
+
+<tr>
+<td>16</td><td>5.202</td><td>313.81</td><td>92 %</td><td>5.234</td><td>335.36</td><td>86 %</td><td>6.029</td><td>287.27</td><td>84 %</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 
 #### Performance Tetramers Benchmark en nodos NC

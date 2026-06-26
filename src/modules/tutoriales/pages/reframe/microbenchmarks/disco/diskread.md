@@ -76,7 +76,7 @@ tablas se da un resumen de las pruebas realizadas:
 <span style="color: #990819;">*Tabla 1. Pruebas en los nodos NC*</span>
 
 | **Nodo** | **bs** | **count** |
-|----------|--------|-----------|
+|:--------:|:------:|:---------:|
 | nc1      | 1M     | 8192      |
 | nc20     | 1M     | 8192      |
 | nc26     | 1M     | 8192      |
@@ -97,7 +97,7 @@ tablas se da un resumen de las pruebas realizadas:
 <span style="color: #990819;">*Pruebas en los nodos TTv1*</span>
 
 | **Nodo** | **bs** | **count** |
-|----------|--------|-----------|
+|:--------:|:------:|:---------:|
 | tt1      | 1M     | 8192      |
 | tt9      | 1M     | 8192      |
 | tt17     | 1M     | 8192      |
@@ -111,7 +111,7 @@ tablas se da un resumen de las pruebas realizadas:
 <span style="color: #990819;">*Pruebas en los nodos TTv2*</span>
 
 | **Nodo** | **bs** | **count** |
-|----------|--------|-----------|
+|:--------:|:------:|:---------:|
 | tt60     | 1M     | 8192      |
 | tt65     | 1M     | 8192      |
 | tt74     | 1M     | 8192      |
@@ -119,7 +119,9 @@ tablas se da un resumen de las pruebas realizadas:
 | tt92     | 1M     | 8192      |
 
 ```admonish note title=" "
-Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa de cada tipo de nodo.
+Los nodos no fueron seleccionados bajo ningún criterio en particular, salvo su 
+disponibilidad en el cluster, y con el objetivo de obtener una muestra representativa 
+de cada tipo de nodo.
 ```
 
 
@@ -209,7 +211,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Pruebas en los nodos TTv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -223,6 +227,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>Máximo</th>
 <th>σ</th>
 </tr>
+
+</thead>
+<tbody>
 
 <tr>
 <td>5</td><td>nc1</td><td>168.00</td><td>168.00</td><td>168.00</td><td>0.00</td>
@@ -288,8 +295,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>5</td><td>nc156</td><td>169.00</td><td>169.00</td><td>169.00</td><td>0.00</td>
 </tr>
 
+</tbody>
 </table>
-
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskRead en los nodos NC</span>
@@ -303,7 +311,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Tabla 5. Resultados de la prueba DiskRead en los nodos TTv1*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -317,6 +327,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>Máximo</th>
 <th>σ</th>
 </tr>
+
+</thead>
+<tbody>
 
 <tr>
 <td>5</td><td>tt1</td><td>115.20</td><td>112.00</td><td>116.00</td><td>1.60</td>
@@ -350,7 +363,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>5</td><td>tt58</td><td>280.00</td><td>273.00</td><td>285.00</td><td>4.10</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskRead en los nodos TTv1</span>
@@ -364,7 +379,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Tabla 6. Resultados de la prueba DiskRead en los nodos TTv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -378,6 +395,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>Máximo</th>
 <th>σ</th>
 </tr>
+
+</thead>
+<tbody>
 
 <tr>
 <td>5</td><td>tt60</td><td>115.40</td><td>113.00</td><td>116.00</td><td>1.20</td>
@@ -399,7 +419,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>5</td><td>tt92</td><td>114.00</td><td>112.00</td><td>115.00</td><td>1.26</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskRead en los nodos TTv2</span>
@@ -413,7 +435,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Tabla 7. Resultados de la prueba DiskRead en el cluster Yoltla*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">Nodos</th>
@@ -427,6 +451,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
 <td>NC</td><td>162.86</td><td>97.10</td><td>174.00</td><td>12.13</td>
 </tr>
@@ -439,7 +466,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>TTv2</td><td>203.56</td><td>112.00</td><td>267.00</td><td>72.68</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskRead en el cluster Yoltla</span>

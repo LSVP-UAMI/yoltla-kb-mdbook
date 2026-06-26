@@ -103,7 +103,7 @@ Test0979: NBO test with f functions
 <span style="color: #990819;">*Table 1. Performance Test 0979*</span>
 
 <div class="tabla-scroll">
-<table border="1">
+<table style="text-align: center;">
 <thead>
 
 <tr>
@@ -186,7 +186,7 @@ Test1044: TD 50-50 with PCM test
 <span style="color: #990819;">*Table 2. Performance Test 1044*</span>
 
 <div class="tabla-scroll">
-<table border="1">
+<table style="text-align: center;">
 <thead>
 
 <tr>

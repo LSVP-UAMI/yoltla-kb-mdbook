@@ -194,7 +194,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Tabla 4. Resultados de la prueba DiskWrite en los nodos NC*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -208,6 +210,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>Máximo</th>
 <th>σ</th>
 </tr>
+
+</thead>
+<tbody>
 
 <tr>
 <td>5</td><td>nc1</td><td>26.68</td><td>26.30</td><td>27.20</td><td>0.32</td>
@@ -273,7 +278,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>5</td><td>nc156</td><td>26.48</td><td>26.20</td><td>27.00</td><td>0.30</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskWrite en los nodos NC</span>
@@ -287,7 +294,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Tabla 5. Resultados de la prueba DiskWrite en los nodos TTv1*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -301,6 +310,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>Máximo</th>
 <th>σ</th>
 </tr>
+
+</thead>
+<tbody>
 
 <tr>
 <td>5</td><td>tt1</td><td>184.80</td><td>183.00</td><td>188.00</td><td>1.72</td>
@@ -334,7 +346,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>5</td><td>tt58</td><td>213.20</td><td>212.00</td><td>214.00</td><td>0.75</td>
 </tr>
 
+</body>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskWrite en los nodos TTv1</span>
@@ -348,7 +362,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Tabla 6. Resultados de la prueba DiskWrite en los nodos TTv2*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">No. de ejecuciones</th>
@@ -362,6 +378,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>Máximo</th>
 <th>σ</th>
 </tr>
+
+</thead>
+<tbody>
 
 <tr>
 <td>5</td><td>tt60</td><td>191.60</td><td>191.00</td><td>194.00</td><td>1.20</td>
@@ -383,7 +402,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>5</td><td>tt92</td><td>189.40</td><td>189.00</td><td>190.00</td><td>0.49</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskWrite en los nodos TTv2</span>
@@ -397,7 +418,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 
 <span style="color: #990819;">*Tabla 7. Resultados de la prueba DiskWrite en el cluster Yoltla*</span>
 
-<table border="1">
+<div class="tabla-scroll">
+<table style="text-align: center;">
+<thead>
 
 <tr>
 <th rowspan="2">Nodos</th>
@@ -411,6 +434,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <th>σ</th>
 </tr>
 
+</thead>
+<tbody>
+
 <tr>
 <td>NC</td><td>26.84</td><td>22.00</td><td>32.50</td><td>1.72</td>
 </tr>
@@ -423,7 +449,9 @@ Si no crea el directorio *logs* obtendrá el siguiente mensaje:
 <td>TTv2</td><td>200.68</td><td>189.00</td><td>208.00</td><td>8.37</td>
 </tr>
 
+</tbody>
 </table>
+</div>
 
 \
 <span style="color: #1285E3;">Resultados de la prueba DiskWrite en el cluster Yoltla</span>
